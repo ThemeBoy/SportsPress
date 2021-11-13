@@ -4,9 +4,9 @@ class SP_Widget_Countdown extends WP_Widget {
 	function __construct() {
 		$widget_ops = array(
 			'classname'   => 'widget_sportspress widget_countdown widget_sp_countdown',
-			'description' => __( 'A clock that counts down to an upcoming event.', 'sportspress' ),
+			'description' => esc_attr__( 'A clock that counts down to an upcoming event.', 'sportspress' ),
 		);
-		parent::__construct( 'sportspress-countdown', __( 'Countdown', 'sportspress' ), $widget_ops );
+		parent::__construct( 'sportspress-countdown', esc_attr__( 'Countdown', 'sportspress' ), $widget_ops );
 	}
 
 	function widget( $args, $instance ) {
@@ -25,10 +25,10 @@ class SP_Widget_Countdown extends WP_Widget {
 		$show_status   = empty( $instance['show_status'] ) ? false : $instance['show_status'];
 
 		do_action( 'sportspress_before_widget', $args, $instance, 'countdown' );
-		echo $before_widget;
+		echo wp_kses_post( $before_widget );
 
 		if ( $title ) {
-			echo $before_title . $title . $after_title;
+			echo wp_kses_post( $before_title . $title . $after_title );
 		}
 
 		// Action to hook into
@@ -54,7 +54,7 @@ class SP_Widget_Countdown extends WP_Widget {
 		// Action to hook into
 		do_action( 'sportspress_after_widget_template', $args, $instance, 'countdown' );
 
-		echo $after_widget;
+		echo wp_kses_post( $after_widget );
 		do_action( 'sportspress_after_widget', $args, $instance, 'countdown' );
 	}
 
@@ -113,69 +113,69 @@ class SP_Widget_Countdown extends WP_Widget {
 		// Action to hook into
 		do_action( 'sportspress_before_widget_template_form', $this, $instance, 'countdown' );
 		?>
-		<p><label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'sportspress' ); ?></label>
-		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" /></p>
+		<p><label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_attr_e( 'Title:', 'sportspress' ); ?></label>
+		<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" /></p>
 
-		<p><label for="<?php echo $this->get_field_id( 'caption' ); ?>"><?php _e( 'Heading:', 'sportspress' ); ?></label>
-		<input class="widefat" id="<?php echo $this->get_field_id( 'caption' ); ?>" name="<?php echo $this->get_field_name( 'caption' ); ?>" type="text" value="<?php echo esc_attr( $caption ); ?>" /></p>
+		<p><label for="<?php echo esc_attr( $this->get_field_id( 'caption' ) ); ?>"><?php esc_attr_e( 'Heading:', 'sportspress' ); ?></label>
+		<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'caption' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'caption' ) ); ?>" type="text" value="<?php echo esc_attr( $caption ); ?>" /></p>
 		
-		<p class="sp-dropdown-filter"><label for="<?php echo $this->get_field_id( 'calendar' ); ?>"><?php printf( __( 'Select %s:', 'sportspress' ), __( 'Calendar', 'sportspress' ) ); ?></label>
+		<p class="sp-dropdown-filter"><label for="<?php echo esc_attr( $this->get_field_id( 'calendar' ) ); ?>"><?php printf( esc_attr__( 'Select %s:', 'sportspress' ), esc_attr__( 'Calendar', 'sportspress' ) ); ?></label>
 		<?php
 		$args = array(
 			'post_type'       => 'sp_calendar',
 			'name'            => $this->get_field_name( 'calendar' ),
 			'id'              => $this->get_field_id( 'calendar' ),
 			'selected'        => $calendar,
-			'show_option_all' => __( 'All', 'sportspress' ),
+			'show_option_all' => esc_attr__( 'All', 'sportspress' ),
 			'values'          => 'ID',
 			'class'           => 'widefat',
 		);
 		if ( ! sp_dropdown_pages( $args ) ) :
-			sp_post_adder( 'sp_calendar', __( 'Add New', 'sportspress' ) );
+			sp_post_adder( 'sp_calendar', esc_attr__( 'Add New', 'sportspress' ) );
 		endif;
 		?>
 		</p>
 		
-		<p class="sp-dropdown-filter"><label for="<?php echo $this->get_field_id( 'orderby' ); ?>"><?php printf( __( 'Sort by:', 'sportspress' ) ); ?></label>
-			<select name="<?php echo $this->get_field_name( 'orderby' ); ?>" class="postform widefat">
-				<option value="" <?php selected( 'default', $orderby ); ?>><?php _e( 'Default', 'sportspress' ); ?></option>
-				<option value="date" <?php selected( 'date', $orderby ); ?>><?php _e( 'Date', 'sportspress' ); ?></option>
-				<option value="day" <?php selected( 'day', $orderby ); ?>><?php _e( 'Match Day', 'sportspress' ); ?></option>
+		<p class="sp-dropdown-filter"><label for="<?php echo esc_attr( $this->get_field_id( 'orderby' ) ); ?>"><?php printf( esc_attr__( 'Sort by:', 'sportspress' ) ); ?></label>
+			<select name="<?php echo esc_attr( $this->get_field_name( 'orderby' ) ); ?>" class="postform widefat">
+				<option value="" <?php selected( 'default', $orderby ); ?>><?php esc_attr_e( 'Default', 'sportspress' ); ?></option>
+				<option value="date" <?php selected( 'date', $orderby ); ?>><?php esc_attr_e( 'Date', 'sportspress' ); ?></option>
+				<option value="day" <?php selected( 'day', $orderby ); ?>><?php esc_attr_e( 'Match Day', 'sportspress' ); ?></option>
 			</select>
 		</p>
 		
-		<p class="sp-dropdown-filter"><label for="<?php echo $this->get_field_id( 'order' ); ?>"><?php printf( __( 'Sort Order:', 'sportspress' ) ); ?></label>
-			<select name="<?php echo $this->get_field_name( 'order' ); ?>" class="postform widefat">
-				<option value="ASC" <?php selected( 'ASC', $order ); ?>><?php _e( 'Ascending', 'sportspress' ); ?></option>
-				<option value="DESC" <?php selected( 'DESC', $order ); ?>><?php _e( 'Descending', 'sportspress' ); ?></option>
+		<p class="sp-dropdown-filter"><label for="<?php echo esc_attr( $this->get_field_id( 'order' ) ); ?>"><?php printf( esc_attr__( 'Sort Order:', 'sportspress' ) ); ?></label>
+			<select name="<?php echo esc_attr( $this->get_field_name( 'order' ) ); ?>" class="postform widefat">
+				<option value="ASC" <?php selected( 'ASC', $order ); ?>><?php esc_attr_e( 'Ascending', 'sportspress' ); ?></option>
+				<option value="DESC" <?php selected( 'DESC', $order ); ?>><?php esc_attr_e( 'Descending', 'sportspress' ); ?></option>
 			</select>
 		</p>
 
-		<p class="sp-dropdown-filter"><label for="<?php echo $this->get_field_id( 'team' ); ?>"><?php printf( __( 'Select %s:', 'sportspress' ), __( 'Team', 'sportspress' ) ); ?></label>
+		<p class="sp-dropdown-filter"><label for="<?php echo esc_attr( $this->get_field_id( 'team' ) ); ?>"><?php printf( esc_attr__( 'Select %s:', 'sportspress' ), esc_attr__( 'Team', 'sportspress' ) ); ?></label>
 		<?php
 		$args = array(
 			'post_type'       => 'sp_team',
 			'name'            => $this->get_field_name( 'team' ),
 			'id'              => $this->get_field_id( 'team' ),
 			'selected'        => $team,
-			'show_option_all' => __( 'All', 'sportspress' ),
+			'show_option_all' => esc_attr__( 'All', 'sportspress' ),
 			'values'          => 'ID',
 			'class'           => 'widefat',
 		);
 		if ( ! sp_dropdown_pages( $args ) ) :
-			sp_post_adder( 'sp_team', __( 'Add New', 'sportspress' ) );
+			sp_post_adder( 'sp_team', esc_attr__( 'Add New', 'sportspress' ) );
 		endif;
 		?>
 		</p>
 
-		<p class="sp-dropdown-target"><label for="<?php echo $this->get_field_id( 'id' ); ?>"><?php printf( __( 'Select %s:', 'sportspress' ), __( 'Event', 'sportspress' ) ); ?></label>
+		<p class="sp-dropdown-target"><label for="<?php echo esc_attr( $this->get_field_id( 'id' ) ); ?>"><?php printf( esc_attr__( 'Select %s:', 'sportspress' ), esc_attr__( 'Event', 'sportspress' ) ); ?></label>
 		<?php
 		$args = array(
 			'post_type'       => 'sp_event',
 			'name'            => $this->get_field_name( 'id' ),
 			'id'              => $this->get_field_id( 'id' ),
 			'selected'        => $id,
-			'show_option_all' => __( '(Auto)', 'sportspress' ),
+			'show_option_all' => esc_attr__( '(Auto)', 'sportspress' ),
 			'values'          => 'ID',
 			'class'           => 'widefat',
 			'show_dates'      => true,
@@ -183,25 +183,25 @@ class SP_Widget_Countdown extends WP_Widget {
 			'filter'          => 'sp_team',
 		);
 		if ( ! sp_dropdown_pages( $args ) ) :
-			sp_post_adder( 'sp_event', __( 'Add New', 'sportspress' ) );
+			sp_post_adder( 'sp_event', esc_attr__( 'Add New', 'sportspress' ) );
 		endif;
 		?>
 		</p>
 
-		<p><input class="checkbox" type="checkbox" id="<?php echo $this->get_field_id( 'show_venue' ); ?>" name="<?php echo $this->get_field_name( 'show_venue' ); ?>" value="1" <?php checked( $show_venue, 1 ); ?>>
-		<label for="<?php echo $this->get_field_id( 'show_venue' ); ?>"><?php _e( 'Display venue', 'sportspress' ); ?></label></p>
+		<p><input class="checkbox" type="checkbox" id="<?php echo esc_attr( $this->get_field_id( 'show_venue' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'show_venue' ) ); ?>" value="1" <?php checked( $show_venue, 1 ); ?>>
+		<label for="<?php echo esc_attr( $this->get_field_id( 'show_venue' ) ); ?>"><?php esc_attr_e( 'Display venue', 'sportspress' ); ?></label></p>
 
-		<p><input class="checkbox" type="checkbox" id="<?php echo $this->get_field_id( 'show_league' ); ?>" name="<?php echo $this->get_field_name( 'show_league' ); ?>" value="1" <?php checked( $show_league, 1 ); ?>>
-		<label for="<?php echo $this->get_field_id( 'show_league' ); ?>"><?php _e( 'Display league', 'sportspress' ); ?></label></p>
+		<p><input class="checkbox" type="checkbox" id="<?php echo esc_attr( $this->get_field_id( 'show_league' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'show_league' ) ); ?>" value="1" <?php checked( $show_league, 1 ); ?>>
+		<label for="<?php echo esc_attr( $this->get_field_id( 'show_league' ) ); ?>"><?php esc_attr_e( 'Display league', 'sportspress' ); ?></label></p>
 		
-		<p><input class="checkbox" type="checkbox" id="<?php echo $this->get_field_id( 'show_date' ); ?>" name="<?php echo $this->get_field_name( 'show_date' ); ?>" value="1" <?php checked( $show_date, 1 ); ?>>
-		<label for="<?php echo $this->get_field_id( 'show_date' ); ?>"><?php _e( 'Display date', 'sportspress' ); ?></label></p>
+		<p><input class="checkbox" type="checkbox" id="<?php echo esc_attr( $this->get_field_id( 'show_date' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'show_date' ) ); ?>" value="1" <?php checked( $show_date, 1 ); ?>>
+		<label for="<?php echo esc_attr( $this->get_field_id( 'show_date' ) ); ?>"><?php esc_attr_e( 'Display date', 'sportspress' ); ?></label></p>
 		
-		<p><input class="checkbox" type="checkbox" id="<?php echo $this->get_field_id( 'show_excluded' ); ?>" name="<?php echo $this->get_field_name( 'show_excluded' ); ?>" value="1" <?php checked( $show_excluded, 1 ); ?>>
-		<label for="<?php echo $this->get_field_id( 'show_excluded' ); ?>"><?php _e( 'Display excluded events', 'sportspress' ); ?></label></p>
+		<p><input class="checkbox" type="checkbox" id="<?php echo esc_attr( $this->get_field_id( 'show_excluded' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'show_excluded' ) ); ?>" value="1" <?php checked( $show_excluded, 1 ); ?>>
+		<label for="<?php echo esc_attr( $this->get_field_id( 'show_excluded' ) ); ?>"><?php esc_attr_e( 'Display excluded events', 'sportspress' ); ?></label></p>
 		
-		<p><input class="checkbox" type="checkbox" id="<?php echo $this->get_field_id( 'show_status' ); ?>" name="<?php echo $this->get_field_name( 'show_status' ); ?>" value="1" <?php checked( $show_status, 1 ); ?>>
-		<label for="<?php echo $this->get_field_id( 'show_status' ); ?>"><?php _e( 'Display event status', 'sportspress' ); ?></label></p>
+		<p><input class="checkbox" type="checkbox" id="<?php echo esc_attr( $this->get_field_id( 'show_status' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'show_status' ) ); ?>" value="1" <?php checked( $show_status, 1 ); ?>>
+		<label for="<?php echo esc_attr( $this->get_field_id( 'show_status' ) ); ?>"><?php esc_attr_e( 'Display event status', 'sportspress' ); ?></label></p>
 		
 		<?php
 		// Action to hook into

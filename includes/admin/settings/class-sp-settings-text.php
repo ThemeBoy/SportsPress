@@ -24,7 +24,7 @@ if ( ! class_exists( 'SP_Settings_Text' ) ) :
 		 */
 		public function __construct() {
 			$this->id    = 'text';
-			$this->label = __( 'Text', 'sportspress' );
+			$this->label = esc_attr__( 'Text', 'sportspress' );
 
 			add_filter( 'sportspress_settings_tabs_array', array( $this, 'add_settings_page' ), 20 );
 			add_action( 'sportspress_settings_' . $this->id, array( $this, 'output' ) );
@@ -40,9 +40,9 @@ if ( ! class_exists( 'SP_Settings_Text' ) ) :
 
 			$settings = array(
 				array(
-					'title' => __( 'Text', 'sportspress' ),
+					'title' => esc_attr__( 'Text', 'sportspress' ),
 					'type'  => 'title',
-					'desc'  => __( 'The following options affect how words are displayed on the frontend.', 'sportspress' ),
+					'desc'  => esc_attr__( 'The following options affect how words are displayed on the frontend.', 'sportspress' ),
 					'id'    => 'text_options',
 				),
 			);

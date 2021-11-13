@@ -45,7 +45,7 @@ class SP_Meta_Box_Player_Statistics {
 				endforeach;
 				if ( $show_career_totals ) {
 					?>
-					<p><strong><?php _e( 'Career Total', 'sportspress' ); ?></strong></p>
+					<p><strong><?php esc_attr_e( 'Career Total', 'sportspress' ); ?></strong></p>
 					<?php
 					list( $columns, $data, $placeholders, $merged, $seasons_teams, $has_checkboxes, $formats, $total_types ) = $player->data( 0, true );
 					self::table( $post->ID, 0, $columns, $data, $placeholders, $merged, $seasons_teams, false, false, $formats, $total_types );
@@ -54,11 +54,11 @@ class SP_Meta_Box_Player_Statistics {
 				// Determine order of sections
 				if ( 1 == $sections ) {
 					$section_order = array(
-						1 => __( 'Defense', 'sportspress' ),
-						0 => __( 'Offense', 'sportspress' ),
+						1 => esc_attr__( 'Defense', 'sportspress' ),
+						0 => esc_attr__( 'Offense', 'sportspress' ),
 					);
 				} else {
-					$section_order = array( __( 'Offense', 'sportspress' ), __( 'Defense', 'sportspress' ) );
+					$section_order = array( esc_attr__( 'Offense', 'sportspress' ), esc_attr__( 'Defense', 'sportspress' ) );
 				}
 
 				$s = 0;
@@ -75,7 +75,7 @@ class SP_Meta_Box_Player_Statistics {
 					endforeach;
 					if ( $show_career_totals ) {
 						?>
-						<p><strong><?php _e( 'Career Total', 'sportspress' ); ?> &mdash; <?php echo esc_html( $section_label ); ?></strong></p>
+						<p><strong><?php esc_attr_e( 'Career Total', 'sportspress' ); ?> &mdash; <?php echo esc_html( $section_label ); ?></strong></p>
 						<?php
 						list( $columns, $data, $placeholders, $merged, $seasons_teams, $has_checkboxes, $formats, $total_types ) = $player->data( 0, true, $section_id );
 						self::table( $post->ID, 0, $columns, $data, $placeholders, $merged, $seasons_teams, $has_checkboxes && $i == 0 && $s == 0, $s == 0, $formats, $total_types );
@@ -113,10 +113,10 @@ class SP_Meta_Box_Player_Statistics {
 			<table class="widefat sp-data-table sp-player-statistics-table">
 				<thead>
 					<tr>
-						<th><?php _e( 'Season', 'sportspress' ); ?></th>
+						<th><?php esc_attr_e( 'Season', 'sportspress' ); ?></th>
 						<?php if ( $team_select && apply_filters( 'sportspress_player_team_statistics', $league_id ) ) : ?>
 							<th>
-								<?php _e( 'Team', 'sportspress' ); ?>
+								<?php esc_attr_e( 'Team', 'sportspress' ); ?>
 							</th>
 						<?php endif; ?>
 						<?php
@@ -133,7 +133,7 @@ class SP_Meta_Box_Player_Statistics {
 					<?php $div_stats = sp_array_value( $data, 0, array() ); ?>
 					<tr class="sp-row sp-total">
 						<td>
-							<label><strong><?php _e( 'Total', 'sportspress' ); ?></strong></label>
+							<label><strong><?php esc_attr_e( 'Total', 'sportspress' ); ?></strong></label>
 						</td>
 						<?php if ( $team_select && apply_filters( 'sportspress_player_team_statistics', $league_id ) ) { ?>
 							<td>&nbsp;</td>
@@ -158,10 +158,10 @@ class SP_Meta_Box_Player_Statistics {
 								echo $value ? esc_html( $value ) : esc_html( $placeholder );
 							} else {
 								if ( 'time' === sp_array_value( $formats, $column, 'number' ) ) {
-									echo '<input class="sp-convert-time-input" type="text" name="sp_times[' . $league_id . '][0][' . $column . ']" value="' . ( '' === $value ? '' : esc_attr( $timeval ) ) . '" placeholder="' . esc_attr( $placeholder ) . '"' . ( $readonly ? ' disabled="disabled"' : '' ) . '  />';
-									echo '<input class="sp-convert-time-output" type="hidden" name="sp_statistics[' . $league_id . '][0][' . $column . ']" value="' . esc_attr( $value ) . '" data-sp-format="' . sp_array_value( $formats, $column, 'number' ) . '" data-sp-total-type="' . sp_array_value( $total_types, $column, 'total' ) . '" />';
+									echo '<input class="sp-convert-time-input" type="text" name="sp_times[' . esc_attr( $league_id ) . '][0][' . esc_attr( $column ) . ']" value="' . ( '' === $value ? '' : esc_attr( $timeval ) ) . '" placeholder="' . esc_attr( $placeholder ) . '"' . ( $readonly ? ' disabled="disabled"' : '' ) . '  />'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+									echo '<input class="sp-convert-time-output" type="hidden" name="sp_statistics[' . esc_attr( $league_id ) . '][0][' . esc_attr( $column ) . ']" value="' . esc_attr( $value ) . '" data-sp-format="' . esc_attr( sp_array_value( $formats, $column, 'number' ) ) . '" data-sp-total-type="' . esc_attr( sp_array_value( $total_types, $column, 'total' ) ) . '" />';
 								} else {
-									echo '<input type="text" name="sp_statistics[' . $league_id . '][0][' . $column . ']" value="' . esc_attr( $value ) . '" placeholder="' . esc_attr( $placeholder ) . '"' . ( $readonly ? ' disabled="disabled"' : '' ) . ' data-sp-format="' . sp_array_value( $formats, $column, 'number' ) . '" data-sp-total-type="' . sp_array_value( $total_types, $column, 'total' ) . '" />';
+									echo '<input type="text" name="sp_statistics[' . esc_attr( $league_id ) . '][0][' . esc_attr( $column ) . ']" value="' . esc_attr( $value ) . '" placeholder="' . esc_attr( $placeholder ) . '"' . ( $readonly ? ' disabled="disabled"' : '' ) . ' data-sp-format="' . esc_attr( sp_array_value( $formats, $column, 'number' ) ) . '" data-sp-total-type="' . esc_attr( sp_array_value( $total_types, $column, 'total' ) ) . '" />';
 								}
 							}
 							?>
@@ -187,7 +187,7 @@ class SP_Meta_Box_Player_Statistics {
 						if ( $i % 2 == 0 ) {
 							echo ' alternate';}
 						?>
-						 <?php echo implode( ' ', apply_filters( 'sportspress_meta_box_player_statistics_row_classes', array(), $league_id, $div_id ) ); ?>" data-league="<?php echo (int) $league_id; ?>" data-season="<?php echo (int) $div_id; ?>">
+						 <?php echo esc_attr( implode( ' ', apply_filters( 'sportspress_meta_box_player_statistics_row_classes', array(), $league_id, $div_id ) ) ); ?>" data-league="<?php echo (int) $league_id; ?>" data-season="<?php echo (int) $div_id; ?>">
 							<td>
 								<label>
 									<?php if ( ! apply_filters( 'sportspress_player_team_statistics', $league_id ) ) : ?>
@@ -197,9 +197,9 @@ class SP_Meta_Box_Player_Statistics {
 									<?php endif; ?>
 									<?php
 									if ( 0 === $div_id ) {
-										_e( 'Total', 'sportspress' );
+										esc_attr_e( 'Total', 'sportspress' );
 									} elseif ( 'WP_Error' != get_class( $div ) ) {
-										echo apply_filters( 'sportspress_meta_box_player_statistics_season_name', $div->name, $league_id, $div_id, $div_stats );
+										echo esc_attr( apply_filters( 'sportspress_meta_box_player_statistics_season_name', $div->name, $league_id, $div_id, $div_stats ) );
 									}
 									?>
 								</label>
@@ -214,7 +214,7 @@ class SP_Meta_Box_Player_Statistics {
 										$args = array(
 											'post_type'   => 'sp_team',
 											'name'        => 'sp_leagues[' . $league_id . '][' . $div_id . ']',
-											'show_option_none' => __( '&mdash; None &mdash;', 'sportspress' ),
+											'show_option_none' => esc_attr__( '&mdash; None &mdash;', 'sportspress' ),
 											'sort_order'  => 'ASC',
 											'sort_column' => 'menu_order',
 											'selected'    => $value,
@@ -235,7 +235,7 @@ class SP_Meta_Box_Player_Statistics {
 											),
 										);
 										if ( ! sp_dropdown_pages( $args ) ) :
-											_e( '&mdash; None &mdash;', 'sportspress' );
+											esc_attr_e( '&mdash; None &mdash;', 'sportspress' );
 										endif;
 										?>
 									</td>
@@ -275,10 +275,10 @@ class SP_Meta_Box_Player_Statistics {
 									echo $timeval ? esc_html( $timeval ) : esc_html( $placeholder );
 								} else {
 									if ( 'time' === sp_array_value( $formats, $column, 'number' ) ) {
-										echo '<input class="sp-convert-time-input" type="text" name="sp_times[' . $league_id . '][' . $div_id . '][' . $column . ']" value="' . ( '' === $value ? '' : esc_attr( $timeval ) ) . '" placeholder="' . esc_attr( $placeholder ) . '"' . ( $readonly ? ' disabled="disabled"' : '' ) . ' data-column="' . $column . '" />';
-										echo '<input class="sp-convert-time-output" type="hidden" name="sp_statistics[' . $league_id . '][' . $div_id . '][' . $column . ']" value="' . esc_attr( $value ) . '" />';
+										echo '<input class="sp-convert-time-input" type="text" name="sp_times[' . esc_attr( $league_id ) . '][' . esc_attr( $div_id ) . '][' . esc_attr( $column ) . ']" value="' . ( '' === $value ? '' : esc_attr( $timeval ) ) . '" placeholder="' . esc_attr( $placeholder ) . '"' . ( $readonly ? ' disabled="disabled"' : '' ) . ' data-column="' . esc_attr( $column ) . '" />'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+										echo '<input class="sp-convert-time-output" type="hidden" name="sp_statistics[' . esc_attr( $league_id ) . '][' . esc_attr( $div_id ) . '][' . esc_attr( $column ) . ']" value="' . esc_attr( $value ) . '" />';
 									} else {
-										echo '<input type="text" name="sp_statistics[' . $league_id . '][' . $div_id . '][' . $column . ']" value="' . esc_attr( $value ) . '" placeholder="' . esc_attr( $placeholder ) . '"' . ( $readonly ? ' disabled="disabled"' : '' ) . ' data-column="' . $column . '" />';
+										echo '<input type="text" name="sp_statistics[' . esc_attr( $league_id ) . '][' . esc_attr( $div_id ) . '][' . esc_attr( $column ) . ']" value="' . esc_attr( $value ) . '" placeholder="' . esc_attr( $placeholder ) . '"' . ( $readonly ? ' disabled="disabled"' : '' ) . ' data-column="' . esc_attr( $column ) . '" />';
 									}
 								}
 								?>

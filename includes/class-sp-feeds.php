@@ -24,15 +24,15 @@ class SP_Feeds {
 			'calendar' => array(
 				'ical' => array(
 					'apple'   => array(
-						'name'     => __( 'Apple Calendar', 'sportspress' ),
+						'name'     => esc_attr__( 'Apple Calendar', 'sportspress' ),
 						'protocol' => 'webcal',
 					),
 					'outlook' => array(
-						'name'     => __( 'Outlook', 'sportspress' ),
+						'name'     => esc_attr__( 'Outlook', 'sportspress' ),
 						'protocol' => 'webcal',
 					),
 					'google'  => array(
-						'name'     => __( 'Google', 'sportspress' ),
+						'name'     => esc_attr__( 'Google', 'sportspress' ),
 						'protocol' => 'webcal',
 						'prefix'   => 'http://www.google.com/calendar/render?cid=',
 					),

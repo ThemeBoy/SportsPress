@@ -24,7 +24,7 @@ if ( ! class_exists( 'SP_Settings_Events' ) ) :
 		 */
 		public function __construct() {
 			$this->id       = 'events';
-			$this->label    = __( 'Events', 'sportspress' );
+			$this->label    = esc_attr__( 'Events', 'sportspress' );
 			$this->template = 'event';
 
 			add_filter( 'sportspress_settings_tabs_array', array( $this, 'add_settings_page' ), 20 );
@@ -45,7 +45,7 @@ if ( ! class_exists( 'SP_Settings_Events' ) ) :
 			$settings = array_merge(
 				array(
 					array(
-						'title' => __( 'Event Options', 'sportspress' ),
+						'title' => esc_attr__( 'Event Options', 'sportspress' ),
 						'type'  => 'title',
 						'desc'  => '',
 						'id'    => 'event_options',
@@ -56,8 +56,8 @@ if ( ! class_exists( 'SP_Settings_Events' ) ) :
 					array_merge(
 						array(
 							array(
-								'title'   => __( 'Link', 'sportspress' ),
-								'desc'    => __( 'Link events', 'sportspress' ),
+								'title'   => esc_attr__( 'Link', 'sportspress' ),
+								'desc'    => esc_attr__( 'Link events', 'sportspress' ),
 								'id'      => 'sportspress_link_events',
 								'default' => 'yes',
 								'type'    => 'checkbox',
@@ -71,8 +71,8 @@ if ( ! class_exists( 'SP_Settings_Events' ) ) :
 								array( 'type' => 'event_tabs' ),
 
 								array(
-									'title'         => __( 'Details', 'sportspress' ),
-									'desc'          => __( 'Date', 'sportspress' ),
+									'title'         => esc_attr__( 'Details', 'sportspress' ),
+									'desc'          => esc_attr__( 'Date', 'sportspress' ),
 									'id'            => 'sportspress_event_show_date',
 									'default'       => 'yes',
 									'type'          => 'checkbox',
@@ -80,7 +80,7 @@ if ( ! class_exists( 'SP_Settings_Events' ) ) :
 								),
 
 								array(
-									'desc'          => __( 'Time', 'sportspress' ),
+									'desc'          => esc_attr__( 'Time', 'sportspress' ),
 									'id'            => 'sportspress_event_show_time',
 									'default'       => 'yes',
 									'type'          => 'checkbox',
@@ -88,7 +88,7 @@ if ( ! class_exists( 'SP_Settings_Events' ) ) :
 								),
 
 								array(
-									'desc'          => __( 'Match Day', 'sportspress' ),
+									'desc'          => esc_attr__( 'Match Day', 'sportspress' ),
 									'id'            => 'sportspress_event_show_day',
 									'default'       => 'no',
 									'type'          => 'checkbox',
@@ -96,7 +96,7 @@ if ( ! class_exists( 'SP_Settings_Events' ) ) :
 								),
 
 								array(
-									'desc'          => __( 'Full Time', 'sportspress' ),
+									'desc'          => esc_attr__( 'Full Time', 'sportspress' ),
 									'id'            => 'sportspress_event_show_full_time',
 									'default'       => 'no',
 									'type'          => 'checkbox',
@@ -106,23 +106,23 @@ if ( ! class_exists( 'SP_Settings_Events' ) ) :
 						),
 						array(
 							array(
-								'title'    => __( 'Default mode', 'sportspress' ),
+								'title'    => esc_attr__( 'Default mode', 'sportspress' ),
 								'id'       => 'sportspress_mode',
 								'default'  => 'team',
 								'type'     => 'radio',
 								'options'  => array(
-									'team'   => __( 'Team vs team', 'sportspress' ),
-									'player' => __( 'Player vs player', 'sportspress' ),
+									'team'   => esc_attr__( 'Team vs team', 'sportspress' ),
+									'player' => esc_attr__( 'Player vs player', 'sportspress' ),
 								),
 								'desc_tip' => _x( 'Who competes in events?', 'mode setting description', 'sportspress' ),
 							),
 
 							array(
-								'title'             => __( 'Limit', 'sportspress' ),
+								'title'             => esc_attr__( 'Limit', 'sportspress' ),
 								'id'                => 'sportspress_event_teams',
 								'class'             => 'small-text',
 								'default'           => '2',
-								'desc'              => __( 'teams', 'sportspress' ),
+								'desc'              => esc_attr__( 'teams', 'sportspress' ),
 								'type'              => 'number',
 								'custom_attributes' => array(
 									'min'  => 0,
@@ -133,8 +133,8 @@ if ( ! class_exists( 'SP_Settings_Events' ) ) :
 							array( 'type' => 'delimiter' ),
 
 							array(
-								'title'         => __( 'Teams', 'sportspress' ),
-								'desc'          => __( 'Filter by league', 'sportspress' ),
+								'title'         => esc_attr__( 'Teams', 'sportspress' ),
+								'desc'          => esc_attr__( 'Filter by league', 'sportspress' ),
 								'id'            => 'sportspress_event_filter_teams_by_league',
 								'default'       => 'no',
 								'type'          => 'checkbox',
@@ -142,7 +142,7 @@ if ( ! class_exists( 'SP_Settings_Events' ) ) :
 							),
 
 							array(
-								'desc'          => __( 'Filter by season', 'sportspress' ),
+								'desc'          => esc_attr__( 'Filter by season', 'sportspress' ),
 								'id'            => 'sportspress_event_filter_teams_by_season',
 								'default'       => 'no',
 								'type'          => 'checkbox',
@@ -150,11 +150,11 @@ if ( ! class_exists( 'SP_Settings_Events' ) ) :
 							),
 
 							array(
-								'title'             => __( 'Full Time', 'sportspress' ),
+								'title'             => esc_attr__( 'Full Time', 'sportspress' ),
 								'id'                => 'sportspress_event_minutes',
 								'class'             => 'small-text',
 								'default'           => '90',
-								'desc'              => __( 'mins', 'sportspress' ),
+								'desc'              => esc_attr__( 'mins', 'sportspress' ),
 								'type'              => 'number',
 								'custom_attributes' => array(
 									'min'  => 0,
@@ -163,8 +163,8 @@ if ( ! class_exists( 'SP_Settings_Events' ) ) :
 							),
 
 							array(
-								'title'   => __( 'Comments', 'sportspress' ),
-								'desc'    => __( 'Allow people to post comments on new articles', 'sportspress' ),
+								'title'   => esc_attr__( 'Comments', 'sportspress' ),
+								'desc'    => esc_attr__( 'Allow people to post comments on new articles', 'sportspress' ),
 								'id'      => 'sportspress_event_comment_status',
 								'default' => 'no',
 								'type'    => 'checkbox',
@@ -180,7 +180,7 @@ if ( ! class_exists( 'SP_Settings_Events' ) ) :
 				),
 				array(
 					array(
-						'title' => __( 'Venues', 'sportspress' ),
+						'title' => esc_attr__( 'Venues', 'sportspress' ),
 						'type'  => 'title',
 						'desc'  => '',
 						'id'    => 'venue_options',
@@ -190,34 +190,34 @@ if ( ! class_exists( 'SP_Settings_Events' ) ) :
 					'sportspress_venue_options',
 					array(
 						array(
-							'title'   => __( 'Link', 'sportspress' ),
-							'desc'    => __( 'Link venues', 'sportspress' ),
+							'title'   => esc_attr__( 'Link', 'sportspress' ),
+							'desc'    => esc_attr__( 'Link venues', 'sportspress' ),
 							'id'      => 'sportspress_link_venues',
 							'default' => 'no',
 							'type'    => 'checkbox',
 						),
 
 						array(
-							'title'   => __( 'Venue Map', 'sportspress' ),
-							'desc'    => __( 'Display venue map', 'sportspress' ),
+							'title'   => esc_attr__( 'Venue Map', 'sportspress' ),
+							'desc'    => esc_attr__( 'Display venue map', 'sportspress' ),
 							'id'      => 'sportspress_event_show_maps',
 							'default' => 'yes',
 							'type'    => 'checkbox',
 						),
 
 						array(
-							'title'   => __( 'Type', 'sportspress' ),
+							'title'   => esc_attr__( 'Type', 'sportspress' ),
 							'id'      => 'sportspress_map_type',
 							'default' => 'ROADMAP',
 							'type'    => 'radio',
 							'options' => array(
-								'ROADMAP'   => __( 'Default', 'sportspress' ),
-								'SATELLITE' => __( 'Satellite', 'sportspress' ),
+								'ROADMAP'   => esc_attr__( 'Default', 'sportspress' ),
+								'SATELLITE' => esc_attr__( 'Satellite', 'sportspress' ),
 							),
 						),
 
 						array(
-							'title'             => __( 'Zoom', 'sportspress' ),
+							'title'             => esc_attr__( 'Zoom', 'sportspress' ),
 							'id'                => 'sportspress_map_zoom',
 							'class'             => 'small-text',
 							'default'           => '15',
@@ -239,7 +239,7 @@ if ( ! class_exists( 'SP_Settings_Events' ) ) :
 				),
 				array(
 					array(
-						'title' => __( 'Teams', 'sportspress' ),
+						'title' => esc_attr__( 'Teams', 'sportspress' ),
 						'type'  => 'title',
 						'desc'  => '',
 						'id'    => 'event_logo_options',
@@ -249,27 +249,27 @@ if ( ! class_exists( 'SP_Settings_Events' ) ) :
 					'sportspress_event_logo_options',
 					array(
 						array(
-							'title'   => __( 'Order', 'sportspress' ),
-							'desc'    => __( 'Reverse order', 'sportspress' ),
+							'title'   => esc_attr__( 'Order', 'sportspress' ),
+							'desc'    => esc_attr__( 'Reverse order', 'sportspress' ),
 							'id'      => 'sportspress_event_reverse_teams',
 							'default' => 'no',
 							'type'    => 'checkbox',
 						),
 
 						array(
-							'title'   => __( 'Layout', 'sportspress' ),
+							'title'   => esc_attr__( 'Layout', 'sportspress' ),
 							'id'      => 'sportspress_event_logos_format',
 							'default' => 'inline',
 							'type'    => 'radio',
 							'options' => array(
-								'inline' => __( 'Inline', 'sportspress' ),
-								'block'  => __( 'Block', 'sportspress' ),
+								'inline' => esc_attr__( 'Inline', 'sportspress' ),
+								'block'  => esc_attr__( 'Block', 'sportspress' ),
 							),
 						),
 
 						array(
-							'title'         => __( 'Display', 'sportspress' ),
-							'desc'          => __( 'Name', 'sportspress' ),
+							'title'         => esc_attr__( 'Display', 'sportspress' ),
+							'desc'          => esc_attr__( 'Name', 'sportspress' ),
 							'id'            => 'sportspress_event_logos_show_team_names',
 							'default'       => 'yes',
 							'type'          => 'checkbox',
@@ -277,7 +277,7 @@ if ( ! class_exists( 'SP_Settings_Events' ) ) :
 						),
 
 						array(
-							'desc'          => __( 'Time', 'sportspress' ),
+							'desc'          => esc_attr__( 'Time', 'sportspress' ),
 							'id'            => 'sportspress_event_logos_show_time',
 							'default'       => 'no',
 							'type'          => 'checkbox',
@@ -285,7 +285,7 @@ if ( ! class_exists( 'SP_Settings_Events' ) ) :
 						),
 
 						array(
-							'desc'          => __( 'Results', 'sportspress' ),
+							'desc'          => esc_attr__( 'Results', 'sportspress' ),
 							'id'            => 'sportspress_event_logos_show_results',
 							'default'       => 'no',
 							'type'          => 'checkbox',
@@ -301,7 +301,7 @@ if ( ! class_exists( 'SP_Settings_Events' ) ) :
 				),
 				array(
 					array(
-						'title' => __( 'Players', 'sportspress' ),
+						'title' => esc_attr__( 'Players', 'sportspress' ),
 						'type'  => 'title',
 						'desc'  => '',
 						'id'    => 'eventplayer_options',
@@ -311,13 +311,13 @@ if ( ! class_exists( 'SP_Settings_Events' ) ) :
 					'sportspress_eventplayer_options',
 					array(
 						array(
-							'title'    => __( 'Order', 'sportspress' ),
+							'title'    => esc_attr__( 'Order', 'sportspress' ),
 							'id'       => 'sportspress_event_player_sort',
 							'default'  => 'jersey',
 							'type'     => 'radio',
 							'options'  => array(
-								'jersey' => __( 'Jersey (e.g. "33. John Doe")', 'sportspress' ),
-								'name'   => __( 'Name (e.g. "John Doe (33)")', 'sportspress' ),
+								'jersey' => esc_attr__( 'Jersey (e.g. "33. John Doe")', 'sportspress' ),
+								'name'   => esc_attr__( 'Name (e.g. "John Doe (33)")', 'sportspress' ),
 							),
 							'desc_tip' => 'When editing an event, this determines how the checklist of players are sorted in the Teams metabox.  This does not affect the Box Score section.',
 						),
@@ -332,7 +332,7 @@ if ( ! class_exists( 'SP_Settings_Events' ) ) :
 				),
 				array(
 					array(
-						'title' => __( 'Event Results', 'sportspress' ),
+						'title' => esc_attr__( 'Event Results', 'sportspress' ),
 						'type'  => 'title',
 						'desc'  => '',
 						'id'    => 'result_options',
@@ -342,19 +342,19 @@ if ( ! class_exists( 'SP_Settings_Events' ) ) :
 					'sportspress_result_options',
 					array(
 						array(
-							'title'   => __( 'Columns', 'sportspress' ),
+							'title'   => esc_attr__( 'Columns', 'sportspress' ),
 							'id'      => 'sportspress_event_result_columns',
 							'default' => 'auto',
 							'type'    => 'radio',
 							'options' => array(
-								'auto'   => __( 'Auto', 'sportspress' ),
-								'manual' => __( 'Manual', 'sportspress' ),
+								'auto'   => esc_attr__( 'Auto', 'sportspress' ),
+								'manual' => esc_attr__( 'Manual', 'sportspress' ),
 							),
 						),
 
 						array(
-							'title'   => __( 'Outcome', 'sportspress' ),
-							'desc'    => __( 'Display outcome', 'sportspress' ),
+							'title'   => esc_attr__( 'Outcome', 'sportspress' ),
+							'desc'    => esc_attr__( 'Display outcome', 'sportspress' ),
 							'id'      => 'sportspress_event_show_outcome',
 							'default' => 'no',
 							'type'    => 'checkbox',
@@ -369,7 +369,7 @@ if ( ! class_exists( 'SP_Settings_Events' ) ) :
 				),
 				array(
 					array(
-						'title' => __( 'Box Score', 'sportspress' ),
+						'title' => esc_attr__( 'Box Score', 'sportspress' ),
 						'type'  => 'title',
 						'desc'  => '',
 						'id'    => 'performance_options',
@@ -380,8 +380,8 @@ if ( ! class_exists( 'SP_Settings_Events' ) ) :
 					array_merge(
 						array(
 							array(
-								'title'         => __( 'Rows', 'sportspress' ),
-								'desc'          => __( 'Staff', 'sportspress' ),
+								'title'         => esc_attr__( 'Rows', 'sportspress' ),
+								'desc'          => esc_attr__( 'Staff', 'sportspress' ),
 								'id'            => 'sportspress_event_show_staff',
 								'default'       => 'yes',
 								'type'          => 'checkbox',
@@ -389,7 +389,7 @@ if ( ! class_exists( 'SP_Settings_Events' ) ) :
 							),
 
 							array(
-								'desc'          => __( 'Players', 'sportspress' ),
+								'desc'          => esc_attr__( 'Players', 'sportspress' ),
 								'id'            => 'sportspress_event_show_players',
 								'default'       => 'yes',
 								'type'          => 'checkbox',
@@ -397,7 +397,7 @@ if ( ! class_exists( 'SP_Settings_Events' ) ) :
 							),
 
 							array(
-								'desc'          => __( 'Total', 'sportspress' ),
+								'desc'          => esc_attr__( 'Total', 'sportspress' ),
 								'id'            => 'sportspress_event_show_total',
 								'default'       => 'yes',
 								'type'          => 'checkbox',
@@ -405,29 +405,29 @@ if ( ! class_exists( 'SP_Settings_Events' ) ) :
 							),
 
 							array(
-								'title'   => __( 'Columns', 'sportspress' ),
+								'title'   => esc_attr__( 'Columns', 'sportspress' ),
 								'id'      => 'sportspress_event_performance_columns',
 								'default' => 'auto',
 								'type'    => 'radio',
 								'options' => array(
-									'auto'   => __( 'Auto', 'sportspress' ),
-									'manual' => __( 'Manual', 'sportspress' ),
+									'auto'   => esc_attr__( 'Auto', 'sportspress' ),
+									'manual' => esc_attr__( 'Manual', 'sportspress' ),
 								),
 							),
 
 							array(
-								'title'   => __( 'Mode', 'sportspress' ),
+								'title'   => esc_attr__( 'Mode', 'sportspress' ),
 								'id'      => 'sportspress_event_performance_mode',
 								'default' => 'values',
 								'type'    => 'radio',
 								'options' => array(
-									'values' => __( 'Values', 'sportspress' ),
-									'icons'  => __( 'Icons', 'sportspress' ),
+									'values' => esc_attr__( 'Values', 'sportspress' ),
+									'icons'  => esc_attr__( 'Icons', 'sportspress' ),
 								),
 							),
 
 							array(
-								'title'   => __( 'Awards', 'sportspress' ),
+								'title'   => esc_attr__( 'Awards', 'sportspress' ),
 								'id'      => 'sportspress_event_performance_stars_type',
 								'default' => 0,
 								'type'    => 'radio',
@@ -440,8 +440,8 @@ if ( ! class_exists( 'SP_Settings_Events' ) ) :
 							),
 
 							array(
-								'title'   => __( 'Positions', 'sportspress' ),
-								'desc'    => __( 'Top-level only', 'sportspress' ),
+								'title'   => esc_attr__( 'Positions', 'sportspress' ),
+								'desc'    => esc_attr__( 'Top-level only', 'sportspress' ),
 								'id'      => 'sportspress_event_hide_child_positions',
 								'default' => 'no',
 								'type'    => 'checkbox',
@@ -451,8 +451,8 @@ if ( ! class_exists( 'SP_Settings_Events' ) ) :
 							'sportspress_event_performance_display_options',
 							array(
 								array(
-									'title'         => __( 'Display', 'sportspress' ),
-									'desc'          => __( 'Squad Number', 'sportspress' ),
+									'title'         => esc_attr__( 'Display', 'sportspress' ),
+									'desc'          => esc_attr__( 'Squad Number', 'sportspress' ),
 									'id'            => 'sportspress_event_show_player_numbers',
 									'default'       => 'yes',
 									'type'          => 'checkbox',
@@ -460,7 +460,7 @@ if ( ! class_exists( 'SP_Settings_Events' ) ) :
 								),
 
 								array(
-									'desc'          => __( 'Position', 'sportspress' ),
+									'desc'          => esc_attr__( 'Position', 'sportspress' ),
 									'id'            => 'sportspress_event_show_position',
 									'default'       => 'yes',
 									'type'          => 'checkbox',
@@ -468,7 +468,7 @@ if ( ! class_exists( 'SP_Settings_Events' ) ) :
 								),
 
 								array(
-									'desc'          => __( 'Minutes', 'sportspress' ),
+									'desc'          => esc_attr__( 'Minutes', 'sportspress' ),
 									'id'            => 'sportspress_event_performance_show_minutes',
 									'default'       => 'no',
 									'type'          => 'checkbox',
@@ -478,25 +478,25 @@ if ( ! class_exists( 'SP_Settings_Events' ) ) :
 						),
 						array(
 							array(
-								'title'   => __( 'Performance', 'sportspress' ),
+								'title'   => esc_attr__( 'Performance', 'sportspress' ),
 								'id'      => 'sportspress_event_performance_sections',
 								'default' => -1,
 								'type'    => 'radio',
 								'options' => array(
-									-1 => __( 'Combined', 'sportspress' ),
-									0  => __( 'Offense', 'sportspress' ) . ' &rarr; ' . __( 'Defense', 'sportspress' ),
-									1  => __( 'Defense', 'sportspress' ) . ' &rarr; ' . __( 'Offense', 'sportspress' ),
+									-1 => esc_attr__( 'Combined', 'sportspress' ),
+									0  => esc_attr__( 'Offense', 'sportspress' ) . ' &rarr; ' . esc_attr__( 'Defense', 'sportspress' ),
+									1  => esc_attr__( 'Defense', 'sportspress' ) . ' &rarr; ' . esc_attr__( 'Offense', 'sportspress' ),
 								),
 							),
 
 							array(
-								'title'   => __( 'Total', 'sportspress' ),
+								'title'   => esc_attr__( 'Total', 'sportspress' ),
 								'id'      => 'sportspress_event_total_performance',
 								'default' => 'all',
 								'type'    => 'radio',
 								'options' => array(
-									'all'     => __( 'All', 'sportspress' ),
-									'primary' => __( 'Primary', 'sportspress' ),
+									'all'     => esc_attr__( 'All', 'sportspress' ),
+									'primary' => esc_attr__( 'Primary', 'sportspress' ),
 								),
 							),
 						)
@@ -537,9 +537,9 @@ if ( ! class_exists( 'SP_Settings_Events' ) ) :
 				$limit = 2;
 			}
 			if ( 3 >= $limit ) {
-				$example = str_repeat( __( 'Team', 'sportspress' ) . ' %1$s ', $limit );
+				$example = str_repeat( esc_attr__( 'Team', 'sportspress' ) . ' %1$s ', $limit );
 			} else {
-				$example = str_repeat( __( 'Team', 'sportspress' ) . ' %1$s ', 3 ) . '&hellip;';
+				$example = str_repeat( esc_attr__( 'Team', 'sportspress' ) . ' %1$s ', 3 ) . '&hellip;';
 			}
 			$example = rtrim( $example, ' %1$s ' );
 			?>

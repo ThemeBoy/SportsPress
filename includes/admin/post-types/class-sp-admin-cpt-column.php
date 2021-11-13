@@ -43,12 +43,12 @@ if ( ! class_exists( 'SP_Admin_CPT_Column' ) ) :
 		public function edit_columns( $existing_columns ) {
 			$columns = array(
 				'cb'             => '<input type="checkbox" />',
-				'title'          => __( 'Label', 'sportspress' ),
-				'sp_key'         => __( 'Key', 'sportspress' ),
-				'sp_equation'    => __( 'Equation', 'sportspress' ),
-				'sp_precision'   => __( 'Decimal Places', 'sportspress' ),
-				'sp_order'       => __( 'Sort Order', 'sportspress' ),
-				'sp_description' => __( 'Description', 'sportspress' ),
+				'title'          => esc_attr__( 'Label', 'sportspress' ),
+				'sp_key'         => esc_attr__( 'Key', 'sportspress' ),
+				'sp_equation'    => esc_attr__( 'Equation', 'sportspress' ),
+				'sp_precision'   => esc_attr__( 'Decimal Places', 'sportspress' ),
+				'sp_order'       => esc_attr__( 'Sort Order', 'sportspress' ),
+				'sp_description' => esc_attr__( 'Description', 'sportspress' ),
 			);
 			return apply_filters( 'sportspress_column_admin_columns', $columns );
 		}

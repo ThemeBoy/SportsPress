@@ -23,16 +23,16 @@ if ( class_exists( 'WP_Importer' ) ) {
 		 */
 		public function __construct() {
 			$this->import_page  = 'sp_player_csv';
-			$this->import_label = __( 'Import Players', 'sportspress' );
+			$this->import_label = esc_attr__( 'Import Players', 'sportspress' );
 			$this->columns      = array(
-				'sp_number'      => __( 'Squad Number', 'sportspress' ),
-				'post_title'     => __( 'Name', 'sportspress' ),
-				'sp_position'    => __( 'Positions', 'sportspress' ),
-				'sp_team'        => __( 'Teams', 'sportspress' ),
-				'sp_league'      => __( 'Leagues', 'sportspress' ),
-				'sp_season'      => __( 'Seasons', 'sportspress' ),
-				'sp_nationality' => __( 'Nationality', 'sportspress' ),
-				'post_date'      => __( 'Date of Birth', 'sportspress' ),
+				'sp_number'      => esc_attr__( 'Squad Number', 'sportspress' ),
+				'post_title'     => esc_attr__( 'Name', 'sportspress' ),
+				'sp_position'    => esc_attr__( 'Positions', 'sportspress' ),
+				'sp_team'        => esc_attr__( 'Teams', 'sportspress' ),
+				'sp_league'      => esc_attr__( 'Leagues', 'sportspress' ),
+				'sp_season'      => esc_attr__( 'Seasons', 'sportspress' ),
+				'sp_nationality' => esc_attr__( 'Nationality', 'sportspress' ),
+				'post_date'      => esc_attr__( 'Date of Birth', 'sportspress' ),
 			);
 			parent::__construct();
 		}
@@ -250,7 +250,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 		function greet() {
 			echo '<div class="narrow">';
 			echo '<p>' . esc_html__( 'Hi there! Choose a .csv file to upload, then click "Upload file and import".', 'sportspress' ) . '</p>';
-			echo '<p>' . sprintf( wp_kses_post( __( 'Players need to be defined with columns in a specific order (8 columns). <a href="%s">Click here to download a sample</a>.', 'sportspress' ) ), esc_url( plugin_dir_url( SP_PLUGIN_FILE ) ) . 'dummy-data/players-sample.csv' ) . '</p>';
+			echo '<p>' . sprintf( wp_kses_post( esc_attr__( 'Players need to be defined with columns in a specific order (8 columns). <a href="%s">Click here to download a sample</a>.', 'sportspress' ) ), esc_url( plugin_dir_url( SP_PLUGIN_FILE ) ) . 'dummy-data/players-sample.csv' ) . '</p>';
 			wp_import_upload_form( 'admin.php?import=sp_player_csv&step=1' );
 			echo '</div>';
 		}

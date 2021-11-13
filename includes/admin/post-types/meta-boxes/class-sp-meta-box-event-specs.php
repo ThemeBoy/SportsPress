@@ -42,7 +42,7 @@ class SP_Meta_Box_Event_Specs {
 				<?php
 			endforeach;
 		else :
-			sp_post_adder( 'sp_spec', __( 'Add New', 'sportspress' ) );
+			sp_post_adder( 'sp_spec', esc_attr__( 'Add New', 'sportspress' ) );
 		endif;
 	}
 

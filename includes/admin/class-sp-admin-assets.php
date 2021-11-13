@@ -111,13 +111,13 @@ if ( ! class_exists( 'SP_Admin_Assets' ) ) :
 				$strings = apply_filters(
 					'sportspress_localized_strings',
 					array(
-						'none'             => __( 'None', 'sportspress' ),
-						'remove_text'      => __( '&mdash; Remove &mdash;', 'sportspress' ),
-						'days'             => __( 'days', 'sportspress' ),
-						'hrs'              => __( 'hrs', 'sportspress' ),
-						'mins'             => __( 'mins', 'sportspress' ),
-						'secs'             => __( 'secs', 'sportspress' ),
-						'displaying_posts' => html_entity_decode( __( 'Displaying %1$s&#8211;%2$s of %3$s', 'sportspress' ) ),
+						'none'             => esc_attr__( 'None', 'sportspress' ),
+						'remove_text'      => esc_attr__( '&mdash; Remove &mdash;', 'sportspress' ),
+						'days'             => esc_attr__( 'days', 'sportspress' ),
+						'hrs'              => esc_attr__( 'hrs', 'sportspress' ),
+						'mins'             => esc_attr__( 'mins', 'sportspress' ),
+						'secs'             => esc_attr__( 'secs', 'sportspress' ),
+						'displaying_posts' => html_entity_decode( esc_attr__( 'Displaying %1$s&#8211;%2$s of %3$s', 'sportspress' ) ),
 					)
 				);
 

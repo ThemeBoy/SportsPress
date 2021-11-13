@@ -23,14 +23,14 @@ if ( class_exists( 'WP_Importer' ) ) {
 		 */
 		public function __construct() {
 			$this->import_page  = 'sp_staff_csv';
-			$this->import_label = __( 'Import Staff', 'sportspress' );
+			$this->import_label = esc_attr__( 'Import Staff', 'sportspress' );
 			$this->columns      = array(
-				'post_title'     => __( 'Name', 'sportspress' ),
-				'sp_role'        => __( 'Jobs', 'sportspress' ),
-				'sp_team'        => __( 'Teams', 'sportspress' ),
-				'sp_league'      => __( 'Leagues', 'sportspress' ),
-				'sp_season'      => __( 'Seasons', 'sportspress' ),
-				'sp_nationality' => __( 'Nationality', 'sportspress' ),
+				'post_title'     => esc_attr__( 'Name', 'sportspress' ),
+				'sp_role'        => esc_attr__( 'Jobs', 'sportspress' ),
+				'sp_team'        => esc_attr__( 'Teams', 'sportspress' ),
+				'sp_league'      => esc_attr__( 'Leagues', 'sportspress' ),
+				'sp_season'      => esc_attr__( 'Seasons', 'sportspress' ),
+				'sp_nationality' => esc_attr__( 'Nationality', 'sportspress' ),
 			);
 			parent::__construct();
 		}
@@ -198,7 +198,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 		function greet() {
 			echo '<div class="narrow">';
 			echo '<p>' . esc_html__( 'Hi there! Choose a .csv file to upload, then click "Upload file and import".', 'sportspress' ) . '</p>';
-			echo '<p>' . sprintf( wp_kses_post( __( 'Staff need to be defined with columns in a specific order (6 columns). <a href="%s">Click here to download a sample</a>.', 'sportspress' ) ), esc_url( plugin_dir_url( SP_PLUGIN_FILE ) ) . 'dummy-data/staff-sample.csv' ) . '</p>';
+			echo '<p>' . sprintf( wp_kses_post( esc_attr__( 'Staff need to be defined with columns in a specific order (6 columns). <a href="%s">Click here to download a sample</a>.', 'sportspress' ) ), esc_url( plugin_dir_url( SP_PLUGIN_FILE ) ) . 'dummy-data/staff-sample.csv' ) . '</p>';
 			wp_import_upload_form( 'admin.php?import=sp_staff_csv&step=1' );
 			echo '</div>';
 		}

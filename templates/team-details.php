@@ -26,7 +26,7 @@ if ( $terms ) :
 	foreach ( $terms as $term ) :
 		$leagues[] = $term->name;
 	endforeach;
-	$data[ __( 'Leagues', 'sportspress' ) ] = implode( ', ', $leagues );
+	$data[ esc_attr__( 'Leagues', 'sportspress' ) ] = implode( ', ', $leagues );
 endif;
 
 $terms = get_the_terms( $id, 'sp_season' );
@@ -35,19 +35,19 @@ if ( $terms ) :
 	foreach ( $terms as $term ) :
 		$seasons[] = $term->name;
 	endforeach;
-	$data[ __( 'Seasons', 'sportspress' ) ] = implode( ', ', $seasons );
+	$data[ esc_attr__( 'Seasons', 'sportspress' ) ] = implode( ', ', $seasons );
 endif;
 
 $terms = get_the_terms( $id, 'sp_venue' );
 if ( $terms ) :
 	if ( get_option( 'sportspress_team_link_venues', 'no' ) === 'yes' ) :
-		$data[ __( 'Home', 'sportspress' ) ] = get_the_term_list( $id, 'sp_venue', '', ', ' );
+		$data[ esc_attr__( 'Home', 'sportspress' ) ] = get_the_term_list( $id, 'sp_venue', '', ', ' );
 	else :
 		$venues = array();
 		foreach ( $terms as $term ) :
 			$venues[] = $term->name;
 		endforeach;
-		$data[ __( 'Home', 'sportspress' ) ] = implode( ', ', $venues );
+		$data[ esc_attr__( 'Home', 'sportspress' ) ] = implode( ', ', $venues );
 	endif;
 endif;
 
@@ -63,5 +63,5 @@ endforeach;
 $output .= '</dl></div>';
 ?>
 <div class="sp-template sp-template-team-details sp-template-details">
-	<?php echo $output; ?>
+	<?php echo wp_kses_post( $output ); ?>
 </div>

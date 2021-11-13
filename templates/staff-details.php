@@ -48,7 +48,7 @@ if ( $show_nationality && $nationalities && is_array( $nationalities ) ) :
 		$country_name = sp_array_value( $countries, $nationality, null );
 		$values[]     = $country_name ? ( $show_nationality_flags ? sp_flags( $nationality ) : '' ) . $country_name : '&mdash;';
 	endforeach;
-	$data[ __( 'Nationality', 'sportspress' ) ] = implode( '<br>', $values );
+	$data[ esc_attr__( 'Nationality', 'sportspress' ) ] = implode( '<br>', $values );
 endif;
 
 if ( $show_current_teams && $current_teams ) :
@@ -60,7 +60,7 @@ if ( $show_current_teams && $current_teams ) :
 		}
 		$teams[] = $team_name;
 	endforeach;
-	$data[ __( 'Current Team', 'sportspress' ) ] = implode( ', ', $teams );
+	$data[ esc_attr__( 'Current Team', 'sportspress' ) ] = implode( ', ', $teams );
 endif;
 
 if ( $show_past_teams && $past_teams ) :
@@ -72,7 +72,7 @@ if ( $show_past_teams && $past_teams ) :
 		}
 		$teams[] = $team_name;
 	endforeach;
-	$data[ __( 'Past Teams', 'sportspress' ) ] = implode( ', ', $teams );
+	$data[ esc_attr__( 'Past Teams', 'sportspress' ) ] = implode( ', ', $teams );
 endif;
 
 $data = apply_filters( 'sportspress_staff_details', $data, $id );
@@ -93,5 +93,5 @@ endforeach;
 $output .= '</dl></div>';
 ?>
 <div class="sp-template sp-template-staff-details sp-template-details">
-	<?php echo $output; ?>
+	<?php echo wp_kses_post( $output ); ?>
 </div>

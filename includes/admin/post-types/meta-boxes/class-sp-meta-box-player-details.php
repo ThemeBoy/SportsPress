@@ -83,11 +83,11 @@ class SP_Meta_Box_Player_Details {
 		$current_teams = array_filter( get_post_meta( $post->ID, 'sp_current_team', false ) );
 		?>
 
-		<p><strong><?php _e( 'Squad Number', 'sportspress' ); ?></strong></p>
+		<p><strong><?php esc_attr_e( 'Squad Number', 'sportspress' ); ?></strong></p>
 		<p><input type="text" size="4" id="sp_number" name="sp_number" value="<?php echo esc_attr( $number ); ?>"></p>
 
-		<p><strong><?php _e( 'Nationality', 'sportspress' ); ?></strong></p>
-		<p><select id="sp_nationality" name="sp_nationality[]" data-placeholder="<?php printf( __( 'Select %s', 'sportspress' ), __( 'Nationality', 'sportspress' ) ); ?>" class="widefat chosen-select
+		<p><strong><?php esc_attr_e( 'Nationality', 'sportspress' ); ?></strong></p>
+		<p><select id="sp_nationality" name="sp_nationality[]" data-placeholder="<?php printf( esc_attr__( 'Select %s', 'sportspress' ), esc_attr__( 'Nationality', 'sportspress' ) ); ?>" class="widefat chosen-select
 																							   <?php
 																								if ( is_rtl() ) :
 																									?>
@@ -103,7 +103,7 @@ class SP_Meta_Box_Player_Details {
 		</select></p>
 
 		<?php if ( taxonomy_exists( 'sp_position' ) ) { ?>
-			<p><strong><?php _e( 'Positions', 'sportspress' ); ?></strong></p>
+			<p><strong><?php esc_attr_e( 'Positions', 'sportspress' ); ?></strong></p>
 			<p>
 			<?php
 			$args = array(
@@ -111,7 +111,7 @@ class SP_Meta_Box_Player_Details {
 				'name'        => 'tax_input[sp_position][]',
 				'selected'    => $position_ids,
 				'values'      => 'term_id',
-				'placeholder' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Positions', 'sportspress' ) ),
+				'placeholder' => sprintf( esc_attr__( 'Select %s', 'sportspress' ), esc_attr__( 'Positions', 'sportspress' ) ),
 				'class'       => 'widefat',
 				'property'    => 'multiple',
 				'chosen'      => true,
@@ -121,7 +121,7 @@ class SP_Meta_Box_Player_Details {
 			</p>
 		<?php } ?>
 
-		<p><strong><?php _e( 'Current Teams', 'sportspress' ); ?></strong></p>
+		<p><strong><?php esc_attr_e( 'Current Teams', 'sportspress' ); ?></strong></p>
 		<p>
 		<?php
 		$args = array(
@@ -129,7 +129,7 @@ class SP_Meta_Box_Player_Details {
 			'name'        => 'sp_current_team[]',
 			'selected'    => $current_teams,
 			'values'      => 'ID',
-			'placeholder' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Teams', 'sportspress' ) ),
+			'placeholder' => sprintf( esc_attr__( 'Select %s', 'sportspress' ), esc_attr__( 'Teams', 'sportspress' ) ),
 			'class'       => 'sp-current-teams widefat',
 			'property'    => 'multiple',
 			'chosen'      => true,
@@ -138,7 +138,7 @@ class SP_Meta_Box_Player_Details {
 		?>
 		</p>
 
-		<p><strong><?php _e( 'Past Teams', 'sportspress' ); ?></strong></p>
+		<p><strong><?php esc_attr_e( 'Past Teams', 'sportspress' ); ?></strong></p>
 		<p>
 		<?php
 		$args = array(
@@ -146,7 +146,7 @@ class SP_Meta_Box_Player_Details {
 			'name'        => 'sp_past_team[]',
 			'selected'    => $past_teams,
 			'values'      => 'ID',
-			'placeholder' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Teams', 'sportspress' ) ),
+			'placeholder' => sprintf( esc_attr__( 'Select %s', 'sportspress' ), esc_attr__( 'Teams', 'sportspress' ) ),
 			'class'       => 'sp-past-teams widefat',
 			'property'    => 'multiple',
 			'chosen'      => true,
@@ -156,7 +156,7 @@ class SP_Meta_Box_Player_Details {
 		</p>
 
 		<?php if ( taxonomy_exists( 'sp_league' ) ) { ?>
-		<p><strong><?php _e( 'Leagues', 'sportspress' ); ?></strong></p>
+		<p><strong><?php esc_attr_e( 'Leagues', 'sportspress' ); ?></strong></p>
 		<p>
 			<?php
 			$args = array(
@@ -164,7 +164,7 @@ class SP_Meta_Box_Player_Details {
 				'name'        => 'tax_input[sp_league][]',
 				'selected'    => $league_ids,
 				'values'      => 'term_id',
-				'placeholder' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Leagues', 'sportspress' ) ),
+				'placeholder' => sprintf( esc_attr__( 'Select %s', 'sportspress' ), esc_attr__( 'Leagues', 'sportspress' ) ),
 				'class'       => 'widefat',
 				'property'    => 'multiple',
 				'chosen'      => true,
@@ -175,7 +175,7 @@ class SP_Meta_Box_Player_Details {
 		<?php } ?>
 
 		<?php if ( taxonomy_exists( 'sp_season' ) ) { ?>
-		<p><strong><?php _e( 'Seasons', 'sportspress' ); ?></strong></p>
+		<p><strong><?php esc_attr_e( 'Seasons', 'sportspress' ); ?></strong></p>
 		<p>
 			<?php
 			$args = array(
@@ -183,7 +183,7 @@ class SP_Meta_Box_Player_Details {
 				'name'        => 'tax_input[sp_season][]',
 				'selected'    => $season_ids,
 				'values'      => 'term_id',
-				'placeholder' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Seasons', 'sportspress' ) ),
+				'placeholder' => sprintf( esc_attr__( 'Select %s', 'sportspress' ), esc_attr__( 'Seasons', 'sportspress' ) ),
 				'class'       => 'widefat',
 				'property'    => 'multiple',
 				'chosen'      => true,

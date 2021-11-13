@@ -39,11 +39,11 @@ class SP_Meta_Box_Table_Details {
 		}
 		?>
 		<div>
-			<p><strong><?php _e( 'Heading', 'sportspress' ); ?></strong></p>
+			<p><strong><?php esc_attr_e( 'Heading', 'sportspress' ); ?></strong></p>
 			<p><input type="text" id="sp_caption" name="sp_caption" value="<?php echo esc_attr( $caption ); ?>" placeholder="<?php echo esc_attr( get_the_title() ); ?>"></p>
 
 			<div class="sp-date-selector">
-				<p><strong><?php _e( 'Date', 'sportspress' ); ?></strong></p>
+				<p><strong><?php esc_attr_e( 'Date', 'sportspress' ); ?></strong></p>
 				<p>
 					<?php
 					$args = array(
@@ -56,21 +56,21 @@ class SP_Meta_Box_Table_Details {
 				</p>
 				<div class="sp-date-range">
 					<p class="sp-date-range-absolute">
-						<input type="text" class="sp-datepicker-from" name="sp_date_from" value="<?php echo $date_from ? esc_attr( $date_from ) : date_i18n( 'Y-m-d' ); ?>" size="10">
+						<input type="text" class="sp-datepicker-from" name="sp_date_from" value="<?php echo $date_from ? esc_attr( $date_from ) : esc_attr( date_i18n( 'Y-m-d' ) ); ?>" size="10">
 						:
-						<input type="text" class="sp-datepicker-to" name="sp_date_to" value="<?php echo $date_to ? esc_attr( $date_to ) : date_i18n( 'Y-m-d' ); ?>" size="10">
+						<input type="text" class="sp-datepicker-to" name="sp_date_to" value="<?php echo $date_to ? esc_attr( $date_to ) : esc_attr( date_i18n( 'Y-m-d' ) ); ?>" size="10">
 					</p>
 
 					<p class="sp-date-range-relative">
-						<?php _e( 'Past', 'sportspress' ); ?>
+						<?php esc_attr_e( 'Past', 'sportspress' ); ?>
 						<input type="number" min="0" step="1" class="tiny-text" name="sp_date_past" value="<?php echo '' !== $date_past ? esc_attr( $date_past ) : 7; ?>">
-						<?php _e( 'days', 'sportspress' ); ?>
+						<?php esc_attr_e( 'days', 'sportspress' ); ?>
 					</p>
 
 					<p class="sp-date-relative">
 						<label>
 							<input type="checkbox" name="sp_date_relative" value="1" id="sp_date_relative" <?php checked( $date_relative ); ?>>
-							<?php _e( 'Relative', 'sportspress' ); ?>
+							<?php esc_attr_e( 'Relative', 'sportspress' ); ?>
 						</label>
 					</p>
 				</div>
@@ -87,29 +87,29 @@ class SP_Meta_Box_Table_Details {
 			</strong></p>
 			<p class="sp-select-setting">
 				<select name="sp_select">
-					<option value="auto" <?php selected( 'auto', $select ); ?>><?php _e( 'Auto', 'sportspress' ); ?></option>
-					<option value="manual" <?php selected( 'manual', $select ); ?>><?php _e( 'Manual', 'sportspress' ); ?></option>
+					<option value="auto" <?php selected( 'auto', $select ); ?>><?php esc_attr_e( 'Auto', 'sportspress' ); ?></option>
+					<option value="manual" <?php selected( 'manual', $select ); ?>><?php esc_attr_e( 'Manual', 'sportspress' ); ?></option>
 				</select>
 			</p>
 			<?php
 			if ( 'manual' == $select ) {
 				sp_post_checklist( $post->ID, $post_type, ( 'auto' == $select ? 'none' : 'block' ), array( 'sp_league', 'sp_season' ), null, 'sp_team' );
-				sp_post_adder( $post_type, __( 'Add New', 'sportspress' ) );
+				sp_post_adder( $post_type, esc_attr__( 'Add New', 'sportspress' ) );
 			}
 			?>
-			<p><strong><?php _e( 'Event Status (with results)', 'sportspress' ); ?></strong></p>
+			<p><strong><?php esc_attr_e( 'Event Status (with results)', 'sportspress' ); ?></strong></p>
 			<p>
 				<input type="checkbox" name="sp_event_status[]" value="publish" <?php echo ( in_array( 'publish', $event_status ) ) ? 'checked' : false; ?>> Published/Played<br>
 				<input type="checkbox" name="sp_event_status[]" value="future" <?php echo ( in_array( 'future', $event_status ) ) ? 'checked' : false; ?>> Scheduled/Future<br>
 			</p>
 		</div>
-		<p><strong><?php _e( 'Sort by', 'sportspress' ); ?></strong></p>
+		<p><strong><?php esc_attr_e( 'Sort by', 'sportspress' ); ?></strong></p>
 			<p>
 			<?php
 			$args = array(
 				'prepend_options' => array(
-					'default' => __( 'Default', 'sportspress' ),
-					'name'    => __( 'Name', 'sportspress' ),
+					'default' => esc_attr__( 'Default', 'sportspress' ),
+					'name'    => esc_attr__( 'Name', 'sportspress' ),
 				),
 				'post_type'       => array( 'sp_column' ),
 				'name'            => 'sp_orderby',
@@ -120,11 +120,11 @@ class SP_Meta_Box_Table_Details {
 			?>
 			</p>
 		<div id="sp_order" <?php echo ( $orderby === 'default' || $orderby === '' ? 'style="display: none;"' : '' ); ?>>
-			<p><strong><?php _e( 'Sort Order', 'sportspress' ); ?></strong></p>
+			<p><strong><?php esc_attr_e( 'Sort Order', 'sportspress' ); ?></strong></p>
 				<p>
 					<select name="sp_order">
-						<option value="ASC" <?php selected( 'ASC', $order ); ?>><?php _e( 'Ascending', 'sportspress' ); ?></option>
-						<option value="DESC" <?php selected( 'DESC', $order ); ?>><?php _e( 'Descending', 'sportspress' ); ?></option>
+						<option value="ASC" <?php selected( 'ASC', $order ); ?>><?php esc_attr_e( 'Ascending', 'sportspress' ); ?></option>
+						<option value="DESC" <?php selected( 'DESC', $order ); ?>><?php esc_attr_e( 'Descending', 'sportspress' ); ?></option>
 					</select>
 				</p>
 		</div>

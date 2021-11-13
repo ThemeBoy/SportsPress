@@ -48,8 +48,8 @@ class SP_Admin_Welcome {
 			return;
 		}
 
-		$welcome_page_name  = __( 'About SportsPress', 'sportspress' );
-		$welcome_page_title = __( 'Welcome to SportsPress', 'sportspress' );
+		$welcome_page_name  = esc_attr__( 'About SportsPress', 'sportspress' );
+		$welcome_page_title = esc_attr__( 'Welcome to SportsPress', 'sportspress' );
 
 		switch ( $_GET['page'] ) {
 			case 'sp-about':
@@ -107,18 +107,18 @@ class SP_Admin_Welcome {
 		unset( $version[2] );
 		$display_version = implode( '.', $version );
 		?>
-	<h1 class="sp-welcome-logo"><?php echo wp_kses_post( apply_filters( 'sportspress_logo', '<img src="' . plugin_dir_url( SP_PLUGIN_FILE ) . 'assets/images/welcome/sportspress' . ( class_exists( 'SportsPress_Pro' ) ? '-pro' : '' ) . '.png" alt="' . __( 'SportsPress', 'sportspress' ) . '">' ) ); ?></h1>
+	<h1 class="sp-welcome-logo"><?php echo wp_kses_post( apply_filters( 'sportspress_logo', '<img src="' . plugin_dir_url( SP_PLUGIN_FILE ) . 'assets/images/welcome/sportspress' . ( class_exists( 'SportsPress_Pro' ) ? '-pro' : '' ) . '.png" alt="' . esc_attr__( 'SportsPress', 'sportspress' ) . '">' ) ); ?></h1>
 
 	<div class="sp-badge"><?php printf( esc_html__( 'Version %s', 'sportspress' ), esc_html( SP()->version ) ); ?></div>
 
 	<div class="about-text sp-about-text">
 		<?php
 		if ( ! empty( $_GET['sp-installed'] ) ) {
-			$message = __( 'Thanks, all done!', 'sportspress' );
+			$message = esc_attr__( 'Thanks, all done!', 'sportspress' );
 		} elseif ( ! empty( $_GET['sp-updated'] ) ) {
-			$message = __( 'Thank you for updating to the latest version!', 'sportspress' );
+			$message = esc_attr__( 'Thank you for updating to the latest version!', 'sportspress' );
 		} else {
-			$message = __( 'Thanks for installing!', 'sportspress' );
+			$message = esc_attr__( 'Thanks for installing!', 'sportspress' );
 		}
 
 		printf( esc_html__( '%1$s SportsPress %2$s has lots of refinements we think you&#8217;ll love.', 'sportspress' ), esc_html( $message ), esc_html( $display_version ) );
@@ -329,7 +329,7 @@ class SP_Admin_Welcome {
 	<div class="wrap about-wrap about-sportspress-wrap">
 		<?php $this->intro(); ?>
 	  
-	  <p class="about-description"><?php printf( wp_kses_post( __( 'SportsPress is developed and maintained by a worldwide team of passionate individuals and backed by an awesome developer community. Want to see your name? <a href="%s">Contribute to SportsPress</a>.', 'sportspress' ) ), 'https://github.com/ThemeBoy/SportsPress/blob/master/CONTRIBUTING.md' ); ?></p>
+	  <p class="about-description"><?php printf( wp_kses_post( esc_attr__( 'SportsPress is developed and maintained by a worldwide team of passionate individuals and backed by an awesome developer community. Want to see your name? <a href="%s">Contribute to SportsPress</a>.', 'sportspress' ) ), 'https://github.com/ThemeBoy/SportsPress/blob/master/CONTRIBUTING.md' ); ?></p>
 
 	  <div class="sp-feature feature-section col one-col">
 		<?php echo wp_kses_post( $this->contributors() ); ?>
@@ -347,7 +347,7 @@ class SP_Admin_Welcome {
 
 		<?php $this->intro(); ?>
 
-	  <p class="about-description"><?php printf( wp_kses_post( __( 'SportsPress has been kindly translated into several other languages thanks to our translation team. Want to see your name? <a href="%s">Translate SportsPress</a>.', 'sportspress' ) ), 'https://translate.wordpress.org/projects/wp-plugins/sportspress' ); ?></p>
+	  <p class="about-description"><?php printf( wp_kses_post( esc_attr__( 'SportsPress has been kindly translated into several other languages thanks to our translation team. Want to see your name? <a href="%s">Translate SportsPress</a>.', 'sportspress' ) ), 'https://translate.wordpress.org/projects/wp-plugins/sportspress' ); ?></p>
 	</div>
 		<?php
 	}
@@ -372,7 +372,7 @@ class SP_Admin_Welcome {
 			$contributor_list .= sprintf(
 				'<a href="%s" title="%s">',
 				esc_url( 'https://github.com/' . $contributor->login ),
-				esc_html( sprintf( __( 'View %s', 'sportspress' ), $contributor->login ) )
+				esc_html( sprintf( esc_attr__( 'View %s', 'sportspress' ), $contributor->login ) )
 			);
 			$contributor_list .= sprintf( '<img src="%s" width="64" height="64" class="gravatar" alt="%s" />', esc_url( $contributor->avatar_url ), esc_html( $contributor->login ) );
 			$contributor_list .= '</a>';

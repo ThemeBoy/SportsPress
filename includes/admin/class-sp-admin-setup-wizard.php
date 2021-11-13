@@ -57,37 +57,37 @@ class SP_Admin_Setup_Wizard {
 		}
 		$this->steps = array(
 			'introduction'  => array(
-				'name'    => __( 'Introduction', 'sportspress' ),
+				'name'    => esc_attr__( 'Introduction', 'sportspress' ),
 				'view'    => array( $this, 'sp_setup_introduction' ),
 				'handler' => '',
 			),
 			'basics'        => array(
-				'name'    => __( 'Basic Setup', 'sportspress' ),
+				'name'    => esc_attr__( 'Basic Setup', 'sportspress' ),
 				'view'    => array( $this, 'sp_setup_basics' ),
 				'handler' => array( $this, 'sp_setup_basics_save' ),
 			),
 			'teams'         => array(
-				'name'    => __( 'Teams', 'sportspress' ),
+				'name'    => esc_attr__( 'Teams', 'sportspress' ),
 				'view'    => array( $this, 'sp_setup_teams' ),
 				'handler' => array( $this, 'sp_setup_teams_save' ),
 			),
 			'players_staff' => array(
-				'name'    => __( 'Players', 'sportspress' ) . ' &amp; ' . __( 'Staff', 'sportspress' ),
+				'name'    => esc_attr__( 'Players', 'sportspress' ) . ' &amp; ' . esc_attr__( 'Staff', 'sportspress' ),
 				'view'    => array( $this, 'sp_setup_players_staff' ),
 				'handler' => array( $this, 'sp_setup_players_staff_save' ),
 			),
 			'venue'         => array(
-				'name'    => __( 'Venue', 'sportspress' ),
+				'name'    => esc_attr__( 'Venue', 'sportspress' ),
 				'view'    => array( $this, 'sp_setup_venue' ),
 				'handler' => array( $this, 'sp_setup_venue_save' ),
 			),
 			'pages'         => array(
-				'name'    => __( 'Pages', 'sportspress' ),
+				'name'    => esc_attr__( 'Pages', 'sportspress' ),
 				'view'    => array( $this, 'sp_setup_pages' ),
 				'handler' => array( $this, 'sp_setup_pages_save' ),
 			),
 			'next_steps'    => array(
-				'name'    => __( 'Ready!', 'sportspress' ),
+				'name'    => esc_attr__( 'Ready!', 'sportspress' ),
 				'view'    => array( $this, 'sp_setup_ready' ),
 				'handler' => '',
 			),
@@ -108,8 +108,8 @@ class SP_Admin_Setup_Wizard {
 		$strings = apply_filters(
 			'sportspress_localized_strings',
 			array(
-				'none'        => __( 'None', 'sportspress' ),
-				'remove_text' => __( '&mdash; Remove &mdash;', 'sportspress' ),
+				'none'        => esc_attr__( 'None', 'sportspress' ),
+				'remove_text' => esc_attr__( '&mdash; Remove &mdash;', 'sportspress' ),
 			)
 		);
 
@@ -148,7 +148,7 @@ class SP_Admin_Setup_Wizard {
 		<?php do_action( 'admin_head' ); ?>
 	</head>
 	<body class="sp-setup wp-core-ui">
-	  <h1 id="sp-logo"><?php echo wp_kses_post( apply_filters( 'sportspress_logo', '<img src="' . plugin_dir_url( SP_PLUGIN_FILE ) . 'assets/images/modules/sportspress' . ( class_exists( 'SportsPress_Pro' ) ? '-pro' : '' ) . '.png" alt="' . __( 'SportsPress', 'sportspress' ) . '">' ) ); ?></h1>
+	  <h1 id="sp-logo"><?php echo wp_kses_post( apply_filters( 'sportspress_logo', '<img src="' . plugin_dir_url( SP_PLUGIN_FILE ) . 'assets/images/modules/sportspress' . ( class_exists( 'SportsPress_Pro' ) ? '-pro' : '' ) . '.png" alt="' . esc_attr__( 'SportsPress', 'sportspress' ) . '">' ) ); ?></h1>
 		<?php
 	}
 
@@ -520,7 +520,7 @@ class SP_Admin_Setup_Wizard {
 				update_post_meta( $id, 'sp_number', $number );
 
 				// Add position
-				wp_set_object_terms( $id, sp_array_value( $player, 'position', __( 'Position', 'sportspress' ) ), 'sp_position', false );
+				wp_set_object_terms( $id, sp_array_value( $player, 'position', esc_attr__( 'Position', 'sportspress' ) ), 'sp_position', false );
 
 				// Add team
 				if ( $team ) {
@@ -608,7 +608,7 @@ class SP_Admin_Setup_Wizard {
 		// Insert venue
 		$venue = sanitize_text_field( $_POST['venue'] );
 		if ( ! is_string( $venue ) || empty( $venue ) ) {
-			$venue = sp_array_value( $_POST, 'address', __( 'Venue', 'sportspress' ) );
+			$venue = sp_array_value( $_POST, 'address', esc_attr__( 'Venue', 'sportspress' ) );
 		}
 		$inserted = wp_insert_term( $venue, 'sp_venue' );
 
@@ -639,9 +639,9 @@ class SP_Admin_Setup_Wizard {
 		$pages = apply_filters(
 			'sportspress_setup_pages',
 			array(
-				'sp_calendar' => __( 'Organize and publish calendars using different layouts.', 'sportspress' ),
-				'sp_table'    => __( 'Create automated league tables to keep track of team standings.', 'sportspress' ),
-				'sp_list'     => __( 'Create team rosters, player galleries, and ranking charts.', 'sportspress' ),
+				'sp_calendar' => esc_attr__( 'Organize and publish calendars using different layouts.', 'sportspress' ),
+				'sp_table'    => esc_attr__( 'Create automated league tables to keep track of team standings.', 'sportspress' ),
+				'sp_list'     => esc_attr__( 'Create team rosters, player galleries, and ranking charts.', 'sportspress' ),
 			)
 		);
 		?>
@@ -683,9 +683,9 @@ class SP_Admin_Setup_Wizard {
 		$pages = apply_filters(
 			'sportspress_setup_pages',
 			array(
-				'sp_calendar' => __( 'Organize and publish calendars using different layouts.', 'sportspress' ),
-				'sp_table'    => __( 'Create automated league tables to keep track of team standings.', 'sportspress' ),
-				'sp_list'     => __( 'Create team rosters, player galleries, and ranking charts.', 'sportspress' ),
+				'sp_calendar' => esc_attr__( 'Organize and publish calendars using different layouts.', 'sportspress' ),
+				'sp_table'    => esc_attr__( 'Create automated league tables to keep track of team standings.', 'sportspress' ),
+				'sp_list'     => esc_attr__( 'Create team rosters, player galleries, and ranking charts.', 'sportspress' ),
 			)
 		);
 
@@ -815,7 +815,7 @@ class SP_Admin_Setup_Wizard {
 			}
 			$post['post_title'] = implode( ' ' . get_option( 'sportspress_event_teams_delimiter', 'vs' ) . ' ', $team_names );
 		} else {
-			$post['post_title'] = __( 'Event', 'sportspress' );
+			$post['post_title'] = esc_attr__( 'Event', 'sportspress' );
 		}
 
 		// Insert event
@@ -857,12 +857,12 @@ class SP_Admin_Setup_Wizard {
 			'sportspress_setup_wizard_next_steps',
 			array(
 				'first' => array(
-					'label'   => __( 'Next Steps', 'sportspress' ),
-					'content' => '<a class="button button-primary button-large button-first-event" href="' . esc_url( admin_url( 'post.php?post=' . $id . '&action=edit' ) ) . '">' . __( 'Schedule your first event!', 'sportspress' ) . '</a>',
+					'label'   => esc_attr__( 'Next Steps', 'sportspress' ),
+					'content' => '<a class="button button-primary button-large button-first-event" href="' . esc_url( admin_url( 'post.php?post=' . $id . '&action=edit' ) ) . '">' . esc_attr__( 'Schedule your first event!', 'sportspress' ) . '</a>',
 				),
 				'last'  => array(
-					'label'   => __( 'Upgrade to Pro', 'sportspress' ),
-					'content' => __( 'Get SportsPress Pro to get access to all modules. You can upgrade any time without losing any of your data.', 'sportspress' ) . ' <a href="' . apply_filters( 'sportspress_pro_url', 'http://tboy.co/pro' ) . '" target="_blank">' . __( 'Learn more', 'sportspress' ) . '</a>',
+					'label'   => esc_attr__( 'Upgrade to Pro', 'sportspress' ),
+					'content' => esc_attr__( 'Get SportsPress Pro to get access to all modules. You can upgrade any time without losing any of your data.', 'sportspress' ) . ' <a href="' . apply_filters( 'sportspress_pro_url', 'http://tboy.co/pro' ) . '" target="_blank">' . esc_attr__( 'Learn more', 'sportspress' ) . '</a>',
 				),
 			)
 		);

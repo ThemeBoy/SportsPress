@@ -32,28 +32,28 @@ class SP_Meta_Box_Calendar_Columns {
 		$columns = array();
 
 		if ( 'teams' === $title_format ) {
-			$columns['event'] = __( 'Home', 'sportspress' ) . ' | ' . __( 'Away', 'sportspress' );
+			$columns['event'] = esc_attr__( 'Home', 'sportspress' ) . ' | ' . esc_attr__( 'Away', 'sportspress' );
 		} elseif ( 'homeaway' === $title_format ) {
-			$columns['event'] = __( 'Teams', 'sportspress' );
+			$columns['event'] = esc_attr__( 'Teams', 'sportspress' );
 		} else {
-			$columns['event'] = __( 'Title', 'sportspress' );
+			$columns['event'] = esc_attr__( 'Title', 'sportspress' );
 		}
 
 		if ( 'time' === $time_format || 'separate' === $time_format ) {
-			$columns['time'] = __( 'Time', 'sportspress' );
+			$columns['time'] = esc_attr__( 'Time', 'sportspress' );
 		} elseif ( 'combined' === $time_format ) {
-			$columns['time'] = __( 'Time/Results', 'sportspress' );
+			$columns['time'] = esc_attr__( 'Time/Results', 'sportspress' );
 		}
 
 		if ( 'results' === $time_format || 'separate' === $time_format ) {
-			$columns['results'] = __( 'Results', 'sportspress' );
+			$columns['results'] = esc_attr__( 'Results', 'sportspress' );
 		}
 
-		$columns['league']  = __( 'League', 'sportspress' );
-		$columns['season']  = __( 'Season', 'sportspress' );
-		$columns['venue']   = __( 'Venue', 'sportspress' );
-		$columns['article'] = __( 'Article', 'sportspress' );
-		$columns['day']     = __( 'Match Day', 'sportspress' );
+		$columns['league']  = esc_attr__( 'League', 'sportspress' );
+		$columns['season']  = esc_attr__( 'Season', 'sportspress' );
+		$columns['venue']   = esc_attr__( 'Venue', 'sportspress' );
+		$columns['article'] = esc_attr__( 'Article', 'sportspress' );
+		$columns['day']     = esc_attr__( 'Match Day', 'sportspress' );
 
 		$columns = apply_filters( 'sportspress_calendar_columns', $columns );
 		?>

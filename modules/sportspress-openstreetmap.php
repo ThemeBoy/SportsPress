@@ -128,13 +128,13 @@ if ( ! class_exists( 'SportsPress_OpenStreetMap' ) ) :
 			  $lon_sec = floor( $lon_sec - ( $lon_min * 60 ) );
 			  $lon_dir = $longitude > 0 ? 'E' : 'W';
 			?>
-		<a href="https://www.google.com/maps/place/<?php echo urlencode( "{$lat_deg}°{$lat_min}'{$lat_sec}\"{$lat_dir}" ) . '+' . urlencode( "{$lon_deg}°{$lon_min}'{$lon_sec}\"{$lon_dir}" ); ?>/@<?php echo $latitude; ?>,<?php echo $longitude; ?>,<?php echo $zoom; ?>z" target="_blank"><div id="sp_openstreetmaps_container" style="width: 100%; height: 320px"></div></a>
+		<a href="https://www.google.com/maps/place/<?php echo esc_url( urlencode( "{$lat_deg}°{$lat_min}'{$lat_sec}\"{$lat_dir}" ) ) . '+' . esc_url( urlencode( "{$lon_deg}°{$lon_min}'{$lon_sec}\"{$lon_dir}" ) ); ?>/@<?php echo esc_url($latitude); ?>,<?php echo esc_url($longitude); ?>,<?php echo esc_url($zoom); ?>z" target="_blank"><div id="sp_openstreetmaps_container" style="width: 100%; height: 320px"></div></a>
 	<script>
 	// position we will use later
-	var lat = <?php echo $latitude; ?>;
-	var lon = <?php echo $longitude; ?>;
+	var lat = <?php echo esc_attr( $latitude ); ?>;
+	var lon = <?php echo esc_attr( $longitude ); ?>;
 	// initialize map
-	map = L.map('sp_openstreetmaps_container', { zoomControl:false }).setView([lat, lon], <?php echo $zoom; ?>);
+	map = L.map('sp_openstreetmaps_container', { zoomControl:false }).setView([lat, lon], <?php echo esc_attr( $zoom ); ?>);
 	// set map tiles source
 			  <?php if ( 'satellite' === $maptype ) { ?>
 		L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {

@@ -60,7 +60,7 @@ if ( ! class_exists( 'SportsPress_Admin_Bar' ) ) :
 
 			$args = array(
 				'id'    => 'sportspress',
-				'title' => __( 'SportsPress', 'sportspress' ),
+				'title' => esc_attr__( 'SportsPress', 'sportspress' ),
 				'href'  => add_query_arg( 'page', 'sportspress', admin_url( 'admin.php' ) ),
 			);
 			$wp_admin_bar->add_node( $args );

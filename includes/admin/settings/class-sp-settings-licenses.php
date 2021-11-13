@@ -29,7 +29,7 @@ if ( ! class_exists( 'SP_Settings_Licenses' ) ) :
 		 */
 		public function __construct() {
 			$this->id    = 'licenses';
-			$this->label = __( 'Licenses', 'sportspress' );
+			$this->label = esc_attr__( 'Licenses', 'sportspress' );
 
 			$this->licenses = apply_filters(
 				'sportspress_licenses',
@@ -159,7 +159,7 @@ if ( ! class_exists( 'SP_Settings_Licenses' ) ) :
 
 			// Make sure the response came back okay
 			if ( is_wp_error( $response ) ) {
-				SP_Admin_Settings::add_error( __( 'Sorry, there has been an error.', 'sportspress' ) );
+				SP_Admin_Settings::add_error( esc_attr__( 'Sorry, there has been an error.', 'sportspress' ) );
 				return false;
 			}
 
@@ -172,9 +172,9 @@ if ( ! class_exists( 'SP_Settings_Licenses' ) ) :
 			// Update License or display error
 			if ( 'valid' == $license_data->license ) {
 				update_site_option( 'sportspress_' . $id . '_license_key', $license );
-				SP_Admin_Settings::add_override( __( 'License activated.', 'sportspress' ) );
+				SP_Admin_Settings::add_override( esc_attr__( 'License activated.', 'sportspress' ) );
 			} else {
-				SP_Admin_Settings::add_error( __( 'License invalid.', 'sportspress' ) );
+				SP_Admin_Settings::add_error( esc_attr__( 'License invalid.', 'sportspress' ) );
 			}
 		}
 
@@ -214,7 +214,7 @@ if ( ! class_exists( 'SP_Settings_Licenses' ) ) :
 
 			// make sure the response came back okay
 			if ( is_wp_error( $response ) ) {
-				SP_Admin_Settings::add_error( __( 'Sorry, there has been an error.', 'sportspress' ) );
+				SP_Admin_Settings::add_error( esc_attr__( 'Sorry, there has been an error.', 'sportspress' ) );
 				return false;
 			}
 
@@ -224,9 +224,9 @@ if ( ! class_exists( 'SP_Settings_Licenses' ) ) :
 			// $license_data->license will be either "deactivated" or "failed"
 			if ( $license_data->license == 'deactivated' ) {
 				delete_site_option( 'sportspress_' . $id . '_license_status' );
-				SP_Admin_Settings::add_override( __( 'License deactivated.', 'sportspress' ) );
+				SP_Admin_Settings::add_override( esc_attr__( 'License deactivated.', 'sportspress' ) );
 			} else {
-				SP_Admin_Settings::add_error( __( 'Sorry, there has been an error.', 'sportspress' ) );
+				SP_Admin_Settings::add_error( esc_attr__( 'Sorry, there has been an error.', 'sportspress' ) );
 			}
 		}
 	}

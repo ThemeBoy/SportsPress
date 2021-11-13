@@ -68,10 +68,10 @@ if ( ! class_exists( 'SportsPress_Event_Status' ) ) :
 			$this->statuses = apply_filters(
 				'sportspress_event_statuses',
 				array(
-					'ok'        => __( 'On time', 'sportspress' ),
-					'tbd'       => __( 'TBD', 'sportspress' ),
-					'postponed' => __( 'Postponed', 'sportspress' ),
-					'cancelled' => __( 'Canceled', 'sportspress' ),
+					'ok'        => esc_attr__( 'On time', 'sportspress' ),
+					'tbd'       => esc_attr__( 'TBD', 'sportspress' ),
+					'postponed' => esc_attr__( 'Postponed', 'sportspress' ),
+					'cancelled' => esc_attr__( 'Canceled', 'sportspress' ),
 				)
 			);
 		}
@@ -89,11 +89,11 @@ if ( ! class_exists( 'SportsPress_Event_Status' ) ) :
 			}
 			?>
 		<div class="misc-pub-section sp-pub-event-status">
-			<span class="sp-event-status"><?php _e( 'Time:', 'sportspress' ); ?> <strong class="sp-event-status-display" data-sp-event-status="<?php echo $status; ?>"><?php echo $this->statuses[ $status ]; ?></strong></span>
-			<a href="#" class="sp-edit-event-status hide-if-no-js"><span aria-hidden="true"><?php _e( 'Edit', 'sportspress' ); ?></span> <span class="screen-reader-text"><?php _e( 'Edit status' ); ?></span></a>
+			<span class="sp-event-status"><?php esc_attr_e( 'Time:', 'sportspress' ); ?> <strong class="sp-event-status-display" data-sp-event-status="<?php echo esc_attr( $status ); ?>"><?php echo wp_kses_post( $this->statuses[ $status ] ); ?></strong></span>
+			<a href="#" class="sp-edit-event-status hide-if-no-js"><span aria-hidden="true"><?php esc_attr_e( 'Edit', 'sportspress' ); ?></span> <span class="screen-reader-text"><?php esc_attr_e( 'Edit status' ); ?></span></a>
 			<div class="sp-event-status-select hide-if-js">
 				<?php foreach ( $this->statuses as $value => $label ) { ?>
-					<label><input type="radio" name="sp_status" value="<?php echo $value; ?>" data-sp-event-status="<?php echo $label; ?>" <?php checked( $status, $value ); ?>> <?php echo $label; ?></label><br>
+					<label><input type="radio" name="sp_status" value="<?php echo esc_attr( $value ); ?>" data-sp-event-status="<?php echo esc_attr( $label ); ?>" <?php checked( $status, $value ); ?>> <?php echo wp_kses_post( $label ); ?></label><br>
 				<?php } ?>
 				<p>
 					<a href="#" class="sp-save-event-status hide-if-no-js button">OK</a>

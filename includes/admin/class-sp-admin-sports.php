@@ -48,7 +48,7 @@ class SP_Admin_Sports {
 					}
 					$id             = preg_replace( '/\\.[^.\\s]{3,4}$/', '', $file );
 					$presets[ $id ] = $data;
-					$name           = array_key_exists( 'name', $data ) ? __( $data['name'], 'sportspress' ) : $id;
+					$name           = array_key_exists( 'name', $data ) ? esc_attr__( $data['name'], 'sportspress' ) : $id;
 
 					// Conditionally append filename in parentheses for clarity
 					if ( false === strpos( str_replace( ' ', '', strtolower( $data['name'] ) ), str_replace( '-', '', $id ) ) ) {
@@ -111,7 +111,7 @@ class SP_Admin_Sports {
 				$name     = $position;
 				$sections = array( 0, 1 );
 			} else {
-				$name     = sp_array_value( $position, 'name', __( 'Position', 'sportspress' ) );
+				$name     = sp_array_value( $position, 'name', esc_attr__( 'Position', 'sportspress' ) );
 				$sections = sp_array_value( $position, 'sections', array( 0, 1 ) );
 			}
 			$term = wp_insert_term( $name, 'sp_position' );
@@ -321,12 +321,12 @@ class SP_Admin_Sports {
 		return apply_filters(
 			'sportspress_sport_categories',
 			array(
-				'team-sports'   => __( 'Team Sports', 'sportspress' ),
-				'racket-sports' => __( 'Racket Sports', 'sportspress' ),
-				'water-sports'  => __( 'Water Sports', 'sportspress' ),
-				'target-sports' => __( 'Target Sports', 'sportspress' ),
-				'esports'       => __( 'Esports', 'sportspress' ),
-				'other'         => __( 'Other', 'sportspress' ),
+				'team-sports'   => esc_attr__( 'Team Sports', 'sportspress' ),
+				'racket-sports' => esc_attr__( 'Racket Sports', 'sportspress' ),
+				'water-sports'  => esc_attr__( 'Water Sports', 'sportspress' ),
+				'target-sports' => esc_attr__( 'Target Sports', 'sportspress' ),
+				'esports'       => esc_attr__( 'Esports', 'sportspress' ),
+				'other'         => esc_attr__( 'Other', 'sportspress' ),
 			)
 		);
 	}

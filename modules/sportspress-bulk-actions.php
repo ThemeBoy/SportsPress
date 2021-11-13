@@ -63,7 +63,7 @@ if ( ! class_exists( 'SportsPress_Bulk_Actions' ) ) :
 		 * Add option to the team bulk actions dropdown.
 		 */
 		public function team_actions( $bulk_actions ) {
-			$bulk_actions['sp_calendar'] = __( 'Generate Calendars', 'sportspress' );
+			$bulk_actions['sp_calendar'] = esc_attr__( 'Generate Calendars', 'sportspress' );
 			return $bulk_actions;
 		}
 
@@ -77,7 +77,7 @@ if ( ! class_exists( 'SportsPress_Bulk_Actions' ) ) :
 
 			foreach ( $post_ids as $post_id ) {
 				$post                = array();
-				$post['post_title']  = get_the_title( $post_id ) . ' ' . __( 'Calendar', 'sportspress' );
+				$post['post_title']  = get_the_title( $post_id ) . ' ' . esc_attr__( 'Calendar', 'sportspress' );
 				$post['post_type']   = 'sp_calendar';
 				$post['post_status'] = 'publish';
 
@@ -100,9 +100,9 @@ if ( ! class_exists( 'SportsPress_Bulk_Actions' ) ) :
 		 * Add option to the event bulk actions dropdown.
 		 */
 		public function event_actions( $bulk_actions ) {
-			$bulk_actions['sp_postpone'] = __( 'Postpone events', 'sportspress' );
-			$bulk_actions['sp_cancel']   = __( 'Cancel events', 'sportspress' );
-			$bulk_actions['sp_ok']       = __( 'Set events as on time', 'sportspress' );
+			$bulk_actions['sp_postpone'] = esc_attr__( 'Postpone events', 'sportspress' );
+			$bulk_actions['sp_cancel']   = esc_attr__( 'Cancel events', 'sportspress' );
+			$bulk_actions['sp_ok']       = esc_attr__( 'Set events as on time', 'sportspress' );
 			return $bulk_actions;
 		}
 
@@ -143,52 +143,52 @@ if ( ! class_exists( 'SportsPress_Bulk_Actions' ) ) :
 
 				printf(
 					'<div id="message" class="updated notice notice-success is-dismissible"><p>' .
-					_n(
+					esc_attr( _n(
 						'Generated %s calendar.',
 						'Generated %s calendars.',
 						$count,
 						'sportspress'
-					) . ' <a href="' . admin_url( 'edit.php?post_type=sp_calendar' ) . '">' . __( 'View', 'sportspress' ) . '</a></p><button type="button" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button></div>',
-					$count
+					) ) . ' <a href="' . esc_url( admin_url( 'edit.php?post_type=sp_calendar' ) ) . '">' . esc_attr__( 'View', 'sportspress' ) . '</a></p><button type="button" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button></div>',
+					esc_attr( $count )
 				);
 			} elseif ( ! empty( $_REQUEST['sp_bulk_postponed_events'] ) ) {
 				$count = intval( $_REQUEST['sp_bulk_postponed_events'] );
 
 				printf(
 					'<div id="message" class="updated notice notice-success is-dismissible"><p>' .
-					_n(
+					esc_attr( _n(
 						'Postponed %s event.',
 						'Postponed %s events.',
 						$count,
 						'sportspress'
-					) . '</p><button type="button" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button></div>',
-					$count
+					) ) . '</p><button type="button" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button></div>',
+					esc_attr( $count )
 				);
 			} elseif ( ! empty( $_REQUEST['sp_bulk_cancelled_events'] ) ) {
 				$count = intval( $_REQUEST['sp_bulk_cancelled_events'] );
 
 				printf(
 					'<div id="message" class="updated notice notice-success is-dismissible"><p>' .
-					_n(
+					esc_attr( _n(
 						'Canceled %s event.',
 						'Canceled %s events.',
 						$count,
 						'sportspress'
-					) . '</p><button type="button" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button></div>',
-					$count
+					) ) . '</p><button type="button" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button></div>',
+					esc_attr( $count )
 				);
 			} elseif ( ! empty( $_REQUEST['sp_bulk_ok_events'] ) ) {
 				$count = intval( $_REQUEST['sp_bulk_ok_events'] );
 
 				printf(
 					'<div id="message" class="updated notice notice-success is-dismissible"><p>' .
-					_n(
+					esc_attr( _n(
 						'Set %s event as on time.',
 						'Set %s event as on time.',
 						$count,
 						'sportspress'
-					) . '</p><button type="button" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button></div>',
-					$count
+					) ) . '</p><button type="button" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button></div>',
+					esc_attr( $count )
 				);
 			}
 		}

@@ -73,15 +73,15 @@ if ( ! class_exists( 'SportsPress_Event_Specs' ) ) :
 					'sportspress_register_post_type_spec',
 					array(
 						'labels'              => array(
-							'name'               => __( 'Event Specs', 'sportspress' ),
-							'singular_name'      => __( 'Event Spec', 'sportspress' ),
-							'add_new_item'       => __( 'Add New Event Spec', 'sportspress' ),
-							'edit_item'          => __( 'Edit Event Spec', 'sportspress' ),
-							'new_item'           => __( 'New', 'sportspress' ),
-							'view_item'          => __( 'View', 'sportspress' ),
-							'search_items'       => __( 'Search', 'sportspress' ),
-							'not_found'          => __( 'No results found.', 'sportspress' ),
-							'not_found_in_trash' => __( 'No results found.', 'sportspress' ),
+							'name'               => esc_attr__( 'Event Specs', 'sportspress' ),
+							'singular_name'      => esc_attr__( 'Event Spec', 'sportspress' ),
+							'add_new_item'       => esc_attr__( 'Add New Event Spec', 'sportspress' ),
+							'edit_item'          => esc_attr__( 'Edit Event Spec', 'sportspress' ),
+							'new_item'           => esc_attr__( 'New', 'sportspress' ),
+							'view_item'          => esc_attr__( 'View', 'sportspress' ),
+							'search_items'       => esc_attr__( 'Search', 'sportspress' ),
+							'not_found'          => esc_attr__( 'No results found.', 'sportspress' ),
+							'not_found_in_trash' => esc_attr__( 'No results found.', 'sportspress' ),
 						),
 						'public'              => false,
 						'show_ui'             => true,
@@ -148,16 +148,16 @@ if ( ! class_exists( 'SportsPress_Event_Specs' ) ) :
 			?>
 			<tr valign="top">
 				<th scope="row" class="titledesc">
-					<?php _e( 'Event Specs', 'sportspress' ); ?>
-					<p class="description"><?php _e( 'Add more details to an event.', 'sportspress' ); ?></p>
+					<?php esc_attr_e( 'Event Specs', 'sportspress' ); ?>
+					<p class="description"><?php esc_attr_e( 'Add more details to an event.', 'sportspress' ); ?></p>
 				</th>
 				<td class="forminp">
 					<table class="widefat sp-admin-config-table">
 						<thead>
 							<tr>
-								<th scope="col"><?php _e( 'Label', 'sportspress' ); ?></th>
-								<th scope="col"><?php _e( 'Variable', 'sportspress' ); ?></th>
-								<th scope="col"><?php _e( 'Description', 'sportspress' ); ?></th>
+								<th scope="col"><?php esc_attr_e( 'Label', 'sportspress' ); ?></th>
+								<th scope="col"><?php esc_attr_e( 'Variable', 'sportspress' ); ?></th>
+								<th scope="col"><?php esc_attr_e( 'Description', 'sportspress' ); ?></th>
 								<th scope="col" class="edit"></th>
 							</tr>
 						</thead>
@@ -171,23 +171,23 @@ if ( ! class_exists( 'SportsPress_Event_Specs' ) ) :
 									echo ' class="alternate"';}
 								?>
 							>
-								<td class="row-title"><?php echo $row->post_title; ?></td>
-								<td><code><?php echo $row->post_name; ?></code></td>
-								<td><p class="description"><?php echo $row->post_excerpt; ?></p></td>
-								<td class="edit"><a class="button" href="<?php echo get_edit_post_link( $row->ID ); ?>"><?php _e( 'Edit', 'sportspress' ); ?></s></td>
+								<td class="row-title"><?php echo wp_kses_post( $row->post_title ); ?></td>
+								<td><code><?php echo wp_kses_post( $row->post_name ); ?></code></td>
+								<td><p class="description"><?php echo wp_kses_post( $row->post_excerpt ); ?></p></td>
+								<td class="edit"><a class="button" href="<?php echo esc_url( get_edit_post_link( $row->ID ) ); ?>"><?php esc_attr_e( 'Edit', 'sportspress' ); ?></s></td>
 							</tr>
 								<?php
 													$i++;
 endforeach; else :
 	?>
 							<tr class="alternate">
-								<td colspan="4"><?php _e( 'No results found.', 'sportspress' ); ?></td>
+								<td colspan="4"><?php esc_attr_e( 'No results found.', 'sportspress' ); ?></td>
 							</tr>
 						<?php endif; ?>
 					</table>
 					<div class="tablenav bottom">
-						<a class="button alignleft" href="<?php echo admin_url( 'edit.php?post_type=sp_spec' ); ?>"><?php _e( 'View All', 'sportspress' ); ?></a>
-						<a class="button button-primary alignright" href="<?php echo admin_url( 'post-new.php?post_type=sp_spec' ); ?>"><?php _e( 'Add New', 'sportspress' ); ?></a>
+						<a class="button alignleft" href="<?php echo esc_url( admin_url( 'edit.php?post_type=sp_spec' ) ); ?>"><?php esc_attr_e( 'View All', 'sportspress' ); ?></a>
+						<a class="button button-primary alignright" href="<?php echo esc_url( admin_url( 'post-new.php?post_type=sp_spec' ) ); ?>"><?php esc_attr_e( 'Add New', 'sportspress' ); ?></a>
 						<br class="clear">
 					</div>
 				</td>
@@ -205,7 +205,7 @@ endforeach; else :
 		public function add_meta_boxes( $meta_boxes ) {
 			$meta_boxes['sp_spec']           = array(
 				'details' => array(
-					'title'    => __( 'Specs', 'sportspress' ),
+					'title'    => esc_attr__( 'Specs', 'sportspress' ),
 					'save'     => 'SP_Meta_Box_Spec_Details::save',
 					'output'   => 'SP_Meta_Box_Spec_Details::output',
 					'context'  => 'normal',
@@ -213,7 +213,7 @@ endforeach; else :
 				),
 			);
 			$meta_boxes['sp_event']['specs'] = array(
-				'title'    => __( 'Specs', 'sportspress' ),
+				'title'    => esc_attr__( 'Specs', 'sportspress' ),
 				'save'     => 'SP_Meta_Box_Event_Specs::save',
 				'output'   => 'SP_Meta_Box_Event_Specs::output',
 				'context'  => 'side',
@@ -245,7 +245,7 @@ endforeach; else :
 		 * @return array
 		 */
 		public function calendar_columns( $columns = array() ) {
-			$columns['event_specs'] = __( 'Event Specs', 'sportspress' );
+			$columns['event_specs'] = esc_attr__( 'Event Specs', 'sportspress' );
 			return $columns;
 		}
 
@@ -263,7 +263,7 @@ endforeach; else :
 				foreach ( $spec_labels as $spec_label ) {
 					?>
 				<th class="data-specs">
-					<?php echo $spec_label; ?>
+					<?php echo wp_kses_post( $spec_label ); ?>
 				</th>
 					<?php
 				}
@@ -284,7 +284,7 @@ endforeach; else :
 				<td class="data-spec">
 					<?php
 					if ( isset( $specs[ $spec_label ] ) ) {
-						echo $specs[ $spec_label ];
+						echo wp_kses_post( $specs[ $spec_label ] );
 					} else {
 						echo '-';
 					}
@@ -304,7 +304,7 @@ endforeach; else :
 				$specs       = $event->specs( false );
 				$spec_labels = (array) sp_get_var_labels( 'sp_spec', null, false );
 				foreach ( $specs as $spec_label => $spec_value ) {
-					echo '<div class="sp_event_spec"><span class="sp_event_spec_label">' . $spec_label . ':</span><span class="sp_event_spec_value"> ' . $spec_value . '</span></div>';
+					echo '<div class="sp_event_spec"><span class="sp_event_spec_label">' . wp_kses_post( $spec_label ) . ':</span><span class="sp_event_spec_value"> ' . wp_kses_post( $spec_value ) . '</span></div>';
 				}
 			}
 		}

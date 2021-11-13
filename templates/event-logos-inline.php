@@ -51,7 +51,7 @@ foreach ( $teams as $team ) :
 endforeach;
 $team_logos = array_filter( $team_logos );
 if ( ! empty( $team_logos ) ) :
-	echo '<div class="sp-template sp-template-event-logos sp-template-event-logos-inline"><div class="sp-event-logos sp-event-logos-' . sizeof( $teams ) . '">';
+	echo '<div class="sp-template sp-template-event-logos sp-template-event-logos-inline"><div class="sp-event-logos sp-event-logos-' . esc_attr( sizeof( $teams ) ) . '">';
 
 	// Assign delimiter
 	if ( $show_time && sizeof( $teams ) <= 2 ) {
@@ -60,6 +60,6 @@ if ( ! empty( $team_logos ) ) :
 		$delimiter = get_option( 'sportspress_event_teams_delimiter', 'vs' );
 	}
 
-	echo implode( ' ' . $delimiter . ' ', $team_logos );
+	echo wp_kses_post( implode( ' ' . $delimiter . ' ', $team_logos ) );
 	echo '</div></div>';
 endif;

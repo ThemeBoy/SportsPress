@@ -35,7 +35,7 @@ class SP_Meta_Box_Event_Teams {
 						'post_type'        => $post_type,
 						'name'             => 'sp_team[]',
 						'class'            => 'sportspress-pages',
-						'show_option_none' => __( '&mdash; None &mdash;', 'sportspress' ),
+						'show_option_none' => esc_attr__( '&mdash; None &mdash;', 'sportspress' ),
 						'values'           => 'ID',
 						'selected'         => $team,
 						'chosen'           => true,
@@ -70,30 +70,30 @@ class SP_Meta_Box_Event_Teams {
 					$sections = get_option( 'sportspress_event_performance_sections', -1 );
 					if ( 0 == $sections ) {
 						$tabs['sp_offense'] = array(
-							'label'     => __( 'Offense', 'sportspress' ),
+							'label'     => esc_attr__( 'Offense', 'sportspress' ),
 							'post_type' => 'sp_player',
 						);
 						$tabs['sp_defense'] = array(
-							'label'     => __( 'Defense', 'sportspress' ),
+							'label'     => esc_attr__( 'Defense', 'sportspress' ),
 							'post_type' => 'sp_player',
 						);
 					} elseif ( 1 == $sections ) {
 						$tabs['sp_defense'] = array(
-							'label'     => __( 'Defense', 'sportspress' ),
+							'label'     => esc_attr__( 'Defense', 'sportspress' ),
 							'post_type' => 'sp_player',
 						);
 						$tabs['sp_offense'] = array(
-							'label'     => __( 'Offense', 'sportspress' ),
+							'label'     => esc_attr__( 'Offense', 'sportspress' ),
 							'post_type' => 'sp_player',
 						);
 					} else {
 						$tabs['sp_player'] = array(
-							'label'     => __( 'Players', 'sportspress' ),
+							'label'     => esc_attr__( 'Players', 'sportspress' ),
 							'post_type' => 'sp_player',
 						);
 					}
 					$tabs['sp_staff'] = array(
-						'label'     => __( 'Staff', 'sportspress' ),
+						'label'     => esc_attr__( 'Staff', 'sportspress' ),
 						'post_type' => 'sp_staff',
 					);
 					?>
@@ -126,7 +126,7 @@ class SP_Meta_Box_Event_Teams {
 			endfor;
 		} else {
 			?>
-			<p><strong><?php printf( __( 'Select %s:', 'sportspress' ), sp_get_post_mode_label( $post->ID ) ); ?></strong></p>
+			<p><strong><?php printf( esc_attr__( 'Select %s:', 'sportspress' ), esc_attr( sp_get_post_mode_label( $post->ID ) ) ); ?></strong></p>
 			<?php
 			$args = array(
 				'post_type'   => $post_type,
@@ -136,10 +136,10 @@ class SP_Meta_Box_Event_Teams {
 				'class'       => 'widefat',
 				'property'    => 'multiple',
 				'chosen'      => true,
-				'placeholder' => __( 'None', 'sportspress' ),
+				'placeholder' => esc_attr__( 'None', 'sportspress' ),
 			);
 			if ( ! sp_dropdown_pages( $args ) ) :
-				sp_post_adder( $post_type, __( 'Add New', 'sportspress' ) );
+				sp_post_adder( $post_type, esc_attr__( 'Add New', 'sportspress' ) );
 			endif;
 		}
 		wp_nonce_field( 'sp-get-players', 'sp-get-players-nonce', false );

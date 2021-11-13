@@ -54,5 +54,5 @@ endforeach;
 $output .= '</tbody>' . '</table>' . '</div>';
 ?>
 <div class="sp-template sp-template-player-statistics">
-	<?php echo $output; ?>
+	<?php echo wp_kses_post( $output ); ?>
 </div>

@@ -85,23 +85,23 @@ if ( ! class_exists( 'SportsPress_Officials' ) ) :
 		 */
 		public static function register_taxonomy() {
 			$labels       = array(
-				'name'              => __( 'Duties', 'sportspress' ),
-				'singular_name'     => __( 'Duty', 'sportspress' ),
-				'all_items'         => __( 'All', 'sportspress' ),
-				'edit_item'         => __( 'Edit Duty', 'sportspress' ),
-				'view_item'         => __( 'View', 'sportspress' ),
-				'update_item'       => __( 'Update', 'sportspress' ),
-				'add_new_item'      => __( 'Add New', 'sportspress' ),
-				'new_item_name'     => __( 'Name', 'sportspress' ),
-				'parent_item'       => __( 'Parent', 'sportspress' ),
-				'parent_item_colon' => __( 'Parent:', 'sportspress' ),
-				'search_items'      => __( 'Search', 'sportspress' ),
-				'not_found'         => __( 'No results found.', 'sportspress' ),
+				'name'              => esc_attr__( 'Duties', 'sportspress' ),
+				'singular_name'     => esc_attr__( 'Duty', 'sportspress' ),
+				'all_items'         => esc_attr__( 'All', 'sportspress' ),
+				'edit_item'         => esc_attr__( 'Edit Duty', 'sportspress' ),
+				'view_item'         => esc_attr__( 'View', 'sportspress' ),
+				'update_item'       => esc_attr__( 'Update', 'sportspress' ),
+				'add_new_item'      => esc_attr__( 'Add New', 'sportspress' ),
+				'new_item_name'     => esc_attr__( 'Name', 'sportspress' ),
+				'parent_item'       => esc_attr__( 'Parent', 'sportspress' ),
+				'parent_item_colon' => esc_attr__( 'Parent:', 'sportspress' ),
+				'search_items'      => esc_attr__( 'Search', 'sportspress' ),
+				'not_found'         => esc_attr__( 'No results found.', 'sportspress' ),
 			);
 			$args         = apply_filters(
 				'sportspress_register_taxonomy_duty',
 				array(
-					'label'                 => __( 'Duties', 'sportspress' ),
+					'label'                 => esc_attr__( 'Duties', 'sportspress' ),
 					'labels'                => $labels,
 					'public'                => false,
 					'show_ui'               => true,
@@ -138,19 +138,19 @@ if ( ! class_exists( 'SportsPress_Officials' ) ) :
 					'sportspress_register_post_type_official',
 					array(
 						'labels'                => array(
-							'name'                  => __( 'Officials', 'sportspress' ),
-							'singular_name'         => __( 'Official', 'sportspress' ),
-							'add_new_item'          => __( 'Add New Official', 'sportspress' ),
-							'edit_item'             => __( 'Edit Official', 'sportspress' ),
-							'new_item'              => __( 'New', 'sportspress' ),
-							'view_item'             => __( 'View Official', 'sportspress' ),
-							'search_items'          => __( 'Search', 'sportspress' ),
-							'not_found'             => __( 'No results found.', 'sportspress' ),
-							'not_found_in_trash'    => __( 'No results found.', 'sportspress' ),
-							'featured_image'        => __( 'Photo', 'sportspress' ),
-							'set_featured_image'    => __( 'Select Photo', 'sportspress' ),
-							'remove_featured_image' => __( 'Remove Photo', 'sportspress' ),
-							'use_featured_image'    => __( 'Select Photo', 'sportspress' ),
+							'name'                  => esc_attr__( 'Officials', 'sportspress' ),
+							'singular_name'         => esc_attr__( 'Official', 'sportspress' ),
+							'add_new_item'          => esc_attr__( 'Add New Official', 'sportspress' ),
+							'edit_item'             => esc_attr__( 'Edit Official', 'sportspress' ),
+							'new_item'              => esc_attr__( 'New', 'sportspress' ),
+							'view_item'             => esc_attr__( 'View Official', 'sportspress' ),
+							'search_items'          => esc_attr__( 'Search', 'sportspress' ),
+							'not_found'             => esc_attr__( 'No results found.', 'sportspress' ),
+							'not_found_in_trash'    => esc_attr__( 'No results found.', 'sportspress' ),
+							'featured_image'        => esc_attr__( 'Photo', 'sportspress' ),
+							'set_featured_image'    => esc_attr__( 'Select Photo', 'sportspress' ),
+							'remove_featured_image' => esc_attr__( 'Remove Photo', 'sportspress' ),
+							'use_featured_image'    => esc_attr__( 'Select Photo', 'sportspress' ),
 						),
 						'public'                => true,
 						'show_ui'               => true,
@@ -198,7 +198,7 @@ if ( ! class_exists( 'SportsPress_Officials' ) ) :
 					'get_callback'    => 'SP_REST_API::get_post_data',
 					'update_callback' => 'SP_REST_API::update_post_meta_arrays',
 					'schema'          => array(
-						'description' => __( 'Official', 'sportspress' ),
+						'description' => esc_attr__( 'Official', 'sportspress' ),
 						'type'        => 'array',
 						'context'     => array( 'view', 'edit' ),
 						'arg_options' => array(
@@ -240,7 +240,7 @@ if ( ! class_exists( 'SportsPress_Officials' ) ) :
 				foreach ( $duties as $duty ) {
 					?>
 				<th class="data-officials">
-						<?php echo $duty->name; ?>
+						<?php echo wp_kses_post( $duty->name ); ?>
 				</th>
 						<?php
 				}
@@ -259,7 +259,7 @@ if ( ! class_exists( 'SportsPress_Officials' ) ) :
 				foreach ( $appointments as $officials ) {
 					?>
 				<td class="data-officials">
-					<?php echo implode( '<br>', $officials ); ?>
+					<?php echo wp_kses_post( implode( '<br>', $officials ) ); ?>
 				</td>
 					<?php
 				}
@@ -298,7 +298,7 @@ if ( ! class_exists( 'SportsPress_Officials' ) ) :
 					?>
 				<th class="column-officials">
 					<label for="sp_columns_officials">
-						<?php echo $duty->name; ?>
+						<?php echo wp_kses_post( $duty->name ); ?>
 					</label>
 				</th>
 						<?php
@@ -318,7 +318,7 @@ if ( ! class_exists( 'SportsPress_Officials' ) ) :
 				foreach ( $appointments as $officials ) {
 					?>
 				<td>
-					<?php echo implode( '<br>', $officials ); ?>
+					<?php echo wp_kses_post( implode( '<br>', $officials ) ); ?>
 				</td>
 					<?php
 				}
@@ -332,7 +332,7 @@ if ( ! class_exists( 'SportsPress_Officials' ) ) :
 		 */
 		public function add_meta_boxes( $meta_boxes ) {
 			$meta_boxes['sp_event']['officials'] = array(
-				'title'    => __( 'Officials', 'sportspress' ),
+				'title'    => esc_attr__( 'Officials', 'sportspress' ),
 				'output'   => 'SP_Meta_Box_Event_Officials::output',
 				'save'     => 'SP_Meta_Box_Event_Officials::save',
 				'context'  => 'side',
@@ -347,7 +347,7 @@ if ( ! class_exists( 'SportsPress_Officials' ) ) :
 		 * @return array
 		 */
 		public function calendar_columns( $columns = array() ) {
-			$columns['officials'] = __( 'Officials', 'sportspress' );
+			$columns['officials'] = esc_attr__( 'Officials', 'sportspress' );
 			return $columns;
 		}
 
@@ -361,7 +361,7 @@ if ( ! class_exists( 'SportsPress_Officials' ) ) :
 				$templates,
 				array(
 					'officials' => array(
-						'title'   => __( 'Officials', 'sportspress' ),
+						'title'   => esc_attr__( 'Officials', 'sportspress' ),
 						'option'  => 'sportspress_event_show_officials',
 						'action'  => 'sportspress_output_event_officials',
 						'default' => 'yes',
@@ -377,13 +377,13 @@ if ( ! class_exists( 'SportsPress_Officials' ) ) :
 		 */
 		public function add_event_options( $options ) {
 			$options[] = array(
-				'title'   => __( 'Officials', 'sportspress' ),
+				'title'   => esc_attr__( 'Officials', 'sportspress' ),
 				'id'      => 'sportspress_event_officials_format',
 				'default' => 'table',
 				'type'    => 'radio',
 				'options' => array(
-					'table' => __( 'Table', 'sportspress' ),
-					'list'  => __( 'List', 'sportspress' ),
+					'table' => esc_attr__( 'Table', 'sportspress' ),
+					'list'  => esc_attr__( 'List', 'sportspress' ),
 				),
 			);
 			return $options;
@@ -422,8 +422,8 @@ if ( ! class_exists( 'SportsPress_Officials' ) ) :
 		 */
 		public function register_importer( $importers = array() ) {
 			$importers['sp_official_csv'] = array(
-				'name'        => __( 'SportsPress Officials (CSV)', 'sportspress' ),
-				'description' => __( 'Import <strong>officials</strong> from a csv file.', 'sportspress' ),
+				'name'        => esc_attr__( 'SportsPress Officials (CSV)', 'sportspress' ),
+				'description' => esc_attr__( 'Import <strong>officials</strong> from a csv file.', 'sportspress' ),
 				'callback'    => array( $this, 'officials_importer' ),
 			);
 			return $importers;
@@ -480,7 +480,7 @@ if ( ! class_exists( 'SportsPress_Officials' ) ) :
 			$new_columns = array();
 
 			if ( function_exists( 'get_term_meta' ) ) {
-				$new_columns['sp_order'] = __( 'Order', 'sportspress' );
+				$new_columns['sp_order'] = esc_attr__( 'Order', 'sportspress' );
 			}
 
 			if ( array_key_exists( 'posts', $columns ) ) {
@@ -504,7 +504,7 @@ if ( ! class_exists( 'SportsPress_Officials' ) ) :
 			<?php if ( function_exists( 'get_term_meta' ) ) { ?>
 				<?php $order = get_term_meta( $t_id, 'sp_order', true ); ?>
 			<tr class="form-field">
-				<th scope="row" valign="top"><label for="sp_order"><?php _e( 'Order', 'sportspress' ); ?></label></th>
+				<th scope="row" valign="top"><label for="sp_order"><?php esc_attr_e( 'Order', 'sportspress' ); ?></label></th>
 				<td><input name="sp_order" class="sp-number-input" type="text" step="1" size="4" id="sp_order" value="<?php echo (int) $order; ?>"></td>
 			</tr>
 		<?php } ?>
@@ -548,8 +548,8 @@ if ( ! class_exists( 'SportsPress_Officials' ) ) :
 				$options = apply_filters(
 					'sportspress_performance_sections',
 					array(
-						0 => __( 'Offense', 'sportspress' ),
-						1 => __(
+						0 => esc_attr__( 'Offense', 'sportspress' ),
+						1 => esc_attr__(
 							'Defense',
 							'sportspress'
 						),
@@ -583,7 +583,7 @@ if ( ! class_exists( 'SportsPress_Officials' ) ) :
 		 * Add menu item
 		 */
 		public function duties_menu() {
-			add_submenu_page( 'edit.php?post_type=sp_official', __( 'Duties', 'sportspress' ), __( 'Duties', 'sportspress' ), 'manage_sp_event_terms', 'edit-tags.php?taxonomy=sp_duty' );
+			add_submenu_page( 'edit.php?post_type=sp_official', esc_attr__( 'Duties', 'sportspress' ), esc_attr__( 'Duties', 'sportspress' ), 'manage_sp_event_terms', 'edit-tags.php?taxonomy=sp_duty' );
 		}
 
 		/**

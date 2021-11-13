@@ -849,8 +849,8 @@ endif;
 			}
 			$labels    = array_merge(
 				array(
-					'pos'  => __( 'Pos', 'sportspress' ),
-					'name' => __(
+					'pos'  => esc_attr__( 'Pos', 'sportspress' ),
+					'name' => esc_attr__(
 						'Team',
 						'sportspress'
 					),

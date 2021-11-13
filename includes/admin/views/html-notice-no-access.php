@@ -4,5 +4,5 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 <div id="message" class="error">
-	<p><?php _e( 'You are not allowed to edit this item.', 'sportspress' ); ?></p>
+	<p><?php esc_attr_e( 'You are not allowed to edit this item.', 'sportspress' ); ?></p>
 </div>

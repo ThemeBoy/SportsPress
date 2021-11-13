@@ -39,7 +39,7 @@ class SP_Meta_Box_Team_Columns {
 		endforeach;
 endif;
 		?>
-		<p><strong><?php _e( 'Total', 'sportspress' ); ?></strong></p>
+		<p><strong><?php esc_attr_e( 'Total', 'sportspress' ); ?></strong></p>
 		<?php
 		list( $columns, $data, $placeholders ) = $team->columns( 0 );
 		self::table( 0, $columns, $data, $placeholders );
@@ -61,7 +61,7 @@ endif;
 			<table class="widefat sp-data-table sp-team-column-table sp-select-all-range">
 				<thead>
 					<tr>
-						<th><?php _e( 'Season', 'sportspress' ); ?></th>
+						<th><?php esc_attr_e( 'Season', 'sportspress' ); ?></th>
 						<?php foreach ( $columns as $label ) : ?>
 							<th><?php echo esc_html( $label ); ?></th>
 						<?php endforeach; ?>
@@ -83,7 +83,7 @@ endif;
 								<label for="sp_leagues_<?php echo esc_attr( $league_id ); ?>_<?php echo esc_attr( $div_id ); ?>">
 									<?php
 									if ( 'WP_Error' == get_class( $div ) ) :
-										_e( 'Total', 'sportspress' );
+										esc_attr_e( 'Total', 'sportspress' );
 									else :
 										echo esc_html( $div->name );
 									endif;
@@ -98,7 +98,7 @@ endif;
 								<?php
 									$value       = sp_array_value( sp_array_value( $data, $div_id, array() ), $column, null );
 									$placeholder = sp_array_value( sp_array_value( $placeholders, $div_id, array() ), $column, 0 );
-									echo '<input type="text" name="sp_columns[' . $league_id . '][' . $div_id . '][' . $column . ']" value="' . $value . '" placeholder="' . $placeholder . '" />';
+									echo '<input type="text" name="sp_columns[' . esc_attr( $league_id ) . '][' . esc_attr( $div_id ) . '][' . esc_attr( $column ) . ']" value="' . esc_attr( $value ) . '" placeholder="' . esc_attr( $placeholder ) . '" />';
 								?>
 								</td>
 							<?php endforeach; ?>

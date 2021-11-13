@@ -193,8 +193,8 @@ class SP_Admin_Taxonomies {
 				$options = apply_filters(
 					'sportspress_performance_sections',
 					array(
-						0 => __( 'Offense', 'sportspress' ),
-						1 => __(
+						0 => esc_attr__( 'Offense', 'sportspress' ),
+						1 => esc_attr__(
 							'Defense',
 							'sportspress'
 						),
@@ -232,8 +232,8 @@ class SP_Admin_Taxonomies {
 					$options = apply_filters(
 						'sportspress_performance_sections',
 						array(
-							0 => __( 'Offense', 'sportspress' ),
-							1 => __(
+							0 => esc_attr__( 'Offense', 'sportspress' ),
+							1 => esc_attr__(
 								'Defense',
 								'sportspress'
 							),
@@ -291,7 +291,7 @@ class SP_Admin_Taxonomies {
 		$new_columns = array();
 
 		if ( function_exists( 'get_term_meta' ) ) {
-			$new_columns['sp_order'] = __( 'Order', 'sportspress' );
+			$new_columns['sp_order'] = esc_attr__( 'Order', 'sportspress' );
 		}
 
 		if ( array_key_exists( 'posts', $columns ) ) {
@@ -312,7 +312,7 @@ class SP_Admin_Taxonomies {
 	 */
 	public function venue_columns( $columns ) {
 		$new_columns               = array();
-		$new_columns['sp_address'] = __( 'Address', 'sportspress' );
+		$new_columns['sp_address'] = esc_attr__( 'Address', 'sportspress' );
 
 		if ( array_key_exists( 'posts', $columns ) ) {
 			$new_columns['posts'] = $columns['posts'];
@@ -334,10 +334,10 @@ class SP_Admin_Taxonomies {
 	 */
 	public function position_columns( $columns ) {
 		$new_columns                = array();
-		$new_columns['sp_sections'] = __( 'Statistics', 'sportspress' );
+		$new_columns['sp_sections'] = esc_attr__( 'Statistics', 'sportspress' );
 
 		if ( function_exists( 'get_term_meta' ) ) {
-			$new_columns['sp_order'] = __( 'Order', 'sportspress' );
+			$new_columns['sp_order'] = esc_attr__( 'Order', 'sportspress' );
 		}
 
 		if ( array_key_exists( 'posts', $columns ) ) {
@@ -375,8 +375,8 @@ class SP_Admin_Taxonomies {
 			$options = apply_filters(
 				'sportspress_performance_sections',
 				array(
-					0 => __( 'Offense', 'sportspress' ),
-					1 => __(
+					0 => esc_attr__( 'Offense', 'sportspress' ),
+					1 => esc_attr__(
 						'Defense',
 						'sportspress'
 					),

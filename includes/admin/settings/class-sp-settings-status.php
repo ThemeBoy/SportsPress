@@ -24,7 +24,7 @@ if ( ! class_exists( 'SP_Settings_Status' ) ) :
 		 */
 		public function __construct() {
 			$this->id    = 'status';
-			$this->label = __( 'System Status', 'sportspress' );
+			$this->label = esc_attr__( 'System Status', 'sportspress' );
 
 			if ( defined( 'WP_DEBUG' ) && true === WP_DEBUG && current_user_can( 'manage_options' ) ) {
 				add_filter( 'sportspress_settings_tabs_array', array( $this, 'add_settings_page' ), 99 );
@@ -105,7 +105,7 @@ if ( ! class_exists( 'SP_Settings_Status' ) ) :
 						$memory = sp_let_to_num( WP_MEMORY_LIMIT );
 
 					if ( $memory < 67108864 ) {
-						echo '<mark class="error">' . sprintf( esc_html__( '%1$s - We recommend setting memory to at least 64MB. See: <a href="%2$s">Increasing memory allocated to PHP</a>', 'sportspress' ), esc_html( size_format( $memory ) ), 'http://codex.wordpress.org/Editing_wp-config.php#Increasing_memory_allocated_to_PHP' ) . '</mark>';
+						echo '<mark class="error">' . wp_kses_post( sprintf( esc_attr__( '%1$s - We recommend setting memory to at least 64MB. See: <a href="%2$s">Increasing memory allocated to PHP</a>', 'sportspress' ), esc_html( size_format( $memory ) ), 'http://codex.wordpress.org/Editing_wp-config.php#Increasing_memory_allocated_to_PHP' ) ) . '</mark>';
 					} else {
 						echo '<mark class="yes">' . esc_html( size_format( $memory ) ) . '</mark>';
 					}
@@ -164,9 +164,9 @@ if ( ! class_exists( 'SP_Settings_Status' ) ) :
 					<?php
 						$default_timezone = date_default_timezone_get();
 					if ( 'UTC' !== $default_timezone ) {
-						echo '<mark class="error">' . sprintf( esc_html__( 'Default timezone is %s - it should be UTC', 'sportspress' ), $default_timezone ) . '</mark>';
+						echo '<mark class="error">' . sprintf( esc_html__( 'Default timezone is %s - it should be UTC', 'sportspress' ), esc_attr( $default_timezone ) ) . '</mark>';
 					} else {
-						echo '<mark class="yes">' . sprintf( esc_html__( 'Default timezone is %s', 'sportspress' ), $default_timezone ) . '</mark>';
+						echo '<mark class="yes">' . sprintf( esc_html__( 'Default timezone is %s', 'sportspress' ), esc_attr( $default_timezone ) ) . '</mark>';
 					}
 					?>
 					</td>
@@ -175,28 +175,28 @@ if ( ! class_exists( 'SP_Settings_Status' ) ) :
 					$posting = array();
 
 					// fsockopen/cURL
-					$posting['fsockopen_curl']['name'] = __( 'fsockopen/cURL', 'sportspress' );
+					$posting['fsockopen_curl']['name'] = esc_attr__( 'fsockopen/cURL', 'sportspress' );
 					if ( function_exists( 'fsockopen' ) || function_exists( 'curl_init' ) ) {
 						if ( function_exists( 'fsockopen' ) && function_exists( 'curl_init' ) ) {
-							$posting['fsockopen_curl']['note'] = __( 'Your server has fsockopen and cURL enabled.', 'sportspress' );
+							$posting['fsockopen_curl']['note'] = esc_attr__( 'Your server has fsockopen and cURL enabled.', 'sportspress' );
 						} elseif ( function_exists( 'fsockopen' ) ) {
-							$posting['fsockopen_curl']['note'] = __( 'Your server has fsockopen enabled, cURL is disabled.', 'sportspress' );
+							$posting['fsockopen_curl']['note'] = esc_attr__( 'Your server has fsockopen enabled, cURL is disabled.', 'sportspress' );
 						} else {
-							$posting['fsockopen_curl']['note'] = __( 'Your server has cURL enabled, fsockopen is disabled.', 'sportspress' );
+							$posting['fsockopen_curl']['note'] = esc_attr__( 'Your server has cURL enabled, fsockopen is disabled.', 'sportspress' );
 						}
 						$posting['fsockopen_curl']['success'] = true;
 					} else {
-						$posting['fsockopen_curl']['note']    = __( 'Your server does not have fsockopen or cURL enabled - PayPal IPN and other scripts which communicate with other servers will not work. Contact your hosting provider.', 'sportspress' ) . '</mark>';
+						$posting['fsockopen_curl']['note']    = esc_attr__( 'Your server does not have fsockopen or cURL enabled - PayPal IPN and other scripts which communicate with other servers will not work. Contact your hosting provider.', 'sportspress' ) . '</mark>';
 						$posting['fsockopen_curl']['success'] = false;
 					}
 
 					// SOAP
-					$posting['soap_client']['name'] = __( 'SOAP Client', 'sportspress' );
+					$posting['soap_client']['name'] = esc_attr__( 'SOAP Client', 'sportspress' );
 					if ( class_exists( 'SoapClient' ) ) {
-						$posting['soap_client']['note']    = __( 'Your server has the SOAP Client class enabled.', 'sportspress' );
+						$posting['soap_client']['note']    = esc_attr__( 'Your server has the SOAP Client class enabled.', 'sportspress' );
 						$posting['soap_client']['success'] = true;
 					} else {
-						$posting['soap_client']['note']    = sprintf( __( 'Your server does not have the <a href="%s">SOAP Client</a> class enabled - some gateway plugins which use SOAP may not work as expected.', 'sportspress' ), 'http://php.net/manual/en/class.soapclient.php' ) . '</mark>';
+						$posting['soap_client']['note']    = sprintf( esc_attr__( 'Your server does not have the <a href="%s">SOAP Client</a> class enabled - some gateway plugins which use SOAP may not work as expected.', 'sportspress' ), 'http://php.net/manual/en/class.soapclient.php' ) . '</mark>';
 						$posting['soap_client']['success'] = false;
 					}
 
@@ -248,7 +248,7 @@ if ( ! class_exists( 'SP_Settings_Status' ) ) :
 							// link the plugin name to the plugin url if available
 							$plugin_name = $plugin_data['Name'];
 							if ( ! empty( $plugin_data['PluginURI'] ) ) {
-								$plugin_name = '<a href="' . esc_url( $plugin_data['PluginURI'] ) . '" title="' . __( 'Visit plugin homepage', 'sportspress' ) . '">' . $plugin_name . '</a>';
+								$plugin_name = '<a href="' . esc_url( $plugin_data['PluginURI'] ) . '" title="' . esc_attr__( 'Visit plugin homepage', 'sportspress' ) . '">' . $plugin_name . '</a>';
 							}
 
 							if ( strstr( $dirname, 'sportspress' ) ) {
@@ -277,11 +277,11 @@ if ( ! class_exists( 'SP_Settings_Status' ) ) :
 								}
 
 								if ( ! empty( $version_data['version'] ) && version_compare( $version_data['version'], $plugin_data['Version'], '>' ) ) {
-									$version_string = ' &ndash; <strong style="color:red;">' . $version_data['version'] . ' ' . __( 'is available', 'sportspress' ) . '</strong>';
+									$version_string = ' &ndash; <strong style="color:red;">' . $version_data['version'] . ' ' . esc_attr__( 'is available', 'sportspress' ) . '</strong>';
 								}
 							}
 
-							$sp_plugins[] = $plugin_name . ' ' . __( 'by', 'sportspress' ) . ' ' . $plugin_data['Author'] . ' ' . __( 'version', 'sportspress' ) . ' ' . $plugin_data['Version'] . $version_string;
+							$sp_plugins[] = $plugin_name . ' ' . esc_attr__( 'by', 'sportspress' ) . ' ' . $plugin_data['Author'] . ' ' . esc_attr__( 'version', 'sportspress' ) . ' ' . $plugin_data['Version'] . $version_string;
 
 						}
 					}
@@ -306,7 +306,7 @@ if ( ! class_exists( 'SP_Settings_Status' ) ) :
 			<tbody>
 				<tr>
 					<td><?php esc_html_e( 'Sport', 'sportspress' ); ?>:</td>
-					<td><?php echo get_option( 'sportspress_sport', __( 'None', 'sportspress' ) ); ?></td>
+					<td><?php echo esc_attr( get_option( 'sportspress_sport', __( 'None', 'sportspress' ) ) ); ?></td>
 				</tr>
 				<tr>
 					<td><?php esc_html_e( 'Event Outcomes', 'sportspress' ); ?>:</td>
@@ -636,7 +636,7 @@ if ( ! class_exists( 'SP_Settings_Status' ) ) :
 									$theme_version = $status->get_file_version( $theme_file );
 
 									if ( $core_version && ( empty( $theme_version ) || version_compare( $theme_version, $core_version, '<' ) ) ) {
-										$found_files[ $plugin_name ][] = sprintf( __( '<code>%1$s</code> version <strong style="color:red">%2$s</strong> is out of date. The core version is %3$s', 'sportspress' ), basename( $theme_file ), $theme_version ? $theme_version : '-', $core_version );
+										$found_files[ $plugin_name ][] = sprintf( esc_attr__( '<code>%1$s</code> version <strong style="color:red">%2$s</strong> is out of date. The core version is %3$s', 'sportspress' ), basename( $theme_file ), $theme_version ? $theme_version : '-', $core_version );
 									} else {
 										$found_files[ $plugin_name ][] = sprintf( '<code>%s</code>', basename( $theme_file ) );
 									}

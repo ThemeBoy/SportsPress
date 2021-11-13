@@ -23,7 +23,7 @@ $excerpt = $post->post_excerpt;
 if ( $excerpt ) {
 	?>
 	<p class="sp-excerpt">
-	  <?php echo $excerpt; ?>
+	  <?php echo wp_kses_post( $excerpt ); ?>
 	</p>
 	<?php
 }

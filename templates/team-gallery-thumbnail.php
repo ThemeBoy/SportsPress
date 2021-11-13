@@ -37,10 +37,10 @@ if ( has_post_thumbnail( $id ) ) {
 	$thumbnail = '<img width="150" height="150" src="//www.gravatar.com/avatar/?s=150&d=blank&f=y" class="attachment-thumbnail wp-post-image">';
 }
 
-echo "<{$itemtag} class='gallery-item'>";
-echo "
+echo wp_kses_post( "<{$itemtag} class='gallery-item'>" );
+echo wp_kses_post( "
 	<{$icontag} class='gallery-icon portrait'>"
 		. '<a href="' . get_permalink( $id ) . '">' . $thumbnail . '</a>'
-	. "</{$icontag}>";
-echo $caption;
-echo "</{$itemtag}>";
+	. "</{$icontag}>" );
+echo wp_kses_post( $caption );
+echo wp_kses_post( "</{$itemtag}>" );

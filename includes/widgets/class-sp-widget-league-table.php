@@ -4,9 +4,9 @@ class SP_Widget_League_Table extends WP_Widget {
 	function __construct() {
 		$widget_ops = array(
 			'classname'   => 'widget_sportspress widget_league_table widget_sp_league_table',
-			'description' => __( 'Display a league table.', 'sportspress' ),
+			'description' => esc_attr__( 'Display a league table.', 'sportspress' ),
 		);
-		parent::__construct( 'sportspress-league-table', __( 'League Table', 'sportspress' ), $widget_ops );
+		parent::__construct( 'sportspress-league-table', esc_attr__( 'League Table', 'sportspress' ), $widget_ops );
 	}
 
 	function widget( $args, $instance ) {
@@ -30,10 +30,10 @@ class SP_Widget_League_Table extends WP_Widget {
 		$show_full_table_link = empty( $instance['show_full_table_link'] ) ? false : $instance['show_full_table_link'];
 
 		do_action( 'sportspress_before_widget', $args, $instance, 'league-table' );
-		echo $before_widget;
+		echo wp_kses_post( $before_widget );
 
 		if ( $title ) {
-			echo $before_title . $title . $after_title;
+			echo wp_kses_post( $before_title . $title . $after_title );
 		}
 
 		// Action to hook into
@@ -54,7 +54,7 @@ class SP_Widget_League_Table extends WP_Widget {
 		// Action to hook into
 		do_action( 'sportspress_after_widget_template', $args, $instance, 'league-table' );
 
-		echo $after_widget;
+		echo wp_kses_post( $after_widget );
 		do_action( 'sportspress_after_widget', $args, $instance, 'league-table' );
 	}
 
@@ -99,34 +99,34 @@ class SP_Widget_League_Table extends WP_Widget {
 		// Action to hook into
 		do_action( 'sportspress_before_widget_template_form', $this, $instance, 'league-table' );
 		?>
-		<p><label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'sportspress' ); ?></label>
-		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" /></p>
+		<p><label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_attr_e( 'Title:', 'sportspress' ); ?></label>
+		<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" /></p>
 
-		<p><label for="<?php echo $this->get_field_id( 'caption' ); ?>"><?php _e( 'Heading:', 'sportspress' ); ?></label>
-		<input class="widefat" id="<?php echo $this->get_field_id( 'caption' ); ?>" name="<?php echo $this->get_field_name( 'caption' ); ?>" type="text" value="<?php echo esc_attr( $caption ); ?>" /></p>
+		<p><label for="<?php echo esc_attr( $this->get_field_id( 'caption' ) ); ?>"><?php esc_attr_e( 'Heading:', 'sportspress' ); ?></label>
+		<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'caption' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'caption' ) ); ?>" type="text" value="<?php echo esc_attr( $caption ); ?>" /></p>
 
-		<p><label for="<?php echo $this->get_field_id( 'id' ); ?>"><?php printf( __( 'Select %s:', 'sportspress' ), __( 'League Table', 'sportspress' ) ); ?></label>
+		<p><label for="<?php echo esc_attr( $this->get_field_id( 'id' ) ); ?>"><?php printf( esc_attr__( 'Select %s:', 'sportspress' ), esc_attr__( 'League Table', 'sportspress' ) ); ?></label>
 		<?php
 		$args = array(
 			'post_type'        => 'sp_table',
 			'name'             => $this->get_field_name( 'id' ),
 			'id'               => $this->get_field_id( 'id' ),
-			'show_option_none' => __( '&mdash; Select &mdash;', 'sportspress' ),
+			'show_option_none' => esc_attr__( '&mdash; Select &mdash;', 'sportspress' ),
 			'selected'         => $id,
 			'values'           => 'ID',
 			'class'            => 'widefat',
 		);
 		if ( ! sp_dropdown_pages( $args ) ) :
-			sp_post_adder( 'sp_table', __( 'Add New', 'sportspress' ) );
+			sp_post_adder( 'sp_table', esc_attr__( 'Add New', 'sportspress' ) );
 		endif;
 		?>
 		</p>
 
-		<p><label for="<?php echo $this->get_field_id( 'number' ); ?>"><?php _e( 'Number of teams to show:', 'sportspress' ); ?></label>
-		<input id="<?php echo $this->get_field_id( 'number' ); ?>" name="<?php echo $this->get_field_name( 'number' ); ?>" type="text" value="<?php echo esc_attr( $number ); ?>" size="3"></p>
+		<p><label for="<?php echo esc_attr( $this->get_field_id( 'number' ) ); ?>"><?php esc_attr_e( 'Number of teams to show:', 'sportspress' ); ?></label>
+		<input id="<?php echo esc_attr( $this->get_field_id( 'number' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'number' ) ); ?>" type="text" value="<?php echo esc_attr( $number ); ?>" size="3"></p>
 
 		<p class="sp-prefs">
-			<?php _e( 'Columns:', 'sportspress' ); ?><br>
+			<?php esc_attr_e( 'Columns:', 'sportspress' ); ?><br>
 			<?php
 			$args        = array(
 				'post_type'      => 'sp_column',
@@ -141,19 +141,19 @@ class SP_Widget_League_Table extends WP_Widget {
 			$field_id   = $this->get_field_id( 'columns' );
 			?>
 			<?php foreach ( $the_columns as $column ) : ?>
-				<label class="button"><input name="<?php echo $field_name; ?>" type="checkbox" id="<?php echo $field_id . '-' . $column->post_name; ?>" value="<?php echo $column->post_name; ?>" 
+				<label class="button"><input name="<?php echo esc_attr( $field_name ); ?>" type="checkbox" id="<?php echo esc_attr( $field_id ) . '-' . esc_attr( $column->post_name ); ?>" value="<?php echo esc_attr( $column->post_name ); ?>" 
 															  <?php
 																if ( $columns === null || in_array( $column->post_name, $columns ) ) :
 																	?>
-					checked="checked"<?php endif; ?>><?php echo $column->post_title; ?></label>
+					checked="checked"<?php endif; ?>><?php echo esc_attr( $column->post_title ); ?></label>
 			<?php endforeach; ?>
 		</p>
 
-		<p><input class="checkbox" type="checkbox" id="<?php echo $this->get_field_id( 'show_team_logo' ); ?>" name="<?php echo $this->get_field_name( 'show_team_logo' ); ?>" value="1" <?php checked( $show_team_logo, 1 ); ?>>
-		<label for="<?php echo $this->get_field_id( 'show_team_logo' ); ?>"><?php _e( 'Display logos', 'sportspress' ); ?></label><br>
+		<p><input class="checkbox" type="checkbox" id="<?php echo esc_attr( $this->get_field_id( 'show_team_logo' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'show_team_logo' ) ); ?>" value="1" <?php checked( $show_team_logo, 1 ); ?>>
+		<label for="<?php echo esc_attr( $this->get_field_id( 'show_team_logo' ) ); ?>"><?php esc_attr_e( 'Display logos', 'sportspress' ); ?></label><br>
 
-		<input class="checkbox" type="checkbox" id="<?php echo $this->get_field_id( 'show_full_table_link' ); ?>" name="<?php echo $this->get_field_name( 'show_full_table_link' ); ?>" value="1" <?php checked( $show_full_table_link, 1 ); ?>>
-		<label for="<?php echo $this->get_field_id( 'show_full_table_link' ); ?>"><?php _e( 'Display link to view full table', 'sportspress' ); ?></label></p>
+		<input class="checkbox" type="checkbox" id="<?php echo esc_attr( $this->get_field_id( 'show_full_table_link' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'show_full_table_link' ) ); ?>" value="1" <?php checked( $show_full_table_link, 1 ); ?>>
+		<label for="<?php echo esc_attr( $this->get_field_id( 'show_full_table_link' ) ); ?>"><?php esc_attr_e( 'Display link to view full table', 'sportspress' ); ?></label></p>
 
 		<?php
 		// Action to hook into

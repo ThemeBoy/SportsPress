@@ -26,21 +26,21 @@ class SP_Formats {
 			'sportspress_formats',
 			array(
 				'event'    => array(
-					'league'   => __( 'Competitive', 'sportspress' ),
-					'friendly' => __( 'Friendly', 'sportspress' ),
+					'league'   => esc_attr__( 'Competitive', 'sportspress' ),
+					'friendly' => esc_attr__( 'Friendly', 'sportspress' ),
 				),
 				'calendar' => array(
-					'calendar' => __( 'Calendar', 'sportspress' ),
-					'list'     => __( 'List', 'sportspress' ),
-					'blocks'   => __( 'Blocks', 'sportspress' ),
+					'calendar' => esc_attr__( 'Calendar', 'sportspress' ),
+					'list'     => esc_attr__( 'List', 'sportspress' ),
+					'blocks'   => esc_attr__( 'Blocks', 'sportspress' ),
 				),
 				'table'    => array(
-					'standings' => __( 'Standings', 'sportspress' ),
-					'gallery'   => __( 'Gallery', 'sportspress' ),
+					'standings' => esc_attr__( 'Standings', 'sportspress' ),
+					'gallery'   => esc_attr__( 'Gallery', 'sportspress' ),
 				),
 				'list'     => array(
-					'list'    => __( 'List', 'sportspress' ),
-					'gallery' => __( 'Gallery', 'sportspress' ),
+					'list'    => esc_attr__( 'List', 'sportspress' ),
+					'gallery' => esc_attr__( 'Gallery', 'sportspress' ),
 				),
 			)
 		);

@@ -67,7 +67,7 @@ if ( ! class_exists( 'SportsPress_Next_Team_Preset' ) ) :
 		 * @return array
 		 */
 		public function add_options( $options ) {
-			  $options['Presets']['$nextteam'] = __( 'Next Team', 'sportspress' );
+			  $options['Presets']['$nextteam'] = esc_attr__( 'Next Team', 'sportspress' );
 			  return $options;
 		}
 
@@ -168,8 +168,8 @@ if ( ! class_exists( 'SportsPress_Next_Team_Preset' ) ) :
 		 */
 		public function add_settings( $settings ) {
 			  $settings[] = array(
-				  'title'   => __( 'Next Team', 'sportspress' ),
-				  'desc'    => __( 'Filter by League', 'sportspress' ),
+				  'title'   => esc_attr__( 'Next Team', 'sportspress' ),
+				  'desc'    => esc_attr__( 'Filter by League', 'sportspress' ),
 				  'id'      => 'sportspress_table_next_team_filter_league',
 				  'default' => 'no',
 				  'type'    => 'checkbox',

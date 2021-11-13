@@ -131,12 +131,12 @@ if ( ! class_exists( 'SportsPress_Template_Selector' ) ) :
 			asort( $templates );
 
 			// Add default option
-			$templates = array_merge( array( 'default' => __( 'Default Template', 'sportspress' ) ), $templates );
+			$templates = array_merge( array( 'default' => esc_attr__( 'Default Template', 'sportspress' ) ), $templates );
 
 			$options = array_merge(
 				array(
 					array(
-						'title'   => __( 'Template', 'sportspress' ),
+						'title'   => esc_attr__( 'Template', 'sportspress' ),
 						'id'      => 'sportspress_' . $post_type . '_page_template',
 						'default' => 'default',
 						'type'    => 'select',
@@ -180,7 +180,7 @@ if ( ! class_exists( 'SportsPress_Template_Selector' ) ) :
 				$settings,
 				array(
 					array(
-						'title' => __( 'Calendars', 'sportspress' ),
+						'title' => esc_attr__( 'Calendars', 'sportspress' ),
 						'type'  => 'title',
 						'id'    => 'calendar_options',
 					),

@@ -41,11 +41,11 @@ class SP_Meta_Box_List_Details {
 		$default_nationality = get_option( 'sportspress_default_nationality', false );
 		?>
 		<div>
-			<p><strong><?php _e( 'Heading', 'sportspress' ); ?></strong></p>
+			<p><strong><?php esc_attr_e( 'Heading', 'sportspress' ); ?></strong></p>
 			<p><input type="text" id="sp_caption" name="sp_caption" value="<?php echo esc_attr( $caption ); ?>" placeholder="<?php echo esc_attr( get_the_title() ); ?>"></p>
 
 			<div class="sp-date-selector">
-				<p><strong><?php _e( 'Date', 'sportspress' ); ?></strong></p>
+				<p><strong><?php esc_attr_e( 'Date', 'sportspress' ); ?></strong></p>
 				<p>
 					<?php
 					$args = array(
@@ -58,21 +58,21 @@ class SP_Meta_Box_List_Details {
 				</p>
 				<div class="sp-date-range">
 					<p class="sp-date-range-absolute">
-						<input type="text" class="sp-datepicker-from" name="sp_date_from" value="<?php echo $date_from ? esc_attr( $date_from ) : date_i18n( 'Y-m-d' ); ?>" size="10">
+						<input type="text" class="sp-datepicker-from" name="sp_date_from" value="<?php echo esc_attr( $date_from ? $date_from : date_i18n( 'Y-m-d' ) ); ?>" size="10">
 						:
-						<input type="text" class="sp-datepicker-to" name="sp_date_to" value="<?php echo $date_to ? esc_attr( $date_to ) : date_i18n( 'Y-m-d' ); ?>" size="10">
+						<input type="text" class="sp-datepicker-to" name="sp_date_to" value="<?php echo esc_attr( $date_to ? $date_to : date_i18n( 'Y-m-d' ) ); ?>" size="10">
 					</p>
 
 					<p class="sp-date-range-relative">
-						<?php _e( 'Past', 'sportspress' ); ?>
-						<input type="number" min="0" step="1" class="tiny-text" name="sp_date_past" value="<?php echo '' !== $date_past ? $date_past : 7; ?>">
-						<?php _e( 'days', 'sportspress' ); ?>
+						<?php esc_attr_e( 'Past', 'sportspress' ); ?>
+						<input type="number" min="0" step="1" class="tiny-text" name="sp_date_past" value="<?php echo '' !== $date_past ? esc_attr( $date_past ) : 7; ?>">
+						<?php esc_attr_e( 'days', 'sportspress' ); ?>
 					</p>
 
 					<p class="sp-date-relative">
 						<label>
 							<input type="checkbox" name="sp_date_relative" value="1" id="sp_date_relative" <?php checked( $date_relative ); ?>>
-							<?php _e( 'Relative', 'sportspress' ); ?>
+							<?php esc_attr_e( 'Relative', 'sportspress' ); ?>
 						</label>
 					</p>
 				</div>
@@ -83,29 +83,29 @@ class SP_Meta_Box_List_Details {
 				sp_taxonomy_field( $taxonomy, $post, true );
 			}
 			?>
-			<p><strong><?php _e( 'Team', 'sportspress' ); ?></strong></p>
+			<p><strong><?php esc_attr_e( 'Team', 'sportspress' ); ?></strong></p>
 			<p class="sp-tab-select sp-team-era-selector">
 				<?php
 				$args = array(
 					'post_type'       => 'sp_team',
 					'name'            => 'sp_team',
-					'show_option_all' => __( 'All', 'sportspress' ),
+					'show_option_all' => esc_attr__( 'All', 'sportspress' ),
 					'selected'        => $team_id,
 					'values'          => 'ID',
 				);
 				if ( ! sp_dropdown_pages( $args ) ) :
-					sp_post_adder( 'sp_team', __( 'Add New', 'sportspress' ) );
+					sp_post_adder( 'sp_team', esc_attr__( 'Add New', 'sportspress' ) );
 				endif;
 				?>
 				<select name="sp_era">
-					<option value="all" <?php selected( 'all', $era ); ?>><?php _e( 'All', 'sportspress' ); ?></option>
-					<option value="current" <?php selected( 'current', $era ); ?>><?php _e( 'Current', 'sportspress' ); ?></option>
-					<option value="past" <?php selected( 'past', $era ); ?>><?php _e( 'Past', 'sportspress' ); ?></option>
+					<option value="all" <?php selected( 'all', $era ); ?>><?php esc_attr_e( 'All', 'sportspress' ); ?></option>
+					<option value="current" <?php selected( 'current', $era ); ?>><?php esc_attr_e( 'Current', 'sportspress' ); ?></option>
+					<option value="past" <?php selected( 'past', $era ); ?>><?php esc_attr_e( 'Past', 'sportspress' ); ?></option>
 				</select>
 			</p>
-			<p><strong><?php _e( 'Nationality', 'sportspress' ); ?></strong></p>
+			<p><strong><?php esc_attr_e( 'Nationality', 'sportspress' ); ?></strong></p>
 			<p>
-				<select id="sp_nationality" name="sp_nationality[]" data-placeholder="<?php printf( __( 'Select %s', 'sportspress' ), __( 'Nationality', 'sportspress' ) ); ?>" class="widefat chosen-select
+				<select id="sp_nationality" name="sp_nationality[]" data-placeholder="<?php printf( esc_attr__( 'Select %s', 'sportspress' ), esc_attr__( 'Nationality', 'sportspress' ) ); ?>" class="widefat chosen-select
 																									<?php
 																									if ( is_rtl() ) :
 																										?>
@@ -120,20 +120,20 @@ class SP_Meta_Box_List_Details {
 					<?php endforeach; ?>
 				</select>
 			</p>
-			<p><strong><?php _e( 'Grouping', 'sportspress' ); ?></strong></p>
+			<p><strong><?php esc_attr_e( 'Grouping', 'sportspress' ); ?></strong></p>
 			<p>
 			<select name="sp_grouping">
-				<option value="0"><?php _e( 'None', 'sportspress' ); ?></option>
-				<option value="position" <?php selected( $grouping, 'position' ); ?>><?php _e( 'Position', 'sportspress' ); ?></option>
+				<option value="0"><?php esc_attr_e( 'None', 'sportspress' ); ?></option>
+				<option value="position" <?php selected( $grouping, 'position' ); ?>><?php esc_attr_e( 'Position', 'sportspress' ); ?></option>
 			</select>
 			</p>
-			<p><strong><?php _e( 'Sort by', 'sportspress' ); ?></strong></p>
+			<p><strong><?php esc_attr_e( 'Sort by', 'sportspress' ); ?></strong></p>
 			<p>
 			<?php
 			$args = array(
 				'prepend_options' => array(
-					'number' => __( 'Squad Number', 'sportspress' ),
-					'name'   => __( 'Name', 'sportspress' ),
+					'number' => esc_attr__( 'Squad Number', 'sportspress' ),
+					'name'   => esc_attr__( 'Name', 'sportspress' ),
 				),
 				'post_type'       => array( 'sp_performance', 'sp_metric', 'sp_statistic' ),
 				'name'            => 'sp_orderby',
@@ -146,21 +146,21 @@ class SP_Meta_Box_List_Details {
 			<p>
 				<label class="selectit">
 					<input type="checkbox" name="sp_crop" value="1" <?php checked( $crop ); ?>>
-					<?php _e( 'Skip if zero?', 'sportspress' ); ?>
+					<?php esc_attr_e( 'Skip if zero?', 'sportspress' ); ?>
 				</label>
 			</p>
-			<p><strong><?php _e( 'Sort Order', 'sportspress' ); ?></strong></p>
+			<p><strong><?php esc_attr_e( 'Sort Order', 'sportspress' ); ?></strong></p>
 			<p>
 				<select name="sp_order">
-					<option value="ASC" <?php selected( 'ASC', $order ); ?>><?php _e( 'Ascending', 'sportspress' ); ?></option>
-					<option value="DESC" <?php selected( 'DESC', $order ); ?>><?php _e( 'Descending', 'sportspress' ); ?></option>
+					<option value="ASC" <?php selected( 'ASC', $order ); ?>><?php esc_attr_e( 'Ascending', 'sportspress' ); ?></option>
+					<option value="DESC" <?php selected( 'DESC', $order ); ?>><?php esc_attr_e( 'Descending', 'sportspress' ); ?></option>
 				</select>
 			</p>
-			<p><strong><?php _e( 'Players', 'sportspress' ); ?></strong></p>
+			<p><strong><?php esc_attr_e( 'Players', 'sportspress' ); ?></strong></p>
 			<p class="sp-select-setting">
 				<select name="sp_select">
-					<option value="auto" <?php selected( 'auto', $select ); ?>><?php _e( 'Auto', 'sportspress' ); ?></option>
-					<option value="manual" <?php selected( 'manual', $select ); ?>><?php _e( 'Manual', 'sportspress' ); ?></option>
+					<option value="auto" <?php selected( 'auto', $select ); ?>><?php esc_attr_e( 'Auto', 'sportspress' ); ?></option>
+					<option value="manual" <?php selected( 'manual', $select ); ?>><?php esc_attr_e( 'Manual', 'sportspress' ); ?></option>
 				</select>
 			</p>
 			<?php
@@ -175,11 +175,11 @@ class SP_Meta_Box_List_Details {
 					}
 				}
 				sp_post_checklist( $post->ID, 'sp_player', ( 'auto' == $select ? 'none' : 'block' ), $player_filters );
-				sp_post_adder( 'sp_player', __( 'Add New', 'sportspress' ) );
+				sp_post_adder( 'sp_player', esc_attr__( 'Add New', 'sportspress' ) );
 			} else {
 				?>
-				<p><strong><?php _e( 'Display', 'sportspress' ); ?></strong></p>
-				<p><input name="sp_number" id="sp_number" type="number" step="1" min="0" class="small-text" placeholder="<?php _e( 'All', 'sportspress' ); ?>" value="<?php echo esc_attr( $number ); ?>"> <?php _e( 'players', 'sportspress' ); ?></p>
+				<p><strong><?php esc_attr_e( 'Display', 'sportspress' ); ?></strong></p>
+				<p><input name="sp_number" id="sp_number" type="number" step="1" min="0" class="small-text" placeholder="<?php esc_attr_e( 'All', 'sportspress' ); ?>" value="<?php echo esc_attr( $number ); ?>"> <?php esc_attr_e( 'players', 'sportspress' ); ?></p>
 				<?php
 			}
 			?>

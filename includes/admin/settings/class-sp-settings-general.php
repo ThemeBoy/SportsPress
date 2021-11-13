@@ -24,7 +24,7 @@ if ( ! class_exists( 'SP_Settings_General' ) ) :
 		 */
 		public function __construct() {
 			$this->id    = 'general';
-			$this->label = __( 'General', 'sportspress' );
+			$this->label = esc_attr__( 'General', 'sportspress' );
 
 			add_filter( 'sportspress_settings_tabs_array', array( $this, 'add_settings_page' ), 20 );
 			add_action( 'sportspress_settings_' . $this->id, array( $this, 'output' ) );
@@ -42,7 +42,7 @@ if ( ! class_exists( 'SP_Settings_General' ) ) :
 
 			$presets = SP_Admin_Sports::get_preset_options();
 
-			$leagues = array( '' => __( '&mdash; Select &mdash;', 'sportspress' ) );
+			$leagues = array( '' => esc_attr__( '&mdash; Select &mdash;', 'sportspress' ) );
 
 			$terms = get_terms(
 				array(
@@ -57,7 +57,7 @@ if ( ! class_exists( 'SP_Settings_General' ) ) :
 				}
 			}
 
-			$seasons = array( '' => __( '&mdash; Select &mdash;', 'sportspress' ) );
+			$seasons = array( '' => esc_attr__( '&mdash; Select &mdash;', 'sportspress' ) );
 
 			$terms = get_terms(
 				array(
@@ -75,7 +75,7 @@ if ( ! class_exists( 'SP_Settings_General' ) ) :
 			$settings = array_merge(
 				array(
 					array(
-						'title' => __( 'General Options', 'sportspress' ),
+						'title' => esc_attr__( 'General Options', 'sportspress' ),
 						'type'  => 'title',
 						'desc'  => '',
 						'id'    => 'general_options',
@@ -87,7 +87,7 @@ if ( ! class_exists( 'SP_Settings_General' ) ) :
 						array( 'type' => 'timezone' ),
 
 						array(
-							'title'   => __( 'Sport', 'sportspress' ),
+							'title'   => esc_attr__( 'Sport', 'sportspress' ),
 							'id'      => 'sportspress_sport',
 							'default' => 'none',
 							'type'    => 'sport',
@@ -95,7 +95,7 @@ if ( ! class_exists( 'SP_Settings_General' ) ) :
 						),
 
 						array(
-							'title'   => __( 'Main League', 'sportspress' ),
+							'title'   => esc_attr__( 'Main League', 'sportspress' ),
 							'id'      => 'sportspress_league',
 							'default' => null,
 							'type'    => 'select',
@@ -103,7 +103,7 @@ if ( ! class_exists( 'SP_Settings_General' ) ) :
 						),
 
 						array(
-							'title'   => __( 'Current Season', 'sportspress' ),
+							'title'   => esc_attr__( 'Current Season', 'sportspress' ),
 							'id'      => 'sportspress_season',
 							'default' => null,
 							'type'    => 'select',
@@ -117,7 +117,7 @@ if ( ! class_exists( 'SP_Settings_General' ) ) :
 						'id'   => 'general_options',
 					),
 					array(
-						'title' => __( 'Styles and Scripts', 'sportspress' ),
+						'title' => esc_attr__( 'Styles and Scripts', 'sportspress' ),
 						'type'  => 'title',
 						'desc'  => '',
 						'id'    => 'script_styling_options',
@@ -134,24 +134,24 @@ if ( ! class_exists( 'SP_Settings_General' ) ) :
 					$options,
 					array(
 						array(
-							'title'   => __( 'Align', 'sportspress' ),
+							'title'   => esc_attr__( 'Align', 'sportspress' ),
 							'id'      => 'sportspress_table_text_align',
 							'default' => 'default',
 							'type'    => 'radio',
 							'options' => array(
-								'default' => __( 'Default', 'sportspress' ),
-								'left'    => __( 'Left', 'sportspress' ),
-								'center'  => __( 'Center', 'sportspress' ),
-								'right'   => __( 'Right', 'sportspress' ),
+								'default' => esc_attr__( 'Default', 'sportspress' ),
+								'left'    => esc_attr__( 'Left', 'sportspress' ),
+								'center'  => esc_attr__( 'Center', 'sportspress' ),
+								'right'   => esc_attr__( 'Right', 'sportspress' ),
 							),
 						),
 
 						array(
-							'title'             => __( 'Padding', 'sportspress' ),
+							'title'             => esc_attr__( 'Padding', 'sportspress' ),
 							'id'                => 'sportspress_table_padding',
 							'class'             => 'small-text',
 							'default'           => null,
-							'placeholder'       => __( 'Auto', 'sportspress' ),
+							'placeholder'       => esc_attr__( 'Auto', 'sportspress' ),
 							'desc'              => 'px',
 							'type'              => 'number',
 							'custom_attributes' => array(
@@ -166,7 +166,7 @@ if ( ! class_exists( 'SP_Settings_General' ) ) :
 				$options,
 				array(
 					array(
-						'title' => __( 'Custom CSS', 'sportspress' ),
+						'title' => esc_attr__( 'Custom CSS', 'sportspress' ),
 						'id'    => 'sportspress_custom_css',
 						'css'   => 'width:100%; height: 130px;',
 						'type'  => 'textarea',
@@ -176,29 +176,29 @@ if ( ! class_exists( 'SP_Settings_General' ) ) :
 					'sportspress_general_script_options',
 					array(
 						array(
-							'title'         => __( 'Scripts', 'sportspress' ),
-							'desc'          => __( 'Live countdowns', 'sportspress' ),
+							'title'         => esc_attr__( 'Scripts', 'sportspress' ),
+							'desc'          => esc_attr__( 'Live countdowns', 'sportspress' ),
 							'id'            => 'sportspress_enable_live_countdowns',
 							'default'       => 'yes',
 							'type'          => 'checkbox',
 							'checkboxgroup' => 'start',
-							'desc_tip'      => __( 'This will enable a script allowing the countdowns to be animated.', 'sportspress' ),
+							'desc_tip'      => esc_attr__( 'This will enable a script allowing the countdowns to be animated.', 'sportspress' ),
 						),
 
 						array(
-							'desc'          => __( 'Shortcode menu', 'sportspress' ),
+							'desc'          => esc_attr__( 'Shortcode menu', 'sportspress' ),
 							'id'            => 'sportspress_rich_editing',
 							'default'       => 'yes',
 							'type'          => 'checkbox',
 							'checkboxgroup' => 'end',
-							'desc_tip'      => __( 'This will enable a shortcode menu to be displayed in the visual editor.', 'sportspress' ),
+							'desc_tip'      => esc_attr__( 'This will enable a shortcode menu to be displayed in the visual editor.', 'sportspress' ),
 						),
 					)
 				),
 				array(
 					array(
-						'title'         => __( 'Tables', 'sportspress' ),
-						'desc'          => __( 'Responsive', 'sportspress' ),
+						'title'         => esc_attr__( 'Tables', 'sportspress' ),
+						'desc'          => esc_attr__( 'Responsive', 'sportspress' ),
 						'id'            => 'sportspress_enable_responsive_tables',
 						'default'       => 'no',
 						'type'          => 'checkbox',
@@ -206,7 +206,7 @@ if ( ! class_exists( 'SP_Settings_General' ) ) :
 					),
 
 					array(
-						'desc'          => __( 'Scrollable', 'sportspress' ),
+						'desc'          => esc_attr__( 'Scrollable', 'sportspress' ),
 						'id'            => 'sportspress_enable_scrollable_tables',
 						'default'       => 'yes',
 						'type'          => 'checkbox',
@@ -214,7 +214,7 @@ if ( ! class_exists( 'SP_Settings_General' ) ) :
 					),
 
 					array(
-						'desc'          => __( 'Sortable', 'sportspress' ),
+						'desc'          => esc_attr__( 'Sortable', 'sportspress' ),
 						'id'            => 'sportspress_enable_sortable_tables',
 						'default'       => 'yes',
 						'type'          => 'checkbox',
@@ -222,23 +222,23 @@ if ( ! class_exists( 'SP_Settings_General' ) ) :
 					),
 
 					array(
-						'title'    => __( 'Widgets', 'sportspress' ),
-						'desc'     => __( 'Unique', 'sportspress' ),
+						'title'    => esc_attr__( 'Widgets', 'sportspress' ),
+						'desc'     => esc_attr__( 'Unique', 'sportspress' ),
 						'id'       => 'sportspress_widget_unique',
 						'default'  => 'no',
 						'type'     => 'checkbox',
-						'desc_tip' => __( 'Hide widget when same as content.', 'sportspress' ),
+						'desc_tip' => esc_attr__( 'Hide widget when same as content.', 'sportspress' ),
 					),
 				)
 			);
 
 			if ( apply_filters( 'sportspress_enable_header', false ) ) {
 				$options[] = array(
-					'title'             => __( 'Header Offset', 'sportspress' ),
+					'title'             => esc_attr__( 'Header Offset', 'sportspress' ),
 					'id'                => 'sportspress_header_offset',
 					'class'             => 'small-text',
 					'default'           => null,
-					'placeholder'       => __( 'Auto', 'sportspress' ),
+					'placeholder'       => esc_attr__( 'Auto', 'sportspress' ),
 					'desc'              => 'px',
 					'type'              => 'number',
 					'custom_attributes' => array(
@@ -442,11 +442,11 @@ if ( ! class_exists( 'SP_Settings_General' ) ) :
 						}
 
 						// Show inputs
-						$this->color_picker( __( 'Primary', 'sportspress' ), 'sportspress_frontend_css_primary', $colors['primary'] );
-						$this->color_picker( __( 'Background', 'sportspress' ), 'sportspress_frontend_css_background', $colors['background'] );
-						$this->color_picker( __( 'Text', 'sportspress' ), 'sportspress_frontend_css_text', $colors['text'] );
-						$this->color_picker( __( 'Heading', 'sportspress' ), 'sportspress_frontend_css_heading', $colors['heading'] );
-						$this->color_picker( __( 'Link', 'sportspress' ), 'sportspress_frontend_css_link', $colors['link'] );
+						$this->color_picker( esc_attr__( 'Primary', 'sportspress' ), 'sportspress_frontend_css_primary', $colors['primary'] );
+						$this->color_picker( esc_attr__( 'Background', 'sportspress' ), 'sportspress_frontend_css_background', $colors['background'] );
+						$this->color_picker( esc_attr__( 'Text', 'sportspress' ), 'sportspress_frontend_css_text', $colors['text'] );
+						$this->color_picker( esc_attr__( 'Heading', 'sportspress' ), 'sportspress_frontend_css_heading', $colors['heading'] );
+						$this->color_picker( esc_attr__( 'Link', 'sportspress' ), 'sportspress_frontend_css_link', $colors['link'] );
 
 						if ( ( $styles = SP_Frontend_Scripts::get_styles() ) && array_key_exists( 'sportspress-general', $styles ) ) :
 							?>

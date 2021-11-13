@@ -88,7 +88,7 @@ if ( ! class_exists( 'SportsPress_WordPay' ) ) :
 			$plans = get_posts( $args );
 
 			if ( empty( $plans ) ) {
-				return '<p>' . __( 'There are no plans associated with the Team Manager role.', 'sportspress' ) . '<p>';
+				return '<p>' . esc_attr__( 'There are no plans associated with the Team Manager role.', 'sportspress' ) . '<p>';
 			}
 
 			return self::register_form( $atts, 'team', $plans );
@@ -114,7 +114,7 @@ if ( ! class_exists( 'SportsPress_WordPay' ) ) :
 			$plans = get_posts( $args );
 
 			if ( empty( $plans ) ) {
-				return '<p>' . __( 'There are no plans associated with the Player role.', 'sportspress' ) . '<p>';
+				return '<p>' . esc_attr__( 'There are no plans associated with the Player role.', 'sportspress' ) . '<p>';
 			}
 
 			return self::register_form( $atts, 'player', $plans );
@@ -155,7 +155,7 @@ if ( ! class_exists( 'SportsPress_WordPay' ) ) :
 			if ( 'team' == $atts['context'] ) {
 				?>
 			<li class="wpay-field">
-			<label for="wpay_team_name"><?php _e( 'Team Name', 'sportspress' ); ?></label>
+			<label for="wpay_team_name"><?php esc_attr_e( 'Team Name', 'sportspress' ); ?></label>
 			<input id="wpay_team_name" name="team_name" type="text" value="">
 			</li>
 				<?php
@@ -163,13 +163,13 @@ if ( ! class_exists( 'SportsPress_WordPay' ) ) :
 			} elseif ( 'player' == $atts['context'] ) {
 				?>
 			<li class="wpay-field">
-				<label for="sp_team"><?php _e( 'Team', 'sportspress' ); ?></label>
+				<label for="sp_team"><?php esc_attr_e( 'Team', 'sportspress' ); ?></label>
 				<?php
 				$args = array(
 					'post_type'        => 'sp_team',
 					'name'             => 'sp_team',
 					'values'           => 'ID',
-					'show_option_none' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Team', 'sportspress' ) ),
+					'show_option_none' => sprintf( esc_attr__( 'Select %s', 'sportspress' ), esc_attr__( 'Team', 'sportspress' ) ),
 					'class'            => 'widefat',
 				);
 				sp_dropdown_pages( $args );
@@ -193,8 +193,8 @@ if ( ! class_exists( 'SportsPress_WordPay' ) ) :
 		 * Add strings to editor.
 		 */
 		public static function editor_strings( $strings = array() ) {
-			$strings['register_team']   = __( 'Register Team', 'sportspress' );
-			$strings['register_player'] = __( 'Register Player', 'sportspress' );
+			$strings['register_team']   = esc_attr__( 'Register Team', 'sportspress' );
+			$strings['register_player'] = esc_attr__( 'Register Player', 'sportspress' );
 			return $strings;
 		}
 
@@ -203,16 +203,16 @@ if ( ! class_exists( 'SportsPress_WordPay' ) ) :
 		 */
 		public static function widget_form( $widget, $instance = array() ) {
 			$contexts = array(
-				''       => __( 'Members', 'sportspress' ),
-				'team'   => __( 'Teams', 'sportspress' ),
-				'player' => __( 'Players', 'sportspress' ),
+				''       => esc_attr__( 'Members', 'sportspress' ),
+				'team'   => esc_attr__( 'Teams', 'sportspress' ),
+				'player' => esc_attr__( 'Players', 'sportspress' ),
 			);
 			?>
 		<p>
-			<label for="<?php echo $widget->get_field_id( 'context' ); ?>"><?php _e( 'For:', 'sportspress' ); ?></label>
-				<select id="<?php echo $widget->get_field_id( 'context' ); ?>" name="<?php echo $widget->get_field_name( 'context' ); ?>">
+			<label for="<?php echo esc_attr( $widget->get_field_id( 'context' ) ); ?>"><?php esc_attr_e( 'For:', 'sportspress' ); ?></label>
+				<select id="<?php echo esc_attr( $widget->get_field_id( 'context' ) ); ?>" name="<?php echo esc_attr( $widget->get_field_name( 'context' ) ); ?>">
 					<?php foreach ( $contexts as $value => $label ) { ?>
-						<option value="<?php echo $value; ?>" <?php selected( $value, sp_array_value( $instance, 'context' ) ); ?>><?php echo $label; ?></option>
+						<option value="<?php echo esc_attr( $value ); ?>" <?php selected( $value, sp_array_value( $instance, 'context' ) ); ?>><?php echo wp_kses_post( $label ); ?></option>
 					<?php } ?>
 				</select>
 		</p>

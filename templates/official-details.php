@@ -47,7 +47,7 @@ if ( $show_number ) :
 endif;
 
 if ( $show_name ) :
-	$common[ __( 'Name', 'sportspress' ) ] = $official->post->post_title;
+	$common[ esc_attr__( 'Name', 'sportspress' ) ] = $official->post->post_title;
 endif;
 
 if ( $show_nationality ) :
@@ -58,7 +58,7 @@ if ( $show_nationality ) :
 			$country_name = sp_array_value( $countries, $nationality, null );
 			$values[]     = $country_name ? ( $show_nationality_flags ? sp_flags( $nationality ) : '' ) . $country_name : '&mdash;';
 		endforeach;
-		$common[ __( 'Nationality', 'sportspress' ) ] = implode( '<br>', $values );
+		$common[ esc_attr__( 'Nationality', 'sportspress' ) ] = implode( '<br>', $values );
 	endif;
 endif;
 
@@ -69,7 +69,7 @@ if ( $show_positions ) :
 		foreach ( $positions as $position ) :
 			$position_names[] = $position->name;
 		endforeach;
-		$common[ __( 'Position', 'sportspress' ) ] = implode( ', ', $position_names );
+		$common[ esc_attr__( 'Position', 'sportspress' ) ] = implode( ', ', $position_names );
 	endif;
 endif;
 
@@ -86,7 +86,7 @@ if ( $show_current_teams ) :
 			}
 			$teams[] = $team_name;
 		endforeach;
-		$data[ __( 'Current Team', 'sportspress' ) ] = implode( ', ', $teams );
+		$data[ esc_attr__( 'Current Team', 'sportspress' ) ] = implode( ', ', $teams );
 	endif;
 endif;
 
@@ -101,7 +101,7 @@ if ( $show_past_teams ) :
 			}
 			$teams[] = $team_name;
 		endforeach;
-		$data[ __( 'Past Teams', 'sportspress' ) ] = implode( ', ', $teams );
+		$data[ esc_attr__( 'Past Teams', 'sportspress' ) ] = implode( ', ', $teams );
 	endif;
 endif;
 
@@ -112,7 +112,7 @@ if ( $show_leagues ) :
 		foreach ( $leagues as $league ) {
 			$terms[] = $league->name;
 		}
-		$data[ __( 'Leagues', 'sportspress' ) ] = implode( ', ', $terms );
+		$data[ esc_attr__( 'Leagues', 'sportspress' ) ] = implode( ', ', $terms );
 	endif;
 endif;
 
@@ -123,7 +123,7 @@ if ( $show_seasons ) :
 		foreach ( $seasons as $season ) {
 			$terms[] = $season->name;
 		}
-		$data[ __( 'Seasons', 'sportspress' ) ] = implode( ', ', $terms );
+		$data[ esc_attr__( 'Seasons', 'sportspress' ) ] = implode( ', ', $terms );
 	endif;
 endif;
 
@@ -143,4 +143,4 @@ endforeach;
 
 $output .= '</dl></div></div>';
 
-echo $output;
+echo wp_kses_post( $output );

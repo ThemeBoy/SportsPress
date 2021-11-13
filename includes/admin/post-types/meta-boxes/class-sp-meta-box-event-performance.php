@@ -251,11 +251,11 @@ class SP_Meta_Box_Event_Performance {
 					// Determine order of sections
 					if ( 1 == $sections ) {
 						$section_order = array(
-							1 => __( 'Defense', 'sportspress' ),
-							0 => __( 'Offense', 'sportspress' ),
+							1 => esc_attr__( 'Defense', 'sportspress' ),
+							0 => esc_attr__( 'Offense', 'sportspress' ),
 						);
 					} else {
-						$section_order = array( __( 'Offense', 'sportspress' ), __( 'Defense', 'sportspress' ) );
+						$section_order = array( esc_attr__( 'Offense', 'sportspress' ), esc_attr__( 'Defense', 'sportspress' ) );
 					}
 
 					foreach ( $section_order as $section_id => $section_label ) {
@@ -563,11 +563,11 @@ endforeach;
 						$times = false;
 					}
 					?>
-					<?php echo self::status_select( $team_id, $player_id, sp_array_value( $player_performance, 'status', null ) ); ?><br>
-					<?php echo self::sub_select( $team_id, $player_id, sp_array_value( $player_performance, 'sub', null ), $data ); ?><br>
+					<?php echo wp_kses( self::status_select( $team_id, $player_id, sp_array_value( $player_performance, 'status', null ) ), array( 'select' => array( 'class' => array(), 'name' => array() ), 'option' => array( 'value' => array() ) ) ); ?><br>
+					<?php echo wp_kses( self::sub_select( $team_id, $player_id, sp_array_value( $player_performance, 'sub', null ), $data ), array( 'select' => array( 'class' => array(), 'name' => array() ), 'option' => array( 'value' => array() ) ) ); ?><br>
 					<?php if ( is_array( $times ) ) { ?>
 						<input class="sp-sync-input small-text" type="text" name="sp_timeline[<?php echo esc_attr( $team_id ); ?>][<?php echo esc_attr( $player_id ); ?>][sub][]" value="<?php echo esc_attr( sp_array_value( $times, 0, '' ) ); ?>" placeholder="-" />
-						<span class="description"><?php _e( 'mins', 'sportspress' ); ?></span>
+						<span class="description"><?php esc_attr_e( 'mins', 'sportspress' ); ?></span>
 					<?php } ?>
 				</td>
 			<?php } ?>
@@ -576,10 +576,10 @@ endforeach;
 					<?php
 					switch ( $stars_type ) {
 						case 1:
-							echo '<input type="checkbox" name="sp_stars[' . $player_id . ']" value="1" ' . checked( sp_array_value( $stars, $player_id, '' ) == '', false, false ) . '>';
+							echo '<input type="checkbox" name="sp_stars[' . esc_attr( $player_id ) . ']" value="1" ' . checked( sp_array_value( $stars, $player_id, '' ) == '', false, false ) . '>';
 							break;
 						default:
-							echo '<input type="text" name="sp_stars[' . $player_id . ']" class="tiny-text sp-player-stars-input sp-sync-input" value="' . sp_array_value( $stars, $player_id, '' ) . '">';
+							echo '<input type="text" name="sp_stars[' . esc_attr( $player_id ) . ']" class="tiny-text sp-player-stars-input sp-sync-input" value="' . esc_attr( sp_array_value( $stars, $player_id, '' ) ) . '">';
 					}
 					?>
 				</td>
@@ -600,8 +600,8 @@ endforeach;
 		$options = apply_filters(
 			'sportspress_event_performance_status_options',
 			array(
-				'lineup' => __( 'Starting Lineup', 'sportspress' ),
-				'sub'    => __( 'Substitute', 'sportspress' ),
+				'lineup' => esc_attr__( 'Starting Lineup', 'sportspress' ),
+				'sub'    => esc_attr__( 'Substitute', 'sportspress' ),
 			)
 		);
 
@@ -628,7 +628,7 @@ endforeach;
 
 		$output = '<select class="sp-sync-select" name="sp_players[' . $team_id . '][' . $player_id . '][sub]" style="display: none;">';
 
-		$output .= '<option value="0">' . __( 'None', 'sportspress' ) . '</option>';
+		$output .= '<option value="0">' . esc_attr__( 'None', 'sportspress' ) . '</option>';
 
 		// Add players as selectable options
 		foreach ( $data as $id => $performance ) :

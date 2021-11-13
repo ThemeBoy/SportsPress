@@ -26,17 +26,17 @@ if ( ! class_exists( 'SP_Admin_Permalink_Settings' ) ) :
 			$this->slugs = apply_filters(
 				'sportspress_permalink_slugs',
 				array(
-					array( 'event', __( 'Events', 'sportspress' ) ),
-					array( 'venue', __( 'Venues', 'sportspress' ) ),
-					array( 'calendar', __( 'Calendars', 'sportspress' ) ),
-					array( 'team', __( 'Teams', 'sportspress' ) ),
-					array( 'league', __( 'Leagues', 'sportspress' ) ),
-					array( 'season', __( 'Seasons', 'sportspress' ) ),
-					array( 'table', __( 'League Tables', 'sportspress' ) ),
-					array( 'player', __( 'Players', 'sportspress' ) ),
-					array( 'position', __( 'Positions', 'sportspress' ) ),
-					array( 'list', __( 'Player Lists', 'sportspress' ) ),
-					array( 'staff', __( 'Staff', 'sportspress' ) ),
+					array( 'event', esc_attr__( 'Events', 'sportspress' ) ),
+					array( 'venue', esc_attr__( 'Venues', 'sportspress' ) ),
+					array( 'calendar', esc_attr__( 'Calendars', 'sportspress' ) ),
+					array( 'team', esc_attr__( 'Teams', 'sportspress' ) ),
+					array( 'league', esc_attr__( 'Leagues', 'sportspress' ) ),
+					array( 'season', esc_attr__( 'Seasons', 'sportspress' ) ),
+					array( 'table', esc_attr__( 'League Tables', 'sportspress' ) ),
+					array( 'player', esc_attr__( 'Players', 'sportspress' ) ),
+					array( 'position', esc_attr__( 'Positions', 'sportspress' ) ),
+					array( 'list', esc_attr__( 'Player Lists', 'sportspress' ) ),
+					array( 'staff', esc_attr__( 'Staff', 'sportspress' ) ),
 				)
 			);
 
@@ -49,7 +49,7 @@ if ( ! class_exists( 'SP_Admin_Permalink_Settings' ) ) :
 		 */
 		public function settings_init() {
 			// Add a section to the permalinks page
-			add_settings_section( 'sportspress-permalink', __( 'SportsPress', 'sportspress' ), array( $this, 'settings' ), 'permalink' );
+			add_settings_section( 'sportspress-permalink', esc_attr__( 'SportsPress', 'sportspress' ), array( $this, 'settings' ), 'permalink' );
 
 			// Add our settings
 			foreach ( $this->slugs as $slug ) :
@@ -78,7 +78,7 @@ if ( ! class_exists( 'SP_Admin_Permalink_Settings' ) ) :
 		 * Show the settings
 		 */
 		public function settings() {
-			echo wp_kses_post( wpautop( __( 'These settings control the permalinks used for SportsPress. These settings only apply when <strong>not using "default" permalinks above</strong>.', 'sportspress' ) ) );
+			echo wp_kses_post( wpautop( esc_attr__( 'These settings control the permalinks used for SportsPress. These settings only apply when <strong>not using "default" permalinks above</strong>.', 'sportspress' ) ) );
 		}
 
 		/**

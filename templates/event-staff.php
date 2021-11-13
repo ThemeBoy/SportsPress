@@ -45,9 +45,9 @@ extract( $defaults, EXTR_SKIP );
 		$roles = $staff->roles();
 		if ( ! empty( $roles ) ) :
 			$roles = wp_list_pluck( $roles, 'name' );
-			echo implode( '<span class="sp-staff-role-delimiter">/</span>', $roles );
+			echo wp_kses_post( implode( '<span class="sp-staff-role-delimiter">/</span>', $roles ) );
 		else :
-			_e( 'Staff', 'sportspress' );
+			esc_attr_e( 'Staff', 'sportspress' );
 		endif;
 
 		echo ': ';
@@ -57,7 +57,7 @@ extract( $defaults, EXTR_SKIP );
 			$name      = '<a href="' . $permalink . '">' . $name . '</a>';
 		endif;
 
-		echo $name . '<br>';
+		echo wp_kses_post( $name ) . '<br>';
 
 	endforeach;
 	?>

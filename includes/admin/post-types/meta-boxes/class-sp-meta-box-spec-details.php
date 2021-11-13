@@ -31,26 +31,26 @@ class SP_Meta_Box_Spec_Details extends SP_Meta_Box_Config {
 			$visible = 1;
 		}
 		?>
-		<p><strong><?php _e( 'Variable', 'sportspress' ); ?></strong></p>
+		<p><strong><?php esc_attr_e( 'Variable', 'sportspress' ); ?></strong></p>
 		<p>
 			<input name="sp_default_key" type="hidden" id="sp_default_key" value="<?php echo esc_attr( $post->post_name ); ?>">
 			<input name="sp_key" type="text" id="sp_key" value="<?php echo esc_attr( $post->post_name ); ?>">
 		</p>
 		<p>
-			<strong><?php _e( 'Visible', 'sportspress' ); ?></strong>
-			<i class="dashicons dashicons-editor-help sp-desc-tip" title="<?php _e( 'Display in event pages?', 'sportspress' ); ?>"></i>
+			<strong><?php esc_attr_e( 'Visible', 'sportspress' ); ?></strong>
+			<i class="dashicons dashicons-editor-help sp-desc-tip" title="<?php esc_attr_e( 'Display in event pages?', 'sportspress' ); ?>"></i>
 		</p>
 		<ul class="sp-visible-selector">
 			<li>
 				<label class="selectit">
 					<input name="sp_visible" id="sp_visible_yes" type="radio" value="1" <?php checked( $visible ); ?>>
-					<?php _e( 'Yes', 'sportspress' ); ?>
+					<?php esc_attr_e( 'Yes', 'sportspress' ); ?>
 				</label>
 			</li>
 			<li>
 				<label class="selectit">
 					<input name="sp_visible" id="sp_visible_no" type="radio" value="0" <?php checked( ! $visible ); ?>>
-					<?php _e( 'No', 'sportspress' ); ?>
+					<?php esc_attr_e( 'No', 'sportspress' ); ?>
 				</label>
 			</li>
 		</ul>

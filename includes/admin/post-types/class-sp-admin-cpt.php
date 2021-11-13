@@ -42,8 +42,8 @@ if ( ! class_exists( 'SP_Admin_CPT' ) ) :
 			if ( $post_type == $this->type ) {
 				$obj = get_post_type_object( $this->type );
 
-				$strings['insertIntoPost']     = sprintf( __( 'Insert into %s', 'sportspress' ), $obj->labels->singular_name );
-				$strings['uploadedToThisPost'] = sprintf( __( 'Uploaded to this %s', 'sportspress' ), $obj->labels->singular_name );
+				$strings['insertIntoPost']     = sprintf( esc_attr__( 'Insert into %s', 'sportspress' ), $obj->labels->singular_name );
+				$strings['uploadedToThisPost'] = sprintf( esc_attr__( 'Uploaded to this %s', 'sportspress' ), $obj->labels->singular_name );
 			}
 
 			return $strings;

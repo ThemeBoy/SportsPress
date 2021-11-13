@@ -69,7 +69,7 @@ if ( ! class_exists( 'SportsPress_Gutenberg' ) ) :
 				array(
 					array(
 						'slug'  => 'sportspress',
-						'title' => __( 'SportsPress', 'sportspress' ),
+						'title' => esc_attr__( 'SportsPress', 'sportspress' ),
 					),
 				)
 			);
@@ -84,11 +84,11 @@ if ( ! class_exists( 'SportsPress_Gutenberg' ) ) :
 			$strings = apply_filters(
 				'sportspress_localized_strings',
 				array(
-					'event_calendar'  => __( 'Event Calendar', 'sportspress' ),
-					'properties'      => __( 'Properties', 'sportspress' ),
-					'title'           => __( 'Title', 'sportspress' ),
-					'select_calendar' => sprintf( __( 'Select %s:', 'sportspress' ), __( 'Calendar', 'sportspress' ) ),
-					'all'             => __( 'All', 'sportspress' ),
+					'event_calendar'  => esc_attr__( 'Event Calendar', 'sportspress' ),
+					'properties'      => esc_attr__( 'Properties', 'sportspress' ),
+					'title'           => esc_attr__( 'Title', 'sportspress' ),
+					'select_calendar' => sprintf( esc_attr__( 'Select %s:', 'sportspress' ), esc_attr__( 'Calendar', 'sportspress' ) ),
+					'all'             => esc_attr__( 'All', 'sportspress' ),
 				)
 			);
 

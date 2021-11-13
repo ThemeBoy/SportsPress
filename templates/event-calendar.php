@@ -279,7 +279,7 @@ for ( $day = 1; $day <= $daysinmonth; ++$day ) {
 	$calendar_output .= '<td' . $td_properties . '>';
 
 	if ( $day_has_posts ) { // any posts today?
-		$calendar_output .= '<a data-tooltip data-options="disable_for_touch:true" class="has-tip" href="' . ( sizeof( $daywithpost[ $day ] ) > 1 ? add_query_arg( array( 'post_type' => 'sp_event' ), get_day_link( $thisyear, $thismonth, $day ) ) . '" title="' . sprintf( __( '%s events', 'sportspress' ), ( sizeof( $daywithpost[ $day ] ) ) ) : get_post_permalink( $daywithpost[ $day ][0], false, true ) . '" title="' . esc_attr( $ak_titles_for_day[ $day ] ) ) . "\" itemprop=\"url\">$day</a>";
+		$calendar_output .= '<a data-tooltip data-options="disable_for_touch:true" class="has-tip" href="' . ( sizeof( $daywithpost[ $day ] ) > 1 ? add_query_arg( array( 'post_type' => 'sp_event' ), get_day_link( $thisyear, $thismonth, $day ) ) . '" title="' . sprintf( esc_attr__( '%s events', 'sportspress' ), ( sizeof( $daywithpost[ $day ] ) ) ) : get_post_permalink( $daywithpost[ $day ][0], false, true ) . '" title="' . esc_attr( $ak_titles_for_day[ $day ] ) ) . "\" itemprop=\"url\">$day</a>";
 	} else {
 		$calendar_output .= $day;
 	}
@@ -298,9 +298,9 @@ if ( $pad != 0 && $pad != 7 ) {
 $calendar_output .= "\n\t</tr>\n\t</tbody>\n\t</table>\n\t</div>";
 
 if ( $id && $show_all_events_link ) {
-	$calendar_output .= '<div class="sp-calendar-link sp-view-all-link"><a href="' . get_permalink( $id ) . '">' . __( 'View all events', 'sportspress' ) . '</a></div>';
+	$calendar_output .= '<div class="sp-calendar-link sp-view-all-link"><a href="' . get_permalink( $id ) . '">' . esc_attr__( 'View all events', 'sportspress' ) . '</a></div>';
 }
 ?>
 <div class="sp-template sp-template-event-calendar">
-	<?php echo $calendar_output; ?>
+	<?php echo wp_kses_post( $calendar_output ); ?>
 </div>

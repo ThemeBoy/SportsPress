@@ -57,7 +57,7 @@ if ( $player ) {
 
 $args = array(
 	'id'                   => $id,
-	'title'                => __( 'Fixtures', 'sportspress' ),
+	'title'                => esc_attr__( 'Fixtures', 'sportspress' ),
 	'status'               => 'future',
 	'date'                 => $date,
 	'date_from'            => $date_from,
@@ -86,7 +86,7 @@ ob_start();
 sp_get_template( 'event-blocks.php', $args );
 $fixtures = ob_get_clean();
 
-$args['title']  = __( 'Results', 'sportspress' );
+$args['title']  = esc_attr__( 'Results', 'sportspress' );
 $args['status'] = 'publish';
 $args['order']  = 'DESC';
 
@@ -96,17 +96,17 @@ $results = ob_get_clean();
 
 if ( false == $fixtures || false == $results ) {
 
-	echo $fixtures;
-	echo $results;
+	echo wp_kses_post( $fixtures );
+	echo wp_kses_post( $results );
 
 } else {
 
 	echo '<div class="sp-widget-align-left">';
-	echo $fixtures;
+	echo wp_kses_post( $fixtures );
 	echo '</div>';
 
 	echo '<div class="sp-widget-align-right">';
-	echo $results;
+	echo wp_kses_post( $results );
 	echo '</div>';
 }
 

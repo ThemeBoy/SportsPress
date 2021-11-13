@@ -188,7 +188,7 @@ if ( ! class_exists( 'SportsPress_Icons' ) ) :
 				$icons .= '<label class="button"><input name="sp_icon" type="radio" value="' . $icon . '" ' . checked( $selected, $icon, false ) . '></input><i class="sp-icon-' . $icon . '"></i></label>';
 			}
 
-			$icons .= '<label class="button"><input name="sp_icon" type="radio" value="" ' . checked( $selected, null, false ) . '></input>' . __( 'Image', 'sportspress' ) . '</label>';
+			$icons .= '<label class="button"><input name="sp_icon" type="radio" value="" ' . checked( $selected, null, false ) . '></input>' . esc_attr__( 'Image', 'sportspress' ) . '</label>';
 
 			// Get color value
 			$value = get_post_meta( $id, 'sp_color', true );
@@ -198,9 +198,9 @@ if ( ! class_exists( 'SportsPress_Icons' ) ) :
 
 			$color = '<div class="sp-color-box-for-icon"><input name="sp_color" id="sp_color" type="text" value="' . esc_attr( $value ) . '" size="7" class="colorpick" /> <div id="colorPickerDiv" class="colorpickdiv"></div></div>';
 
-			$content = '<p><strong>' . __( 'Select Icon', 'sportspress' ) . '</strong></p>
+			$content = '<p><strong>' . esc_attr__( 'Select Icon', 'sportspress' ) . '</strong></p>
 			<p class="sp-icons">' . $icons . '</p>
-			<div class="sp-para sp-custom-colors' . ( null == $selected ? ' hidden' : '' ) . '"><label data-sp-colors="' . $value . '"><strong>' . __( 'Customize', 'sportspress' ) . '</strong><br></label>' . $color . '</div>
+			<div class="sp-para sp-custom-colors' . ( null == $selected ? ' hidden' : '' ) . '"><label data-sp-colors="' . $value . '"><strong>' . esc_attr__( 'Customize', 'sportspress' ) . '</strong><br></label>' . $color . '</div>
 			<div class="sp-custom-thumbnail' . ( null == $selected ? '' : ' hidden' ) . '">' . $content . '</div>';
 			return $content;
 		}

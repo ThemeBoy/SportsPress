@@ -73,7 +73,7 @@ function sp_get_template( $template_name, $args = array(), $template_path = '', 
 	$located = sp_locate_template( $template_name, $template_path, $default_path );
 
 	if ( ! file_exists( $located ) ) {
-		_doing_it_wrong( __FUNCTION__, sprintf( '<code>%s</code> does not exist.', $located ), '0.7' );
+		_doing_it_wrong( __FUNCTION__, sprintf( '<code>%s</code> does not exist.', esc_html( $located ) ), '0.7' );
 		return;
 	}
 
@@ -511,7 +511,7 @@ if ( ! function_exists( 'sp_get_url' ) ) {
 		if ( ! $url ) {
 			return;
 		}
-		return ' <a class="sp-link" href="' . $url . '" target="_blank" title="' . __( 'Visit Site', 'sportspress' ) . '">' . $url . '</a>';
+		return ' <a class="sp-link" href="' . $url . '" target="_blank" title="' . esc_attr__( 'Visit Site', 'sportspress' ) . '">' . $url . '</a>';
 	}
 }
 
@@ -531,14 +531,14 @@ if ( ! function_exists( 'sp_get_post_condition' ) ) {
 		$condition   = get_post_meta( $post_id, 'sp_condition', true );
 		$main_result = get_option( 'sportspress_primary_result', null );
 		$result      = get_page_by_path( $main_result, ARRAY_A, 'sp_result' );
-		$label       = sp_array_value( $result, 'post_title', __( 'Primary', 'sportspress' ) );
+		$label       = sp_array_value( $result, 'post_title', esc_attr__( 'Primary', 'sportspress' ) );
 		if ( $condition ) :
 			$conditions = array(
 				'0'    => '&mdash;',
-				'>'    => sprintf( __( 'Most %s', 'sportspress' ), $label ),
-				'<'    => sprintf( __( 'Least %s', 'sportspress' ), $label ),
-				'='    => sprintf( __( 'Equal %s', 'sportspress' ), $label ),
-				'else' => sprintf( __( 'Default', 'sportspress' ), $label ),
+				'>'    => sprintf( esc_attr__( 'Most %s', 'sportspress' ), $label ),
+				'<'    => sprintf( esc_attr__( 'Least %s', 'sportspress' ), $label ),
+				'='    => sprintf( esc_attr__( 'Equal %s', 'sportspress' ), $label ),
+				'else' => sprintf( esc_attr__( 'Default', 'sportspress' ), $label ),
 			);
 			return sp_array_value( $conditions, $condition, '&mdash;' );
 		else :
@@ -564,11 +564,11 @@ if ( ! function_exists( 'sp_get_post_calculate' ) ) {
 		if ( $calculate ) :
 			return str_replace(
 				array( 'total', 'average' ),
-				array( __( 'Total', 'sportspress' ), __( 'Average', 'sportspress' ) ),
+				array( esc_attr__( 'Total', 'sportspress' ), esc_attr__( 'Average', 'sportspress' ) ),
 				$calculate
 			);
 		else :
-			return __( 'Total', 'sportspress' );
+			return esc_attr__( 'Total', 'sportspress' );
 		endif;
 	}
 }
@@ -611,17 +611,17 @@ if ( ! function_exists( 'sp_get_post_section' ) ) {
 			$options = apply_filters(
 				'sportspress_performance_sections',
 				array(
-					-1 => __( 'All', 'sportspress' ),
-					0  => __( 'Offense', 'sportspress' ),
-					1  => __(
+					-1 => esc_attr__( 'All', 'sportspress' ),
+					0  => esc_attr__( 'Offense', 'sportspress' ),
+					1  => esc_attr__(
 						'Defense',
 						'sportspress'
 					),
 				)
 			);
-			return sp_array_value( $options, $section, __( 'All', 'sportspress' ) );
+			return sp_array_value( $options, $section, esc_attr__( 'All', 'sportspress' ) );
 		else :
-			return __( 'All', 'sportspress' );
+			return esc_attr__( 'All', 'sportspress' );
 		endif;
 	}
 }
@@ -633,19 +633,19 @@ if ( ! function_exists( 'sp_get_post_format' ) ) {
 			$options = apply_filters(
 				'sportspress_performance_formats',
 				array(
-					'number'   => __( 'Number', 'sportspress' ),
-					'time'     => __( 'Time', 'sportspress' ),
-					'text'     => __( 'Text', 'sportspress' ),
-					'equation' => __( 'Equation', 'sportspress' ),
-					'checkbox' => __(
+					'number'   => esc_attr__( 'Number', 'sportspress' ),
+					'time'     => esc_attr__( 'Time', 'sportspress' ),
+					'text'     => esc_attr__( 'Text', 'sportspress' ),
+					'equation' => esc_attr__( 'Equation', 'sportspress' ),
+					'checkbox' => esc_attr__(
 						'Checkbox',
 						'sportspress'
 					),
 				)
 			);
-			return sp_array_value( $options, $format, __( 'Number', 'sportspress' ) );
+			return sp_array_value( $options, $format, esc_attr__( 'Number', 'sportspress' ) );
 		else :
-			return __( 'Number', 'sportspress' );
+			return esc_attr__( 'Number', 'sportspress' );
 		endif;
 	}
 }
@@ -674,8 +674,8 @@ if ( ! function_exists( 'sp_get_term_sections' ) ) {
 			$sections = apply_filters(
 				'sportspress_performance_sections',
 				array(
-					0 => __( 'Offense', 'sportspress' ),
-					1 => __(
+					0 => esc_attr__( 'Offense', 'sportspress' ),
+					1 => esc_attr__(
 						'Defense',
 						'sportspress'
 					),
@@ -766,23 +766,23 @@ if ( ! function_exists( 'sp_dropdown_statuses' ) ) {
 		);
 		$args     = array_merge( $defaults, $args );
 
-		printf( '<select name="%s" class="postform %s">', $args['name'], $args['class'] );
+		printf( '<select name="%s" class="postform %s">', esc_attr( $args['name'] ), esc_attr( $args['class'] ) );
 
 		if ( $args['show_option_default'] ) :
-			printf( '<option value="default">%s</option>', $args['show_option_default'] );
+			printf( '<option value="default">%s</option>', esc_attr( $args['show_option_default'] ) );
 		endif;
 
 		$statuses = apply_filters(
 			'sportspress_statuses',
 			array(
-				'any'     => __( 'All', 'sportspress' ),
-				'publish' => __( 'Published', 'sportspress' ),
-				'future'  => __( 'Scheduled', 'sportspress' ),
+				'any'     => esc_attr__( 'All', 'sportspress' ),
+				'publish' => esc_attr__( 'Published', 'sportspress' ),
+				'future'  => esc_attr__( 'Scheduled', 'sportspress' ),
 			)
 		);
 
 		foreach ( $statuses as $value => $label ) :
-			printf( '<option value="%s" %s>%s</option>', $value, selected( $value, $args['selected'], false ), $label );
+			printf( '<option value="%s" %s>%s</option>', esc_attr( $value ), selected( $value, $args['selected'], false ), esc_attr( $label ) );
 		endforeach;
 		print( '</select>' );
 		return true;
@@ -800,28 +800,28 @@ if ( ! function_exists( 'sp_dropdown_dates' ) ) {
 		);
 		$args     = array_merge( $defaults, $args );
 
-		printf( '<select name="%s" class="postform %s">', $args['name'], $args['class'] );
+		printf( '<select name="%s" class="postform %s">', esc_attr( $args['name'] ), esc_attr( $args['class'] ) );
 
 		if ( $args['show_option_default'] ) :
-			printf( '<option value="default">%s</option>', $args['show_option_default'] );
+			printf( '<option value="default">%s</option>', esc_attr( $args['show_option_default'] ) );
 		endif;
 
 		$dates = apply_filters(
 			'sportspress_dates',
 			array(
-				0       => __( 'All', 'sportspress' ),
-				'-day'  => __( 'Yesterday', 'sportspress' ),
-				'day'   => __( 'Today', 'sportspress' ),
-				'+day'  => __( 'Tomorrow', 'sportspress' ),
-				'-w'    => __( 'Last week', 'sportspress' ),
-				'w'     => __( 'This week', 'sportspress' ),
-				'+w'    => __( 'Next week', 'sportspress' ),
-				'range' => __( 'Date range:', 'sportspress' ),
+				0       => esc_attr__( 'All', 'sportspress' ),
+				'-day'  => esc_attr__( 'Yesterday', 'sportspress' ),
+				'day'   => esc_attr__( 'Today', 'sportspress' ),
+				'+day'  => esc_attr__( 'Tomorrow', 'sportspress' ),
+				'-w'    => esc_attr__( 'Last week', 'sportspress' ),
+				'w'     => esc_attr__( 'This week', 'sportspress' ),
+				'+w'    => esc_attr__( 'Next week', 'sportspress' ),
+				'range' => esc_attr__( 'Date range:', 'sportspress' ),
 			)
 		);
 
 		foreach ( $dates as $value => $label ) :
-			printf( '<option value="%s" %s>%s</option>', $value, selected( $value, $args['selected'], false ), $label );
+			printf( '<option value="%s" %s>%s</option>', esc_attr( $value ), selected( $value, $args['selected'], false ), esc_attr( $label ) );
 		endforeach;
 		print( '</select>' );
 		return true;
@@ -876,20 +876,20 @@ if ( ! function_exists( 'sp_dropdown_taxonomies' ) ) {
 
 		$terms = get_terms( $args['taxonomy'], $args );
 
-		printf( '<input type="hidden" name="tax_input[%s][]" value="0">', $args['taxonomy'] );
+		printf( '<input type="hidden" name="tax_input[%s][]" value="0">', esc_attr( $args['taxonomy'] ) );
 
 		if ( $terms ) :
-			printf( '<select name="%s" class="postform %s" %s>', $name, $class . ( $chosen ? ' chosen-select' . ( is_rtl() ? ' chosen-rtl' : '' ) : '' ), ( $placeholder != null ? 'data-placeholder="' . $placeholder . '" ' : '' ) . $property );
+			printf( '<select name="%s" class="postform %s" %s>', esc_attr( $name ), esc_attr( $class ) . ( $chosen ? ' chosen-select' . ( is_rtl() ? ' chosen-rtl' : '' ) : '' ), ( $placeholder != null ? 'data-placeholder="' . esc_attr( $placeholder ) . '" ' : '' ) . esc_attr( $property ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 			if ( strpos( $property, 'multiple' ) === false ) :
 				if ( $args['show_option_blank'] ) :
-					echo '<option value="">' . ( is_bool( $args['show_option_blank'] ) ? '' : $args['show_option_blank'] ) . '</option>';
+					echo '<option value="">' . ( is_bool( $args['show_option_blank'] ) ? '' : esc_attr( $args['show_option_blank'] ) ) . '</option>';
 				endif;
 				if ( $args['show_option_all'] ) :
-					printf( '<option value="0" ' . selected( '0', $selected, false ) . '>%s</option>', $args['show_option_all'] );
+					printf( '<option value="0" ' . selected( '0', $selected, false ) . '>%s</option>', esc_attr( $args['show_option_all'] ) );
 				endif;
 				if ( $args['show_option_none'] ) :
-					printf( '<option value="-1" ' . selected( '-1', $selected, false ) . '>%s</option>', $args['show_option_none'] );
+					printf( '<option value="-1" ' . selected( '-1', $selected, false ) . '>%s</option>', esc_attr( $args['show_option_none'] ) );
 				endif;
 			endif;
 
@@ -899,7 +899,7 @@ if ( ! function_exists( 'sp_dropdown_taxonomies' ) ) {
 				else :
 					$selected_prop = selected( 'auto', $selected, false );
 				endif;
-				printf( '<option value="auto" ' . $selected_prop . '>%s</option>', $args['show_option_auto'] . ' ' . __( '(Auto)', 'sportspress' ) );
+				printf( '<option value="auto" ' . esc_attr( $selected_prop ) . '>%s</option>', esc_attr( $args['show_option_auto'] ) . ' ' . esc_attr__( '(Auto)', 'sportspress' ) );
 			endif;
 
 			foreach ( $terms as $term ) :
@@ -916,7 +916,7 @@ if ( ! function_exists( 'sp_dropdown_taxonomies' ) ) {
 					$selected_prop = selected( $this_value, $selected, false );
 				endif;
 
-				printf( '<option value="%s" %s>%s</option>', $this_value, $selected_prop, $term->name );
+				printf( '<option value="%s" %s>%s</option>', esc_attr( $this_value ), esc_attr( $selected_prop ), esc_attr( $term->name ) );
 
 				if ( $args['include_children'] ) :
 					$term_children = get_term_children( $term->term_id, $args['taxonomy'] );
@@ -936,7 +936,7 @@ if ( ! function_exists( 'sp_dropdown_taxonomies' ) ) {
 							$selected_prop = selected( $this_value, $selected, false );
 						endif;
 
-						printf( '<option value="%s" %s>%s</option>', $this_value, $selected_prop, '— ' . $term_child->name );
+						printf( '<option value="%s" %s>%s</option>', esc_attr( $this_value ), esc_attr( $selected_prop ), '— ' . esc_attr( $term_child->name ) );
 					endforeach;
 				endif;
 			endforeach;
@@ -1014,21 +1014,21 @@ if ( ! function_exists( 'sp_dropdown_pages' ) ) {
 
 		$posts = get_posts( $args );
 		if ( $posts || $args['prepend_options'] || $args['append_options'] ) :
-			printf( '<select name="%s" id="%s" class="postform %s" %s>', $name, $id, $class . ( $chosen ? ' chosen-select' . ( is_rtl() ? ' chosen-rtl' : '' ) : '' ), ( $placeholder != null ? 'data-placeholder="' . $placeholder . '" ' : '' ) . $property );
+			printf( '<select name="%s" id="%s" class="postform %s" %s>', esc_attr( $name ), esc_attr( $id ), esc_attr( $class ) . ( $chosen ? ' chosen-select' . ( is_rtl() ? ' chosen-rtl' : '' ) : '' ), ( $placeholder != null ? 'data-placeholder="' . esc_attr( $placeholder ) . '" ' : '' ) . esc_attr( $property ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 			if ( strpos( $property, 'multiple' ) === false ) :
 				if ( $args['show_option_blank'] ) :
 					printf( '<option value=""></option>' );
 				endif;
 				if ( $args['show_option_none'] ) :
-					printf( '<option value="%s" %s>%s</option>', $args['option_none_value'], selected( $selected, $args['option_none_value'], false ), ( $args['show_option_none'] === true ? '' : $args['show_option_none'] ) );
+					printf( '<option value="%s" %s>%s</option>', esc_attr( $args['option_none_value'] ), selected( $selected, esc_attr( $args['option_none_value'] ), false ), ( $args['show_option_none'] === true ? '' : esc_attr( $args['show_option_none'] ) ) );
 				endif;
 				if ( $args['show_option_all'] ) :
-					printf( '<option value="%s" %s>%s</option>', $args['option_all_value'], selected( $selected, $args['option_all_value'], false ), $args['show_option_all'] );
+					printf( '<option value="%s" %s>%s</option>', esc_attr( $args['option_all_value'] ), selected( $selected, esc_attr( $args['option_all_value'] ), false ), esc_attr( $args['show_option_all'] ) );
 				endif;
 				if ( $args['prepend_options'] && is_array( $args['prepend_options'] ) ) :
 					foreach ( $args['prepend_options'] as $slug => $label ) :
-						printf( '<option value="%s" %s>%s</option>', $slug, selected( $selected, $slug, false ), $label );
+						printf( '<option value="%s" %s>%s</option>', esc_attr( $slug ), selected( $selected, $slug, false ), esc_attr( $label ) );
 					endforeach;
 				endif;
 			endif;
@@ -1058,14 +1058,14 @@ if ( ! function_exists( 'sp_dropdown_pages' ) ) {
 					$class = '';
 				endif;
 
-				printf( '<option value="%s" class="%s" %s>%s</option>', $this_value, $class, $selected_prop, $post->post_title . ( $args['show_dates'] ? ' (' . $post->post_date . ')' : '' ) );
+				printf( '<option value="%s" class="%s" %s>%s</option>', esc_attr( $this_value ), esc_attr( $class ), esc_attr( $selected_prop ), esc_attr( $post->post_title ) . ( $args['show_dates'] ? ' (' . esc_attr( $post->post_date ) . ')' : '' ) );
 			endforeach;
 			wp_reset_postdata();
 
 			if ( strpos( $property, 'multiple' ) === false ) :
 				if ( $args['append_options'] && is_array( $args['append_options'] ) ) :
 					foreach ( $args['append_options'] as $slug => $label ) :
-						printf( '<option value="%s" %s>%s</option>', $slug, selected( $selected, $slug, false ), $label );
+						printf( '<option value="%s" %s>%s</option>', esc_attr( $slug ), selected( $selected, $slug, false ), esc_attr( $label ) );
 					endforeach;
 				endif;
 			endif;
@@ -1110,7 +1110,7 @@ if ( ! function_exists( 'sp_posts' ) ) {
 					continue;
 				}
 				if ( empty( $title ) ) {
-					$title = __( '(no title)', 'sportspress' );
+					$title = esc_attr__( '(no title)', 'sportspress' );
 				}
 				edit_post_link( $title, '', '', $id );
 				if ( ++$i !== $count ) {
@@ -1138,7 +1138,7 @@ if ( ! function_exists( 'sp_post_checklist' ) ) {
 															?>
 			[]" />
 			<ul class="categorychecklist form-no-clear">
-				<li class="sp-select-all-container"><label class="selectit"><input type="checkbox" class="sp-select-all"> <strong><?php _e( 'Select All', 'sportspress' ); ?></strong></label></li>
+				<li class="sp-select-all-container"><label class="selectit"><input type="checkbox" class="sp-select-all"> <strong><?php esc_attr_e( 'Select All', 'sportspress' ); ?></strong></label></li>
 				<?php
 				$selected = (array) get_post_meta( $post_id, $slug, false );
 				if ( ! sizeof( $selected ) ) {
@@ -1200,7 +1200,7 @@ if ( ! function_exists( 'sp_post_checklist' ) ) {
 						endif;
 					?>
 					">
-						<?php echo str_repeat( '<ul><li>', sizeof( $parents ) ); ?>
+						<?php echo wp_kses( str_repeat( '<ul><li>', sizeof( $parents ) ) ); ?>
 						<label class="selectit">
 							<input type="checkbox" value="<?php echo esc_attr( $post->ID ); ?>" name="<?php echo esc_attr( $slug ); ?>
 																	 <?php
@@ -1215,20 +1215,20 @@ if ( ! function_exists( 'sp_post_checklist' ) ) {
 >
 							<?php echo esc_html( sp_get_player_name_with_number( $post->ID ) ); ?>
 						</label>
-						<?php echo str_repeat( '</li></ul>', sizeof( $parents ) ); ?>
+						<?php echo wp_kses( str_repeat( '</li></ul>', sizeof( $parents ) ) ); ?>
 					</li>
 					<?php
 				endforeach;
 				?>
 				<li class="sp-not-found-container">
-					<?php _e( 'No results found.', 'sportspress' ); ?>
+					<?php esc_attr_e( 'No results found.', 'sportspress' ); ?>
 					<?php
 					if ( sizeof( $posts ) ) :
 						?>
-						<a class="sp-show-all" href="#show-all-<?php echo esc_attr( $slug ); ?>s"><?php _e( 'Show all', 'sportspress' ); ?></a><?php endif; ?>
+						<a class="sp-show-all" href="#show-all-<?php echo esc_attr( $slug ); ?>s"><?php esc_attr_e( 'Show all', 'sportspress' ); ?></a><?php endif; ?>
 				</li>
 				<?php if ( sizeof( $posts ) ) : ?>
-					<li class="sp-show-all-container"><a class="sp-show-all" href="#show-all-<?php echo esc_attr( $slug ); ?>s"><?php _e( 'Show all', 'sportspress' ); ?></a></li>
+					<li class="sp-show-all-container"><a class="sp-show-all" href="#show-all-<?php echo esc_attr( $slug ); ?>s"><?php esc_attr_e( 'Show all', 'sportspress' ); ?></a></li>
 				<?php endif; ?>
 			</ul>
 		</div>
@@ -1245,7 +1245,7 @@ if ( ! function_exists( 'sp_column_checklist' ) ) {
 		<div id="<?php echo esc_attr( $meta ); ?>-all" class="posttypediv tabs-panel wp-tab-panel sp-tab-panel sp-select-all-range" style="display: <?php echo esc_attr( $display ); ?>;">
 			<input type="hidden" value="0" name="sp_columns[]" />
 			<ul class="categorychecklist form-no-clear">
-				<li class="sp-select-all-container"><label class="selectit"><input type="checkbox" class="sp-select-all"> <strong><?php _e( 'Select All', 'sportspress' ); ?></strong></label></li>
+				<li class="sp-select-all-container"><label class="selectit"><input type="checkbox" class="sp-select-all"> <strong><?php esc_attr_e( 'Select All', 'sportspress' ); ?></strong></label></li>
 				<?php
 				$posts = get_pages(
 					array(
@@ -1300,7 +1300,7 @@ if ( ! function_exists( 'sp_column_checklist' ) ) {
 					endforeach;
 				else :
 					?>
-				<li class="sp-not-found-container"><?php _e( 'No results found.', 'sportspress' ); ?></li>
+				<li class="sp-not-found-container"><?php esc_attr_e( 'No results found.', 'sportspress' ); ?></li>
 				<?php endif; ?>
 			</ul>
 		</div>
@@ -1323,7 +1323,7 @@ if ( ! function_exists( 'sp_draft_or_post_title' ) ) {
 	function sp_draft_or_post_title( $post = 0 ) {
 		$title = get_the_title( $post );
 		if ( empty( $title ) ) {
-			$title = __( '(no title)', 'sportspress' );
+			$title = esc_attr__( '(no title)', 'sportspress' );
 		}
 		return $title;
 	}
@@ -1403,12 +1403,12 @@ if ( ! function_exists( 'sp_post_adder' ) ) {
 	function sp_post_adder( $post_type = 'post', $label = null, $attributes = array() ) {
 		$obj = get_post_type_object( $post_type );
 		if ( $label == null ) {
-			$label = __( 'Add New', 'sportspress' );
+			$label = esc_attr__( 'Add New', 'sportspress' );
 		}
 		?>
 		<div id="<?php echo esc_attr( $post_type ); ?>-adder">
 			<h4>
-				<a title="<?php echo esc_attr( $label ); ?>" href="<?php echo admin_url( add_query_arg( $attributes, 'post-new.php?post_type=' . $post_type ) ); ?>" target="_blank">
+				<a title="<?php echo esc_attr( $label ); ?>" href="<?php echo esc_url( admin_url( add_query_arg( $attributes, 'post-new.php?post_type=' . $post_type ) ) ); ?>" target="_blank">
 					+ <?php echo esc_html( $label ); ?>
 				</a>
 			</h4>
@@ -1421,12 +1421,12 @@ if ( ! function_exists( 'sp_taxonomy_adder' ) ) {
 	function sp_taxonomy_adder( $taxonomy = 'category', $post_type = null, $label = null ) {
 		$obj = get_taxonomy( $taxonomy );
 		if ( $label == null ) {
-			$label = __( 'Add New', 'sportspress' );
+			$label = esc_attr__( 'Add New', 'sportspress' );
 		}
 		?>
 		<div id="<?php echo esc_attr( $taxonomy ); ?>-adder">
 			<h4>
-				<a title="<?php echo esc_attr( $label ); ?>" href="<?php echo admin_url( 'edit-tags.php?taxonomy=' . $taxonomy . ( $post_type ? '&post_type=' . $post_type : '' ) ); ?>" target="_blank">
+				<a title="<?php echo esc_attr( $label ); ?>" href="<?php echo esc_url( admin_url( 'edit-tags.php?taxonomy=' . $taxonomy . ( $post_type ? '&post_type=' . $post_type : '' ) ) ); ?>" target="_blank">
 					+ <?php echo esc_html( $label ); ?>
 				</a>
 			</h4>
@@ -1706,8 +1706,8 @@ if ( ! function_exists( 'sp_taxonomy_field' ) ) {
 		if ( $obj ) {
 			$post_type = get_post_type( $post );
 			?>
-			<div class="<?php echo $post_type; ?>-<?php echo esc_attr( $taxonomy ); ?>-field">
-				<p><strong><?php echo $obj->labels->singular_name; ?></strong></p>
+			<div class="<?php echo esc_attr( $post_type ); ?>-<?php echo esc_attr( $taxonomy ); ?>-field">
+				<p><strong><?php echo esc_attr( $obj->labels->singular_name ); ?></strong></p>
 				<p>
 					<?php
 					$terms    = get_the_terms( $post->ID, $taxonomy );
@@ -1723,13 +1723,13 @@ if ( ! function_exists( 'sp_taxonomy_field' ) ) {
 					if ( in_array( $post_type, sp_secondary_post_types() ) ) {
 						switch ( $taxonomy ) {
 							case 'sp_league':
-								$auto = __( 'Main League', 'sportspress' );
+								$auto = esc_attr__( 'Main League', 'sportspress' );
 								if ( get_post_meta( $post->ID, 'sp_main_league', true ) ) {
 									$term_ids[] = 'auto';
 								}
 								break;
 							case 'sp_season':
-								$auto = __( 'Current Season', 'sportspress' );
+								$auto = esc_attr__( 'Current Season', 'sportspress' );
 								if ( get_post_meta( $post->ID, 'sp_current_season', true ) ) {
 									$term_ids[] = 'auto';
 								}
@@ -1745,7 +1745,7 @@ if ( ! function_exists( 'sp_taxonomy_field' ) ) {
 						'values'           => 'term_id',
 						'class'            => 'sp-has-dummy widefat' . ( $trigger ? ' sp-ajax-trigger' : '' ),
 						'chosen'           => true,
-						'placeholder'      => $placeholder ? $placeholder : __( 'All', 'sportspress' ),
+						'placeholder'      => $placeholder ? $placeholder : esc_attr__( 'All', 'sportspress' ),
 					);
 					if ( $multiple ) {
 						$args['property'] = 'multiple';
@@ -1837,7 +1837,7 @@ function sp_review_link() {
 	?>
 	<p>
 		<a href="https://wordpress.org/support/plugin/sportspress/reviews/?rate=5#new-post">
-			<?php _e( 'Love SportsPress? Help spread the word by rating us 5★ on WordPress.org', 'sportspress' ); ?>
+			<?php esc_attr_e( 'Love SportsPress? Help spread the word by rating us 5★ on WordPress.org', 'sportspress' ); ?>
 		</a>
 	</p>
 	<?php
@@ -1869,7 +1869,7 @@ function sp_get_shortcode_template( $shortcode, $id = null, $args = array() ) {
  * @return null
  */
 function sp_shortcode_template( $shortcode, $id = null, $args = array() ) {
-	echo sp_get_shortcode_template( $shortcode, $id, $args );
+	echo esc_attr( sp_get_shortcode_template( $shortcode, $id, $args ) );
 }
 
 if ( ! function_exists( 'array_replace' ) ) {
@@ -1888,7 +1888,7 @@ if ( ! function_exists( 'array_replace' ) ) {
 					$res[ $key ] = $val;
 				}
 			} else {
-				trigger_error( __FUNCTION__ . '(): Argument #' . ( $i + 1 ) . ' is not an array', E_USER_WARNING );
+				trigger_error( __FUNCTION__ . '(): Argument #' . esc_html( $i + 1 ) . ' is not an array', E_USER_WARNING );
 				return null;
 			}
 		}

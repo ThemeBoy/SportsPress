@@ -63,8 +63,8 @@ if ( ! class_exists( 'SportsPress_User_Registration' ) ) :
 				$options,
 				array(
 					array(
-						'title'         => __( 'User Registration', 'sportspress' ),
-						'desc'          => __( 'Add name fields to signup form', 'sportspress' ),
+						'title'         => esc_attr__( 'User Registration', 'sportspress' ),
+						'desc'          => esc_attr__( 'Add name fields to signup form', 'sportspress' ),
 						'id'            => 'sportspress_registration_name_inputs',
 						'default'       => 'no',
 						'type'          => 'checkbox',
@@ -72,7 +72,7 @@ if ( ! class_exists( 'SportsPress_User_Registration' ) ) :
 					),
 
 					array(
-						'desc'          => __( 'Add a team name field to signup form', 'sportspress' ),
+						'desc'          => esc_attr__( 'Add a team name field to signup form', 'sportspress' ),
 						'id'            => 'sportspress_registration_team_input',
 						'default'       => 'no',
 						'type'          => 'checkbox',
@@ -80,7 +80,7 @@ if ( ! class_exists( 'SportsPress_User_Registration' ) ) :
 					),
 
 					array(
-						'desc'          => __( 'Add a team selector to signup form', 'sportspress' ),
+						'desc'          => esc_attr__( 'Add a team selector to signup form', 'sportspress' ),
 						'id'            => 'sportspress_registration_team_select',
 						'default'       => 'no',
 						'type'          => 'checkbox',
@@ -88,7 +88,7 @@ if ( ! class_exists( 'SportsPress_User_Registration' ) ) :
 					),
 
 					array(
-						'desc'          => __( 'Create player profiles for new users', 'sportspress' ),
+						'desc'          => esc_attr__( 'Create player profiles for new users', 'sportspress' ),
 						'id'            => 'sportspress_registration_add_player',
 						'default'       => 'no',
 						'type'          => 'checkbox',
@@ -109,12 +109,12 @@ if ( ! class_exists( 'SportsPress_User_Registration' ) ) :
 				$last_name  = ( ! empty( $_POST['last_name'] ) ) ? trim( sanitize_text_field( $_POST['last_name'] ) ) : '';
 				?>
 	  <p>
-		  <label for="first_name"><?php _e( 'First Name', 'sportspress' ); ?><br />
+		  <label for="first_name"><?php esc_attr_e( 'First Name', 'sportspress' ); ?><br />
 		  <input type="text" name="first_name" id="first_name" class="input" value="<?php echo esc_attr( wp_unslash( $first_name ) ); ?>" size="25" /></label>
 	  </p>
 
 	  <p>
-		  <label for="last_name"><?php _e( 'Last Name', 'sportspress' ); ?><br />
+		  <label for="last_name"><?php esc_attr_e( 'Last Name', 'sportspress' ); ?><br />
 		  <input type="text" name="last_name" id="last_name" class="input" value="<?php echo esc_attr( wp_unslash( $last_name ) ); ?>" size="25" /></label>
 	  </p>
 				<?php
@@ -123,13 +123,13 @@ if ( ! class_exists( 'SportsPress_User_Registration' ) ) :
 			if ( 'yes' === get_option( 'sportspress_registration_team_select', 'no' ) ) {
 				?>
 	  <p>
-		  <label for="sp_team"><?php _e( 'Team', 'sportspress' ); ?><br />
+		  <label for="sp_team"><?php esc_attr_e( 'Team', 'sportspress' ); ?><br />
 				<?php
 					$args = array(
 						'post_type'        => 'sp_team',
 						'name'             => 'sp_team',
 						'values'           => 'ID',
-						'show_option_none' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Team', 'sportspress' ) ),
+						'show_option_none' => sprintf( esc_attr__( 'Select %s', 'sportspress' ), esc_attr__( 'Team', 'sportspress' ) ),
 						'property'         => 'style="width:100%;height:36px;margin-bottom:16px"',
 					);
 					sp_dropdown_pages( $args );

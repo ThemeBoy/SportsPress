@@ -71,9 +71,9 @@ if ( ! class_exists( 'SportsPress_Widget_Alignment' ) ) :
 		 */
 		public function init() {
 			$this->options = array(
-				'none'  => __( 'None', 'sportspress' ),
-				'left'  => __( 'Left', 'sportspress' ),
-				'right' => __( 'Right', 'sportspress' ),
+				'none'  => esc_attr__( 'None', 'sportspress' ),
+				'left'  => esc_attr__( 'Left', 'sportspress' ),
+				'right' => esc_attr__( 'Right', 'sportspress' ),
 			);
 		}
 
@@ -109,12 +109,12 @@ if ( ! class_exists( 'SportsPress_Widget_Alignment' ) ) :
 		 */
 		function before_widget_form( $object, $instance ) {
 			?>
-		<p><label for="<?php echo $object->get_field_id( 'align' ); ?>"><?php printf( __( 'Alignment: %s', 'sportspress' ), '' ); ?></label>
-			<select name="<?php echo $object->get_field_name( 'align' ); ?>" id="<?php echo $object->get_field_id( 'align' ); ?>">
+		<p><label for="<?php echo esc_attr( $object->get_field_id( 'align' ) ); ?>"><?php printf( esc_attr__( 'Alignment: %s', 'sportspress' ), '' ); ?></label>
+			<select name="<?php echo esc_attr( $object->get_field_name( 'align' ) ); ?>" id="<?php echo esc_attr( $object->get_field_id( 'align' ) ); ?>">
 				<?php
 				$align = strip_tags( sp_array_value( $instance, 'align', 'none' ) );
 				foreach ( $this->options as $value => $label ) {
-					printf( '<option value="%s" %s>%s</option>', $value, ( $align == $value ? 'selected' : '' ), $label );
+					printf( '<option value="%s" %s>%s</option>', esc_attr( $value ), ( $align == $value ? 'selected' : '' ), esc_attr( $label ) );
 				}
 				?>
 			</select>
@@ -126,7 +126,7 @@ if ( ! class_exists( 'SportsPress_Widget_Alignment' ) ) :
 		 * Before widget
 		 */
 		function before_widget( $args, $instance ) {
-			echo '<div class="sp-widget-align-' . sp_array_value( $instance, 'align', 'none' ) . '">';
+			echo wp_kses_post( '<div class="sp-widget-align-' . sp_array_value( $instance, 'align', 'none' ) . '">' );
 		}
 
 		/**
@@ -143,11 +143,11 @@ if ( ! class_exists( 'SportsPress_Widget_Alignment' ) ) :
 			?>
 		<p>
 			<label>
-				<?php printf( __( 'Alignment: %s', 'sportspress' ), '' ); ?>
+				<?php printf( esc_attr__( 'Alignment: %s', 'sportspress' ), '' ); ?>
 				<select id="align" name="align">
 					<?php
 					foreach ( $this->options as $value => $label ) {
-						printf( '<option value="%s">%s</option>', $value, $label );
+						printf( wp_kses_post( '<option value="%s">%s</option>', $value, $label ) );
 					}
 					?>
 				</select>

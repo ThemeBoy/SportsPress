@@ -23,9 +23,9 @@ if ( class_exists( 'WP_Importer' ) ) {
 		 */
 		public function __construct() {
 			$this->import_page  = 'sp_event_performance_csv';
-			$this->import_label = __( 'Import Box Score', 'sportspress' );
+			$this->import_label = esc_attr__( 'Import Box Score', 'sportspress' );
 			$this->columns      = array(
-				'sp_player' => __( 'Player', 'sportspress' ),
+				'sp_player' => esc_attr__( 'Player', 'sportspress' ),
 			);
 			$performance_labels = sp_get_var_labels( 'sp_performance' );
 			if ( $performance_labels && is_array( $performance_labels ) && sizeof( $performance_labels ) ) {
@@ -178,7 +178,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 					)
 				);
 				echo '<p>' . esc_html__( 'Hi there! Choose a .csv file to upload, then click "Upload file and import".', 'sportspress' ) . '</p>';
-				echo '<p>' . sprintf( wp_kses_post( __( 'Box scores need to be defined with columns in a specific order. <a href="%s">Click here to download a sample</a>.', 'sportspress' ) ), esc_url( plugin_dir_url( SP_PLUGIN_FILE ) ) . 'dummy-data/event-performance-sample.csv' ) . '</p>';
+				echo '<p>' . sprintf( wp_kses_post( esc_attr__( 'Box scores need to be defined with columns in a specific order. <a href="%s">Click here to download a sample</a>.', 'sportspress' ) ), esc_url( plugin_dir_url( SP_PLUGIN_FILE ) ) . 'dummy-data/event-performance-sample.csv' ) . '</p>';
 				wp_import_upload_form( add_query_arg( $args, 'admin.php' ) );
 			} else {
 				echo '<p><a href="' . esc_url( admin_url( add_query_arg( array( 'post_type' => 'sp_event' ), 'edit.php' ) ) ) . '">' . sprintf( esc_html__( 'Select %s', 'sportspress' ), esc_html__( 'Event', 'sportspress' ) ) . '</a></p>';

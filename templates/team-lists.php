@@ -24,7 +24,7 @@ foreach ( $lists as $list ) :
 
 	if ( $grouping == 0 && sizeof( $lists ) > 1 ) :
 		?>
-		<h4 class="sp-table-caption"><?php echo $list->post_title; ?></h4>
+		<h4 class="sp-table-caption"><?php echo wp_kses_post( $list->post_title ); ?></h4>
 		<?php
 	endif;
 

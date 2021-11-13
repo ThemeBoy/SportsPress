@@ -85,7 +85,7 @@ if ( ! class_exists( 'SportsPress_Countdowns' ) ) :
 				$settings,
 				array(
 					array(
-						'title' => __( 'Countdown', 'sportspress' ),
+						'title' => esc_attr__( 'Countdown', 'sportspress' ),
 						'type'  => 'title',
 						'id'    => 'countdown_options',
 					),
@@ -94,15 +94,15 @@ if ( ! class_exists( 'SportsPress_Countdowns' ) ) :
 					'sportspress_countdown_options',
 					array(
 						array(
-							'title'         => __( 'Display', 'sportspress' ),
-							'desc'          => __( 'Logos', 'sportspress' ),
+							'title'         => esc_attr__( 'Display', 'sportspress' ),
+							'desc'          => esc_attr__( 'Logos', 'sportspress' ),
 							'id'            => 'sportspress_countdown_show_logos',
 							'default'       => 'no',
 							'type'          => 'checkbox',
 							'checkboxgroup' => 'start',
 						),
 						array(
-							'desc'          => __( 'Featured Image', 'sportspress' ),
+							'desc'          => esc_attr__( 'Featured Image', 'sportspress' ),
 							'id'            => 'sportspress_countdown_show_thumbnail',
 							'default'       => 'no',
 							'type'          => 'checkbox',

@@ -23,9 +23,9 @@ if ( class_exists( 'WP_Importer' ) ) {
 		 */
 		public function __construct() {
 			$this->import_page  = 'sp_official_csv';
-			$this->import_label = __( 'Import Officials', 'sportspress' );
+			$this->import_label = esc_attr__( 'Import Officials', 'sportspress' );
 			$this->columns      = array(
-				'post_title' => __( 'Name', 'sportspress' ),
+				'post_title' => esc_attr__( 'Name', 'sportspress' ),
 			);
 			parent::__construct();
 		}
@@ -117,7 +117,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 		function greet() {
 			echo '<div class="narrow">';
 			echo '<p>' . esc_html__( 'Hi there! Choose a .csv file to upload, then click "Upload file and import".', 'sportspress' ) . '</p>';
-			echo '<p>' . sprintf( wp_kses_post( __( 'Officials need to be defined with columns in a specific order. <a href="%s">Click here to download a sample</a>.', 'sportspress' ) ), esc_url( plugin_dir_url( SP_PLUGIN_FILE ) ) . 'dummy-data/officials-sample.csv' ) . '</p>';
+			echo '<p>' . sprintf( wp_kses_post( esc_attr__( 'Officials need to be defined with columns in a specific order. <a href="%s">Click here to download a sample</a>.', 'sportspress' ) ), esc_url( plugin_dir_url( SP_PLUGIN_FILE ) ) . 'dummy-data/officials-sample.csv' ) . '</p>';
 			wp_import_upload_form( 'admin.php?import=sp_official_csv&step=1' );
 			echo '</div>';
 		}

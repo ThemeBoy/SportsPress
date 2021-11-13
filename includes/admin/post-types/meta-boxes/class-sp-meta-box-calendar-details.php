@@ -39,10 +39,10 @@ class SP_Meta_Box_Calendar_Details {
 		$order         = get_post_meta( $post->ID, 'sp_order', true );
 		?>
 		<div>
-			<p><strong><?php _e( 'Heading', 'sportspress' ); ?></strong></p>
+			<p><strong><?php esc_attr_e( 'Heading', 'sportspress' ); ?></strong></p>
 			<p><input type="text" id="sp_caption" name="sp_caption" value="<?php echo esc_attr( $caption ); ?>" placeholder="<?php echo esc_attr( get_the_title() ); ?>"></p>
 
-			<p><strong><?php _e( 'Status', 'sportspress' ); ?></strong></p>
+			<p><strong><?php esc_attr_e( 'Status', 'sportspress' ); ?></strong></p>
 			<p>
 				<?php
 				$args = array(
@@ -53,7 +53,7 @@ class SP_Meta_Box_Calendar_Details {
 				sp_dropdown_statuses( $args );
 				?>
 			</p>
-			<p><strong><?php _e( 'Event Format', 'sportspress' ); ?></strong></p>
+			<p><strong><?php esc_attr_e( 'Event Format', 'sportspress' ); ?></strong></p>
 			<p>
 				<select name="sp_event_format" class="postform">
 					<option value="all">All</option>
@@ -63,7 +63,7 @@ class SP_Meta_Box_Calendar_Details {
 				</select>
 			</p>
 			<div class="sp-date-selector">
-				<p><strong><?php _e( 'Date', 'sportspress' ); ?></strong></p>
+				<p><strong><?php esc_attr_e( 'Date', 'sportspress' ); ?></strong></p>
 				<p>
 					<?php
 					$args = array(
@@ -76,33 +76,33 @@ class SP_Meta_Box_Calendar_Details {
 				</p>
 				<div class="sp-date-range">
 					<p class="sp-date-range-absolute">
-						<input type="text" class="sp-datepicker-from" name="sp_date_from" value="<?php echo $date_from ? esc_attr( $date_from ) : date_i18n( 'Y-m-d' ); ?>" size="10">
+						<input type="text" class="sp-datepicker-from" name="sp_date_from" value="<?php echo $date_from ? esc_attr( $date_from ) : esc_attr( date_i18n( 'Y-m-d' ) ); ?>" size="10">
 						:
-						<input type="text" class="sp-datepicker-to" name="sp_date_to" value="<?php echo $date_to ? esc_attr( $date_to ) : date_i18n( 'Y-m-d' ); ?>" size="10">
+						<input type="text" class="sp-datepicker-to" name="sp_date_to" value="<?php echo $date_to ? esc_attr( $date_to ) : esc_attr( date_i18n( 'Y-m-d' ) ); ?>" size="10">
 					</p>
 
 					<p class="sp-date-range-relative">
-						<?php _e( 'Past', 'sportspress' ); ?>
-						<input type="number" min="0" step="1" class="tiny-text" name="sp_date_past" value="<?php echo '' !== $date_past ? $date_past : 7; ?>">
-						<?php _e( 'days', 'sportspress' ); ?>
+						<?php esc_attr_e( 'Past', 'sportspress' ); ?>
+						<input type="number" min="0" step="1" class="tiny-text" name="sp_date_past" value="<?php echo '' !== $date_past ? esc_attr( $date_past ) : 7; ?>">
+						<?php esc_attr_e( 'days', 'sportspress' ); ?>
 						&rarr;
-						<?php _e( 'Next', 'sportspress' ); ?>
-						<input type="number" min="0" step="1" class="tiny-text" name="sp_date_future" value="<?php echo '' !== $date_future ? $date_future : 7; ?>">
-						<?php _e( 'days', 'sportspress' ); ?>
+						<?php esc_attr_e( 'Next', 'sportspress' ); ?>
+						<input type="number" min="0" step="1" class="tiny-text" name="sp_date_future" value="<?php echo '' !== $date_future ? esc_attr( $date_future ) : 7; ?>">
+						<?php esc_attr_e( 'days', 'sportspress' ); ?>
 					</p>
 
 					<p class="sp-date-relative">
 						<label>
 							<input type="checkbox" name="sp_date_relative" value="1" id="sp_date_relative" <?php checked( $date_relative ); ?>>
-							<?php _e( 'Relative', 'sportspress' ); ?>
+							<?php esc_attr_e( 'Relative', 'sportspress' ); ?>
 						</label>
 					</p>
 				</div>
 			</div>
 			<div class="sp-event-day-field">
-				<p><strong><?php _e( 'Match Day', 'sportspress' ); ?></strong></p>
+				<p><strong><?php esc_attr_e( 'Match Day', 'sportspress' ); ?></strong></p>
 				<p>
-					<input name="sp_day" type="text" class="medium-text" placeholder="<?php _e( 'All', 'sportspress' ); ?>" value="<?php echo esc_attr( $day ); ?>">
+					<input name="sp_day" type="text" class="medium-text" placeholder="<?php esc_attr_e( 'All', 'sportspress' ); ?>" value="<?php echo esc_attr( $day ); ?>">
 				</p>
 			</div>
 			<?php
@@ -110,7 +110,7 @@ class SP_Meta_Box_Calendar_Details {
 				sp_taxonomy_field( $taxonomy, $post, true );
 			}
 			?>
-			<p><strong><?php _e( 'Team', 'sportspress' ); ?></strong></p>
+			<p><strong><?php esc_attr_e( 'Team', 'sportspress' ); ?></strong></p>
 			<p>
 				<?php
 				$args = array(
@@ -121,14 +121,14 @@ class SP_Meta_Box_Calendar_Details {
 					'class'       => 'widefat',
 					'property'    => 'multiple',
 					'chosen'      => true,
-					'placeholder' => __( 'All', 'sportspress' ),
+					'placeholder' => esc_attr__( 'All', 'sportspress' ),
 				);
 				if ( ! sp_dropdown_pages( $args ) ) :
-					sp_post_adder( 'sp_team', __( 'Add New', 'sportspress' ) );
+					sp_post_adder( 'sp_team', esc_attr__( 'Add New', 'sportspress' ) );
 				endif;
 				?>
 			</p>
-			<p><strong><?php _e( 'Player', 'sportspress' ); ?></strong></p>
+			<p><strong><?php esc_attr_e( 'Player', 'sportspress' ); ?></strong></p>
 			<p>
 				<?php
 				$args = array(
@@ -139,25 +139,25 @@ class SP_Meta_Box_Calendar_Details {
 					'class'       => 'widefat',
 					'property'    => 'multiple',
 					'chosen'      => true,
-					'placeholder' => __( 'All', 'sportspress' ),
+					'placeholder' => esc_attr__( 'All', 'sportspress' ),
 				);
 				if ( ! sp_dropdown_pages( $args ) ) :
-					sp_post_adder( 'sp_player', __( 'Add New', 'sportspress' ) );
+					sp_post_adder( 'sp_player', esc_attr__( 'Add New', 'sportspress' ) );
 				endif;
 				?>
 			</p>
-			<p><strong><?php _e( 'Sort by', 'sportspress' ); ?></strong></p>
+			<p><strong><?php esc_attr_e( 'Sort by', 'sportspress' ); ?></strong></p>
 			<p>
 				<select name="sp_orderby">
-					<option value="date" <?php selected( 'date', $orderby ); ?>><?php _e( 'Date', 'sportspress' ); ?></option>
-					<option value="day" <?php selected( 'day', $orderby ); ?>><?php _e( 'Match Day', 'sportspress' ); ?></option>
+					<option value="date" <?php selected( 'date', $orderby ); ?>><?php esc_attr_e( 'Date', 'sportspress' ); ?></option>
+					<option value="day" <?php selected( 'day', $orderby ); ?>><?php esc_attr_e( 'Match Day', 'sportspress' ); ?></option>
 				</select>
 			</p>
-			<p><strong><?php _e( 'Sort Order', 'sportspress' ); ?></strong></p>
+			<p><strong><?php esc_attr_e( 'Sort Order', 'sportspress' ); ?></strong></p>
 			<p>
 				<select name="sp_order">
-					<option value="ASC" <?php selected( 'ASC', $order ); ?>><?php _e( 'Ascending', 'sportspress' ); ?></option>
-					<option value="DESC" <?php selected( 'DESC', $order ); ?>><?php _e( 'Descending', 'sportspress' ); ?></option>
+					<option value="ASC" <?php selected( 'ASC', $order ); ?>><?php esc_attr_e( 'Ascending', 'sportspress' ); ?></option>
+					<option value="DESC" <?php selected( 'DESC', $order ); ?>><?php esc_attr_e( 'Descending', 'sportspress' ); ?></option>
 				</select>
 			</p>
 		</div>

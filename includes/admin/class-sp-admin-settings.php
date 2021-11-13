@@ -74,7 +74,7 @@ if ( ! class_exists( 'SP_Admin_Settings' ) ) :
 			do_action( 'sportspress_update_options_' . $current_tab );
 			do_action( 'sportspress_update_options' );
 
-			self::add_message( __( 'Your settings have been saved.', 'sportspress' ) );
+			self::add_message( esc_attr__( 'Your settings have been saved.', 'sportspress' ) );
 
 			do_action( 'sportspress_settings_saved' );
 		}
@@ -144,7 +144,7 @@ if ( ! class_exists( 'SP_Admin_Settings' ) ) :
 				'sportspress_settings',
 				'localized_strings',
 				array(
-					'none' => __( 'None', 'sportspress' ),
+					'none' => esc_attr__( 'None', 'sportspress' ),
 				)
 			);
 

@@ -170,9 +170,9 @@ class SP_Template_Loader {
 		if ( is_singular( 'sp_event' ) ) {
 			$status = sp_get_status( get_the_ID() );
 			if ( 'results' == $status ) {
-				$caption = __( 'Recap', 'sportspress' );
+				$caption = esc_attr__( 'Recap', 'sportspress' );
 			} else {
-				$caption = __( 'Preview', 'sportspress' );
+				$caption = esc_attr__( 'Preview', 'sportspress' );
 			}
 			$content = self::add_content( $content, 'event', apply_filters( 'sportspress_event_content_priority', 10 ), $caption );
 		}

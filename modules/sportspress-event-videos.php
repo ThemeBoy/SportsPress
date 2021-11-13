@@ -58,7 +58,7 @@ if ( ! class_exists( 'SportsPress_Event_Videos' ) ) :
 		 */
 		public function add_meta_box( $meta_boxes ) {
 			$meta_boxes['sp_event']['video'] = array(
-				'title'    => __( 'Video', 'sportspress' ),
+				'title'    => esc_attr__( 'Video', 'sportspress' ),
 				'output'   => 'SP_Meta_Box_Event_Video::output',
 				'save'     => 'SP_Meta_Box_Event_Video::save',
 				'context'  => 'side',

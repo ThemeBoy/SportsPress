@@ -43,9 +43,9 @@ if ( ! class_exists( 'SP_Admin_CPT_Metric' ) ) :
 		public function edit_columns( $existing_columns ) {
 			$columns = array(
 				'cb'             => '<input type="checkbox" />',
-				'title'          => __( 'Label', 'sportspress' ),
-				'sp_key'         => __( 'Variable', 'sportspress' ),
-				'sp_description' => __( 'Description', 'sportspress' ),
+				'title'          => esc_attr__( 'Label', 'sportspress' ),
+				'sp_key'         => esc_attr__( 'Variable', 'sportspress' ),
+				'sp_description' => esc_attr__( 'Description', 'sportspress' ),
 			);
 			return apply_filters( 'sportspress_metric_admin_columns', $columns );
 		}

@@ -144,9 +144,9 @@ if ( ! class_exists( 'SportsPress' ) ) :
 		public function action_links( $links ) {
 			return array_merge(
 				array(
-					'<a href="' . admin_url( 'admin.php?page=sportspress' ) . '">' . __( 'Settings', 'sportspress' ) . '</a>',
-					'<a href="' . apply_filters( 'sportspress_docs_url', 'http://tboy.co/docs' ) . '">' . __( 'Docs', 'sportspress' ) . '</a>',
-					'<a href="' . apply_filters( 'sportspress_pro_url', 'http://tboy.co/pro' ) . '">' . __( 'Upgrade', 'sportspress' ) . '</a>',
+					'<a href="' . admin_url( 'admin.php?page=sportspress' ) . '">' . esc_attr__( 'Settings', 'sportspress' ) . '</a>',
+					'<a href="' . apply_filters( 'sportspress_docs_url', 'http://tboy.co/docs' ) . '">' . esc_attr__( 'Docs', 'sportspress' ) . '</a>',
+					'<a href="' . apply_filters( 'sportspress_pro_url', 'http://tboy.co/pro' ) . '">' . esc_attr__( 'Upgrade', 'sportspress' ) . '</a>',
 				),
 				$links
 			);
