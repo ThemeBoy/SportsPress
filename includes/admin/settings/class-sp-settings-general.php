@@ -281,27 +281,27 @@ if ( ! class_exists( 'SP_Settings_General' ) ) :
 			SP_Admin_Settings::save_fields( $settings );
 
 			// Map UTC+- timezones to gmt_offsets and set timezone_string to empty.
-			if ( ! empty( $_POST['timezone_string'] ) && preg_match( '/^UTC[+-]/', $_POST['timezone_string'] ) ) {
-				$_POST['gmt_offset']      = preg_replace( '/UTC\+?/', '', sanitize_text_field( $_POST['timezone_string'] ) );
+			if ( ! empty( $_POST['timezone_string'] ) && preg_match( '/^UTC[+-]/', $_POST['timezone_string'] ) ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
+				$_POST['gmt_offset']      = preg_replace( '/UTC\+?/', '', sanitize_text_field( wp_unslash( $_POST['timezone_string'] ) ) );
 				$_POST['timezone_string'] = '';
 			}
 
 			if ( isset( $_POST['timezone_string'] ) ) {
-				update_option( 'timezone_string', sanitize_option( 'timezone_string', $_POST['timezone_string'] ) );
+				update_option( 'timezone_string', sanitize_option( 'timezone_string', wp_unslash( $_POST['timezone_string'] ) ) );
 			}
 
 			if ( isset( $_POST['gmt_offset'] ) ) {
-				update_option( 'gmt_offset', sanitize_option( 'gmt_offset', $_POST['gmt_offset'] ) );
+				update_option( 'gmt_offset', sanitize_option( 'gmt_offset', wp_unslash( $_POST['gmt_offset'] ) ) );
 			}
 
 			if ( isset( $_POST['sportspress_frontend_css_primary'] ) ) {
 
 				// Save settings
-				$primary    = ( ! empty( $_POST['sportspress_frontend_css_primary'] ) ) ? sp_format_hex( $_POST['sportspress_frontend_css_primary'] ) : '';
-				$background = ( ! empty( $_POST['sportspress_frontend_css_background'] ) ) ? sp_format_hex( $_POST['sportspress_frontend_css_background'] ) : '';
-				$text       = ( ! empty( $_POST['sportspress_frontend_css_text'] ) ) ? sp_format_hex( $_POST['sportspress_frontend_css_text'] ) : '';
-				$heading    = ( ! empty( $_POST['sportspress_frontend_css_heading'] ) ) ? sp_format_hex( $_POST['sportspress_frontend_css_heading'] ) : '';
-				$link       = ( ! empty( $_POST['sportspress_frontend_css_link'] ) ) ? sp_format_hex( $_POST['sportspress_frontend_css_link'] ) : '';
+				$primary    = ( ! empty( $_POST['sportspress_frontend_css_primary'] ) ) ? sp_format_hex( sanitize_text_field( wp_unslash( $_POST['sportspress_frontend_css_primary'] ) ) ) : '';
+				$background = ( ! empty( $_POST['sportspress_frontend_css_background'] ) ) ? sp_format_hex( sanitize_text_field( wp_unslash( $_POST['sportspress_frontend_css_background'] ) ) ) : '';
+				$text       = ( ! empty( $_POST['sportspress_frontend_css_text'] ) ) ? sp_format_hex( sanitize_text_field( wp_unslash( $_POST['sportspress_frontend_css_text'] ) ) ) : '';
+				$heading    = ( ! empty( $_POST['sportspress_frontend_css_heading'] ) ) ? sp_format_hex( sanitize_text_field( wp_unslash( $_POST['sportspress_frontend_css_heading'] ) ) ) : '';
+				$link       = ( ! empty( $_POST['sportspress_frontend_css_link'] ) ) ? sp_format_hex( sanitize_text_field( wp_unslash( $_POST['sportspress_frontend_css_link'] ) ) ) : '';
 				$customize  = ( ! empty( $_POST['sportspress_frontend_css_customize'] ) ) ? 1 : '';
 
 				$colors = array(

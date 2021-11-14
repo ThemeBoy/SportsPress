@@ -94,7 +94,7 @@ if ( ! class_exists( 'SP_Admin_Permalink_Settings' ) ) :
 					$key   = 'sportspress_' . $slug[0] . '_slug';
 					$value = null;
 					if ( isset( $_POST[ $key ] ) ) {
-						$value = sanitize_text_field( $_POST[ $key ] );
+						$value = sanitize_text_field( wp_unslash( $_POST[ $key ] ) );
 					}
 					if ( empty( $value ) ) {
 						delete_option( $key );

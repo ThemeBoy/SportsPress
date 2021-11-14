@@ -81,7 +81,7 @@ if ( ! class_exists( 'SP_Settings_Text' ) ) :
 		 */
 		public function save() {
 			if ( isset( $_POST['sportspress_text'] ) ) {
-				update_option( 'sportspress_text', array_map( 'sanitize_text_field', $_POST['sportspress_text'] ) );
+				update_option( 'sportspress_text', array_map( 'sanitize_text_field', array_map( 'wp_unslash', $_POST['sportspress_text'] ) ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 			}
 		}
 	}

@@ -520,7 +520,7 @@ if ( ! class_exists( 'SP_Settings_Events' ) ) :
 			parent::save();
 
 			if ( isset( $_POST['sportspress_event_teams_delimiter'] ) ) {
-				update_option( 'sportspress_event_teams_delimiter', sanitize_text_field( $_POST['sportspress_event_teams_delimiter'] ) );
+				update_option( 'sportspress_event_teams_delimiter', sanitize_text_field( wp_unslash( $_POST['sportspress_event_teams_delimiter'] ) ) );
 			}
 		}
 

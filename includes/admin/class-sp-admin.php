@@ -85,7 +85,7 @@ class SP_Admin {
 	public function prevent_admin_access() {
 		$prevent_access = false;
 
-		if ( 'yes' == get_option( 'sportspress_lock_down_admin' ) && ! is_ajax() && ! ( current_user_can( 'edit_posts' ) || current_user_can( 'manage_sportspress' ) ) && basename( $_SERVER['SCRIPT_FILENAME'] ) !== 'admin-post.php' ) {
+		if ( 'yes' == get_option( 'sportspress_lock_down_admin' ) && ! is_ajax() && ! ( current_user_can( 'edit_posts' ) || current_user_can( 'manage_sportspress' ) ) && basename( $_SERVER['SCRIPT_FILENAME'] ) !== 'admin-post.php' ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 			$prevent_access = true;
 		}
 

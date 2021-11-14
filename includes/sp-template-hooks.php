@@ -235,16 +235,16 @@ function sportspress_sanitize_title( $title ) {
 
 		return $title;
 
-	elseif ( isset( $_POST ) && array_key_exists( 'post_type', $_POST ) && is_sp_config_type( $_POST['post_type'] ) ) :
+	elseif ( isset( $_POST ) && array_key_exists( 'post_type', $_POST ) && is_sp_config_type( sanitize_key( $_POST['post_type'] ) ) ) :
 
-		$key = isset( $_POST['sp_key'] ) ? sanitize_text_field( $_POST['sp_key'] ) : null;
+		$key = isset( $_POST['sp_key'] ) ? sanitize_text_field( wp_unslash( $_POST['sp_key'] ) ) : null;
 
 		if ( ! $key ) {
-			$key = isset( $_POST['sp_default_key'] ) ? sanitize_text_field( $_POST['sp_default_key'] ) : null;
+			$key = isset( $_POST['sp_default_key'] ) ? sanitize_text_field( wp_unslash( $_POST['sp_default_key'] ) ) : null;
 		}
 
 		if ( ! $key ) {
-			$key = sanitize_text_field( $_POST['post_title'] );
+			$key = sanitize_text_field( wp_unslash( $_POST['post_title'] ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 		}
 
 		$id = sp_array_value( $_POST, 'post_ID', 'var', 'text' );

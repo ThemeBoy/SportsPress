@@ -87,7 +87,7 @@ if ( ! class_exists( 'SP_Settings_Status' ) ) :
 				</tr>
 				<tr>
 					<td><?php esc_html_e( 'Web Server Info', 'sportspress' ); ?>:</td>
-					<td><?php echo esc_html( $_SERVER['SERVER_SOFTWARE'] ); ?></td>
+					<td><?php echo esc_html( wp_unslash( $_SERVER['SERVER_SOFTWARE'] ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput ?></td>
 				</tr>
 				<tr>
 					<td><?php esc_html_e( 'PHP Version', 'sportspress' ); ?>:</td>

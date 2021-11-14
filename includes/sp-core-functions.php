@@ -309,7 +309,7 @@ if ( ! function_exists( 'sp_nonce' ) ) {
 if ( ! function_exists( 'sp_get_option' ) ) {
 	function sp_get_option( $option, $default = null ) {
 		if ( isset( $_POST[ $option ] ) ) {
-			return $_POST[ $option ];
+			sanitize_text_field( wp_unslash( $_POST[ $option ] ) );
 		} else {
 			return get_option( $option, $default );
 		}

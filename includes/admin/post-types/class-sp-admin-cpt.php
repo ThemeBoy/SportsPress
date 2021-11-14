@@ -58,10 +58,10 @@ if ( ! class_exists( 'SP_Admin_CPT' ) ) :
 			if ( ! empty( $_GET['post_type'] ) && $this->type == $_GET['post_type'] ) {
 				return true;
 			}
-			if ( ! empty( $_GET['post'] ) && $this->type == get_post_type( $_GET['post'] ) ) {
+			if ( ! empty( $_GET['post'] ) && $this->type == get_post_type( sanitize_key( $_GET['post'] ) ) ) {
 				return true;
 			}
-			if ( ! empty( $_REQUEST['post_id'] ) && $this->type == get_post_type( $_REQUEST['post_id'] ) ) {
+			if ( ! empty( $_REQUEST['post_id'] ) && $this->type == get_post_type( sanitize_key( $_REQUEST['post_id'] ) ) ) {
 				return true;
 			}
 			return false;

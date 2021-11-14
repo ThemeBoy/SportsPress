@@ -311,7 +311,7 @@ if ( ! class_exists( 'SP_Admin_CPT_Event' ) ) :
 			);
 			sp_dropdown_taxonomies( $args );
 
-			$selected = isset( $_REQUEST['match_day'] ) ? sanitize_text_field( $_REQUEST['match_day'] ) : null;
+			$selected = isset( $_REQUEST['match_day'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['match_day'] ) ) : null;
 			echo '<input name="match_day" type="text" class="sp-tablenav-input" placeholder="' . esc_attr__( 'Match Day', 'sportspress' ) . '" value="' . esc_attr( $selected ) . '">';
 
 			if ( current_user_can( 'edit_others_sp_events' ) ) {
@@ -336,14 +336,14 @@ if ( ! class_exists( 'SP_Admin_CPT_Event' ) ) :
 				if ( ! empty( $_GET['team'] ) ) {
 					$query->query_vars['meta_query'][] = array(
 						'key'   => 'sp_team',
-						'value' => $_GET['team'],
+						'value' => sanitize_key( $_GET['team'] ),
 					);
 				}
 
 				if ( ! empty( $_GET['match_day'] ) ) {
 					$query->query_vars['meta_query'][] = array(
 						'key'   => 'sp_day',
-						'value' => $_GET['match_day'],
+						'value' => sanitize_text_field( wp_unslash( $_GET['match_day'] ) ),
 					);
 				}
 			}

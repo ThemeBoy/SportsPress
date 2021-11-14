@@ -65,7 +65,7 @@ if ( ! class_exists( 'SP_Admin_Settings' ) ) :
 		public static function save() {
 			global $current_section, $current_tab;
 
-			if ( empty( $_REQUEST['_wpnonce'] ) || ! wp_verify_nonce( $_REQUEST['_wpnonce'], 'sportspress-settings' ) ) {
+			if ( empty( $_REQUEST['_wpnonce'] ) || ! wp_verify_nonce( sanitize_key( $_REQUEST['_wpnonce'] ), 'sportspress-settings' ) ) {
 				die( esc_html__( 'Action failed. Please refresh the page and retry.', 'sportspress' ) );
 			}
 
@@ -152,8 +152,8 @@ if ( ! class_exists( 'SP_Admin_Settings' ) ) :
 			self::get_settings_pages();
 
 			// Get current tab/section
-			$current_tab     = empty( $_GET['tab'] ) ? 'modules' : sanitize_title( $_GET['tab'] );
-			$current_section = empty( $_REQUEST['section'] ) ? '' : sanitize_title( $_REQUEST['section'] );
+			$current_tab     = empty( $_GET['tab'] ) ? 'modules' : sanitize_title( wp_unslash( $_GET['tab'] ) );
+			$current_section = empty( $_REQUEST['section'] ) ? '' : sanitize_title( wp_unslash( $_REQUEST['section'] ) );
 
 			// Save settings if data has been posted
 			if ( ! empty( $_POST ) ) {
@@ -162,11 +162,11 @@ if ( ! class_exists( 'SP_Admin_Settings' ) ) :
 
 			// Add any posted messages
 			if ( ! empty( $_GET['sp_error'] ) ) {
-				self::add_error( stripslashes( $_GET['sp_error'] ) );
+				self::add_error( stripslashes( sanitize_text_field( wp_unslash( $_GET['sp_error'] ) ) ) );
 			}
 
 			if ( ! empty( $_GET['sp_message'] ) ) {
-				self::add_message( stripslashes( $_GET['sp_message'] ) );
+				self::add_message( stripslashes( sanitize_text_field( wp_unslash( $_GET['sp_message'] ) ) ) );
 			}
 
 			self::show_messages();
@@ -737,7 +737,7 @@ if ( ! class_exists( 'SP_Admin_Settings' ) ) :
 
 					case 'textarea':
 						if ( isset( $_POST[ $value['id'] ] ) ) {
-							$option_value = wp_kses_post( trim( stripslashes( $_POST[ $value['id'] ] ) ) );
+							$option_value = wp_kses_post( trim( stripslashes( sanitize_text_field( wp_unslash( $_POST[ $value['id'] ] ) ) ) ) );
 						} else {
 							$option_value = '';
 						}
@@ -754,7 +754,7 @@ if ( ! class_exists( 'SP_Admin_Settings' ) ) :
 					case 'password':
 					case 'radio':
 						if ( isset( $_POST[ $value['id'] ] ) ) {
-							$option_value = sanitize_text_field( stripslashes( $_POST[ $value['id'] ] ) );
+							$option_value = sanitize_text_field( wp_unslash( $_POST[ $value['id'] ] ) );
 						} else {
 							$option_value = '';
 						}
@@ -766,7 +766,7 @@ if ( ! class_exists( 'SP_Admin_Settings' ) ) :
 					case 'multi_select_countries':
 						// Get countries array
 						if ( isset( $_POST[ $value['id'] ] ) ) {
-							$selected_countries = array_map( 'sanitize_text_field', array_map( 'stripslashes', (array) $_POST[ $value['id'] ] ) );
+							$selected_countries = array_map( 'sanitize_text_field', array_map( 'wp_unslash', (array) $_POST[ $value['id'] ] ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 						} else {
 							$selected_countries = array();
 						}

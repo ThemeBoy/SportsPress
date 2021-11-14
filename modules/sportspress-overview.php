@@ -262,7 +262,7 @@ endif;
 
 					<?php
 					if ( isset( $_GET['term'] ) ) :
-						$term = get_term( $_GET['term'], $taxonomy ); // Posts in term
+						$term = get_term( sanitize_key( $_GET['term'] ), $taxonomy ); // Posts in term
 						?>
 
 						<ul class="sp-utility">
@@ -910,7 +910,7 @@ endforeach;
 					
 						<?php
 						$post_object     = get_post_type_object( $post_type );
-						$taxonomy_object = get_taxonomy( $_GET['taxonomy'] );
+						$taxonomy_object = get_taxonomy( sanitize_key( $_GET['taxonomy'] ) );
 						?>
 
 						<?php

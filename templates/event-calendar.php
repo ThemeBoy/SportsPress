@@ -97,8 +97,8 @@ if ( empty( $events ) ) {
 $week_begins = intval( get_option( 'start_of_week' ) );
 
 // Get year and month from query vars
-$year     = isset( $_GET['sp_year'] ) ? $_GET['sp_year'] : $year;
-$monthnum = isset( $_GET['sp_month'] ) ? $_GET['sp_month'] : $monthnum;
+$year     = isset( $_GET['sp_year'] ) ? sanitize_text_field( wp_unslash( $_GET['sp_year'] ) ) : $year;
+$monthnum = isset( $_GET['sp_month'] ) ? sanitize_text_field( wp_unslash( $_GET['sp_month'] ) ) : $monthnum;
 
 // Let's figure out when we are
 if ( ! empty( $monthnum ) && ! empty( $year ) ) {
@@ -220,7 +220,7 @@ if ( $dayswithposts ) {
 	$daywithpost = array();
 }
 
-if ( array_key_exists( 'HTTP_USER_AGENT', $_SERVER ) && preg_match( '/(MSIE|camino|safari)/', $_SERVER['HTTP_USER_AGENT'] ) ) {
+if ( array_key_exists( 'HTTP_USER_AGENT', $_SERVER ) && preg_match( '/(MSIE|camino|safari)/', wp_unslash( $_SERVER['HTTP_USER_AGENT'] ) ) ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 	$ak_title_separator = "\n";
 } else {
 	$ak_title_separator = ', ';

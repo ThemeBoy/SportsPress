@@ -46,7 +46,7 @@
 		</tr>
 		<tr>
 			<td><?php esc_attr_e( 'Web Server Info', 'sportspress' ); ?>:</td>
-			<td><?php echo esc_html( $_SERVER['SERVER_SOFTWARE'] ); ?></td>
+			<td><?php echo esc_html( $_SERVER['SERVER_SOFTWARE'] ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput ?></td>
 		</tr>
 		<tr>
 			<td><?php esc_attr_e( 'PHP Version', 'sportspress' ); ?>:</td>

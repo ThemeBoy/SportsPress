@@ -313,7 +313,7 @@ if ( ! class_exists( 'SP_Admin_CPT_Player' ) ) :
 			}
 
 			$_POST += array( "{$this->type}_edit_nonce" => '' );
-			if ( ! wp_verify_nonce( $_POST[ "{$this->type}_edit_nonce" ], plugin_basename( __FILE__ ) ) ) {
+			if ( ! isset( $_POST[ "{$this->type}_edit_nonce" ] ) || ! wp_verify_nonce( sanitize_key( $_POST[ "{$this->type}_edit_nonce" ] ), plugin_basename( __FILE__ ) ) ) {
 				return $post_id;
 			}
 
@@ -325,7 +325,7 @@ if ( ! class_exists( 'SP_Admin_CPT_Player' ) ) :
 			}
 
 			if ( isset( $_POST['sp_number'] ) ) {
-				update_post_meta( $post_id, 'sp_number', $_POST['sp_number'] );
+				update_post_meta( $post_id, 'sp_number', sanitize_text_field( wp_unslash( $_POST['sp_number'] ) ) );
 			}
 
 			sp_update_post_meta_recursive( $post_id, 'sp_current_team', sp_array_value( $_POST, 'sp_current_team', array() ) );
@@ -391,11 +391,11 @@ if ( ! class_exists( 'SP_Admin_CPT_Player' ) ) :
 		 */
 		public function bulk_save() {
 			$_POST += array( 'nonce' => '' );
-			if ( ! wp_verify_nonce( $_POST['nonce'], plugin_basename( __FILE__ ) ) ) {
+			if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( sanitize_key( $_POST['nonce'] ), plugin_basename( __FILE__ ) ) ) {
 				return;
 			}
 
-			$post_ids = ( ! empty( $_POST['post_ids'] ) ) ? $_POST['post_ids'] : array();
+			$post_ids = ( ! empty( $_POST['post_ids'] ) ) ? $_POST['post_ids'] : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 
 			$current_teams = sp_array_value( $_POST, 'current_teams', array() );
 			$past_teams    = sp_array_value( $_POST, 'past_teams', array() );

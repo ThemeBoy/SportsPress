@@ -314,7 +314,7 @@ class SP_Admin_Setup_Wizard {
 		check_admin_referer( 'sp-setup' );
 
 		// Update timezone
-		$timezone_string = sanitize_text_field( $_POST['timezone_string'] );
+		$timezone_string = sanitize_text_field( wp_unslash( $_POST['timezone_string'] ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 		if ( ! empty( $timezone_string ) && preg_match( '/^UTC[+-]/', $timezone_string ) ) {
 			$gmt_offset      = $timezone_string;
 			$gmt_offset      = preg_replace( '/UTC\+?/', '', $gmt_offset );
@@ -330,14 +330,14 @@ class SP_Admin_Setup_Wizard {
 		}
 
 		// Update sport
-		$sport = sanitize_text_field( $_POST['sport'] );
+		$sport = sanitize_text_field( wp_unslash( $_POST['sport'] ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 		if ( ! empty( $sport ) && get_option( 'sportspress_sport', null ) !== $sport ) {
 			SP_Admin_Sports::apply_preset( $sport );
 		}
 		update_option( 'sportspress_sport', $sport );
 
 		// Insert league
-		$league = sanitize_text_field( $_POST['league'] );
+		$league = sanitize_text_field( wp_unslash( $_POST['league'] ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 		if ( ! is_string( $league ) || empty( $league ) ) {
 			$league = _x( 'Primary League', 'example', 'sportspress' );
 		}
@@ -347,7 +347,7 @@ class SP_Admin_Setup_Wizard {
 		}
 
 		// Insert season
-		$season = sanitize_text_field( $_POST['season'] );
+		$season = sanitize_text_field( wp_unslash( $_POST['season'] ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 		if ( ! is_string( $season ) || empty( $season ) ) {
 			$season = date( 'Y' );
 		}
@@ -401,7 +401,7 @@ class SP_Admin_Setup_Wizard {
 		check_admin_referer( 'sp-setup' );
 
 		// Add away team
-		$post['post_title']  = sanitize_text_field( $_POST['away_team'] );
+		$post['post_title']  = sanitize_text_field( wp_unslash( $_POST['away_team'] ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 		$post['post_type']   = 'sp_team';
 		$post['post_status'] = 'publish';
 		$post['tax_input']   = array();
@@ -418,7 +418,7 @@ class SP_Admin_Setup_Wizard {
 		wp_insert_post( $post );
 
 		// Add home team
-		$post['post_title'] = sanitize_text_field( $_POST['home_team'] );
+		$post['post_title'] = sanitize_text_field( wp_unslash( $_POST['home_team'] ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 		wp_insert_post( $post );
 
 		wp_redirect( esc_url_raw( $this->get_next_step_link() ) );
@@ -506,8 +506,8 @@ class SP_Admin_Setup_Wizard {
 				)
 			);
 		}
-		if ( is_array( $_POST['players'] ) ) {
-			foreach ( $_POST['players'] as $i => $player ) {
+		if ( is_array( $_POST['players'] ) ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
+			foreach ( $_POST['players'] as $i => $player ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 				if ( empty( $player['name'] ) ) {
 					continue;
 				}
@@ -534,7 +534,7 @@ class SP_Admin_Setup_Wizard {
 		if ( ! empty( $_POST['staff'] ) ) {
 
 			$post['post_type']  = 'sp_staff';
-			$post['post_title'] = sanitize_text_field( $_POST['staff'] );
+			$post['post_title'] = sanitize_text_field( wp_unslash( $_POST['staff'] ) );
 			$id                 = wp_insert_post( $post );
 
 			// Add role
@@ -606,7 +606,7 @@ class SP_Admin_Setup_Wizard {
 		$team  = reset( $teams );
 
 		// Insert venue
-		$venue = sanitize_text_field( $_POST['venue'] );
+		$venue = sanitize_text_field( wp_unslash( $_POST['venue'] ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 		if ( ! is_string( $venue ) || empty( $venue ) ) {
 			$venue = sp_array_value( $_POST, 'address', esc_attr__( 'Venue', 'sportspress' ) );
 		}

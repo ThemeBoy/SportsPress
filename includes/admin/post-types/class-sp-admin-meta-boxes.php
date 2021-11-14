@@ -329,7 +329,7 @@ class SP_Admin_Meta_Boxes {
 		if ( is_int( wp_is_post_autosave( $post ) ) ) {
 			return;
 		}
-		if ( empty( $_POST['sportspress_meta_nonce'] ) || ! wp_verify_nonce( $_POST['sportspress_meta_nonce'], 'sportspress_save_data' ) ) {
+		if ( empty( $_POST['sportspress_meta_nonce'] ) || ! wp_verify_nonce( sanitize_key( $_POST['sportspress_meta_nonce'] ), 'sportspress_save_data' ) ) {
 			return;
 		}
 		if ( ! apply_filters( 'sportspress_user_can', current_user_can( 'edit_post', $post_id ), $post_id ) ) {

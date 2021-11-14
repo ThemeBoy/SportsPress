@@ -49,7 +49,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 			$this->header();
 
 			if ( ! empty( $_POST['delimiter'] ) ) {
-				$this->delimiter = stripslashes( trim( sanitize_text_field( $_POST['delimiter'] ) ) );
+				$this->delimiter = stripslashes( trim( sanitize_text_field( wp_unslash( $_POST['delimiter'] ) ) ) );
 			}
 
 			if ( ! $this->delimiter ) {
@@ -87,8 +87,8 @@ if ( class_exists( 'WP_Importer' ) ) {
 				case 2:
 					check_admin_referer( 'import-upload' );
 					if ( isset( $_POST['sp_import'] ) ) :
-						$columns = array_filter( sp_array_value( $_POST, 'sp_columns', array( 'post_title' ) ) );
-						$this->import( $_POST['sp_import'], array_values( $columns ) );
+						$columns = array_filter( array_map( 'sanitize_key', array_map( 'wp_unslash', sp_array_value( $_POST, 'sp_columns', array( 'post_title' ) ) ) ) );
+						$this->import( $_POST['sp_import'], array_values( $columns ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 					endif;
 					break;
 			endswitch;
@@ -249,9 +249,9 @@ endwhile;
 
 			} else {
 
-				if ( file_exists( ABSPATH . $_POST['file_url'] ) ) {
+				if ( file_exists( ABSPATH . sanitize_url( wp_unslash( $_POST['file_url'] ) ) ) ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 
-					$this->file_url = sanitize_url( $_POST['file_url'] );
+					$this->file_url = sanitize_url( wp_unslash( $_POST['file_url'] ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 
 				} else {
 

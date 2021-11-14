@@ -146,14 +146,14 @@ class SP_Admin_Welcome {
 	<h2 class="nav-tab-wrapper">
 	  <a class="nav-tab 
 		<?php
-		if ( $_GET['page'] == 'sp-about' ) {
+		if ( sanitize_key( $_GET['page'] ) == 'sp-about' ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 			echo 'nav-tab-active';}
 		?>
 		" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sp-about' ), 'index.php' ) ) ); ?>">
 		<?php esc_html_e( 'Welcome', 'sportspress' ); ?>
 	  </a><a class="nav-tab 
 		<?php
-		if ( $_GET['page'] == 'sp-credits' ) {
+		if ( sanitize_key( $_GET['page'] ) == 'sp-credits' ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 			echo 'nav-tab-active';}
 		?>
 		" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sp-credits' ), 'index.php' ) ) ); ?>">
@@ -177,11 +177,11 @@ class SP_Admin_Welcome {
 		<?php
 		// Save settings
 		if ( isset( $_POST['timezone_string'] ) ) :
-			update_option( 'timezone_string', sanitize_text_field( $_POST['timezone_string'] ) );
+			update_option( 'timezone_string', sanitize_text_field( wp_unslash( $_POST['timezone_string'] ) ) );
 			update_option( 'sportspress_basic_setup', 1 );
 		  endif;
 		if ( isset( $_POST['sportspress_sport'] ) && ! empty( $_POST['sportspress_sport'] ) ) :
-			$sport = sanitize_text_field( $_POST['sportspress_sport'] );
+			$sport = sanitize_text_field( wp_unslash( $_POST['sportspress_sport'] ) );
 			SP_Admin_Sports::apply_preset( $sport );
 			update_option( 'sportspress_sport', $sport );
 			delete_option( '_sp_needs_welcome' );
@@ -439,7 +439,7 @@ class SP_Admin_Welcome {
 			return;
 		}
 
-		if ( ( isset( $_GET['action'] ) && 'upgrade-plugin' == $_GET['action'] ) && ( isset( $_GET['plugin'] ) && strstr( $_GET['plugin'], 'sportspress.php' ) ) ) {
+		if ( ( isset( $_GET['action'] ) && 'upgrade-plugin' == sanitize_key( $_GET['action'] ) ) && ( isset( $_GET['plugin'] ) && strstr( $_GET['plugin'], 'sportspress.php' ) ) ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 			return;
 		}
 

@@ -81,7 +81,7 @@ if ( ! class_exists( 'SP_Settings_Page' ) ) :
 			}
 
 			if ( isset( $_POST['sportspress_template_visibility'] ) && is_array( $_POST['sportspress_template_visibility'] ) ) {
-				foreach ( $_POST['sportspress_template_visibility'] as $option => $toggled ) {
+				foreach ( $_POST['sportspress_template_visibility'] as $option => $toggled ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 					if ( $toggled ) {
 						update_option( $option, 'yes' );
 					} else {

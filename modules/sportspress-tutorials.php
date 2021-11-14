@@ -194,7 +194,7 @@ if ( ! class_exists( 'SportsPress_Tutorials' ) ) :
 					'advanced'  => esc_attr__( 'Advanced', 'sportspress' ),
 				)
 			);
-			if ( isset( $_GET['tab'] ) && array_key_exists( $_GET['tab'], $tabs ) ) {
+			if ( isset( $_GET['tab'] ) && array_key_exists( wp_unslash( $_GET['tab'] ), $tabs ) ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 				$current_tab = sanitize_key( $_GET['tab'] );
 			} else {
 				$current_tab = key( $tabs );

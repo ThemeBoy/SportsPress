@@ -54,10 +54,10 @@ if ( ! class_exists( 'SportsPress_Comments_Scheduled_Events' ) ) :
 
 			do_action( 'pre_comment_on_post', $comment_post_ID );
 
-			$comment_author       = ( isset( $_POST['author'] ) ) ? trim( strip_tags( $_POST['author'] ) ) : null;
-			$comment_author_email = ( isset( $_POST['email'] ) ) ? sanitize_email( trim( $_POST['email'] ) ) : null;
-			$comment_author_url   = ( isset( $_POST['url'] ) ) ? esc_url( trim( $_POST['url'] ) ) : null;
-			$comment_content      = ( isset( $_POST['comment'] ) ) ? esc_textarea( trim( $_POST['comment'] ) ) : null;
+			$comment_author       = ( isset( $_POST['author'] ) ) ? trim( strip_tags( sanitize_text_field( wp_unslash( $_POST['author'] ) ) ) ) : null;
+			$comment_author_email = ( isset( $_POST['email'] ) ) ? trim( sanitize_email( wp_unslash( $_POST['email'] ) ) ) : null;
+			$comment_author_url   = ( isset( $_POST['url'] ) ) ? trim( sanitize_url( wp_unslash( $_POST['url'] ) ) ) : null; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+			$comment_content      = ( isset( $_POST['comment'] ) ) ? trim( sanitize_text_field( wp_unslash( $_POST['comment'] ) ) ) : null;
 
 			// If the user is logged in
 			$user = wp_get_current_user();
@@ -136,7 +136,7 @@ if ( ! class_exists( 'SportsPress_Comments_Scheduled_Events' ) ) :
 				wp_set_comment_status( $comment_id, 'approve' );
 			}
 
-			$location = empty( $_POST['redirect_to'] ) ? get_comment_link( $comment_id ) : $_POST['redirect_to'] . '#comment-' . $comment_id;
+			$location = empty( $_POST['redirect_to'] ) ? get_comment_link( $comment_id ) : sanitize_url( wp_unslash( $_POST['redirect_to'] ) ) . '#comment-' . $comment_id; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 
 			$location = apply_filters( 'comment_post_redirect', $location, $comment );
 

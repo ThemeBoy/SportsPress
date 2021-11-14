@@ -58,10 +58,10 @@ if ( class_exists( 'WP_Importer' ) ) {
 			$rows = array_chunk( $array, sizeof( $columns ) );
 
 			// Get event format, league, and season from post vars
-			$event_format = ( empty( $_POST['sp_format'] ) ? false : sanitize_text_field( $_POST['sp_format'] ) );
-			$league       = ( sp_array_value( $_POST, 'sp_league', '-1' ) == '-1' ? false : sanitize_text_field( $_POST['sp_league'] ) );
-			$season       = ( sp_array_value( $_POST, 'sp_season', '-1' ) == '-1' ? false : sanitize_text_field( $_POST['sp_season'] ) );
-			$date_format  = ( empty( $_POST['sp_date_format'] ) ? 'yyyy/mm/dd' : sanitize_text_field( $_POST['sp_date_format'] ) );
+			$event_format = ( empty( $_POST['sp_format'] ) ? false : sanitize_key( $_POST['sp_format'] ) );
+			$league       = ( sp_array_value( $_POST, 'sp_league', '-1' ) == '-1' ? false : sanitize_key( $_POST['sp_league'] ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
+			$season       = ( sp_array_value( $_POST, 'sp_season', '-1' ) == '-1' ? false : sanitize_key( $_POST['sp_season'] ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
+			$date_format  = ( empty( $_POST['sp_date_format'] ) ? 'yyyy/mm/dd' : sanitize_text_field( wp_unslash( $_POST['sp_date_format'] ) ) );
 
 			// Get labels from result and performance post types
 			$result_labels      = sp_get_var_labels( 'sp_result' );

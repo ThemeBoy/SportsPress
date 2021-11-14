@@ -134,7 +134,7 @@ if ( ! class_exists( 'SP_Settings_Licenses' ) ) :
 			}
 
 			// retrieve the license key
-			$license = trim( sanitize_text_field( $_POST[ 'sp_license_key_' . $id ] ) );
+			$license = trim( sanitize_text_field( wp_unslash( $_POST[ 'sp_license_key_' . $id ] ) ) );
 
 			// get the name of the product
 			$name = $this->licenses[ $id ]['name'];
@@ -189,7 +189,7 @@ if ( ! class_exists( 'SP_Settings_Licenses' ) ) :
 			}
 
 			// retrieve the license key
-			$license = trim( sanitize_text_field( $_POST[ 'sp_license_key_' . $id ] ) );
+			$license = trim( sanitize_text_field( wp_unslash( $_POST[ 'sp_license_key_' . $id ] ) ) );
 
 			// get the name of the product
 			$name = $this->licenses[ $id ]['name'];
