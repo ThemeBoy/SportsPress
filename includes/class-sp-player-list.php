@@ -898,13 +898,13 @@ endif;
 				if ( $key == 'number' ) :
 					$labels[ $key ] = '#';
 				elseif ( $key == 'team' ) :
-					$labels[ $key ] = __( 'Team', 'sportspress' );
+					$labels[ $key ] = esc_attr__( 'Team', 'sportspress' );
 				elseif ( $key == 'position' ) :
-					$labels[ $key ] = __( 'Position', 'sportspress' );
+					$labels[ $key ] = esc_attr__( 'Position', 'sportspress' );
 				elseif ( $key == 'dob' && $showdob ) :
-					$labels[ $key ] = __( 'Date of Birth', 'sportspress' );
+					$labels[ $key ] = esc_attr__( 'Date of Birth', 'sportspress' );
 				elseif ( $key == 'age' && $showage ) :
-					$labels[ $key ] = __( 'Age', 'sportspress' );
+					$labels[ $key ] = esc_attr__( 'Age', 'sportspress' );
 				elseif ( array_key_exists( $key, $columns ) ) :
 					$labels[ $key ] = $columns[ $key ];
 				endif;
@@ -955,18 +955,18 @@ endif;
 			if ( in_array( 'number', $this->columns ) ) {
 				$labels['number'] = '#';
 			}
-			$labels['name'] = __( 'Player', 'sportspress' );
+			$labels['name'] = esc_attr__( 'Player', 'sportspress' );
 			if ( in_array( 'team', $this->columns ) ) {
-				$labels['team'] = __( 'Team', 'sportspress' );
+				$labels['team'] = esc_attr__( 'Team', 'sportspress' );
 			}
 			if ( in_array( 'position', $this->columns ) ) {
-				$labels['position'] = __( 'Position', 'sportspress' );
+				$labels['position'] = esc_attr__( 'Position', 'sportspress' );
 			}
 			if ( in_array( 'dob', $this->columns ) && $showdob ) {
-				$labels['dob'] = __( 'Date of Birth', 'sportspress' );
+				$labels['dob'] = esc_attr__( 'Date of Birth', 'sportspress' );
 			}
 			if ( in_array( 'age', $this->columns ) && $showage ) {
-				$labels['age'] = __( 'Age', 'sportspress' );
+				$labels['age'] = esc_attr__( 'Age', 'sportspress' );
 			}
 
 			$merged[0] = array_merge( $labels, $columns );

@@ -23,7 +23,7 @@ $content = $post->post_content;
 if ( $content ) {
 	?>
 	<div class="sp-post-content">
-	  <?php echo apply_filters( 'the_content', $content ); ?>
+	  <?php echo wp_kses_post( apply_filters( 'the_content', $content ) ); ?>
 	</div>
 	<?php
 }

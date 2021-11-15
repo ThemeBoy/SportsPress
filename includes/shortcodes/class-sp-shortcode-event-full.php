@@ -65,9 +65,9 @@ class SP_Shortcode_Event_Full {
 				}
 
 				// Render the template
-				echo '<div class="sp-section-content sp-section-content-' . $key . '">';
+				echo '<div class="sp-section-content sp-section-content-' . esc_attr( $key ) . '">';
 				if ( 'content' === $key ) {
-					echo $content;
+					echo wp_kses_post( $content );
 					// Template content hook
 					do_action( 'sportspress_single_' . $type . '_content' );
 				} elseif ( 'excerpt' === $key ) {
@@ -106,7 +106,7 @@ class SP_Shortcode_Event_Full {
 				// Put tab content into buffer
 				ob_start();
 				if ( 'content' === $key ) {
-					echo $content;
+					echo wp_kses_post( $content );
 					// Template content hook
 					do_action( 'sportspress_single_' . $type . '_content' );
 				} elseif ( 'excerpt' === $key ) {
@@ -148,7 +148,7 @@ class SP_Shortcode_Event_Full {
 			$ob .= '</div>';
 		}
 
-		echo $ob;
+		echo wp_kses_post( $ob );
 
 	}
 }

@@ -60,7 +60,7 @@ class SP_Meta_Box_Team_Details {
 		?>
 
 		<?php if ( taxonomy_exists( 'sp_league' ) ) { ?>
-		<p><strong><?php _e( 'Leagues', 'sportspress' ); ?></strong></p>
+		<p><strong><?php esc_attr_e( 'Leagues', 'sportspress' ); ?></strong></p>
 		<p>
 			<?php
 			$args = array(
@@ -68,7 +68,7 @@ class SP_Meta_Box_Team_Details {
 				'name'        => 'tax_input[sp_league][]',
 				'selected'    => $league_ids,
 				'values'      => 'term_id',
-				'placeholder' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Leagues', 'sportspress' ) ),
+				'placeholder' => sprintf( esc_attr__( 'Select %s', 'sportspress' ), esc_attr__( 'Leagues', 'sportspress' ) ),
 				'class'       => 'widefat',
 				'property'    => 'multiple',
 				'chosen'      => true,
@@ -79,7 +79,7 @@ class SP_Meta_Box_Team_Details {
 		<?php } ?>
 
 		<?php if ( taxonomy_exists( 'sp_season' ) ) { ?>
-		<p><strong><?php _e( 'Seasons', 'sportspress' ); ?></strong></p>
+		<p><strong><?php esc_attr_e( 'Seasons', 'sportspress' ); ?></strong></p>
 		<p>
 			<?php
 			$args = array(
@@ -87,7 +87,7 @@ class SP_Meta_Box_Team_Details {
 				'name'        => 'tax_input[sp_season][]',
 				'selected'    => $season_ids,
 				'values'      => 'term_id',
-				'placeholder' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Seasons', 'sportspress' ) ),
+				'placeholder' => sprintf( esc_attr__( 'Select %s', 'sportspress' ), esc_attr__( 'Seasons', 'sportspress' ) ),
 				'class'       => 'widefat',
 				'property'    => 'multiple',
 				'chosen'      => true,
@@ -98,7 +98,7 @@ class SP_Meta_Box_Team_Details {
 		<?php } ?>
 
 		<?php if ( taxonomy_exists( 'sp_venue' ) ) { ?>
-		<p><strong><?php _e( 'Home', 'sportspress' ); ?></strong></p>
+		<p><strong><?php esc_attr_e( 'Home', 'sportspress' ); ?></strong></p>
 		<p>
 			<?php
 			$args = array(
@@ -106,7 +106,7 @@ class SP_Meta_Box_Team_Details {
 				'name'        => 'tax_input[sp_venue][]',
 				'selected'    => $venue_ids,
 				'values'      => 'term_id',
-				'placeholder' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Venue', 'sportspress' ) ),
+				'placeholder' => sprintf( esc_attr__( 'Select %s', 'sportspress' ), esc_attr__( 'Venue', 'sportspress' ) ),
 				'class'       => 'widefat',
 				'property'    => 'multiple',
 				'chosen'      => true,
@@ -116,14 +116,14 @@ class SP_Meta_Box_Team_Details {
 		</p>
 		<?php } ?>
 
-		<p><strong><?php _e( 'Site URL', 'sportspress' ); ?></strong></p>
+		<p><strong><?php esc_attr_e( 'Site URL', 'sportspress' ); ?></strong></p>
 		<p><input type="text" class="widefat" id="sp_url" name="sp_url" value="<?php echo esc_url( $url ); ?>"></p>
-		<p><label class="selectit"><input type="checkbox" name="sp_redirect" value="1" <?php checked( $redirect ); ?>> <?php _e( 'Redirect', 'sportspress' ); ?></label></p>
+		<p><label class="selectit"><input type="checkbox" name="sp_redirect" value="1" <?php checked( $redirect ); ?>> <?php esc_attr_e( 'Redirect', 'sportspress' ); ?></label></p>
 
-		<p><strong><?php _e( 'Short Name', 'sportspress' ); ?></strong></p>
+		<p><strong><?php esc_attr_e( 'Short Name', 'sportspress' ); ?></strong></p>
 		<p><input type="text" id="sp_short_name" name="sp_short_name" value="<?php echo esc_attr( $short_name ); ?>"></p>
 
-		<p><strong><?php _e( 'Abbreviation', 'sportspress' ); ?></strong></p>
+		<p><strong><?php esc_attr_e( 'Abbreviation', 'sportspress' ); ?></strong></p>
 		<p><input type="text" id="sp_abbreviation" name="sp_abbreviation" value="<?php echo esc_attr( $abbreviation ); ?>"></p>
 		<?php
 	}

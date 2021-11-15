@@ -62,7 +62,7 @@ if ( ! class_exists( 'SP_Admin_CPT_Player' ) ) :
 		 */
 		public function enter_title_here( $text, $post ) {
 			if ( $post->post_type == 'sp_player' ) {
-				return __( 'Name', 'sportspress' );
+				return esc_attr__( 'Name', 'sportspress' );
 			}
 
 			return $text;
@@ -76,16 +76,16 @@ if ( ! class_exists( 'SP_Admin_CPT_Player' ) ) :
 			$columns = array_merge(
 				array(
 					'cb'          => '<input type="checkbox" />',
-					'sp_number'   => '<span class="dashicons sp-icon-tshirt sp-tip" title="' . __( 'Squad Number', 'sportspress' ) . '"></span>',
+					'sp_number'   => '<span class="dashicons sp-icon-tshirt sp-tip" title="' . esc_attr__( 'Squad Number', 'sportspress' ) . '"></span>',
 					'title'       => null,
-					'sp_position' => __( 'Positions', 'sportspress' ),
-					'sp_team'     => __( 'Teams', 'sportspress' ),
-					'sp_league'   => __( 'Leagues', 'sportspress' ),
-					'sp_season'   => __( 'Seasons', 'sportspress' ),
+					'sp_position' => esc_attr__( 'Positions', 'sportspress' ),
+					'sp_team'     => esc_attr__( 'Teams', 'sportspress' ),
+					'sp_league'   => esc_attr__( 'Leagues', 'sportspress' ),
+					'sp_season'   => esc_attr__( 'Seasons', 'sportspress' ),
 				),
 				$existing_columns,
 				array(
-					'title' => __( 'Name', 'sportspress' ),
+					'title' => esc_attr__( 'Name', 'sportspress' ),
 				)
 			);
 			return apply_filters( 'sportspress_player_admin_columns', $columns );
@@ -102,14 +102,14 @@ if ( ! class_exists( 'SP_Admin_CPT_Player' ) ) :
 					echo esc_html( get_post_meta( $post_id, 'sp_number', true ) );
 					break;
 				case 'sp_position':
-					echo get_the_terms( $post_id, 'sp_position' ) ? the_terms( $post_id, 'sp_position' ) : '&mdash;';
+					echo get_the_terms( $post_id, 'sp_position' ) ? wp_kses_post( the_terms( $post_id, 'sp_position' ) ) : '&mdash;';
 					break;
 				case 'sp_team':
 					$current_teams = get_post_meta( $post_id, 'sp_current_team', false );
 					$past_teams    = get_post_meta( $post_id, 'sp_past_team', false );
 					$current_teams = array_filter( $current_teams );
 					$past_teams    = array_filter( $past_teams );
-					echo '<span class="hidden sp-player-teams" data-current-teams="' . implode( ',', $current_teams ) . '" data-past-teams="' . implode( ',', $past_teams ) . '"></span>';
+					echo '<span class="hidden sp-player-teams" data-current-teams="' . implode( ',', array_map( 'esc_attr', $current_teams ) ) . '" data-past-teams="' . implode( ',', array_map( 'esc_attr', $past_teams ) ) . '"></span>';
 					$teams = (array) get_post_meta( $post_id, 'sp_team', false );
 					$teams = array_filter( $teams );
 					$teams = array_unique( $teams );
@@ -124,7 +124,7 @@ if ( ! class_exists( 'SP_Admin_CPT_Player' ) ) :
 							if ( $team ) :
 								echo esc_html( $team->post_title );
 								if ( in_array( $team_id, $current_teams ) ) :
-									echo '<span class="dashicons dashicons-yes" title="' . __( 'Current Team', 'sportspress' ) . '"></span>';
+									echo '<span class="dashicons dashicons-yes" title="' . esc_attr__( 'Current Team', 'sportspress' ) . '"></span>';
 								endif;
 								echo '<br>';
 							endif;
@@ -132,13 +132,13 @@ if ( ! class_exists( 'SP_Admin_CPT_Player' ) ) :
 					endif;
 					break;
 				case 'sp_league':
-					echo get_the_terms( $post_id, 'sp_league' ) ? the_terms( $post_id, 'sp_league' ) : '&mdash;';
+					echo get_the_terms( $post_id, 'sp_league' ) ? wp_kses_post( the_terms( $post_id, 'sp_league' ) ) : '&mdash;';
 					break;
 				case 'sp_season':
-					echo get_the_terms( $post_id, 'sp_season' ) ? the_terms( $post_id, 'sp_season' ) : '&mdash;';
+					echo get_the_terms( $post_id, 'sp_season' ) ? wp_kses_post( the_terms( $post_id, 'sp_season' ) ) : '&mdash;';
 					break;
 				case 'sp_venue':
-					echo get_the_terms( $post_id, 'sp_venue' ) ? the_terms( $post_id, 'sp_venue' ) : '&mdash;';
+					echo get_the_terms( $post_id, 'sp_venue' ) ? wp_kses_post( the_terms( $post_id, 'sp_venue' ) ) : '&mdash;';
 					break;
 			endswitch;
 		}
@@ -156,7 +156,7 @@ if ( ! class_exists( 'SP_Admin_CPT_Player' ) ) :
 			if ( taxonomy_exists( 'sp_position' ) ) :
 				$selected = isset( $_REQUEST['sp_position'] ) ? sanitize_key( $_REQUEST['sp_position'] ) : null;
 				$args     = array(
-					'show_option_all' => __( 'Show all positions', 'sportspress' ),
+					'show_option_all' => esc_attr__( 'Show all positions', 'sportspress' ),
 					'taxonomy'        => 'sp_position',
 					'name'            => 'sp_position',
 					'selected'        => $selected,
@@ -168,16 +168,16 @@ if ( ! class_exists( 'SP_Admin_CPT_Player' ) ) :
 			$args     = array(
 				'post_type'        => 'sp_team',
 				'name'             => 'team',
-				'show_option_none' => __( 'Show all teams', 'sportspress' ),
+				'show_option_none' => esc_attr__( 'Show all teams', 'sportspress' ),
 				'selected'         => $selected,
 				'values'           => 'ID',
 			);
-			wp_dropdown_pages( $args );
+			wp_dropdown_pages( $args ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 			if ( taxonomy_exists( 'sp_league' ) ) :
 				$selected = isset( $_REQUEST['sp_league'] ) ? sanitize_key( $_REQUEST['sp_league'] ) : null;
 				$args     = array(
-					'show_option_all' => __( 'Show all leagues', 'sportspress' ),
+					'show_option_all' => esc_attr__( 'Show all leagues', 'sportspress' ),
 					'taxonomy'        => 'sp_league',
 					'name'            => 'sp_league',
 					'selected'        => $selected,
@@ -188,7 +188,7 @@ if ( ! class_exists( 'SP_Admin_CPT_Player' ) ) :
 			if ( taxonomy_exists( 'sp_season' ) ) :
 				$selected = isset( $_REQUEST['sp_season'] ) ? sanitize_key( $_REQUEST['sp_season'] ) : null;
 				$args     = array(
-					'show_option_all' => __( 'Show all seasons', 'sportspress' ),
+					'show_option_all' => esc_attr__( 'Show all seasons', 'sportspress' ),
 					'taxonomy'        => 'sp_season',
 					'name'            => 'sp_season',
 					'selected'        => $selected,
@@ -244,7 +244,7 @@ if ( ! class_exists( 'SP_Admin_CPT_Player' ) ) :
 		<fieldset class="inline-edit-col-right">
 			<div class="inline-edit-col">
 				<label>
-					<span class="title"><?php _e( 'Squad Number', 'sportspress' ); ?></span>
+					<span class="title"><?php esc_html_e( 'Squad Number', 'sportspress' ); ?></span>
 					<span class="input-text-wrap"><input type="text" name="sp_number" class="inline-edit-menu-order-input"></span>
 				</label>
 			</div>
@@ -280,14 +280,14 @@ if ( ! class_exists( 'SP_Admin_CPT_Player' ) ) :
 			?>
 		<fieldset class="inline-edit-col-right">
 			<div class="inline-edit-col">
-				<span class="title inline-edit-categories-label"><?php _e( 'Current Teams', 'sportspress' ); ?></span>
+				<span class="title inline-edit-categories-label"><?php esc_html_e( 'Current Teams', 'sportspress' ); ?></span>
 				<input type="hidden" name="sp_current_team[]" value="0">
 				<ul class="cat-checklist">
 					<?php foreach ( $teams as $team ) { ?>
 					<li><label class="selectit"><input value="<?php echo esc_attr( $team->ID ); ?>" type="checkbox" name="sp_current_team[]"> <?php echo esc_html( $team->post_title ); ?></label></li>
 					<?php } ?>
 				</ul>
-				<span class="title inline-edit-categories-label"><?php _e( 'Past Teams', 'sportspress' ); ?></span>
+				<span class="title inline-edit-categories-label"><?php esc_html_e( 'Past Teams', 'sportspress' ); ?></span>
 				<input type="hidden" name="sp_past_team[]" value="0">
 				<ul class="cat-checklist">
 					<?php foreach ( $teams as $team ) { ?>
@@ -313,7 +313,7 @@ if ( ! class_exists( 'SP_Admin_CPT_Player' ) ) :
 			}
 
 			$_POST += array( "{$this->type}_edit_nonce" => '' );
-			if ( ! wp_verify_nonce( $_POST[ "{$this->type}_edit_nonce" ], plugin_basename( __FILE__ ) ) ) {
+			if ( ! isset( $_POST[ "{$this->type}_edit_nonce" ] ) || ! wp_verify_nonce( sanitize_key( $_POST[ "{$this->type}_edit_nonce" ] ), plugin_basename( __FILE__ ) ) ) {
 				return $post_id;
 			}
 
@@ -325,7 +325,7 @@ if ( ! class_exists( 'SP_Admin_CPT_Player' ) ) :
 			}
 
 			if ( isset( $_POST['sp_number'] ) ) {
-				update_post_meta( $post_id, 'sp_number', $_POST['sp_number'] );
+				update_post_meta( $post_id, 'sp_number', sanitize_text_field( wp_unslash( $_POST['sp_number'] ) ) );
 			}
 
 			sp_update_post_meta_recursive( $post_id, 'sp_current_team', sp_array_value( $_POST, 'sp_current_team', array() ) );
@@ -367,14 +367,14 @@ if ( ! class_exists( 'SP_Admin_CPT_Player' ) ) :
 			?>
 		<fieldset class="inline-edit-col-right">
 			<div class="inline-edit-col">
-				<span class="title inline-edit-categories-label"><?php _e( 'Current Teams', 'sportspress' ); ?></span>
+				<span class="title inline-edit-categories-label"><?php esc_html_e( 'Current Teams', 'sportspress' ); ?></span>
 				<input type="hidden" name="sp_current_team[]" value="0">
 				<ul class="cat-checklist">
 					<?php foreach ( $teams as $team ) { ?>
 					<li><label class="selectit"><input value="<?php echo esc_attr( $team->ID ); ?>" type="checkbox" name="sp_current_team[]"> <?php echo esc_attr( $team->post_title ); ?></label></li>
 					<?php } ?>
 				</ul>
-				<span class="title inline-edit-categories-label"><?php _e( 'Past Teams', 'sportspress' ); ?></span>
+				<span class="title inline-edit-categories-label"><?php esc_html_e( 'Past Teams', 'sportspress' ); ?></span>
 				<input type="hidden" name="sp_past_team[]" value="0">
 				<ul class="cat-checklist">
 					<?php foreach ( $teams as $team ) { ?>
@@ -391,11 +391,11 @@ if ( ! class_exists( 'SP_Admin_CPT_Player' ) ) :
 		 */
 		public function bulk_save() {
 			$_POST += array( 'nonce' => '' );
-			if ( ! wp_verify_nonce( $_POST['nonce'], plugin_basename( __FILE__ ) ) ) {
+			if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( sanitize_key( $_POST['nonce'] ), plugin_basename( __FILE__ ) ) ) {
 				return;
 			}
 
-			$post_ids = ( ! empty( $_POST['post_ids'] ) ) ? $_POST['post_ids'] : array();
+			$post_ids = ( ! empty( $_POST['post_ids'] ) ) ? $_POST['post_ids'] : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 
 			$current_teams = sp_array_value( $_POST, 'current_teams', array() );
 			$past_teams    = sp_array_value( $_POST, 'past_teams', array() );

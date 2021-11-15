@@ -75,15 +75,15 @@ if ( ! class_exists( 'SportsPress_Calendars' ) ) :
 					'sportspress_register_post_type_calendar',
 					array(
 						'labels'                => array(
-							'name'               => __( 'Calendars', 'sportspress' ),
-							'singular_name'      => __( 'Calendar', 'sportspress' ),
-							'add_new_item'       => __( 'Add New Calendar', 'sportspress' ),
-							'edit_item'          => __( 'Edit Calendar', 'sportspress' ),
-							'new_item'           => __( 'New', 'sportspress' ),
-							'view_item'          => __( 'View Calendar', 'sportspress' ),
-							'search_items'       => __( 'Search', 'sportspress' ),
-							'not_found'          => __( 'No results found.', 'sportspress' ),
-							'not_found_in_trash' => __( 'No results found.', 'sportspress' ),
+							'name'               => esc_attr__( 'Calendars', 'sportspress' ),
+							'singular_name'      => esc_attr__( 'Calendar', 'sportspress' ),
+							'add_new_item'       => esc_attr__( 'Add New Calendar', 'sportspress' ),
+							'edit_item'          => esc_attr__( 'Edit Calendar', 'sportspress' ),
+							'new_item'           => esc_attr__( 'New', 'sportspress' ),
+							'view_item'          => esc_attr__( 'View Calendar', 'sportspress' ),
+							'search_items'       => esc_attr__( 'Search', 'sportspress' ),
+							'not_found'          => esc_attr__( 'No results found.', 'sportspress' ),
+							'not_found_in_trash' => esc_attr__( 'No results found.', 'sportspress' ),
 						),
 						'public'                => true,
 						'show_ui'               => true,
@@ -150,7 +150,7 @@ if ( ! class_exists( 'SportsPress_Calendars' ) ) :
 					'get_callback'    => 'SP_REST_API::get_post_meta',
 					'update_callback' => 'SP_REST_API::update_post_meta',
 					'schema'          => array(
-						'description' => __( 'Layout', 'sportspress' ),
+						'description' => esc_attr__( 'Layout', 'sportspress' ),
 						'type'        => 'string',
 						'context'     => array( 'view', 'edit' ),
 						'arg_options' => array(
@@ -166,7 +166,7 @@ if ( ! class_exists( 'SportsPress_Calendars' ) ) :
 				array(
 					'get_callback' => 'SP_REST_API::get_post_data',
 					'schema'       => array(
-						'description' => __( 'Events', 'sportspress' ),
+						'description' => esc_attr__( 'Events', 'sportspress' ),
 						'type'        => 'array',
 						'context'     => array( 'view' ),
 						'arg_options' => array(
@@ -185,40 +185,40 @@ if ( ! class_exists( 'SportsPress_Calendars' ) ) :
 		public function add_meta_boxes( $meta_boxes ) {
 			$meta_boxes['sp_calendar'] = array(
 				'shortcode' => array(
-					'title'    => __( 'Shortcode', 'sportspress' ),
+					'title'    => esc_attr__( 'Shortcode', 'sportspress' ),
 					'output'   => 'SP_Meta_Box_Calendar_Shortcode::output',
 					'context'  => 'side',
 					'priority' => 'default',
 				),
 				'feeds'     => array(
-					'title'    => __( 'Feeds', 'sportspress' ),
+					'title'    => esc_attr__( 'Feeds', 'sportspress' ),
 					'output'   => 'SP_Meta_Box_Calendar_Feeds::output',
 					'context'  => 'side',
 					'priority' => 'default',
 				),
 				'format'    => array(
-					'title'    => __( 'Layout', 'sportspress' ),
+					'title'    => esc_attr__( 'Layout', 'sportspress' ),
 					'save'     => 'SP_Meta_Box_Calendar_Format::save',
 					'output'   => 'SP_Meta_Box_Calendar_Format::output',
 					'context'  => 'side',
 					'priority' => 'default',
 				),
 				'columns'   => array(
-					'title'    => __( 'Columns', 'sportspress' ),
+					'title'    => esc_attr__( 'Columns', 'sportspress' ),
 					'save'     => 'SP_Meta_Box_Calendar_Columns::save',
 					'output'   => 'SP_Meta_Box_Calendar_Columns::output',
 					'context'  => 'side',
 					'priority' => 'default',
 				),
 				'details'   => array(
-					'title'    => __( 'Details', 'sportspress' ),
+					'title'    => esc_attr__( 'Details', 'sportspress' ),
 					'save'     => 'SP_Meta_Box_Calendar_Details::save',
 					'output'   => 'SP_Meta_Box_Calendar_Details::output',
 					'context'  => 'side',
 					'priority' => 'default',
 				),
 				'data'      => array(
-					'title'    => __( 'Events', 'sportspress' ),
+					'title'    => esc_attr__( 'Events', 'sportspress' ),
 					'save'     => 'SP_Meta_Box_Calendar_Data::save',
 					'output'   => 'SP_Meta_Box_Calendar_Data::output',
 					'context'  => 'normal',
@@ -250,7 +250,7 @@ if ( ! class_exists( 'SportsPress_Calendars' ) ) :
 				$settings,
 				array(
 					array(
-						'title' => __( 'Event List', 'sportspress' ),
+						'title' => esc_attr__( 'Event List', 'sportspress' ),
 						'type'  => 'title',
 						'id'    => 'event_list_options',
 					),
@@ -259,60 +259,60 @@ if ( ! class_exists( 'SportsPress_Calendars' ) ) :
 					'sportspress_event_list_options',
 					array(
 						array(
-							'title'   => __( 'Title', 'sportspress' ),
-							'desc'    => __( 'Display calendar title', 'sportspress' ),
+							'title'   => esc_attr__( 'Title', 'sportspress' ),
+							'desc'    => esc_attr__( 'Display calendar title', 'sportspress' ),
 							'id'      => 'sportspress_event_list_show_title',
 							'default' => 'yes',
 							'type'    => 'checkbox',
 						),
 
 						array(
-							'title'   => __( 'Teams', 'sportspress' ),
-							'desc'    => __( 'Display logos', 'sportspress' ),
+							'title'   => esc_attr__( 'Teams', 'sportspress' ),
+							'desc'    => esc_attr__( 'Display logos', 'sportspress' ),
 							'id'      => 'sportspress_event_list_show_logos',
 							'default' => 'no',
 							'type'    => 'checkbox',
 						),
 
 						array(
-							'title'   => __( 'Title Format', 'sportspress' ),
+							'title'   => esc_attr__( 'Title Format', 'sportspress' ),
 							'id'      => 'sportspress_event_list_title_format',
 							'default' => 'title',
 							'type'    => 'select',
 							'options' => array(
-								'title'    => __( 'Title', 'sportspress' ),
-								'teams'    => __( 'Teams', 'sportspress' ),
-								'homeaway' => sprintf( '%s | %s', __( 'Home', 'sportspress' ), __( 'Away', 'sportspress' ) ),
+								'title'    => esc_attr__( 'Title', 'sportspress' ),
+								'teams'    => esc_attr__( 'Teams', 'sportspress' ),
+								'homeaway' => sprintf( '%s | %s', esc_attr__( 'Home', 'sportspress' ), esc_attr__( 'Away', 'sportspress' ) ),
 							),
 						),
 
 						array(
-							'title'   => __( 'Time/Results Format', 'sportspress' ),
+							'title'   => esc_attr__( 'Time/Results Format', 'sportspress' ),
 							'id'      => 'sportspress_event_list_time_format',
 							'default' => 'combined',
 							'type'    => 'select',
 							'options' => array(
-								'combined' => __( 'Combined', 'sportspress' ),
-								'separate' => __( 'Separate', 'sportspress' ),
-								'time'     => __( 'Time Only', 'sportspress' ),
-								'results'  => __( 'Results Only', 'sportspress' ),
+								'combined' => esc_attr__( 'Combined', 'sportspress' ),
+								'separate' => esc_attr__( 'Separate', 'sportspress' ),
+								'time'     => esc_attr__( 'Time Only', 'sportspress' ),
+								'results'  => esc_attr__( 'Results Only', 'sportspress' ),
 							),
 						),
 
 						array(
-							'title'   => __( 'Pagination', 'sportspress' ),
-							'desc'    => __( 'Paginate', 'sportspress' ),
+							'title'   => esc_attr__( 'Pagination', 'sportspress' ),
+							'desc'    => esc_attr__( 'Paginate', 'sportspress' ),
 							'id'      => 'sportspress_event_list_paginated',
 							'default' => 'yes',
 							'type'    => 'checkbox',
 						),
 
 						array(
-							'title'             => __( 'Limit', 'sportspress' ),
+							'title'             => esc_attr__( 'Limit', 'sportspress' ),
 							'id'                => 'sportspress_event_list_rows',
 							'class'             => 'small-text',
 							'default'           => '10',
-							'desc'              => __( 'events', 'sportspress' ),
+							'desc'              => esc_attr__( 'events', 'sportspress' ),
 							'type'              => 'number',
 							'custom_attributes' => array(
 								'min'  => 1,
@@ -327,7 +327,7 @@ if ( ! class_exists( 'SportsPress_Calendars' ) ) :
 						'id'   => 'event_list_options',
 					),
 					array(
-						'title' => __( 'Event Blocks', 'sportspress' ),
+						'title' => esc_attr__( 'Event Blocks', 'sportspress' ),
 						'type'  => 'title',
 						'id'    => 'event_blocks_options',
 					),
@@ -336,24 +336,24 @@ if ( ! class_exists( 'SportsPress_Calendars' ) ) :
 					'sportspress_event_blocks_options',
 					array(
 						array(
-							'title'   => __( 'Title', 'sportspress' ),
-							'desc'    => __( 'Display calendar title', 'sportspress' ),
+							'title'   => esc_attr__( 'Title', 'sportspress' ),
+							'desc'    => esc_attr__( 'Display calendar title', 'sportspress' ),
 							'id'      => 'sportspress_event_blocks_show_title',
 							'default' => 'no',
 							'type'    => 'checkbox',
 						),
 
 						array(
-							'title'   => __( 'Teams', 'sportspress' ),
-							'desc'    => __( 'Display logos', 'sportspress' ),
+							'title'   => esc_attr__( 'Teams', 'sportspress' ),
+							'desc'    => esc_attr__( 'Display logos', 'sportspress' ),
 							'id'      => 'sportspress_event_blocks_show_logos',
 							'default' => 'yes',
 							'type'    => 'checkbox',
 						),
 
 						array(
-							'title'         => __( 'Details', 'sportspress' ),
-							'desc'          => __( 'Display league', 'sportspress' ),
+							'title'         => esc_attr__( 'Details', 'sportspress' ),
+							'desc'          => esc_attr__( 'Display league', 'sportspress' ),
 							'id'            => 'sportspress_event_blocks_show_league',
 							'default'       => 'no',
 							'type'          => 'checkbox',
@@ -361,7 +361,7 @@ if ( ! class_exists( 'SportsPress_Calendars' ) ) :
 						),
 
 						array(
-							'desc'          => __( 'Display season', 'sportspress' ),
+							'desc'          => esc_attr__( 'Display season', 'sportspress' ),
 							'id'            => 'sportspress_event_blocks_show_season',
 							'default'       => 'no',
 							'type'          => 'checkbox',
@@ -369,7 +369,7 @@ if ( ! class_exists( 'SportsPress_Calendars' ) ) :
 						),
 
 						array(
-							'desc'          => __( 'Display matchday', 'sportspress' ),
+							'desc'          => esc_attr__( 'Display matchday', 'sportspress' ),
 							'id'            => 'sportspress_event_blocks_show_matchday',
 							'default'       => 'no',
 							'type'          => 'checkbox',
@@ -377,7 +377,7 @@ if ( ! class_exists( 'SportsPress_Calendars' ) ) :
 						),
 
 						array(
-							'desc'          => __( 'Display venue', 'sportspress' ),
+							'desc'          => esc_attr__( 'Display venue', 'sportspress' ),
 							'id'            => 'sportspress_event_blocks_show_venue',
 							'default'       => 'no',
 							'type'          => 'checkbox',
@@ -385,19 +385,19 @@ if ( ! class_exists( 'SportsPress_Calendars' ) ) :
 						),
 
 						array(
-							'title'   => __( 'Pagination', 'sportspress' ),
-							'desc'    => __( 'Paginate', 'sportspress' ),
+							'title'   => esc_attr__( 'Pagination', 'sportspress' ),
+							'desc'    => esc_attr__( 'Paginate', 'sportspress' ),
 							'id'      => 'sportspress_event_blocks_paginated',
 							'default' => 'yes',
 							'type'    => 'checkbox',
 						),
 
 						array(
-							'title'             => __( 'Limit', 'sportspress' ),
+							'title'             => esc_attr__( 'Limit', 'sportspress' ),
 							'id'                => 'sportspress_event_blocks_rows',
 							'class'             => 'small-text',
 							'default'           => '5',
-							'desc'              => __( 'events', 'sportspress' ),
+							'desc'              => esc_attr__( 'events', 'sportspress' ),
 							'type'              => 'number',
 							'custom_attributes' => array(
 								'min'  => 1,
@@ -426,14 +426,14 @@ if ( ! class_exists( 'SportsPress_Calendars' ) ) :
 				$options,
 				array(
 					array(
-						'title'   => __( 'Events', 'sportspress' ),
+						'title'   => esc_attr__( 'Events', 'sportspress' ),
 						'id'      => 'sportspress_team_events_format',
 						'default' => 'title',
 						'type'    => 'select',
 						'options' => array(
-							'blocks'   => __( 'Blocks', 'sportspress' ),
-							'calendar' => __( 'Calendar', 'sportspress' ),
-							'list'     => __( 'List', 'sportspress' ),
+							'blocks'   => esc_attr__( 'Blocks', 'sportspress' ),
+							'calendar' => esc_attr__( 'Calendar', 'sportspress' ),
+							'list'     => esc_attr__( 'List', 'sportspress' ),
 						),
 					),
 				)
@@ -450,7 +450,7 @@ if ( ! class_exists( 'SportsPress_Calendars' ) ) :
 				$templates,
 				array(
 					'events' => array(
-						'title'   => __( 'Events', 'sportspress' ),
+						'title'   => esc_attr__( 'Events', 'sportspress' ),
 						'option'  => 'sportspress_player_show_events',
 						'action'  => 'sportspress_output_player_events',
 						'default' => 'no',
@@ -469,14 +469,14 @@ if ( ! class_exists( 'SportsPress_Calendars' ) ) :
 				$options,
 				array(
 					array(
-						'title'   => __( 'Events', 'sportspress' ),
+						'title'   => esc_attr__( 'Events', 'sportspress' ),
 						'id'      => 'sportspress_player_events_format',
 						'default' => 'title',
 						'type'    => 'select',
 						'options' => array(
-							'blocks'   => __( 'Blocks', 'sportspress' ),
-							'calendar' => __( 'Calendar', 'sportspress' ),
-							'list'     => __( 'List', 'sportspress' ),
+							'blocks'   => esc_attr__( 'Blocks', 'sportspress' ),
+							'calendar' => esc_attr__( 'Calendar', 'sportspress' ),
+							'list'     => esc_attr__( 'List', 'sportspress' ),
 						),
 					),
 				)
@@ -493,7 +493,7 @@ if ( ! class_exists( 'SportsPress_Calendars' ) ) :
 				$templates,
 				array(
 					'events' => array(
-						'title'   => __( 'Events', 'sportspress' ),
+						'title'   => esc_attr__( 'Events', 'sportspress' ),
 						'option'  => 'sportspress_team_show_events',
 						'action'  => 'sportspress_output_team_events',
 						'default' => 'no',

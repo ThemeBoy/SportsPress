@@ -63,7 +63,7 @@ class SP_Team extends SP_Custom_Post {
 		endforeach;
 
 		$div_ids[]       = 0;
-		$season_names[0] = __( 'Total', 'sportspress' );
+		$season_names[0] = esc_attr__( 'Total', 'sportspress' );
 
 		$data = array();
 
@@ -347,7 +347,7 @@ endif;
 			$placeholders[ $div_id ] = array();
 			foreach ( $equations as $key => $value ) :
 				if ( '$gamesback' == $value['equation'] ) {
-					$placeholders[ $div_id ][ $key ] = __( '(Auto)', 'sportspress' );
+					$placeholders[ $div_id ][ $key ] = esc_attr__( '(Auto)', 'sportspress' );
 				} else {
 					$placeholders[ $div_id ][ $key ] = sp_solve( $value['equation'], $totals, $value['precision'] );
 				}

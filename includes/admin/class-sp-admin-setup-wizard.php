@@ -57,37 +57,37 @@ class SP_Admin_Setup_Wizard {
 		}
 		$this->steps = array(
 			'introduction'  => array(
-				'name'    => __( 'Introduction', 'sportspress' ),
+				'name'    => esc_attr__( 'Introduction', 'sportspress' ),
 				'view'    => array( $this, 'sp_setup_introduction' ),
 				'handler' => '',
 			),
 			'basics'        => array(
-				'name'    => __( 'Basic Setup', 'sportspress' ),
+				'name'    => esc_attr__( 'Basic Setup', 'sportspress' ),
 				'view'    => array( $this, 'sp_setup_basics' ),
 				'handler' => array( $this, 'sp_setup_basics_save' ),
 			),
 			'teams'         => array(
-				'name'    => __( 'Teams', 'sportspress' ),
+				'name'    => esc_attr__( 'Teams', 'sportspress' ),
 				'view'    => array( $this, 'sp_setup_teams' ),
 				'handler' => array( $this, 'sp_setup_teams_save' ),
 			),
 			'players_staff' => array(
-				'name'    => __( 'Players', 'sportspress' ) . ' &amp; ' . __( 'Staff', 'sportspress' ),
+				'name'    => esc_attr__( 'Players', 'sportspress' ) . ' &amp; ' . esc_attr__( 'Staff', 'sportspress' ),
 				'view'    => array( $this, 'sp_setup_players_staff' ),
 				'handler' => array( $this, 'sp_setup_players_staff_save' ),
 			),
 			'venue'         => array(
-				'name'    => __( 'Venue', 'sportspress' ),
+				'name'    => esc_attr__( 'Venue', 'sportspress' ),
 				'view'    => array( $this, 'sp_setup_venue' ),
 				'handler' => array( $this, 'sp_setup_venue_save' ),
 			),
 			'pages'         => array(
-				'name'    => __( 'Pages', 'sportspress' ),
+				'name'    => esc_attr__( 'Pages', 'sportspress' ),
 				'view'    => array( $this, 'sp_setup_pages' ),
 				'handler' => array( $this, 'sp_setup_pages_save' ),
 			),
 			'next_steps'    => array(
-				'name'    => __( 'Ready!', 'sportspress' ),
+				'name'    => esc_attr__( 'Ready!', 'sportspress' ),
 				'view'    => array( $this, 'sp_setup_ready' ),
 				'handler' => '',
 			),
@@ -108,8 +108,8 @@ class SP_Admin_Setup_Wizard {
 		$strings = apply_filters(
 			'sportspress_localized_strings',
 			array(
-				'none'        => __( 'None', 'sportspress' ),
-				'remove_text' => __( '&mdash; Remove &mdash;', 'sportspress' ),
+				'none'        => esc_attr__( 'None', 'sportspress' ),
+				'remove_text' => esc_attr__( '&mdash; Remove &mdash;', 'sportspress' ),
 			)
 		);
 
@@ -143,12 +143,12 @@ class SP_Admin_Setup_Wizard {
 	<head>
 	  <meta name="viewport" content="width=device-width" />
 	  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	  <title><?php _e( 'SportsPress', 'sportspress' ); ?> &rsaquo; <?php echo esc_html( $this->steps[ $this->step ]['name'] ); ?></title>
+	  <title><?php esc_html_e( 'SportsPress', 'sportspress' ); ?> &rsaquo; <?php echo esc_html( $this->steps[ $this->step ]['name'] ); ?></title>
 		<?php do_action( 'admin_print_styles' ); ?>
 		<?php do_action( 'admin_head' ); ?>
 	</head>
 	<body class="sp-setup wp-core-ui">
-	  <h1 id="sp-logo"><?php echo apply_filters( 'sportspress_logo', '<img src="' . plugin_dir_url( SP_PLUGIN_FILE ) . 'assets/images/modules/sportspress' . ( class_exists( 'SportsPress_Pro' ) ? '-pro' : '' ) . '.png" alt="' . __( 'SportsPress', 'sportspress' ) . '">' ); ?></h1>
+	  <h1 id="sp-logo"><?php echo wp_kses_post( apply_filters( 'sportspress_logo', '<img src="' . plugin_dir_url( SP_PLUGIN_FILE ) . 'assets/images/modules/sportspress' . ( class_exists( 'SportsPress_Pro' ) ? '-pro' : '' ) . '.png" alt="' . esc_attr__( 'SportsPress', 'sportspress' ) . '">' ) ); ?></h1>
 		<?php
 	}
 
@@ -158,7 +158,7 @@ class SP_Admin_Setup_Wizard {
 	public function setup_wizard_footer() {
 		?>
 		<?php if ( 'next_steps' === $this->step ) : ?>
-		<p class="sp-return-to-dashboard"><a href="<?php echo esc_url( admin_url( 'index.php?page=sp-about' ) ); ?>"><?php _e( 'Return to the WordPress Dashboard', 'sportspress' ); ?></a></p>
+		<p class="sp-return-to-dashboard"><a href="<?php echo esc_url( admin_url( 'index.php?page=sp-about' ) ); ?>"><?php esc_html_e( 'Return to the WordPress Dashboard', 'sportspress' ); ?></a></p>
 	  <?php endif; ?>
 		<?php wp_print_scripts( 'sportspress-setup' ); ?>
 	  </body>
@@ -203,12 +203,12 @@ class SP_Admin_Setup_Wizard {
 	 */
 	public function sp_setup_introduction() {
 		?>
-	<h1><?php _e( 'Welcome to SportsPress', 'sportspress' ); ?></h1>
-	<p><?php _e( 'Thank you for choosing SportsPress to power your sports website! This quick setup wizard will help you configure the basic settings. <strong>It’s completely optional and shouldn’t take longer than five minutes.</strong>', 'sportspress' ); ?></p>
-	<p><?php _e( 'No time right now? If you don’t want to go through the wizard, you can skip and return to the WordPress dashboard. Come back anytime if you change your mind!', 'sportspress' ); ?></p>
+	<h1><?php esc_html_e( 'Welcome to SportsPress', 'sportspress' ); ?></h1>
+	<p><?php esc_html_e( 'Thank you for choosing SportsPress to power your sports website! This quick setup wizard will help you configure the basic settings. <strong>It’s completely optional and shouldn’t take longer than five minutes.</strong>', 'sportspress' ); ?></p>
+	<p><?php esc_html_e( 'No time right now? If you don’t want to go through the wizard, you can skip and return to the WordPress dashboard. Come back anytime if you change your mind!', 'sportspress' ); ?></p>
 	<p class="sp-setup-actions step">
-	  <a href="<?php echo esc_url( $this->get_next_step_link() ); ?>" class="button-primary button button-large button-next"><?php _e( 'Let\'s Go!', 'sportspress' ); ?></a>
-	  <a href="<?php echo esc_url( admin_url( 'index.php?page=sp-about' ) ); ?>" class="button button-large button-muted"><?php _e( 'Not right now', 'sportspress' ); ?></a>
+	  <a href="<?php echo esc_url( $this->get_next_step_link() ); ?>" class="button-primary button button-large button-next"><?php esc_html_e( 'Let\'s Go!', 'sportspress' ); ?></a>
+	  <a href="<?php echo esc_url( admin_url( 'index.php?page=sp-about' ) ); ?>" class="button button-large button-muted"><?php esc_html_e( 'Not right now', 'sportspress' ); ?></a>
 	</p>
 		<?php
 	}
@@ -219,12 +219,12 @@ class SP_Admin_Setup_Wizard {
 	public function sp_setup_basics() {
 		$class = 'chosen-select' . ( is_rtl() ? ' chosen-rtl' : '' );
 		?>
-	<h1><?php _e( 'Basic Setup', 'sportspress' ); ?></h1>
+	<h1><?php esc_html_e( 'Basic Setup', 'sportspress' ); ?></h1>
 	<form method="post">
-	  <p><?php _e( 'Select your timezone and sport to get started.', 'sportspress' ); ?></p>
+	  <p><?php esc_html_e( 'Select your timezone and sport to get started.', 'sportspress' ); ?></p>
 	  <table class="form-table" cellspacing="0">
 		<tr>
-		  <th scope="row"><?php _e( 'Timezone', 'sportspress' ); ?> <i class="dashicons dashicons-editor-help sp-desc-tip" title="<?php _e( 'Choose a city in the same timezone as you.', 'sportspress' ); ?>"></i></th>
+		  <th scope="row"><?php esc_html_e( 'Timezone', 'sportspress' ); ?> <i class="dashicons dashicons-editor-help sp-desc-tip" title="<?php esc_attr_e( 'Choose a city in the same timezone as you.', 'sportspress' ); ?>"></i></th>
 		  <td>
 			<select id="timezone_string" name="timezone_string" class="<?php echo esc_attr( $class ); ?>">
 			  <?php
@@ -248,13 +248,13 @@ class SP_Admin_Setup_Wizard {
 						$tzstring = 'UTC+' . $current_offset;
 					}
 				}
-				echo wp_timezone_choice( $tzstring );
+				echo esc_attr( wp_timezone_choice( $tzstring ) );
 				?>
 			</select>
 		  </td>
 		</tr>
 		<tr>
-		  <th scope="row"><?php echo _x( 'Sport', 'Page title', 'sportspress' ); ?></th>
+		  <th scope="row"><?php echo esc_html_x( 'Sport', 'Page title', 'sportspress' ); ?></th>
 		  <td>
 			  <?php
 				$options = SP_Admin_Sports::get_preset_options();
@@ -285,22 +285,22 @@ class SP_Admin_Setup_Wizard {
 		  </td>
 		</tr>
 		<tr>
-		  <th scope="row"><?php _e( 'Main League', 'sportspress' ); ?> <i class="dashicons dashicons-editor-help sp-desc-tip" title="<?php _e( 'The name of a league or division.', 'sportspress' ); ?>"></i></th>
+		  <th scope="row"><?php esc_html_e( 'Main League', 'sportspress' ); ?> <i class="dashicons dashicons-editor-help sp-desc-tip" title="<?php esc_attr_e( 'The name of a league or division.', 'sportspress' ); ?>"></i></th>
 		  <td>
-			<input name="league" type="text" class="widefat" value="<?php _ex( 'Primary League', 'example', 'sportspress' ); ?>">
+			<input name="league" type="text" class="widefat" value="<?php echo esc_attr_x( 'Primary League', 'example', 'sportspress' ); ?>">
 		  </td>
 		</tr>
 		<tr>
-		  <th scope="row"><?php _e( 'Current Season', 'sportspress' ); ?></th>
+		  <th scope="row"><?php esc_html_e( 'Current Season', 'sportspress' ); ?></th>
 		  <td>
-			<input name="season" type="text" class="widefat" value="<?php echo date( 'Y' ); ?>">
+			<input name="season" type="text" class="widefat" value="<?php echo esc_attr( date( 'Y' ) ); ?>">
 		  </td>
 		</tr>
 	  </table>
 
 	  <p class="sp-setup-actions step">
 		<input type="submit" class="button-primary button button-large button-next" value="<?php esc_attr_e( 'Continue', 'sportspress' ); ?>" name="save_step" />
-		<a href="<?php echo esc_url( $this->get_next_step_link() ); ?>" class="button button-large button-next button-muted"><?php _e( 'Skip this step', 'sportspress' ); ?></a>
+		<a href="<?php echo esc_url( $this->get_next_step_link() ); ?>" class="button button-large button-next button-muted"><?php esc_html_e( 'Skip this step', 'sportspress' ); ?></a>
 		  <?php wp_nonce_field( 'sp-setup' ); ?>
 	  </p>
 	</form>
@@ -314,7 +314,7 @@ class SP_Admin_Setup_Wizard {
 		check_admin_referer( 'sp-setup' );
 
 		// Update timezone
-		$timezone_string = sanitize_text_field( $_POST['timezone_string'] );
+		$timezone_string = sanitize_text_field( wp_unslash( $_POST['timezone_string'] ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 		if ( ! empty( $timezone_string ) && preg_match( '/^UTC[+-]/', $timezone_string ) ) {
 			$gmt_offset      = $timezone_string;
 			$gmt_offset      = preg_replace( '/UTC\+?/', '', $gmt_offset );
@@ -330,14 +330,14 @@ class SP_Admin_Setup_Wizard {
 		}
 
 		// Update sport
-		$sport = sanitize_text_field( $_POST['sport'] );
+		$sport = sanitize_text_field( wp_unslash( $_POST['sport'] ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 		if ( ! empty( $sport ) && get_option( 'sportspress_sport', null ) !== $sport ) {
 			SP_Admin_Sports::apply_preset( $sport );
 		}
 		update_option( 'sportspress_sport', $sport );
 
 		// Insert league
-		$league = sanitize_text_field( $_POST['league'] );
+		$league = sanitize_text_field( wp_unslash( $_POST['league'] ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 		if ( ! is_string( $league ) || empty( $league ) ) {
 			$league = _x( 'Primary League', 'example', 'sportspress' );
 		}
@@ -347,7 +347,7 @@ class SP_Admin_Setup_Wizard {
 		}
 
 		// Insert season
-		$season = sanitize_text_field( $_POST['season'] );
+		$season = sanitize_text_field( wp_unslash( $_POST['season'] ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 		if ( ! is_string( $season ) || empty( $season ) ) {
 			$season = date( 'Y' );
 		}
@@ -366,28 +366,28 @@ class SP_Admin_Setup_Wizard {
 	public function sp_setup_teams() {
 		$class = 'chosen-select' . ( is_rtl() ? ' chosen-rtl' : '' );
 		?>
-	<h1><?php _e( 'Team Setup', 'sportspress' ); ?></h1>
+	<h1><?php esc_html_e( 'Team Setup', 'sportspress' ); ?></h1>
 	<form method="post">
-	  <p><?php _e( "Great! Now let's add some teams.", 'sportspress' ); ?></p>
+	  <p><?php esc_html_e( "Great! Now let's add some teams.", 'sportspress' ); ?></p>
 	  <table class="form-table" cellspacing="0">
 		<tr>
-		  <th scope="row"><?php _e( 'Home Team', 'sportspress' ); ?></th>
+		  <th scope="row"><?php esc_html_e( 'Home Team', 'sportspress' ); ?></th>
 		  <td>
-			<input name="home_team" type="text" class="widefat" placeholder="<?php _e( 'What is your team called?', 'sportspress' ); ?>">
+			<input name="home_team" type="text" class="widefat" placeholder="<?php esc_html_e( 'What is your team called?', 'sportspress' ); ?>">
 		  </td>
 		</tr>
 		<tr>
-		  <th scope="row"><?php _e( 'Rival Team', 'sportspress' ); ?></th>
+		  <th scope="row"><?php esc_html_e( 'Rival Team', 'sportspress' ); ?></th>
 		  <td>
-			<input name="away_team" type="text" class="widefat" placeholder="<?php _e( 'Who are you playing against next?', 'sportspress' ); ?>">
-			<p class="description"><?php _e( 'You can add more teams later.', 'sportspress' ); ?></p>
+			<input name="away_team" type="text" class="widefat" placeholder="<?php esc_html_e( 'Who are you playing against next?', 'sportspress' ); ?>">
+			<p class="description"><?php esc_html_e( 'You can add more teams later.', 'sportspress' ); ?></p>
 		  </td>
 		</tr>
 	  </table>
 
 	  <p class="sp-setup-actions step">
 		<input type="submit" class="button-primary button button-large button-next" value="<?php esc_attr_e( 'Continue', 'sportspress' ); ?>" name="save_step" />
-		<a href="<?php echo esc_url( $this->get_next_step_link() ); ?>" class="button button-large button-next button-muted"><?php _e( 'Skip this step', 'sportspress' ); ?></a>
+		<a href="<?php echo esc_url( $this->get_next_step_link() ); ?>" class="button button-large button-next button-muted"><?php esc_html_e( 'Skip this step', 'sportspress' ); ?></a>
 		<?php wp_nonce_field( 'sp-setup' ); ?>
 	  </p>
 	</form>
@@ -401,7 +401,7 @@ class SP_Admin_Setup_Wizard {
 		check_admin_referer( 'sp-setup' );
 
 		// Add away team
-		$post['post_title']  = sanitize_text_field( $_POST['away_team'] );
+		$post['post_title']  = sanitize_text_field( wp_unslash( $_POST['away_team'] ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 		$post['post_type']   = 'sp_team';
 		$post['post_status'] = 'publish';
 		$post['tax_input']   = array();
@@ -418,7 +418,7 @@ class SP_Admin_Setup_Wizard {
 		wp_insert_post( $post );
 
 		// Add home team
-		$post['post_title'] = sanitize_text_field( $_POST['home_team'] );
+		$post['post_title'] = sanitize_text_field( wp_unslash( $_POST['home_team'] ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 		wp_insert_post( $post );
 
 		wp_redirect( esc_url_raw( $this->get_next_step_link() ) );
@@ -440,28 +440,28 @@ class SP_Admin_Setup_Wizard {
 		?>
 	<h1><?php esc_html_e( 'Player & Staff Setup', 'sportspress' ); ?></h1>
 	<form method="post">
-	  <p><?php _e( "Let's add players and a staff member.", 'sportspress' ); ?></p>
+	  <p><?php esc_html_e( "Let's add players and a staff member.", 'sportspress' ); ?></p>
 	  <table class="form-table" cellspacing="0">
 		<tr>
-		  <th scope="row"><?php _e( 'Players', 'sportspress' ); ?> <i class="dashicons dashicons-editor-help sp-desc-tip" title="<?php _e( 'Enter a squad number, name, and position for each player.', 'sportspress' ); ?>"></i></th>
+		  <th scope="row"><?php esc_html_e( 'Players', 'sportspress' ); ?> <i class="dashicons dashicons-editor-help sp-desc-tip" title="<?php esc_attr_e( 'Enter a squad number, name, and position for each player.', 'sportspress' ); ?>"></i></th>
 		  <td>
 			<ul>
 			  <?php for ( $i = 0; $i < 3; $i++ ) { ?>
-				<li class="player"><input name="players[<?php echo $i; ?>][number]" type="text" class="player-number" placeholder="#" value="<?php echo $i + 1; ?>"> <input name="players[<?php echo $i; ?>][name]" type="text" placeholder="<?php _e( 'Name', 'sportspress' ); ?>"> <input name="players[<?php echo $i; ?>][position]" type="text" placeholder="<?php _e( 'Position', 'sportspress' ); ?>" 
+				<li class="player"><input name="players[<?php echo esc_attr( $i ); ?>][number]" type="text" class="player-number" placeholder="#" value="<?php echo esc_attr( $i + 1 ); ?>"> <input name="players[<?php echo esc_attr( $i ); ?>][name]" type="text" placeholder="<?php esc_attr_e( 'Name', 'sportspress' ); ?>"> <input name="players[<?php echo esc_attr( $i ); ?>][position]" type="text" placeholder="<?php esc_attr_e( 'Position', 'sportspress' ); ?>" 
 																   <?php
 																	if ( sizeof( $positions ) ) {
 																		?>
 					 value="<?php echo esc_attr( $positions[ $i % sizeof( $positions ) ] ); ?>"<?php } ?>></li>
 			  <?php } ?>
 			</ul>
-			<p class="description"><?php _e( 'You can add more players later.', 'sportspress' ); ?></p>
+			<p class="description"><?php esc_html_e( 'You can add more players later.', 'sportspress' ); ?></p>
 		  </td>
 		</tr>
 		<tr>
-		  <th scope="row"><?php _e( 'Staff', 'sportspress' ); ?></th>
+		  <th scope="row"><?php esc_html_e( 'Staff', 'sportspress' ); ?></th>
 		  <td>
 			<ul>
-			  <li class="staff"><input name="staff" type="text" class="staff-name" placeholder="<?php _e( 'Name', 'sportspress' ); ?>"> <input name="role" type="text" placeholder="<?php _e( 'Job', 'sportspress' ); ?>" value="Coach"></li>
+			  <li class="staff"><input name="staff" type="text" class="staff-name" placeholder="<?php esc_attr_e( 'Name', 'sportspress' ); ?>"> <input name="role" type="text" placeholder="<?php esc_attr_e( 'Job', 'sportspress' ); ?>" value="Coach"></li>
 			</ul>
 		  </td>
 		</tr>
@@ -469,7 +469,7 @@ class SP_Admin_Setup_Wizard {
 
 	  <p class="sp-setup-actions step">
 		<input type="submit" class="button-primary button button-large button-next" value="<?php esc_attr_e( 'Continue', 'sportspress' ); ?>" name="save_step" />
-		<a href="<?php echo esc_url( $this->get_next_step_link() ); ?>" class="button button-large button-next button-muted"><?php _e( 'Skip this step', 'sportspress' ); ?></a>
+		<a href="<?php echo esc_url( $this->get_next_step_link() ); ?>" class="button button-large button-next button-muted"><?php esc_html_e( 'Skip this step', 'sportspress' ); ?></a>
 		<?php wp_nonce_field( 'sp-setup' ); ?>
 	  </p>
 	</form>
@@ -506,8 +506,8 @@ class SP_Admin_Setup_Wizard {
 				)
 			);
 		}
-		if ( is_array( $_POST['players'] ) ) {
-			foreach ( $_POST['players'] as $i => $player ) {
+		if ( is_array( $_POST['players'] ) ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
+			foreach ( $_POST['players'] as $i => $player ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 				if ( empty( $player['name'] ) ) {
 					continue;
 				}
@@ -520,7 +520,7 @@ class SP_Admin_Setup_Wizard {
 				update_post_meta( $id, 'sp_number', $number );
 
 				// Add position
-				wp_set_object_terms( $id, sp_array_value( $player, 'position', __( 'Position', 'sportspress' ) ), 'sp_position', false );
+				wp_set_object_terms( $id, sp_array_value( $player, 'position', esc_attr__( 'Position', 'sportspress' ) ), 'sp_position', false );
 
 				// Add team
 				if ( $team ) {
@@ -534,7 +534,7 @@ class SP_Admin_Setup_Wizard {
 		if ( ! empty( $_POST['staff'] ) ) {
 
 			$post['post_type']  = 'sp_staff';
-			$post['post_title'] = sanitize_text_field( $_POST['staff'] );
+			$post['post_title'] = sanitize_text_field( wp_unslash( $_POST['staff'] ) );
 			$id                 = wp_insert_post( $post );
 
 			// Add role
@@ -557,22 +557,22 @@ class SP_Admin_Setup_Wizard {
 	public function sp_setup_venue() {
 		do_action( 'sp_setup_venue_geocoder_scripts' );
 		?>
-	<h1><?php _e( 'Venue Setup', 'sportspress' ); ?></h1>
+	<h1><?php esc_html_e( 'Venue Setup', 'sportspress' ); ?></h1>
 	<form method="post">
-	  <p><?php _e( 'Enter the details of your home venue.', 'sportspress' ); ?></p>
+	  <p><?php esc_html_e( 'Enter the details of your home venue.', 'sportspress' ); ?></p>
 	  <table class="form-table" cellspacing="0">
 		<tr>
-		  <th scope="row"><?php _e( 'Name', 'sportspress' ); ?></th>
+		  <th scope="row"><?php esc_html_e( 'Name', 'sportspress' ); ?></th>
 		  <td>
-			<input name="venue" type="text" placeholder="<?php _e( 'Venue', 'sportspress' ); ?>">
+			<input name="venue" type="text" placeholder="<?php esc_attr_e( 'Venue', 'sportspress' ); ?>">
 		  </td>
 		</tr>
 		<tr>
-		  <th scope="row"><?php _e( 'Address', 'sportspress' ); ?></th>
+		  <th scope="row"><?php esc_html_e( 'Address', 'sportspress' ); ?></th>
 		  <td>
 			<input name="address" id="sp_address" class="sp-address" type="text" value="Marvel Stadium, Melbourne">
 			<div id="sp-location-picker" class="sp-location-picker" style="width: 95%; height: 320px"></div>
-			<p class="description"><?php _e( "Drag the marker to the venue's location.", 'sportspress' ); ?></p>
+			<p class="description"><?php esc_html_e( "Drag the marker to the venue's location.", 'sportspress' ); ?></p>
 			<input name="latitude" id="sp_latitude" class="sp-latitude" type="hidden" value="-37.8165647">
 			<input name="longitude" id="sp_longitude" class="sp-longitude" type="hidden" value="144.9475055">
 		  </td>
@@ -581,7 +581,7 @@ class SP_Admin_Setup_Wizard {
 
 	  <p class="sp-setup-actions step">
 		<input type="submit" class="button-primary button button-large button-next" value="<?php esc_attr_e( 'Continue', 'sportspress' ); ?>" name="save_step" />
-		<a href="<?php echo esc_url( $this->get_next_step_link() ); ?>" class="button button-large button-next button-muted"><?php _e( 'Skip this step', 'sportspress' ); ?></a>
+		<a href="<?php echo esc_url( $this->get_next_step_link() ); ?>" class="button button-large button-next button-muted"><?php esc_html_e( 'Skip this step', 'sportspress' ); ?></a>
 		<?php wp_nonce_field( 'sp-setup' ); ?>
 	  </p>
 	</form>
@@ -606,9 +606,9 @@ class SP_Admin_Setup_Wizard {
 		$team  = reset( $teams );
 
 		// Insert venue
-		$venue = sanitize_text_field( $_POST['venue'] );
+		$venue = sanitize_text_field( wp_unslash( $_POST['venue'] ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 		if ( ! is_string( $venue ) || empty( $venue ) ) {
-			$venue = sp_array_value( $_POST, 'address', __( 'Venue', 'sportspress' ) );
+			$venue = sp_array_value( $_POST, 'address', esc_attr__( 'Venue', 'sportspress' ) );
 		}
 		$inserted = wp_insert_term( $venue, 'sp_venue' );
 
@@ -639,15 +639,15 @@ class SP_Admin_Setup_Wizard {
 		$pages = apply_filters(
 			'sportspress_setup_pages',
 			array(
-				'sp_calendar' => __( 'Organize and publish calendars using different layouts.', 'sportspress' ),
-				'sp_table'    => __( 'Create automated league tables to keep track of team standings.', 'sportspress' ),
-				'sp_list'     => __( 'Create team rosters, player galleries, and ranking charts.', 'sportspress' ),
+				'sp_calendar' => esc_attr__( 'Organize and publish calendars using different layouts.', 'sportspress' ),
+				'sp_table'    => esc_attr__( 'Create automated league tables to keep track of team standings.', 'sportspress' ),
+				'sp_list'     => esc_attr__( 'Create team rosters, player galleries, and ranking charts.', 'sportspress' ),
 			)
 		);
 		?>
-	<h1><?php _e( 'Pages', 'sportspress' ); ?></h1>
+	<h1><?php esc_html_e( 'Pages', 'sportspress' ); ?></h1>
 	<form method="post">
-	  <p><?php printf( __( 'The following will be created automatically (if they do not already exist):', 'sportspress' ), '<a href="' . esc_url( admin_url( 'edit.php?post_type=page' ) ) . '" target="_blank">', '</a>' ); ?></p>
+	  <p><?php printf( esc_html__( 'The following will be created automatically (if they do not already exist):', 'sportspress' ), '<a href="' . esc_url( admin_url( 'edit.php?post_type=page' ) ) . '" target="_blank">', '</a>' ); ?></p>
 	  <table class="form-table" cellspacing="0">
 		<?php foreach ( $pages as $post_type => $description ) { ?>
 			<?php
@@ -663,11 +663,11 @@ class SP_Admin_Setup_Wizard {
 		<?php } ?>
 	  </table>
 
-	  <p><?php printf( __( 'Once created, these pages can be managed from your admin dashboard.', 'sportspress' ), '<a href="' . esc_url( admin_url( 'edit.php?post_type=page' ) ) . '" target="_blank">', '</a>', '<a href="' . esc_url( admin_url( 'nav-menus.php' ) ) . '" target="_blank">', '</a>' ); ?></p>
+	  <p><?php printf( esc_html__( 'Once created, these pages can be managed from your admin dashboard.', 'sportspress' ), '<a href="' . esc_url( admin_url( 'edit.php?post_type=page' ) ) . '" target="_blank">', '</a>', '<a href="' . esc_url( admin_url( 'nav-menus.php' ) ) . '" target="_blank">', '</a>' ); ?></p>
 
 	  <p class="sp-setup-actions step">
 		<input type="submit" class="button-primary button button-large button-next" value="<?php esc_attr_e( 'Continue', 'sportspress' ); ?>" name="save_step" />
-		<a href="<?php echo esc_url( $this->get_next_step_link() ); ?>" class="button button-large button-next button-muted"><?php _e( 'Skip this step', 'sportspress' ); ?></a>
+		<a href="<?php echo esc_url( $this->get_next_step_link() ); ?>" class="button button-large button-next button-muted"><?php esc_html_e( 'Skip this step', 'sportspress' ); ?></a>
 		  <?php wp_nonce_field( 'sp-setup' ); ?>
 	  </p>
 	</form>
@@ -683,9 +683,9 @@ class SP_Admin_Setup_Wizard {
 		$pages = apply_filters(
 			'sportspress_setup_pages',
 			array(
-				'sp_calendar' => __( 'Organize and publish calendars using different layouts.', 'sportspress' ),
-				'sp_table'    => __( 'Create automated league tables to keep track of team standings.', 'sportspress' ),
-				'sp_list'     => __( 'Create team rosters, player galleries, and ranking charts.', 'sportspress' ),
+				'sp_calendar' => esc_attr__( 'Organize and publish calendars using different layouts.', 'sportspress' ),
+				'sp_table'    => esc_attr__( 'Create automated league tables to keep track of team standings.', 'sportspress' ),
+				'sp_list'     => esc_attr__( 'Create team rosters, player galleries, and ranking charts.', 'sportspress' ),
 			)
 		);
 
@@ -815,7 +815,7 @@ class SP_Admin_Setup_Wizard {
 			}
 			$post['post_title'] = implode( ' ' . get_option( 'sportspress_event_teams_delimiter', 'vs' ) . ' ', $team_names );
 		} else {
-			$post['post_title'] = __( 'Event', 'sportspress' );
+			$post['post_title'] = esc_attr__( 'Event', 'sportspress' );
 		}
 
 		// Insert event
@@ -857,12 +857,12 @@ class SP_Admin_Setup_Wizard {
 			'sportspress_setup_wizard_next_steps',
 			array(
 				'first' => array(
-					'label'   => __( 'Next Steps', 'sportspress' ),
-					'content' => '<a class="button button-primary button-large button-first-event" href="' . esc_url( admin_url( 'post.php?post=' . $id . '&action=edit' ) ) . '">' . __( 'Schedule your first event!', 'sportspress' ) . '</a>',
+					'label'   => esc_attr__( 'Next Steps', 'sportspress' ),
+					'content' => '<a class="button button-primary button-large button-first-event" href="' . esc_url( admin_url( 'post.php?post=' . $id . '&action=edit' ) ) . '">' . esc_attr__( 'Schedule your first event!', 'sportspress' ) . '</a>',
 				),
 				'last'  => array(
-					'label'   => __( 'Upgrade to Pro', 'sportspress' ),
-					'content' => __( 'Get SportsPress Pro to get access to all modules. You can upgrade any time without losing any of your data.', 'sportspress' ) . ' <a href="' . apply_filters( 'sportspress_pro_url', 'http://tboy.co/pro' ) . '" target="_blank">' . __( 'Learn more', 'sportspress' ) . '</a>',
+					'label'   => esc_attr__( 'Upgrade to Pro', 'sportspress' ),
+					'content' => esc_attr__( 'Get SportsPress Pro to get access to all modules. You can upgrade any time without losing any of your data.', 'sportspress' ) . ' <a href="' . apply_filters( 'sportspress_pro_url', 'http://tboy.co/pro' ) . '" target="_blank">' . esc_attr__( 'Learn more', 'sportspress' ) . '</a>',
 				),
 			)
 		);
@@ -870,7 +870,7 @@ class SP_Admin_Setup_Wizard {
 	<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://tboy.co/sp" data-text="<?php echo esc_attr( $this->tweets[0] ); ?>" data-via="ThemeBoy" data-size="large">Tweet</a>
 	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
-	<h1><?php _e( 'Thanks for installing!', 'sportspress' ); ?></h1>
+	<h1><?php esc_html_e( 'Thanks for installing!', 'sportspress' ); ?></h1>
 
 	<div class="sp-banner"><img src="//ps.w.org/sportspress/assets/banner-772x250.png"></div>
 

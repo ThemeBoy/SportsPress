@@ -271,7 +271,7 @@ class SP_Player extends SP_Custom_Post {
 		endforeach;
 
 		$div_ids[]       = 0;
-		$season_names[0] = __( 'Total', 'sportspress' );
+		$season_names[0] = esc_attr__( 'Total', 'sportspress' );
 
 		$data = array();
 
@@ -719,7 +719,7 @@ class SP_Player extends SP_Custom_Post {
 					$team_name      = '<a href="' . $team_permalink . '">' . $team_name . '</a>';
 				endif;
 			else :
-				$team_name = __( 'Total', 'sportspress' );
+				$team_name = esc_attr__( 'Total', 'sportspress' );
 			endif;
 
 			// Add season name to row
@@ -785,7 +785,7 @@ class SP_Player extends SP_Custom_Post {
 
 		// Calculate total statistics
 		$career = array(
-			'name' => __( 'Total', 'sportspress' ),
+			'name' => esc_attr__( 'Total', 'sportspress' ),
 			'team' => '-',
 		);
 
@@ -833,7 +833,7 @@ class SP_Player extends SP_Custom_Post {
 			if ( is_array( $usecolumns ) ) :
 				foreach ( $usecolumns as $key ) :
 					if ( $key == 'team' ) :
-						$labels[ $key ] = __( 'Team', 'sportspress' );
+						$labels[ $key ] = esc_attr__( 'Team', 'sportspress' );
 								elseif ( array_key_exists( $key, $columns ) ) :
 									$labels[ $key ] = $columns[ $key ];
 								endif;
@@ -852,8 +852,8 @@ endif;
 
 			$labels = array();
 
-			$labels['name'] = __( 'Season', 'sportspress' );
-			$labels['team'] = __( 'Team', 'sportspress' );
+			$labels['name'] = esc_attr__( 'Season', 'sportspress' );
+			$labels['team'] = esc_attr__( 'Team', 'sportspress' );
 
 			if ( 'no' === get_option( 'sportspress_player_show_total', 'no' ) ) {
 				unset( $merged[-1] );

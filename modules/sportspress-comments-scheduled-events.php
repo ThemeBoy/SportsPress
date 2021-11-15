@@ -54,10 +54,10 @@ if ( ! class_exists( 'SportsPress_Comments_Scheduled_Events' ) ) :
 
 			do_action( 'pre_comment_on_post', $comment_post_ID );
 
-			$comment_author       = ( isset( $_POST['author'] ) ) ? trim( strip_tags( $_POST['author'] ) ) : null;
-			$comment_author_email = ( isset( $_POST['email'] ) ) ? sanitize_email( trim( $_POST['email'] ) ) : null;
-			$comment_author_url   = ( isset( $_POST['url'] ) ) ? esc_url( trim( $_POST['url'] ) ) : null;
-			$comment_content      = ( isset( $_POST['comment'] ) ) ? esc_textarea( trim( $_POST['comment'] ) ) : null;
+			$comment_author       = ( isset( $_POST['author'] ) ) ? trim( strip_tags( sanitize_text_field( wp_unslash( $_POST['author'] ) ) ) ) : null;
+			$comment_author_email = ( isset( $_POST['email'] ) ) ? trim( sanitize_email( wp_unslash( $_POST['email'] ) ) ) : null;
+			$comment_author_url   = ( isset( $_POST['url'] ) ) ? trim( sanitize_url( wp_unslash( $_POST['url'] ) ) ) : null; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+			$comment_content      = ( isset( $_POST['comment'] ) ) ? trim( sanitize_text_field( wp_unslash( $_POST['comment'] ) ) ) : null;
 
 			// If the user is logged in
 			$user = wp_get_current_user();
@@ -79,7 +79,7 @@ if ( ! class_exists( 'SportsPress_Comments_Scheduled_Events' ) ) :
 				}
 			} else {
 				if ( get_option( 'comment_registration' ) ) {
-					return new WP_Error( 'not_logged_in', __( 'Sorry, you must be logged in to comment.' ), 403 );
+					return new WP_Error( 'not_logged_in', esc_attr__( 'Sorry, you must be logged in to comment.' ), 403 );
 				}
 			}
 
@@ -87,17 +87,17 @@ if ( ! class_exists( 'SportsPress_Comments_Scheduled_Events' ) ) :
 
 			if ( get_option( 'require_name_email' ) && ! $user->exists() ) {
 				if ( '' == $comment_author_email || '' == $comment_author ) {
-					// return new WP_Error( 'require_name_email', __( '<strong>ERROR</strong>: please fill the required fields (name, email).' ), 200 );
-					wp_die( __( '<strong>ERROR</strong>: please fill the required fields (name, email).' ), __( 'ERROR: please fill the required fields (name, email).' ), array( 'back_link' => true ) );
+					// return new WP_Error( 'require_name_email', esc_attr__( '<strong>ERROR</strong>: please fill the required fields (name, email).' ), 200 );
+					wp_die( esc_attr__( '<strong>ERROR</strong>: please fill the required fields (name, email).' ), esc_attr__( 'ERROR: please fill the required fields (name, email).' ), array( 'back_link' => true ) );
 				} elseif ( ! is_email( $comment_author_email ) ) {
-					// return new WP_Error( 'require_valid_email', __( '<strong>ERROR</strong>: please enter a valid email address.' ), 200 );
-					wp_die( __( '<strong>ERROR</strong>: please enter a valid email address.' ), __( 'ERROR: please enter a valid email address.' ), array( 'back_link' => true ) );
+					// return new WP_Error( 'require_valid_email', esc_attr__( '<strong>ERROR</strong>: please enter a valid email address.' ), 200 );
+					wp_die( esc_attr__( '<strong>ERROR</strong>: please enter a valid email address.' ), esc_attr__( 'ERROR: please enter a valid email address.' ), array( 'back_link' => true ) );
 				}
 			}
 
 			if ( '' == $comment_content ) {
-				// return new WP_Error( 'require_valid_comment', __( '<strong>ERROR</strong>: please type a comment.' ), 200 );
-				wp_die( __( '<strong>ERROR</strong>: please type a comment.' ), __( 'ERROR: please type a comment.' ), array( 'back_link' => true ) );
+				// return new WP_Error( 'require_valid_comment', esc_attr__( '<strong>ERROR</strong>: please type a comment.' ), 200 );
+				wp_die( esc_attr__( '<strong>ERROR</strong>: please type a comment.' ), esc_attr__( 'ERROR: please type a comment.' ), array( 'back_link' => true ) );
 			}
 
 			$comment_parent = isset( $_POST['comment_parent'] ) ? absint( $_POST['comment_parent'] ) : 0;
@@ -124,8 +124,8 @@ if ( ! class_exists( 'SportsPress_Comments_Scheduled_Events' ) ) :
 			}
 
 			if ( ! $comment_id ) {
-				// return new WP_Error( 'comment_save_error', __( '<strong>ERROR</strong>: The comment could not be saved. Please try again later.' ), 500 );
-				wp_die( __( '<strong>ERROR</strong>: The comment could not be saved. Please try again later.' ), __( 'ERROR: The comment could not be saved. Please try again later.' ), array( 'back_link' => true ) );
+				// return new WP_Error( 'comment_save_error', esc_attr__( '<strong>ERROR</strong>: The comment could not be saved. Please try again later.' ), 500 );
+				wp_die( esc_attr__( '<strong>ERROR</strong>: The comment could not be saved. Please try again later.' ), esc_attr__( 'ERROR: The comment could not be saved. Please try again later.' ), array( 'back_link' => true ) );
 			}
 
 			$comment = get_comment( $comment_id );
@@ -136,7 +136,7 @@ if ( ! class_exists( 'SportsPress_Comments_Scheduled_Events' ) ) :
 				wp_set_comment_status( $comment_id, 'approve' );
 			}
 
-			$location = empty( $_POST['redirect_to'] ) ? get_comment_link( $comment_id ) : $_POST['redirect_to'] . '#comment-' . $comment_id;
+			$location = empty( $_POST['redirect_to'] ) ? get_comment_link( $comment_id ) : sanitize_url( wp_unslash( $_POST['redirect_to'] ) ) . '#comment-' . $comment_id; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 
 			$location = apply_filters( 'comment_post_redirect', $location, $comment );
 

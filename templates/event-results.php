@@ -26,7 +26,7 @@ if ( 'results' != $status ) {
 }
 
 if ( ! isset( $caption ) ) {
-	$caption = __( 'Results', 'sportspress' );
+	$caption = esc_attr__( 'Results', 'sportspress' );
 }
 
 // Get event result data
@@ -118,7 +118,7 @@ else :
 
 	$output .= '<div class="sp-table-wrapper">' .
 		'<table class="sp-event-results sp-data-table' . ( $scrollable ? ' sp-scrollable-table' : '' ) . '"><thead>' .
-		'<th class="data-name">' . __( 'Team', 'sportspress' ) . '</th>';
+		'<th class="data-name">' . esc_attr__( 'Team', 'sportspress' ) . '</th>';
 	foreach ( $labels as $key => $label ) :
 		$output .= '<th class="data-' . $key . '">' . $label . '</th>';
 	endforeach;
@@ -129,5 +129,5 @@ else :
 endif;
 ?>
 <div class="sp-template sp-template-event-results">
-	<?php echo $output; ?>
+	<?php echo wp_kses_post( $output ); ?>
 </div>

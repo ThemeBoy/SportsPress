@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( 'sp_calendar' !== get_post_type( $post ) ) {
-	wp_die( __( 'ERROR: This is not a valid feed template.', 'sportspress' ), '', array( 'response' => 404 ) );
+	wp_die( esc_html__( 'ERROR: This is not a valid feed template.', 'sportspress' ), '', array( 'response' => 404 ) );
 }
 
 // Get events in calendar

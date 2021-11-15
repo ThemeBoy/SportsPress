@@ -64,7 +64,7 @@ if ( ! class_exists( 'SP_Admin_CPT_Event' ) ) :
 		 */
 		public function enter_title_here( $text, $post ) {
 			if ( $post->post_type == 'sp_event' ) {
-				return __( '(Auto)', 'sportspress' );
+				return esc_attr__( '(Auto)', 'sportspress' );
 			}
 
 			return $text;
@@ -134,19 +134,19 @@ if ( ! class_exists( 'SP_Admin_CPT_Event' ) ) :
 			$columns = array_merge(
 				array(
 					'cb'        => '<input type="checkbox" />',
-					'sp_format' => '<span class="dashicons sp-icon-calendar sp-tip" title="' . __( 'Format', 'sportspress' ) . '"></span>',
+					'sp_format' => '<span class="dashicons sp-icon-calendar sp-tip" title="' . esc_attr__( 'Format', 'sportspress' ) . '"></span>',
 					'title'     => null,
-					'date'      => __( 'Date', 'sportspress' ),
-					'sp_time'   => __( 'Time', 'sportspress' ),
-					'sp_team'   => __( 'Teams', 'sportspress' ),
-					'sp_league' => __( 'League', 'sportspress' ),
-					'sp_season' => __( 'Season', 'sportspress' ),
-					'sp_venue'  => __( 'Venue', 'sportspress' ),
-					'sp_day'    => __( 'Match Day', 'sportspress' ),
+					'date'      => esc_attr__( 'Date', 'sportspress' ),
+					'sp_time'   => esc_attr__( 'Time', 'sportspress' ),
+					'sp_team'   => esc_attr__( 'Teams', 'sportspress' ),
+					'sp_league' => esc_attr__( 'League', 'sportspress' ),
+					'sp_season' => esc_attr__( 'Season', 'sportspress' ),
+					'sp_venue'  => esc_attr__( 'Venue', 'sportspress' ),
+					'sp_day'    => esc_attr__( 'Match Day', 'sportspress' ),
 				),
 				$existing_columns,
 				array(
-					'title' => __( 'Event', 'sportspress' ),
+					'title' => esc_attr__( 'Event', 'sportspress' ),
 				)
 			);
 			return apply_filters( 'sportspress_event_admin_columns', $columns );
@@ -188,11 +188,11 @@ if ( ! class_exists( 'SP_Admin_CPT_Event' ) ) :
 					$formats       = new SP_Formats();
 					$event_formats = $formats->event;
 					if ( array_key_exists( $format, $event_formats ) ) :
-						echo '<span class="dashicons sp-icon-' . $format . ' sp-tip" title="' . $event_formats[ $format ] . '"></span>';
+						echo '<span class="dashicons sp-icon-' . esc_attr( $format ) . ' sp-tip" title="' . esc_attr( $event_formats[ $format ] ) . '"></span>';
 					endif;
 					break;
 				case 'sp_time':
-					echo apply_filters( 'sportspress_event_time_admin', get_post_time( 'H:i', false, $post_id, true ) );
+					echo wp_kses_post( apply_filters( 'sportspress_event_time_admin', get_post_time( 'H:i', false, $post_id, true ) ) );
 					break;
 				case 'sp_team':
 					$teams         = (array) get_post_meta( $post_id, 'sp_team', false );
@@ -207,7 +207,7 @@ if ( ! class_exists( 'SP_Admin_CPT_Event' ) ) :
 					else :
 						$results     = get_post_meta( $post_id, 'sp_results', true );
 						$main_result = get_option( 'sportspress_primary_result', null );
-						echo '<input type="hidden" name="sp_post_id" value="' . $post_id . '">';
+						echo '<input type="hidden" name="sp_post_id" value="' . esc_attr( $post_id ) . '">';
 						echo '<div class="sp-results">';
 						foreach ( $teams as $team_id ) :
 							if ( ! $team_id ) {
@@ -236,7 +236,7 @@ if ( ! class_exists( 'SP_Admin_CPT_Event' ) ) :
 									$team_results = implode( ' | ', $team_results );
 								endif;
 
-								echo '<a class="sp-result sp-tip" tabindex="10" title="' . esc_attr( $team_results ) . '" data-team="' . esc_attr( $team_id ) . '" href="#">' . ( $team_result == '' ? '-' : apply_filters( 'sportspress_event_team_result_admin', $team_result, $post_id, $team_id ) ) . '</a>';
+								echo '<a class="sp-result sp-tip" tabindex="10" title="' . esc_attr( $team_results ) . '" data-team="' . esc_attr( $team_id ) . '" href="#">' . ( esc_attr( $team_result ) == '' ? '-' : wp_kses_post( apply_filters( 'sportspress_event_team_result_admin', $team_result, $post_id, $team_id ) ) ) . '</a>';
 								echo '<input type="text" tabindex="10" class="sp-edit-result hidden small-text" data-team="' . esc_attr( $team_id ) . '" data-key="' . esc_attr( $main_result ) . '" value="' . esc_attr( $team_result ) . '"> ';
 								echo esc_html( $team->post_title );
 								echo '<br>';
@@ -245,28 +245,28 @@ if ( ! class_exists( 'SP_Admin_CPT_Event' ) ) :
 						echo '</div>';
 						if ( current_user_can( 'edit_others_sp_events' ) ) {
 							?>
-						<div class="row-actions sp-row-actions"><span class="inline hide-if-no-js"><a href="#" class="sp-edit-results"><?php _e( 'Edit Results', 'sportspress' ); ?></a></span></div>
+						<div class="row-actions sp-row-actions"><span class="inline hide-if-no-js"><a href="#" class="sp-edit-results"><?php esc_html_e( 'Edit Results', 'sportspress' ); ?></a></span></div>
 						<p class="inline-edit-save sp-inline-edit-save hidden">
-							<a href="#inline-edit" class="button-secondary cancel alignleft"><?php _e( 'Cancel' ); ?></a>
-							<a href="#inline-edit" class="button-primary save alignright"><?php _e( 'Update' ); ?></a>
+							<a href="#inline-edit" class="button-secondary cancel alignleft"><?php esc_html_e( 'Cancel' ); ?></a>
+							<a href="#inline-edit" class="button-primary save alignright"><?php esc_html_e( 'Update' ); ?></a>
 						</p>
 							<?php
 						}
 					endif;
 					break;
 				case 'sp_league':
-					echo get_the_terms( $post_id, 'sp_league' ) ? the_terms( $post_id, 'sp_league' ) : '&mdash;';
+					echo get_the_terms( $post_id, 'sp_league' ) ? wp_kses_post( the_terms( $post_id, 'sp_league' ) ) : '&mdash;';
 					break;
 				case 'sp_season':
-					echo get_the_terms( $post_id, 'sp_season' ) ? the_terms( $post_id, 'sp_season' ) : '&mdash;';
+					echo get_the_terms( $post_id, 'sp_season' ) ? wp_kses_post( the_terms( $post_id, 'sp_season' ) ) : '&mdash;';
 					break;
 				case 'sp_venue':
-					echo get_the_terms( $post_id, 'sp_venue' ) ? the_terms( $post_id, 'sp_venue' ) : '&mdash;';
+					echo get_the_terms( $post_id, 'sp_venue' ) ? wp_kses_post( the_terms( $post_id, 'sp_venue' ) ) : '&mdash;';
 					break;
 				case 'sp_day':
 					$day = get_post_meta( $post_id, 'sp_day', true );
 					if ( '' === $day ) {
-						$day = __( 'Default', 'sportspress' );
+						$day = esc_attr__( 'Default', 'sportspress' );
 					}
 					echo esc_html( $day );
 					break;
@@ -287,15 +287,15 @@ if ( ! class_exists( 'SP_Admin_CPT_Event' ) ) :
 			$args     = array(
 				'post_type'        => 'sp_team',
 				'name'             => 'team',
-				'show_option_none' => __( 'Show all teams', 'sportspress' ),
+				'show_option_none' => esc_attr__( 'Show all teams', 'sportspress' ),
 				'selected'         => $selected,
 				'values'           => 'ID',
 			);
-			wp_dropdown_pages( $args );
+			wp_dropdown_pages( $args ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 			$selected = isset( $_REQUEST['sp_league'] ) ? sanitize_key( $_REQUEST['sp_league'] ) : null;
 			$args     = array(
-				'show_option_all' => __( 'Show all leagues', 'sportspress' ),
+				'show_option_all' => esc_attr__( 'Show all leagues', 'sportspress' ),
 				'taxonomy'        => 'sp_league',
 				'name'            => 'sp_league',
 				'selected'        => $selected,
@@ -304,15 +304,15 @@ if ( ! class_exists( 'SP_Admin_CPT_Event' ) ) :
 
 			$selected = isset( $_REQUEST['sp_season'] ) ? sanitize_key( $_REQUEST['sp_season'] ) : null;
 			$args     = array(
-				'show_option_all' => __( 'Show all seasons', 'sportspress' ),
+				'show_option_all' => esc_attr__( 'Show all seasons', 'sportspress' ),
 				'taxonomy'        => 'sp_season',
 				'name'            => 'sp_season',
 				'selected'        => $selected,
 			);
 			sp_dropdown_taxonomies( $args );
 
-			$selected = isset( $_REQUEST['match_day'] ) ? sanitize_text_field( $_REQUEST['match_day'] ) : null;
-			echo '<input name="match_day" type="text" class="sp-tablenav-input" placeholder="' . __( 'Match Day', 'sportspress' ) . '" value="' . $selected . '">';
+			$selected = isset( $_REQUEST['match_day'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['match_day'] ) ) : null;
+			echo '<input name="match_day" type="text" class="sp-tablenav-input" placeholder="' . esc_attr__( 'Match Day', 'sportspress' ) . '" value="' . esc_attr( $selected ) . '">';
 
 			if ( current_user_can( 'edit_others_sp_events' ) ) {
 				wp_nonce_field( 'sp-save-inline-results', 'sp-inline-nonce', false );
@@ -336,14 +336,14 @@ if ( ! class_exists( 'SP_Admin_CPT_Event' ) ) :
 				if ( ! empty( $_GET['team'] ) ) {
 					$query->query_vars['meta_query'][] = array(
 						'key'   => 'sp_team',
-						'value' => $_GET['team'],
+						'value' => sanitize_key( $_GET['team'] ),
 					);
 				}
 
 				if ( ! empty( $_GET['match_day'] ) ) {
 					$query->query_vars['meta_query'][] = array(
 						'key'   => 'sp_day',
-						'value' => $_GET['match_day'],
+						'value' => sanitize_text_field( wp_unslash( $_GET['match_day'] ) ),
 					);
 				}
 			}
@@ -359,11 +359,11 @@ if ( ! class_exists( 'SP_Admin_CPT_Event' ) ) :
 			$status = get_post_meta( $post->ID, 'sp_status', true );
 
 			if ( 'postponed' == $status ) {
-				$post_states = array( __( 'Postponed', 'sportspress' ) );
+				$post_states = array( esc_attr__( 'Postponed', 'sportspress' ) );
 			} elseif ( 'cancelled' == $status ) {
-				$post_states = array( __( 'Canceled', 'sportspress' ) );
+				$post_states = array( esc_attr__( 'Canceled', 'sportspress' ) );
 			} elseif ( 'tbd' == $status ) {
-				$post_states = array( __( 'TBD', 'sportspress' ) );
+				$post_states = array( esc_attr__( 'TBD', 'sportspress' ) );
 			}
 
 			return $post_states;

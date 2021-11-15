@@ -24,7 +24,7 @@ if ( ! class_exists( 'SP_Settings_Teams' ) ) :
 		 */
 		public function __construct() {
 			$this->id       = 'teams';
-			$this->label    = __( 'Teams', 'sportspress' );
+			$this->label    = esc_attr__( 'Teams', 'sportspress' );
 			$this->template = 'team';
 
 			add_filter( 'sportspress_settings_tabs_array', array( $this, 'add_settings_page' ), 20 );
@@ -44,7 +44,7 @@ if ( ! class_exists( 'SP_Settings_Teams' ) ) :
 			$settings = array_merge(
 				array(
 					array(
-						'title' => __( 'Team Options', 'sportspress' ),
+						'title' => esc_attr__( 'Team Options', 'sportspress' ),
 						'type'  => 'title',
 						'desc'  => '',
 						'id'    => 'team_options',
@@ -58,40 +58,40 @@ if ( ! class_exists( 'SP_Settings_Teams' ) ) :
 						array( 'type' => 'team_tabs' ),
 
 						array(
-							'title'   => __( 'Staff', 'sportspress' ),
-							'desc'    => __( 'Link staff', 'sportspress' ),
+							'title'   => esc_attr__( 'Staff', 'sportspress' ),
+							'desc'    => esc_attr__( 'Link staff', 'sportspress' ),
 							'id'      => 'sportspress_team_link_staff',
 							'default' => 'no',
 							'type'    => 'checkbox',
 						),
 
 						array(
-							'title'   => __( 'Link', 'sportspress' ),
-							'desc'    => __( 'Link teams', 'sportspress' ),
+							'title'   => esc_attr__( 'Link', 'sportspress' ),
+							'desc'    => esc_attr__( 'Link teams', 'sportspress' ),
 							'id'      => 'sportspress_link_teams',
 							'default' => 'no',
 							'type'    => 'checkbox',
 						),
 
 						array(
-							'title'   => __( 'Venue', 'sportspress' ),
-							'desc'    => __( 'Link venues', 'sportspress' ),
+							'title'   => esc_attr__( 'Venue', 'sportspress' ),
+							'desc'    => esc_attr__( 'Link venues', 'sportspress' ),
 							'id'      => 'sportspress_team_link_venues',
 							'default' => 'no',
 							'type'    => 'checkbox',
 						),
 
 						array(
-							'title'   => __( 'Visit Site', 'sportspress' ),
-							'desc'    => __( 'Open link in a new window/tab', 'sportspress' ),
+							'title'   => esc_attr__( 'Visit Site', 'sportspress' ),
+							'desc'    => esc_attr__( 'Open link in a new window/tab', 'sportspress' ),
 							'id'      => 'sportspress_team_site_target_blank',
 							'default' => 'no',
 							'type'    => 'checkbox',
 						),
 
 						array(
-							'title'   => __( 'Comments', 'sportspress' ),
-							'desc'    => __( 'Allow people to post comments on Team page', 'sportspress' ),
+							'title'   => esc_attr__( 'Comments', 'sportspress' ),
+							'desc'    => esc_attr__( 'Allow people to post comments on Team page', 'sportspress' ),
 							'id'      => 'sportspress_team_comment_status',
 							'default' => 'no',
 							'type'    => 'checkbox',

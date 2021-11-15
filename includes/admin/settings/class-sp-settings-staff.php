@@ -24,7 +24,7 @@ if ( ! class_exists( 'SP_Settings_Staff' ) ) :
 		 */
 		public function __construct() {
 			$this->id       = 'staff';
-			$this->label    = __( 'Staff', 'sportspress' );
+			$this->label    = esc_attr__( 'Staff', 'sportspress' );
 			$this->template = 'staff';
 
 			add_filter( 'sportspress_settings_tabs_array', array( $this, 'add_settings_page' ), 20 );
@@ -46,7 +46,7 @@ if ( ! class_exists( 'SP_Settings_Staff' ) ) :
 				array_merge(
 					array(
 						array(
-							'title' => __( 'Staff Options', 'sportspress' ),
+							'title' => esc_attr__( 'Staff Options', 'sportspress' ),
 							'type'  => 'title',
 							'desc'  => '',
 							'id'    => 'staff_options',
@@ -60,16 +60,16 @@ if ( ! class_exists( 'SP_Settings_Staff' ) ) :
 							array( 'type' => 'staff_tabs' ),
 
 							array(
-								'title'   => __( 'Link', 'sportspress' ),
-								'desc'    => __( 'Link staff', 'sportspress' ),
+								'title'   => esc_attr__( 'Link', 'sportspress' ),
+								'desc'    => esc_attr__( 'Link staff', 'sportspress' ),
 								'id'      => 'sportspress_link_staff',
 								'default' => 'yes',
 								'type'    => 'checkbox',
 							),
 
 							array(
-								'title'         => __( 'Details', 'sportspress' ),
-								'desc'          => __( 'Nationality', 'sportspress' ),
+								'title'         => esc_attr__( 'Details', 'sportspress' ),
+								'desc'          => esc_attr__( 'Nationality', 'sportspress' ),
 								'id'            => 'sportspress_staff_show_nationality',
 								'default'       => 'yes',
 								'type'          => 'checkbox',
@@ -77,7 +77,7 @@ if ( ! class_exists( 'SP_Settings_Staff' ) ) :
 							),
 
 							array(
-								'desc'          => __( 'Current Team', 'sportspress' ),
+								'desc'          => esc_attr__( 'Current Team', 'sportspress' ),
 								'id'            => 'sportspress_staff_show_current_teams',
 								'default'       => 'yes',
 								'type'          => 'checkbox',
@@ -85,7 +85,7 @@ if ( ! class_exists( 'SP_Settings_Staff' ) ) :
 							),
 
 							array(
-								'desc'          => __( 'Past Teams', 'sportspress' ),
+								'desc'          => esc_attr__( 'Past Teams', 'sportspress' ),
 								'id'            => 'sportspress_staff_show_past_teams',
 								'default'       => 'yes',
 								'type'          => 'checkbox',
@@ -93,8 +93,8 @@ if ( ! class_exists( 'SP_Settings_Staff' ) ) :
 							),
 
 							array(
-								'title'   => __( 'Nationality', 'sportspress' ),
-								'desc'    => __( 'Display national flags', 'sportspress' ),
+								'title'   => esc_attr__( 'Nationality', 'sportspress' ),
+								'desc'    => esc_attr__( 'Display national flags', 'sportspress' ),
 								'id'      => 'sportspress_staff_show_flags',
 								'default' => 'yes',
 								'type'    => 'checkbox',

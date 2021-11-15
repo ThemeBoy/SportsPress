@@ -108,7 +108,7 @@ foreach ( $posts as $post ) {
 		$age          = $sp_birthdays->get_age( get_the_date( 'm-d-Y', $post->ID ) );
 		$heading      = '<h4 class="sp-table-caption">' . $birthday . ' (' . $age . ')</h4>';
 	}
-	echo $heading;
+	echo wp_kses_post( $heading );
 
 	echo '<div class="gallery">';
 

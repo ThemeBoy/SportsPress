@@ -260,7 +260,7 @@ class SP_Meta_Box_Event_Results {
 				<thead>
 					<tr>
 						<th class="column-team">
-							<?php _e( 'Team', 'sportspress' ); ?>
+							<?php esc_attr_e( 'Team', 'sportspress' ); ?>
 						</th>
 						<?php foreach ( $columns as $key => $label ) : ?>
 							<th class="column-<?php echo esc_attr( $key ); ?>">
@@ -275,7 +275,7 @@ class SP_Meta_Box_Event_Results {
 							</th>
 						<?php endforeach; ?>
 						<th class="column-outcome">
-							<?php _e( 'Outcome', 'sportspress' ); ?>
+							<?php esc_attr_e( 'Outcome', 'sportspress' ); ?>
 						</th>
 					</tr>
 				</thead>
@@ -294,7 +294,7 @@ class SP_Meta_Box_Event_Results {
 						?>
 						" data-team="<?php echo esc_attr( $team_id ); ?>">
 							<td>
-								<?php echo get_the_title( $team_id ); ?>
+								<?php echo esc_attr( get_the_title( $team_id ) ); ?>
 							</td>
 							<?php
 							foreach ( $columns as $column => $label ) :
@@ -304,7 +304,7 @@ class SP_Meta_Box_Event_Results {
 																	 <?php
 																		if ( in_array( $column, $auto_columns ) ) {
 																			?>
-									 placeholder="<?php _e( '(Auto)', 'sportspress' ); ?>"<?php } ?> /></td>
+									 placeholder="<?php esc_attr_e( '(Auto)', 'sportspress' ); ?>"<?php } ?> /></td>
 							<?php endforeach; ?>
 							<td>
 								<?php
@@ -323,7 +323,7 @@ class SP_Meta_Box_Event_Results {
 									'class'             => 'sp-outcome',
 									'property'          => 'multiple',
 									'chosen'            => true,
-									'placeholder'       => __( '(Auto)', 'sportspress' ),
+									'placeholder'       => esc_attr__( '(Auto)', 'sportspress' ),
 								);
 								sp_dropdown_pages( $args );
 								?>

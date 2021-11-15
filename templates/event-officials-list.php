@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 $scrollable = get_option( 'sportspress_enable_scrollable_tables', 'yes' ) == 'yes' ? true : false;
 ?>
 <div class="sp-template sp-template-event-officials sp-template-details">
-	<h4 class="sp-table-caption"><?php _e( 'Officials', 'sportspress' ); ?></h4>
+	<h4 class="sp-table-caption"><?php esc_attr_e( 'Officials', 'sportspress' ); ?></h4>
 	<div class="sp-list-wrapper">
 		<dl class="sp-event-officials">
 			<?php
@@ -24,13 +24,13 @@ $scrollable = get_option( 'sportspress_enable_scrollable_tables', 'yes' ) == 'ye
 					continue;
 				}
 
-				echo '<dt>' . $label . '</dt>';
+				echo '<dt>' . wp_kses_post( $label ) . '</dt>';
 
 				foreach ( $appointed_officials as $official_id => $official_name ) {
 					if ( $link_officials && sp_post_exists( $official_id ) ) {
 						$official_name = '<a href="' . get_post_permalink( $official_id ) . '">' . $official_name . '</a>';
 					}
-					echo '<dd>' . $official_name . '</dd>';
+					echo '<dd>' . wp_kses_post( $official_name ) . '</dd>';
 				}
 			}
 			?>

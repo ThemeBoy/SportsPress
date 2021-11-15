@@ -4,9 +4,9 @@ class SP_Widget_Event_Blocks extends WP_Widget {
 	function __construct() {
 		$widget_ops = array(
 			'classname'   => 'widget_sportspress widget_sp_event_blocks',
-			'description' => __( 'A list of events.', 'sportspress' ),
+			'description' => esc_attr__( 'A list of events.', 'sportspress' ),
 		);
-		parent::__construct( 'sportspress-event-blocks', __( 'Event Blocks', 'sportspress' ), $widget_ops );
+		parent::__construct( 'sportspress-event-blocks', esc_attr__( 'Event Blocks', 'sportspress' ), $widget_ops );
 	}
 
 	function widget( $args, $instance ) {
@@ -35,10 +35,10 @@ class SP_Widget_Event_Blocks extends WP_Widget {
 		$show_all_events_link = empty( $instance['show_all_events_link'] ) ? false : $instance['show_all_events_link'];
 
 		do_action( 'sportspress_before_widget', $args, $instance, 'event-blocks' );
-		echo $before_widget;
+		echo wp_kses_post( $before_widget );
 
 		if ( $title ) {
-			echo $before_title . $title . $after_title;
+			echo wp_kses_post( $before_title . $title . $after_title );
 		}
 
 		// Action to hook into
@@ -66,7 +66,7 @@ class SP_Widget_Event_Blocks extends WP_Widget {
 		// Action to hook into
 		do_action( 'sportspress_after_widget_template', $args, $instance, 'event-blocks' );
 
-		echo $after_widget;
+		echo wp_kses_post( $after_widget );
 		do_action( 'sportspress_after_widget', $args, $instance, 'event-blocks' );
 	}
 
@@ -131,17 +131,17 @@ class SP_Widget_Event_Blocks extends WP_Widget {
 		// Action to hook into
 		do_action( 'sportspress_before_widget_template_form', $this, $instance, 'event-blocks' );
 		?>
-		<p><label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'sportspress' ); ?></label>
-		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" /></p>
+		<p><label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_attr_e( 'Title:', 'sportspress' ); ?></label>
+		<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" /></p>
 
-		<p><label for="<?php echo $this->get_field_id( 'caption' ); ?>"><?php _e( 'Heading:', 'sportspress' ); ?></label>
-		<input class="widefat" id="<?php echo $this->get_field_id( 'caption' ); ?>" name="<?php echo $this->get_field_name( 'caption' ); ?>" type="text" value="<?php echo esc_attr( $caption ); ?>" /></p>
+		<p><label for="<?php echo esc_attr( $this->get_field_id( 'caption' ) ); ?>"><?php esc_attr_e( 'Heading:', 'sportspress' ); ?></label>
+		<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'caption' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'caption' ) ); ?>" type="text" value="<?php echo esc_attr( $caption ); ?>" /></p>
 
-		<p><label for="<?php echo $this->get_field_id( 'id' ); ?>"><?php printf( __( 'Select %s:', 'sportspress' ), __( 'Calendar', 'sportspress' ) ); ?></label>
+		<p><label for="<?php echo esc_attr( $this->get_field_id( 'id' ) ); ?>"><?php printf( esc_attr__( 'Select %s:', 'sportspress' ), esc_attr__( 'Calendar', 'sportspress' ) ); ?></label>
 		<?php
 		$args = array(
 			'post_type'       => 'sp_calendar',
-			'show_option_all' => __( 'All', 'sportspress' ),
+			'show_option_all' => esc_attr__( 'All', 'sportspress' ),
 			'name'            => $this->get_field_name( 'id' ),
 			'id'              => $this->get_field_id( 'id' ),
 			'selected'        => $id,
@@ -149,15 +149,15 @@ class SP_Widget_Event_Blocks extends WP_Widget {
 			'class'           => 'sp-event-calendar-select widefat',
 		);
 		if ( ! sp_dropdown_pages( $args ) ) :
-			sp_post_adder( 'sp_calendar', __( 'Add New', 'sportspress' ) );
+			sp_post_adder( 'sp_calendar', esc_attr__( 'Add New', 'sportspress' ) );
 		endif;
 		?>
 		</p>
 
-		<p><label for="<?php echo $this->get_field_id( 'status' ); ?>"><?php _e( 'Status:', 'sportspress' ); ?></label>
+		<p><label for="<?php echo esc_attr( $this->get_field_id( 'status' ) ); ?>"><?php esc_attr_e( 'Status:', 'sportspress' ); ?></label>
 			<?php
 			$args = array(
-				'show_option_default' => __( 'Default', 'sportspress' ),
+				'show_option_default' => esc_attr__( 'Default', 'sportspress' ),
 				'name'                => $this->get_field_name( 'status' ),
 				'id'                  => $this->get_field_id( 'status' ),
 				'selected'            => $status,
@@ -168,10 +168,10 @@ class SP_Widget_Event_Blocks extends WP_Widget {
 		</p>
 
 		<div class="sp-date-selector">
-			<p><label for="<?php echo $this->get_field_id( 'date' ); ?>"><?php _e( 'Date:', 'sportspress' ); ?></label>
+			<p><label for="<?php echo esc_attr( $this->get_field_id( 'date' ) ); ?>"><?php esc_attr_e( 'Date:', 'sportspress' ); ?></label>
 				<?php
 				$args = array(
-					'show_option_default' => __( 'Default', 'sportspress' ),
+					'show_option_default' => esc_attr__( 'Default', 'sportspress' ),
 					'name'                => $this->get_field_name( 'date' ),
 					'id'                  => $this->get_field_id( 'date' ),
 					'selected'            => $date,
@@ -190,9 +190,9 @@ class SP_Widget_Event_Blocks extends WP_Widget {
 				if ( $date_relative ) :
 					?>
 					 hidden<?php endif; ?>">
-					<input type="text" name="<?php echo $this->get_field_name( 'date_from' ); ?>" value="<?php echo $date_from; ?>" placeholder="yyyy-mm-dd" size="10">
+					<input type="text" name="<?php echo esc_attr( $this->get_field_name( 'date_from' ) ); ?>" value="<?php echo esc_attr( $date_from ); ?>" placeholder="yyyy-mm-dd" size="10">
 					:
-					<input type="text" name="<?php echo $this->get_field_name( 'date_to' ); ?>" value="<?php echo $date_to; ?>" placeholder="yyyy-mm-dd" size="10">
+					<input type="text" name="<?php echo esc_attr( $this->get_field_name( 'date_to' ) ); ?>" value="<?php echo esc_attr( $date_to ); ?>" placeholder="yyyy-mm-dd" size="10">
 				</p>
 
 				<p class="sp-date-range-relative
@@ -200,42 +200,42 @@ class SP_Widget_Event_Blocks extends WP_Widget {
 				if ( ! $date_relative ) :
 					?>
 					 hidden<?php endif; ?>">
-					<?php _e( 'Past', 'sportspress' ); ?>
-					<input type="number" min="0" step="1" class="tiny-text" name="<?php echo $this->get_field_name( 'date_past' ); ?>" value="<?php echo $date_past; ?>">
+					<?php esc_attr_e( 'Past', 'sportspress' ); ?>
+					<input type="number" min="0" step="1" class="tiny-text" name="<?php echo esc_attr( $this->get_field_name( 'date_past' ) ); ?>" value="<?php echo esc_attr( $date_past ); ?>">
 					&rarr;
-					<?php _e( 'Next', 'sportspress' ); ?>
-					<input type="number" min="0" step="1" class="tiny-text" name="<?php echo $this->get_field_name( 'date_future' ); ?>" value="<?php echo $date_future; ?>">
-					<?php _e( 'days', 'sportspress' ); ?>
+					<?php esc_attr_e( 'Next', 'sportspress' ); ?>
+					<input type="number" min="0" step="1" class="tiny-text" name="<?php echo esc_attr( $this->get_field_name( 'date_future' ) ); ?>" value="<?php echo esc_attr( $date_future ); ?>">
+					<?php esc_attr_e( 'days', 'sportspress' ); ?>
 				</p>
 
 				<p class="sp-date-relative">
 					<label>
-						<input type="checkbox" name="<?php echo $this->get_field_name( 'date_relative' ); ?>" value="1" id="<?php echo $this->get_field_id( 'date_relative' ); ?>" <?php checked( $date_relative ); ?>>
-						<?php _e( 'Relative', 'sportspress' ); ?>
+						<input type="checkbox" name="<?php echo esc_attr( $this->get_field_name( 'date_relative' ) ); ?>" value="1" id="<?php echo esc_attr( $this->get_field_id( 'date_relative' ) ); ?>" <?php checked( $date_relative ); ?>>
+						<?php esc_attr_e( 'Relative', 'sportspress' ); ?>
 					</label>
 				</p>
 			</div>
 		</div>
 
-		<p><label for="<?php echo $this->get_field_id( 'day' ); ?>"><?php _e( 'Match Day:', 'sportspress' ); ?></label>
-		<input id="<?php echo $this->get_field_id( 'day' ); ?>" name="<?php echo $this->get_field_name( 'day' ); ?>" type="text" placeholder="<?php _e( 'All', 'sportspress' ); ?>" value="<?php echo esc_attr( $day ); ?>" size="10"></p>
+		<p><label for="<?php echo esc_attr( $this->get_field_id( 'day' ) ); ?>"><?php esc_attr_e( 'Match Day:', 'sportspress' ); ?></label>
+		<input id="<?php echo esc_attr( $this->get_field_id( 'day' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'day' ) ); ?>" type="text" placeholder="<?php esc_attr_e( 'All', 'sportspress' ); ?>" value="<?php echo esc_attr( $day ); ?>" size="10"></p>
 
-		<p><label for="<?php echo $this->get_field_id( 'number' ); ?>"><?php _e( 'Number of events to show:', 'sportspress' ); ?></label>
-		<input id="<?php echo $this->get_field_id( 'number' ); ?>" name="<?php echo $this->get_field_name( 'number' ); ?>" type="text" value="<?php echo esc_attr( $number ); ?>" size="3"></p>
+		<p><label for="<?php echo esc_attr( $this->get_field_id( 'number' ) ); ?>"><?php esc_attr_e( 'Number of events to show:', 'sportspress' ); ?></label>
+		<input id="<?php echo esc_attr( $this->get_field_id( 'number' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'number' ) ); ?>" type="text" value="<?php echo esc_attr( $number ); ?>" size="3"></p>
 
-		<p><label for="<?php echo $this->get_field_id( 'order' ); ?>"><?php _e( 'Sort Order:', 'sportspress' ); ?></label>
-		<select name="<?php echo $this->get_field_name( 'order' ); ?>" id="<?php echo $this->get_field_id( 'order' ); ?>" class="sp-select-order widefat">
-			<option value="default" <?php selected( 'default', $order ); ?>><?php _e( 'Default', 'sportspress' ); ?></option>
-			<option value="ASC" <?php selected( 'ASC', $order ); ?>><?php _e( 'Ascending', 'sportspress' ); ?></option>
-			<option value="DESC" <?php selected( 'DESC', $order ); ?>><?php _e( 'Descending', 'sportspress' ); ?></option>
+		<p><label for="<?php echo esc_attr( $this->get_field_id( 'order' ) ); ?>"><?php esc_attr_e( 'Sort Order:', 'sportspress' ); ?></label>
+		<select name="<?php echo esc_attr( $this->get_field_name( 'order' ) ); ?>" id="<?php echo esc_attr( $this->get_field_id( 'order' ) ); ?>" class="sp-select-order widefat">
+			<option value="default" <?php selected( 'default', $order ); ?>><?php esc_attr_e( 'Default', 'sportspress' ); ?></option>
+			<option value="ASC" <?php selected( 'ASC', $order ); ?>><?php esc_attr_e( 'Ascending', 'sportspress' ); ?></option>
+			<option value="DESC" <?php selected( 'DESC', $order ); ?>><?php esc_attr_e( 'Descending', 'sportspress' ); ?></option>
 		</select></p>
 
 		<p class="sp-event-calendar-show-all-toggle
 		<?php
 		if ( ! $id ) :
 			?>
-			 hidden<?php endif; ?>"><input class="checkbox" type="checkbox" id="<?php echo $this->get_field_id( 'show_all_events_link' ); ?>" name="<?php echo $this->get_field_name( 'show_all_events_link' ); ?>" value="1" <?php checked( $show_all_events_link, 1 ); ?>>
-		<label for="<?php echo $this->get_field_id( 'show_all_events_link' ); ?>"><?php _e( 'Display link to view all events', 'sportspress' ); ?></label></p>
+			 hidden<?php endif; ?>"><input class="checkbox" type="checkbox" id="<?php echo esc_attr( $this->get_field_id( 'show_all_events_link' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'show_all_events_link' ) ); ?>" value="1" <?php checked( $show_all_events_link, 1 ); ?>>
+		<label for="<?php echo esc_attr( $this->get_field_id( 'show_all_events_link' ) ); ?>"><?php esc_attr_e( 'Display link to view all events', 'sportspress' ); ?></label></p>
 
 		<?php
 		// Action to hook into

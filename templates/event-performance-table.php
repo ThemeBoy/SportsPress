@@ -42,14 +42,14 @@ if ( true == $responsive && $mode == 'values' ) {
 }
 $i = 0;
 ?>
-<div class="sp-template sp-template-event-performance sp-template-event-performance-<?php echo $mode; ?>
+<div class="sp-template sp-template-event-performance sp-template-event-performance-<?php echo esc_attr( $mode ); ?>
 																							   <?php
 																								if ( isset( $class ) ) {
-																									echo ' ' . $class; }
+																									echo ' ' . esc_attr( $class ); }
 																								?>
 ">
 	<?php if ( $caption ) : ?>
-		<h4 class="sp-table-caption"><?php echo $caption; ?></h4>
+		<h4 class="sp-table-caption"><?php echo wp_kses_post( $caption ); ?></h4>
 	<?php endif; ?>
 	<div class="sp-table-wrapper">
 		<table class="sp-event-performance sp-data-table
@@ -63,7 +63,7 @@ $i = 0;
 			 sp-scrollable-table
 						<?php
 			}if ( $responsive ) {
-				echo ' sp-responsive-table ' . $identifier; } if ( $sortable ) {
+				echo ' sp-responsive-table ' . esc_attr( $identifier ); } if ( $sortable ) {
 				?>
 	 sp-sortable-table<?php } ?><?php } ?>">
 			<thead>
@@ -75,14 +75,14 @@ $i = 0;
 							<?php } ?>
 							<th class="data-name">
 								<?php if ( isset( $section_label ) ) { ?>
-									<?php echo $section_label; ?>
+									<?php echo wp_kses_post( $section_label ); ?>
 								<?php } else { ?>
-									<?php _e( 'Player', 'sportspress' ); ?>
+									<?php esc_attr_e( 'Player', 'sportspress' ); ?>
 								<?php } ?>
 							</th>
 						<?php endif; ?>
 						<?php foreach ( $labels as $key => $label ) : ?>
-							<th class="data-<?php echo $key; ?>"><?php echo $label; ?></th>
+							<th class="data-<?php echo esc_attr( $key ); ?>"><?php echo wp_kses_post( $label ); ?></th>
 						<?php endforeach; ?>
 					<?php endif; ?>
 				</tr>
@@ -119,18 +119,18 @@ $i = 0;
 							continue;
 						}
 
-						echo '<tr class="' . sp_array_value( $row, 'status', 'lineup' ) . ' ' . ( $i % 2 == 0 ? 'odd' : 'even' ) . '">';
+						echo '<tr class="' . esc_attr( sp_array_value( $row, 'status', 'lineup' ) ) . ' ' . ( $i % 2 == 0 ? 'odd' : 'even' ) . '">';
 
 						if ( apply_filters( 'sportspress_event_performance_show_numbers', $show_numbers, $section ) ) {
 							$number = sp_array_value( $row, 'number', '&nbsp;' );
 
 							// Player number
-							echo '<td class="data-number" data-label="#">' . $number . '</td>';
+							echo '<td class="data-number" data-label="#">' . wp_kses_post( $number ) . '</td>';
 						}
 
 						if ( $link_posts ) :
 							$permalink = get_post_permalink( $player_id );
-							$name      = '<a href="' . $permalink . '">' . $name . '</a>';
+							$name      = '<a href="' . esc_url( $permalink ) . '">' . wp_kses_post( $name ) . '</a>';
 						endif;
 
 						if ( $stars_type ) :
@@ -138,13 +138,13 @@ $i = 0;
 							if ( $player_stars ) :
 								switch ( $stars_type ) :
 									case 1:
-										$name .= ' <span class="sp-event-stars"><i class="sp-event-star dashicons dashicons-star-filled" title="' . __( 'Player of the Match', 'sportspress' ) . '"></i></span>';
+										$name .= ' <span class="sp-event-stars"><i class="sp-event-star dashicons dashicons-star-filled" title="' . esc_attr__( 'Player of the Match', 'sportspress' ) . '"></i></span>';
 										break;
 									case 2:
-										$name .= ' <span class="sp-event-stars">' . str_repeat( '<i class="sp-event-star dashicons dashicons-star-filled" title="' . __( 'Stars', 'sportspress' ) . '"></i>', $player_stars ) . '</span>';
+										$name .= ' <span class="sp-event-stars">' . str_repeat( '<i class="sp-event-star dashicons dashicons-star-filled" title="' . esc_attr__( 'Stars', 'sportspress' ) . '"></i>', $player_stars ) . '</span>';
 										break;
 									case 3:
-										$name .= ' <span class="sp-event-stars"><i class="sp-event-star sp-event-star-' . $player_stars . '  dashicons dashicons-star-filled" title="' . __( 'Stars', 'sportspress' ) . '"></i><span class="sp-event-star-number">' . $player_stars . '</span></span>';
+										$name .= ' <span class="sp-event-stars"><i class="sp-event-star sp-event-star-' . $player_stars . '  dashicons dashicons-star-filled" title="' . esc_attr__( 'Stars', 'sportspress' ) . '"></i><span class="sp-event-star-number">' . $player_stars . '</span></span>';
 										break;
 								endswitch;
 							endif;
@@ -230,12 +230,12 @@ $i = 0;
 							$name .= ' <small class="sp-player-position">' . $position . '</small>';
 						endif;
 
-						echo '<td class="data-name" data-label="' . ( isset( $section_label ) ? $section_label : __( 'Player', 'sportspress' ) ) . '">' . $name . '</td>';
+						echo '<td class="data-name" data-label="' . ( isset( $section_label ) ? esc_attr( $section_label ) : esc_attr__( 'Player', 'sportspress' ) ) . '">' . wp_kses_post( $name ) . '</td>';
 
 						if ( $mode == 'icons' ) :
-							echo '<td class="sp-performance-icons">' . $content . '</td>';
+							echo '<td class="sp-performance-icons">' . wp_kses_post( $content ) . '</td>';
 						else :
-							echo $content;
+							echo wp_kses_post( $content );
 						endif;
 
 						echo '</tr>';
@@ -269,7 +269,7 @@ $i = 0;
 									echo '<td class="data-number" data-label="&nbsp;">&nbsp;</td>';
 								}
 								if ( $mode == 'values' ) :
-									echo '<td class="data-name" data-label="&nbsp;">' . __( 'Total', 'sportspress' ) . '</td>';
+									echo '<td class="data-name" data-label="&nbsp;">' . esc_attr__( 'Total', 'sportspress' ) . '</td>';
 								endif;
 							endif;
 
@@ -298,9 +298,9 @@ $i = 0;
 
 								if ( $mode == 'values' ) :
 									if ( $key == 'position' ) {
-										echo '<td class="data-' . $key . '" data-label="&nbsp;">' . $value . '</td>';
+										echo '<td class="data-' . esc_attr( $key ) . '" data-label="&nbsp;">' . wp_kses_post( $value ) . '</td>';
 									} else {
-										echo '<td class="data-' . $key . '" data-label="' . $labels[ $key ] . '">' . $value . '</td>';
+										echo '<td class="data-' . esc_attr( $key ) . '" data-label="' . esc_attr( $labels[ $key ] ) . '">' . wp_kses_post( $value ) . '</td>';
 									}
 								elseif ( intval( $value ) && $mode == 'icons' ) :
 									$performance_id = sp_array_value( $performance_ids, $key, null );
@@ -308,7 +308,7 @@ $i = 0;
 									if ( $performance_id && has_post_thumbnail( $performance_id ) ) :
 										$icons = get_the_post_thumbnail( $performance_id, 'sportspress-fit-mini', array( 'title' => sp_get_singular_name( $performance_id ) ) );
 									endif;
-									echo apply_filters( 'sportspress_event_performance_icons', $icons, $performance_id, 1 ) . $value . ' ';
+									echo wp_kses_post( apply_filters( 'sportspress_event_performance_icons', $icons, $performance_id, 1 ) . $value . ' ' );
 								endif;
 							endforeach;
 
@@ -323,13 +323,13 @@ $i = 0;
 		</table>
 		<?php
 		if ( isset( $show_staff ) ) {
-			echo sp_get_template(
+			echo wp_kses_post( sp_get_template(
 				'event-staff.php',
 				array(
 					'id'    => $id,
 					'index' => $index,
 				)
-			);
+			) );
 		}
 		?>
 	</div>

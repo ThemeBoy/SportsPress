@@ -47,22 +47,22 @@ class SP_Meta_Box_List_Data {
 		$show_player_photo = get_option( 'sportspress_list_show_photos', 'no' ) == 'yes' ? true : false;
 		?>
 		<ul class="subsubsub sp-table-bar">
-			<li><a href="#sp-table-values" class="current"><?php _e( 'Values', 'sportspress' ); ?></a></li> | 
-			<li><a href="#sp-table-adjustments" class=""><?php _e( 'Adjustments', 'sportspress' ); ?></a></li>
+			<li><a href="#sp-table-values" class="current"><?php esc_attr_e( 'Values', 'sportspress' ); ?></a></li> | 
+			<li><a href="#sp-table-adjustments" class=""><?php esc_attr_e( 'Adjustments', 'sportspress' ); ?></a></li>
 		</ul>
 		<div class="sp-data-table-container sp-table-panel sp-table-values" id="sp-table-values">
 			<table class="widefat sp-data-table sp-player-list-table">
 				<thead>
 					<tr>
 						<?php if ( array_key_exists( 'number', $columns ) ) { ?>
-							<th><?php echo in_array( $orderby, array( 'number', 'name' ) ) ? '#' : __( 'Rank', 'sportspress' ); ?></th>
+							<th><?php echo in_array( $orderby, array( 'number', 'name' ) ) ? '#' : esc_attr__( 'Rank', 'sportspress' ); ?></th>
 						<?php } ?>
-						<th><?php _e( 'Player', 'sportspress' ); ?></th>
+						<th><?php esc_attr_e( 'Player', 'sportspress' ); ?></th>
 						<?php if ( array_key_exists( 'team', $columns ) ) { ?>
-							<th><?php _e( 'Team', 'sportspress' ); ?></th>
+							<th><?php esc_attr_e( 'Team', 'sportspress' ); ?></th>
 						<?php } ?>
 						<?php if ( array_key_exists( 'position', $columns ) ) { ?>
-							<th><?php _e( 'Position', 'sportspress' ); ?></th>
+							<th><?php esc_attr_e( 'Position', 'sportspress' ); ?></th>
 						<?php } ?>
 						<?php foreach ( $columns as $key => $label ) : ?>
 							<?php
@@ -102,9 +102,9 @@ class SP_Meta_Box_List_Data {
 									<td>
 										<?php
 										if ( 'number' == $orderby ) {
-											echo ( $number ? esc_html( $number ) : '&nbsp;' );
+											echo ( $number ? esc_html( $number ) : '&nbsp;' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 										} else {
-											echo $i + 1;
+											echo esc_html( $i + 1 );
 										}
 										?>
 									</td>
@@ -116,12 +116,12 @@ class SP_Meta_Box_List_Data {
 									?>
 									<span class="sp-default-value">
 										<span class="sp-default-value-input"><?php echo esc_html( $default_name ); ?></span>
-										<a class="dashicons dashicons-edit sp-edit" title="<?php _e( 'Edit', 'sportspress' ); ?>"></a>
+										<a class="dashicons dashicons-edit sp-edit" title="<?php esc_attr_e( 'Edit', 'sportspress' ); ?>"></a>
 									</span>
 									<span class="hidden sp-custom-value">
 										<input type="text" name="sp_players[<?php echo esc_attr( $player_id ); ?>][name]" class="name sp-custom-value-input" value="<?php echo esc_attr( sp_array_value( $player_stats, 'name', '' ) ); ?>" placeholder="<?php echo esc_attr( get_the_title( $player_id ) ); ?>" size="6">
-										<a class="button button-secondary sp-cancel"><?php _e( 'Cancel', 'sportspress' ); ?></a>
-										<a class="button button-primary sp-save"><?php _e( 'Save', 'sportspress' ); ?></a>
+										<a class="button button-secondary sp-cancel"><?php esc_attr_e( 'Cancel', 'sportspress' ); ?></a>
+										<a class="button button-primary sp-save"><?php esc_attr_e( 'Save', 'sportspress' ); ?></a>
 									</span>
 								</td>
 								<?php if ( array_key_exists( 'team', $columns ) ) { ?>
@@ -134,12 +134,12 @@ class SP_Meta_Box_List_Data {
 										$include = get_post_meta( $player_id, 'sp_team' );
 										$args    = array(
 											'post_type' => 'sp_team',
-											'name'      => 'sp_players[' . $player_id . '][team]',
+											'name'      => 'sp_players[' . esc_attr( $player_id ) . '][team]',
 											'include'   => $include,
 											'selected'  => $selected,
 											'values'    => 'ID',
 										);
-										wp_dropdown_pages( $args );
+										wp_dropdown_pages( $args ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 										?>
 									</td>
 								<?php } ?>
@@ -150,7 +150,7 @@ class SP_Meta_Box_List_Data {
 										$args     = array(
 											'taxonomy'   => 'sp_position',
 											'name'       => 'sp_players[' . $player_id . '][position]',
-											'show_option_blank' => __( '(Auto)', 'sportspress' ),
+											'show_option_blank' => esc_attr__( '(Auto)', 'sportspress' ),
 											'values'     => 'term_id',
 											'orderby'    => 'meta_value_num',
 											'meta_query' => array(
@@ -194,7 +194,7 @@ class SP_Meta_Box_List_Data {
 						echo esc_attr( $colspan );
 						?>
 						">
-							<?php printf( __( 'Select %s', 'sportspress' ), __( 'Data', 'sportspress' ) ); ?>
+							<?php printf( esc_attr__( 'Select %s', 'sportspress' ), esc_attr__( 'Data', 'sportspress' ) ); ?>
 						</td>
 					</tr>
 						<?php
@@ -208,7 +208,7 @@ class SP_Meta_Box_List_Data {
 				<thead>
 					<tr>
 						<th>#</th>
-						<th><?php _e( 'Player', 'sportspress' ); ?></th>
+						<th><?php esc_attr_e( 'Player', 'sportspress' ); ?></th>
 						<?php
 						foreach ( $columns as $key => $label ) :
 							if ( in_array( $key, array( 'number', 'team', 'position' ) ) ) {
@@ -235,9 +235,9 @@ class SP_Meta_Box_List_Data {
 								echo ' alternate';}
 							?>
 							">
-								<td><?php echo ( $number ? $number : '&nbsp;' ); ?></td>
+								<td><?php echo ( $number ? esc_html( $number ) : '&nbsp;' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></td>
 								<td>
-									<?php echo get_the_title( $player_id ); ?>
+									<?php echo esc_html( get_the_title( $player_id ) ); ?>
 								</td>
 								<?php
 								foreach ( $columns as $column => $label ) :
@@ -261,7 +261,7 @@ class SP_Meta_Box_List_Data {
 						echo esc_attr( $colspan );
 						?>
 						">
-							<?php printf( __( 'Select %s', 'sportspress' ), __( 'Details', 'sportspress' ) ); ?>
+							<?php printf( esc_attr__( 'Select %s', 'sportspress' ), esc_attr__( 'Details', 'sportspress' ) ); ?>
 						</td>
 					</tr>
 						<?php

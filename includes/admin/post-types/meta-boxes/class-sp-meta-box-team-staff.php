@@ -31,7 +31,7 @@ class SP_Meta_Box_Team_Staff {
 
 		else :
 
-			printf( __( 'No results found.', 'sportspress' ) );
+			printf( esc_attr__( 'No results found.', 'sportspress' ) );
 
 		endif;
 	}
@@ -54,16 +54,16 @@ class SP_Meta_Box_Team_Staff {
 					<tr>
 						<th class="check-column"><input class="sp-select-all" type="checkbox"></th>
 						<th class="column-staff">
-							<?php _e( 'Staff', 'sportspress' ); ?>
+							<?php esc_attr_e( 'Staff', 'sportspress' ); ?>
 						</th>
 						<th class="column-role">
-							<?php _e( 'Job', 'sportspress' ); ?>
+							<?php esc_attr_e( 'Job', 'sportspress' ); ?>
 						</th>
 						<th class="column-league">
-							<?php _e( 'League', 'sportspress' ); ?>
+							<?php esc_attr_e( 'League', 'sportspress' ); ?>
 						</th>
 						<th class="column-season">
-							<?php _e( 'Season', 'sportspress' ); ?>
+							<?php esc_attr_e( 'Season', 'sportspress' ); ?>
 						</th>
 					</tr>
 				</thead>
@@ -82,16 +82,16 @@ class SP_Meta_Box_Team_Staff {
 								?>
 								">
 									<td>
-										<input type="checkbox" name="sp_staff[]" id="sp_staff_<?php echo $staff->ID; ?>" value="<?php echo $staff->ID; ?>" <?php checked( in_array( $staff->ID, $checked ) ); ?>>
+										<input type="checkbox" name="sp_staff[]" id="sp_staff_<?php echo esc_attr( $staff->ID ); ?>" value="<?php echo esc_attr( $staff->ID ); ?>" <?php checked( in_array( $staff->ID, $checked ) ); ?>>
 									</td>
 									<td>
-										<a href="<?php echo get_edit_post_link( $staff->ID ); ?>">
+										<a href="<?php echo esc_url( get_edit_post_link( $staff->ID ) ); ?>">
 											<?php echo esc_html( $staff->post_title ); ?>
 										</a>
 									</td>
-									<td><?php echo get_the_terms( $staff->ID, 'sp_role' ) ? the_terms( $staff->ID, 'sp_role' ) : '&mdash;'; ?></td>
-									<td><?php echo get_the_terms( $staff->ID, 'sp_league' ) ? the_terms( $staff->ID, 'sp_league' ) : '&mdash;'; ?></td>
-									<td><?php echo get_the_terms( $staff->ID, 'sp_season' ) ? the_terms( $staff->ID, 'sp_season' ) : '&mdash;'; ?></td>
+									<td><?php echo get_the_terms( $staff->ID, 'sp_role' ) ? wp_kses_post( the_terms( $staff->ID, 'sp_role' ) ) : '&mdash;'; ?></td>
+									<td><?php echo get_the_terms( $staff->ID, 'sp_league' ) ? wp_kses_post( the_terms( $staff->ID, 'sp_league' ) ) : '&mdash;'; ?></td>
+									<td><?php echo get_the_terms( $staff->ID, 'sp_season' ) ? wp_kses_post( the_terms( $staff->ID, 'sp_season' ) ) : '&mdash;'; ?></td>
 								</tr>
 								<?php
 								$i++;
@@ -100,7 +100,7 @@ class SP_Meta_Box_Team_Staff {
 							?>
 							<tr class="sp-row alternate">
 								<td colspan="5">
-									<?php _e( 'No results found.', 'sportspress' ); ?>
+									<?php esc_attr_e( 'No results found.', 'sportspress' ); ?>
 								</td>
 							</tr>
 							<?php
@@ -109,7 +109,7 @@ class SP_Meta_Box_Team_Staff {
 						?>
 					<tr class="sp-row alternate">
 						<td colspan="5">
-							<?php printf( __( 'Select %s', 'sportspress' ), __( 'Details', 'sportspress' ) ); ?>
+							<?php printf( esc_attr__( 'Select %s', 'sportspress' ), esc_attr__( 'Details', 'sportspress' ) ); ?>
 						</td>
 					</tr>
 						<?php

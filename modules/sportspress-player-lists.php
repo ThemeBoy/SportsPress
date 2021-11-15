@@ -72,15 +72,15 @@ if ( ! class_exists( 'SportsPress_Player_Lists' ) ) :
 					'sportspress_register_post_type_list',
 					array(
 						'labels'                => array(
-							'name'               => __( 'Player Lists', 'sportspress' ),
-							'singular_name'      => __( 'Player List', 'sportspress' ),
-							'add_new_item'       => __( 'Add New Player List', 'sportspress' ),
-							'edit_item'          => __( 'Edit Player List', 'sportspress' ),
-							'new_item'           => __( 'New', 'sportspress' ),
-							'view_item'          => __( 'View Player List', 'sportspress' ),
-							'search_items'       => __( 'Search', 'sportspress' ),
-							'not_found'          => __( 'No results found.', 'sportspress' ),
-							'not_found_in_trash' => __( 'No results found.', 'sportspress' ),
+							'name'               => esc_attr__( 'Player Lists', 'sportspress' ),
+							'singular_name'      => esc_attr__( 'Player List', 'sportspress' ),
+							'add_new_item'       => esc_attr__( 'Add New Player List', 'sportspress' ),
+							'edit_item'          => esc_attr__( 'Edit Player List', 'sportspress' ),
+							'new_item'           => esc_attr__( 'New', 'sportspress' ),
+							'view_item'          => esc_attr__( 'View Player List', 'sportspress' ),
+							'search_items'       => esc_attr__( 'Search', 'sportspress' ),
+							'not_found'          => esc_attr__( 'No results found.', 'sportspress' ),
+							'not_found_in_trash' => esc_attr__( 'No results found.', 'sportspress' ),
 						),
 						'public'                => true,
 						'show_ui'               => true,
@@ -148,7 +148,7 @@ if ( ! class_exists( 'SportsPress_Player_Lists' ) ) :
 					'get_callback'    => 'SP_REST_API::get_post_meta',
 					'update_callback' => 'SP_REST_API::update_post_meta',
 					'schema'          => array(
-						'description' => __( 'Layout', 'sportspress' ),
+						'description' => esc_attr__( 'Layout', 'sportspress' ),
 						'type'        => 'string',
 						'context'     => array( 'view', 'edit' ),
 						'arg_options' => array(
@@ -165,7 +165,7 @@ if ( ! class_exists( 'SportsPress_Player_Lists' ) ) :
 					'get_callback'    => 'SP_REST_API::get_post_data',
 					'update_callback' => 'SP_REST_API::update_post_meta_arrays',
 					'schema'          => array(
-						'description' => __( 'Player List', 'sportspress' ),
+						'description' => esc_attr__( 'Player List', 'sportspress' ),
 						'type'        => 'array',
 						'context'     => array( 'view', 'edit' ),
 						'arg_options' => array(
@@ -183,7 +183,7 @@ if ( ! class_exists( 'SportsPress_Player_Lists' ) ) :
 		 */
 		public function add_meta_boxes( $meta_boxes ) {
 			$meta_boxes['sp_team']['lists'] = array(
-				'title'    => __( 'Player Lists', 'sportspress' ),
+				'title'    => esc_attr__( 'Player Lists', 'sportspress' ),
 				'output'   => 'SP_Meta_Box_Team_Lists::output',
 				'save'     => 'SP_Meta_Box_Team_Lists::save',
 				'context'  => 'normal',
@@ -191,34 +191,34 @@ if ( ! class_exists( 'SportsPress_Player_Lists' ) ) :
 			);
 			$meta_boxes['sp_list']          = array(
 				'shortcode' => array(
-					'title'    => __( 'Shortcode', 'sportspress' ),
+					'title'    => esc_attr__( 'Shortcode', 'sportspress' ),
 					'output'   => 'SP_Meta_Box_List_Shortcode::output',
 					'context'  => 'side',
 					'priority' => 'default',
 				),
 				'format'    => array(
-					'title'    => __( 'Layout', 'sportspress' ),
+					'title'    => esc_attr__( 'Layout', 'sportspress' ),
 					'save'     => 'SP_Meta_Box_List_Format::save',
 					'output'   => 'SP_Meta_Box_List_Format::output',
 					'context'  => 'side',
 					'priority' => 'default',
 				),
 				'columns'   => array(
-					'title'    => __( 'Columns', 'sportspress' ),
+					'title'    => esc_attr__( 'Columns', 'sportspress' ),
 					'save'     => 'SP_Meta_Box_List_Columns::save',
 					'output'   => 'SP_Meta_Box_List_Columns::output',
 					'context'  => 'side',
 					'priority' => 'default',
 				),
 				'details'   => array(
-					'title'    => __( 'Details', 'sportspress' ),
+					'title'    => esc_attr__( 'Details', 'sportspress' ),
 					'save'     => 'SP_Meta_Box_List_Details::save',
 					'output'   => 'SP_Meta_Box_List_Details::output',
 					'context'  => 'side',
 					'priority' => 'default',
 				),
 				'data'      => array(
-					'title'    => __( 'Player List', 'sportspress' ),
+					'title'    => esc_attr__( 'Player List', 'sportspress' ),
 					'save'     => 'SP_Meta_Box_List_Data::save',
 					'output'   => 'SP_Meta_Box_List_Data::output',
 					'context'  => 'normal',
@@ -250,7 +250,7 @@ if ( ! class_exists( 'SportsPress_Player_Lists' ) ) :
 				array_merge(
 					array(
 						array(
-							'title' => __( 'Player Lists', 'sportspress' ),
+							'title' => esc_attr__( 'Player Lists', 'sportspress' ),
 							'type'  => 'title',
 							'id'    => 'list_options',
 						),
@@ -259,16 +259,16 @@ if ( ! class_exists( 'SportsPress_Player_Lists' ) ) :
 						'sportspress_player_list_options',
 						array(
 							array(
-								'title'   => __( 'Title', 'sportspress' ),
-								'desc'    => __( 'Display title', 'sportspress' ),
+								'title'   => esc_attr__( 'Title', 'sportspress' ),
+								'desc'    => esc_attr__( 'Display title', 'sportspress' ),
 								'id'      => 'sportspress_list_show_title',
 								'default' => 'yes',
 								'type'    => 'checkbox',
 							),
 
 							array(
-								'title'         => __( 'Players', 'sportspress' ),
-								'desc'          => __( 'Display photos', 'sportspress' ),
+								'title'         => esc_attr__( 'Players', 'sportspress' ),
+								'desc'          => esc_attr__( 'Display photos', 'sportspress' ),
 								'id'            => 'sportspress_list_show_photos',
 								'default'       => 'no',
 								'type'          => 'checkbox',
@@ -276,7 +276,7 @@ if ( ! class_exists( 'SportsPress_Player_Lists' ) ) :
 							),
 
 							array(
-								'desc'          => __( 'Display national flags', 'sportspress' ),
+								'desc'          => esc_attr__( 'Display national flags', 'sportspress' ),
 								'id'            => 'sportspress_list_show_flags',
 								'default'       => 'no',
 								'type'          => 'checkbox',
@@ -284,38 +284,38 @@ if ( ! class_exists( 'SportsPress_Player_Lists' ) ) :
 							),
 
 							array(
-								'title'   => __( 'Teams', 'sportspress' ),
-								'desc'    => __( 'Display logos', 'sportspress' ),
+								'title'   => esc_attr__( 'Teams', 'sportspress' ),
+								'desc'    => esc_attr__( 'Display logos', 'sportspress' ),
 								'id'      => 'sportspress_list_show_logos',
 								'default' => 'no',
 								'type'    => 'checkbox',
 							),
 
 							array(
-								'title'   => __( 'Teams', 'sportspress' ),
+								'title'   => esc_attr__( 'Teams', 'sportspress' ),
 								'id'      => 'sportspress_list_team_format',
 								'default' => 'name',
 								'type'    => 'radio',
 								'options' => array(
-									'name' => __( 'Name', 'sportspress' ),
-									'logo' => __( 'Logo', 'sportspress' ),
+									'name' => esc_attr__( 'Name', 'sportspress' ),
+									'logo' => esc_attr__( 'Logo', 'sportspress' ),
 								),
 							),
 
 							array(
-								'title'   => __( 'Pagination', 'sportspress' ),
-								'desc'    => __( 'Paginate', 'sportspress' ),
+								'title'   => esc_attr__( 'Pagination', 'sportspress' ),
+								'desc'    => esc_attr__( 'Paginate', 'sportspress' ),
 								'id'      => 'sportspress_list_paginated',
 								'default' => 'yes',
 								'type'    => 'checkbox',
 							),
 
 							array(
-								'title'             => __( 'Limit', 'sportspress' ),
+								'title'             => esc_attr__( 'Limit', 'sportspress' ),
 								'id'                => 'sportspress_list_rows',
 								'class'             => 'small-text',
 								'default'           => '10',
-								'desc'              => __( 'players', 'sportspress' ),
+								'desc'              => esc_attr__( 'players', 'sportspress' ),
 								'type'              => 'number',
 								'custom_attributes' => array(
 									'min'  => 1,
@@ -344,8 +344,8 @@ if ( ! class_exists( 'SportsPress_Player_Lists' ) ) :
 				$templates,
 				array(
 					'lists' => array(
-						'title'   => __( 'Player Lists', 'sportspress' ),
-						'label'   => __( 'Players', 'sportspress' ),
+						'title'   => esc_attr__( 'Player Lists', 'sportspress' ),
+						'label'   => esc_attr__( 'Players', 'sportspress' ),
 						'option'  => 'sportspress_team_show_lists',
 						'action'  => 'sportspress_output_team_lists',
 						'default' => 'yes',

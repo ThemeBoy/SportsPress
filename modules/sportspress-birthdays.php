@@ -74,9 +74,9 @@ if ( ! class_exists( 'SportsPress_Birthdays' ) ) :
 					case 'Published on: <b>%1$s</b>':
 					case 'Schedule for: <b>%1$s</b>':
 					case 'Publish on: <b>%1$s</b>':
-						return __( 'Birthday: <b>%1$s</b>', 'sportspress' );
+						return esc_attr__( 'Birthday: <b>%1$s</b>', 'sportspress' );
 					case 'Publish <b>immediately</b>':
-						return __( 'Birthday', 'sportspress' );
+						return esc_attr__( 'Birthday', 'sportspress' );
 					case 'M j, Y @ G:i':
 						return 'M j, Y';
 					case '%1$s %2$s, %3$s @ %4$s : %5$s':
@@ -112,8 +112,8 @@ if ( ! class_exists( 'SportsPress_Birthdays' ) ) :
 				$options,
 				array(
 					array(
-						'title'         => __( 'Birthday', 'sportspress' ),
-						'desc'          => __( 'Display birthday', 'sportspress' ),
+						'title'         => esc_attr__( 'Birthday', 'sportspress' ),
+						'desc'          => esc_attr__( 'Display birthday', 'sportspress' ),
 						'id'            => 'sportspress_player_show_birthday',
 						'default'       => 'no',
 						'type'          => 'checkbox',
@@ -121,7 +121,7 @@ if ( ! class_exists( 'SportsPress_Birthdays' ) ) :
 					),
 
 					array(
-						'desc'          => __( 'Display age', 'sportspress' ),
+						'desc'          => esc_attr__( 'Display age', 'sportspress' ),
 						'id'            => 'sportspress_player_show_age',
 						'default'       => 'no',
 						'type'          => 'checkbox',
@@ -143,8 +143,8 @@ if ( ! class_exists( 'SportsPress_Birthdays' ) ) :
 				$options,
 				array(
 					array(
-						'title'         => __( 'Birthday', 'sportspress' ),
-						'desc'          => __( 'Display birthday', 'sportspress' ),
+						'title'         => esc_attr__( 'Birthday', 'sportspress' ),
+						'desc'          => esc_attr__( 'Display birthday', 'sportspress' ),
 						'id'            => 'sportspress_staff_show_birthday',
 						'default'       => 'no',
 						'type'          => 'checkbox',
@@ -152,7 +152,7 @@ if ( ! class_exists( 'SportsPress_Birthdays' ) ) :
 					),
 
 					array(
-						'desc'          => __( 'Display age', 'sportspress' ),
+						'desc'          => esc_attr__( 'Display age', 'sportspress' ),
 						'id'            => 'sportspress_staff_show_age',
 						'default'       => 'no',
 						'type'          => 'checkbox',
@@ -171,11 +171,11 @@ if ( ! class_exists( 'SportsPress_Birthdays' ) ) :
 		 */
 		public function add_player_details( $data, $post_id ) {
 			if ( 'yes' == get_option( 'sportspress_player_show_birthday', 'no' ) ) {
-				$data[ __( 'Birthday', 'sportspress' ) ] = get_the_date( get_option( 'date_format' ), $post_id );
+				$data[ esc_attr__( 'Birthday', 'sportspress' ) ] = get_the_date( get_option( 'date_format' ), $post_id );
 			}
 
 			if ( 'yes' == get_option( 'sportspress_player_show_age', 'no' ) ) {
-				$data[ __( 'Age', 'sportspress' ) ] = $this->get_age( get_the_date( 'm-d-Y', $post_id ) );
+				$data[ esc_attr__( 'Age', 'sportspress' ) ] = $this->get_age( get_the_date( 'm-d-Y', $post_id ) );
 			}
 
 			return $data;
@@ -188,11 +188,11 @@ if ( ! class_exists( 'SportsPress_Birthdays' ) ) :
 		 */
 		public function add_staff_details( $data, $post_id ) {
 			if ( 'yes' == get_option( 'sportspress_staff_show_birthday', 'no' ) ) {
-				$data[ __( 'Birthday', 'sportspress' ) ] = get_the_date( get_option( 'date_format' ), $post_id );
+				$data[ esc_attr__( 'Birthday', 'sportspress' ) ] = get_the_date( get_option( 'date_format' ), $post_id );
 			}
 
 			if ( 'yes' == get_option( 'sportspress_staff_show_age', 'no' ) ) {
-				$data[ __( 'Age', 'sportspress' ) ] = $this->get_age( get_the_date( 'm-d-Y', $post_id ) );
+				$data[ esc_attr__( 'Age', 'sportspress' ) ] = $this->get_age( get_the_date( 'm-d-Y', $post_id ) );
 			}
 
 			return $data;
@@ -213,13 +213,13 @@ if ( ! class_exists( 'SportsPress_Birthdays' ) ) :
 		<li>
 			<label class="selectit">
 				<input value="dob" type="checkbox" name="sp_columns[]" id="sp_columns_dob" <?php checked( in_array( 'dob', $selected ) ); ?>>
-				<?php _e( 'Date of Birth', 'sportspress' ); ?>
+				<?php esc_attr_e( 'Date of Birth', 'sportspress' ); ?>
 			</label>
 		</li>
 		<li>
 			<label class="selectit">
 				<input value="age" type="checkbox" name="sp_columns[]" id="sp_columns_age" <?php checked( in_array( 'age', $selected ) ); ?>>
-				<?php _e( 'Age', 'sportspress' ); ?>
+				<?php esc_attr_e( 'Age', 'sportspress' ); ?>
 			</label>
 		</li>
 			<?php

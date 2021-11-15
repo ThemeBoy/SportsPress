@@ -48,8 +48,8 @@ class SP_Admin_Welcome {
 			return;
 		}
 
-		$welcome_page_name  = __( 'About SportsPress', 'sportspress' );
-		$welcome_page_title = __( 'Welcome to SportsPress', 'sportspress' );
+		$welcome_page_name  = esc_attr__( 'About SportsPress', 'sportspress' );
+		$welcome_page_title = esc_attr__( 'Welcome to SportsPress', 'sportspress' );
 
 		switch ( $_GET['page'] ) {
 			case 'sp-about':
@@ -107,27 +107,27 @@ class SP_Admin_Welcome {
 		unset( $version[2] );
 		$display_version = implode( '.', $version );
 		?>
-	<h1 class="sp-welcome-logo"><?php echo apply_filters( 'sportspress_logo', '<img src="' . plugin_dir_url( SP_PLUGIN_FILE ) . 'assets/images/welcome/sportspress' . ( class_exists( 'SportsPress_Pro' ) ? '-pro' : '' ) . '.png" alt="' . __( 'SportsPress', 'sportspress' ) . '">' ); ?></h1>
+	<h1 class="sp-welcome-logo"><?php echo wp_kses_post( apply_filters( 'sportspress_logo', '<img src="' . plugin_dir_url( SP_PLUGIN_FILE ) . 'assets/images/welcome/sportspress' . ( class_exists( 'SportsPress_Pro' ) ? '-pro' : '' ) . '.png" alt="' . esc_attr__( 'SportsPress', 'sportspress' ) . '">' ) ); ?></h1>
 
-	<div class="sp-badge"><?php printf( __( 'Version %s', 'sportspress' ), SP()->version ); ?></div>
+	<div class="sp-badge"><?php printf( esc_html__( 'Version %s', 'sportspress' ), esc_html( SP()->version ) ); ?></div>
 
 	<div class="about-text sp-about-text">
 		<?php
 		if ( ! empty( $_GET['sp-installed'] ) ) {
-			$message = __( 'Thanks, all done!', 'sportspress' );
+			$message = esc_attr__( 'Thanks, all done!', 'sportspress' );
 		} elseif ( ! empty( $_GET['sp-updated'] ) ) {
-			$message = __( 'Thank you for updating to the latest version!', 'sportspress' );
+			$message = esc_attr__( 'Thank you for updating to the latest version!', 'sportspress' );
 		} else {
-			$message = __( 'Thanks for installing!', 'sportspress' );
+			$message = esc_attr__( 'Thanks for installing!', 'sportspress' );
 		}
 
-		printf( __( '%1$s SportsPress %2$s has lots of refinements we think you&#8217;ll love.', 'sportspress' ), $message, $display_version );
+		printf( esc_html__( '%1$s SportsPress %2$s has lots of refinements we think you&#8217;ll love.', 'sportspress' ), esc_html( $message ), esc_html( $display_version ) );
 		?>
 	</div>
 
 		  <a href="
 		  <?php
-			echo admin_url(
+			echo esc_url( admin_url(
 				add_query_arg(
 					array(
 						'page' => 'sportspress',
@@ -135,10 +135,10 @@ class SP_Admin_Welcome {
 					),
 					'admin.php'
 				)
-			);
+			) );
 			?>
-					" class="button button-primary"><?php _e( 'Settings', 'sportspress' ); ?></a>
-	  <a href="<?php echo esc_url( apply_filters( 'sportspress_docs_url', 'http://tboy.co/docs', 'sportspress' ) ); ?>" class="docs button button-primary"><?php _e( 'Docs', 'sportspress' ); ?></a>
+					" class="button button-primary"><?php esc_html_e( 'Settings', 'sportspress' ); ?></a>
+	  <a href="<?php echo esc_url( apply_filters( 'sportspress_docs_url', 'http://tboy.co/docs', 'sportspress' ) ); ?>" class="docs button button-primary"><?php esc_html_e( 'Docs', 'sportspress' ); ?></a>
 	  <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://wordpress.org/plugins/sportspress" data-text="An open-source (free) #WordPress plugin that helps you build professional league websites" data-via="ThemeBoy" data-size="large" data-hashtags="SportsPress">Tweet</a>
 	  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 	</p>
@@ -146,18 +146,18 @@ class SP_Admin_Welcome {
 	<h2 class="nav-tab-wrapper">
 	  <a class="nav-tab 
 		<?php
-		if ( $_GET['page'] == 'sp-about' ) {
+		if ( sanitize_key( $_GET['page'] ) == 'sp-about' ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 			echo 'nav-tab-active';}
 		?>
 		" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sp-about' ), 'index.php' ) ) ); ?>">
-		<?php _e( 'Welcome', 'sportspress' ); ?>
+		<?php esc_html_e( 'Welcome', 'sportspress' ); ?>
 	  </a><a class="nav-tab 
 		<?php
-		if ( $_GET['page'] == 'sp-credits' ) {
+		if ( sanitize_key( $_GET['page'] ) == 'sp-credits' ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 			echo 'nav-tab-active';}
 		?>
 		" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sp-credits' ), 'index.php' ) ) ); ?>">
-		<?php _e( 'Credits', 'sportspress' ); ?>
+		<?php esc_html_e( 'Credits', 'sportspress' ); ?>
 	  </a>
 	</h2>
 		<?php
@@ -177,18 +177,18 @@ class SP_Admin_Welcome {
 		<?php
 		// Save settings
 		if ( isset( $_POST['timezone_string'] ) ) :
-			update_option( 'timezone_string', sanitize_text_field( $_POST['timezone_string'] ) );
+			update_option( 'timezone_string', sanitize_text_field( wp_unslash( $_POST['timezone_string'] ) ) );
 			update_option( 'sportspress_basic_setup', 1 );
 		  endif;
 		if ( isset( $_POST['sportspress_sport'] ) && ! empty( $_POST['sportspress_sport'] ) ) :
-			$sport = sanitize_text_field( $_POST['sportspress_sport'] );
+			$sport = sanitize_text_field( wp_unslash( $_POST['sportspress_sport'] ) );
 			SP_Admin_Sports::apply_preset( $sport );
 			update_option( 'sportspress_sport', $sport );
 			delete_option( '_sp_needs_welcome' );
 			update_option( 'sportspress_installed', 1 );
 			?>
 		<div id="message" class="updated sportspress-message">
-		  <p><strong><?php _e( 'Your settings have been saved.', 'sportspress' ); ?></strong></p>
+		  <p><strong><?php esc_html_e( 'Your settings have been saved.', 'sportspress' ); ?></strong></p>
 		</div>
 			<?php
 		endif;
@@ -207,19 +207,19 @@ class SP_Admin_Welcome {
 
 	  <div class="feature-section three-col">
 		<div class="col">
-		  <img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-conditional-equations.png" alt="Screenshot">
+		  <img src="<?php echo esc_url( plugin_dir_url( SP_PLUGIN_FILE ) . 'assets/images/welcome/screenshot-conditional-equations.png' );?>" alt="Screenshot">
 		  <h3>Conditional Equations</h3>
-		  <p>Use the newly introduced conditional operators <strong>&gt;</strong>, <strong>&lt;</strong>, <strong>&equiv;</strong>, <strong>&ne;</strong>, <strong>&ge;</strong>, and <strong>&le;</strong> to calculate the relationship between variables, then insert that calculation into more complex equations. Visit the <a href="<?php echo add_query_arg( array( 'page' => 'sportspress-config' ), admin_url( 'admin.php' ) ); ?>">Configure</a> page to edit variables and equations.</p>
+		  <p>Use the newly introduced conditional operators <strong>&gt;</strong>, <strong>&lt;</strong>, <strong>&equiv;</strong>, <strong>&ne;</strong>, <strong>&ge;</strong>, and <strong>&le;</strong> to calculate the relationship between variables, then insert that calculation into more complex equations. Visit the <a href="<?php echo esc_url( add_query_arg( array( 'page' => 'sportspress-config' ), admin_url( 'admin.php' ) ) ); ?>">Configure</a> page to edit variables and equations.</p>
 		</div>
 		<div class="col">
-		  <img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-event-specs.png" alt="Screenshot">
+		  <img src="<?php echo esc_url( plugin_dir_url( SP_PLUGIN_FILE ) . 'assets/images/welcome/screenshot-event-specs.png' );?>" alt="Screenshot">
 		  <h3>Event Specs</h3>
 		  <p>Measure and display additional details per event using the new <strong>Event Specs</strong> variables. They are customizable and can be useful for keeping track of information like player of the match, attendance, and venue weather.
 		</div>
 		<div class="col">
-		  <img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-next-team.png" alt="Screenshot">
+		  <img src="<?php echo esc_url( plugin_dir_url( SP_PLUGIN_FILE ) . 'assets/images/welcome/screenshot-next-team.png' );?>" alt="Screenshot">
 		  <h3>Next Team Column</h3>
-		  <p>Provide a quick overview of who each team is playing next using the new <strong>Next Team</strong> preset for <a href="<?php echo add_query_arg( array( 'post_type' => 'sp_column' ), admin_url( 'edit.php' ) ); ?>">league table columns</a>. This will automatically display the next team's name or logo that links to the next match for each team in the table.<p>
+		  <p>Provide a quick overview of who each team is playing next using the new <strong>Next Team</strong> preset for <a href="<?php echo esc_url( add_query_arg( array( 'post_type' => 'sp_column' ), admin_url( 'edit.php' ) ) ); ?>">league table columns</a>. This will automatically display the next team's name or logo that links to the next match for each team in the table.<p>
 		</div>
 	  </div>
 
@@ -234,25 +234,25 @@ class SP_Admin_Welcome {
 
 	  <div class="feature-section three-col">
 		<div class="col">
-		  <img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-results-matrix.png" alt="Results Matrix">
+		  <img src="<?php echo esc_url( plugin_dir_url( SP_PLUGIN_FILE ) . 'assets/images/welcome/screenshot-results-matrix.png' );?>" alt="Results Matrix">
 		  <h3>Results Matrix</h3>
 		  <p>Display matches between home and away team in a grid. Create or select an existing calendar and select the <strong>Matrix</strong> layout to convert the calendar to an interactive results matrix!</p>
 		</div>
 		<div class="col">
-		  <img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-midseason-transfers.png" alt="Midseason Transfers">
+		  <img src="<?php echo esc_url( plugin_dir_url( SP_PLUGIN_FILE ) . 'assets/images/welcome/screenshot-midseason-transfers.png' );?>" alt="Midseason Transfers">
 		  <h3>Midseason Transfers</h3>
 		  <p>Keep track of players that switched teams during a season by adding one or more extra rows to their statistics table. Display the team and partial statistics before and after the transfer.<p>
 		</div>
 		<div class="col">
-		  <img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>assets/images/welcome/screenshot-vertical-timelines.png" alt="Vertical Timelines">
+		  <img src="<?php echo esc_url( plugin_dir_url( SP_PLUGIN_FILE ) . 'assets/images/welcome/screenshot-vertical-timelines.png' );?>" alt="Vertical Timelines">
 		  <h3>Vertical Timelines</h3>
 		  <p>Display a match commentary style play-by-play timeline within events. <a href="<?php echo esc_url( apply_filters( 'sportspress_pro_url', 'http://tboy.co/pro' ) ); ?>">Upgrade to SportsPress Pro</a> to get access to <strong>Timelines</strong> and other pro features.<p>
 		</div>
 	  </div>
 
-	  <a class="button button-primary button-hero" href="<?php echo esc_url( apply_filters( 'sportspress_pro_url', 'http://tboy.co/pro' ) ); ?>"><?php _e( 'Upgrade to Pro', 'sportspress' ); ?></a>
+	  <a class="button button-primary button-hero" href="<?php echo esc_url( apply_filters( 'sportspress_pro_url', 'http://tboy.co/pro' ) ); ?>"><?php esc_html_e( 'Upgrade to Pro', 'sportspress' ); ?></a>
 
-	  <p><?php _e( 'Get SportsPress Pro to get access to all modules. You can upgrade any time without losing any of your data.', 'sportspress' ); ?></p>
+	  <p><?php esc_html_e( 'Get SportsPress Pro to get access to all modules. You can upgrade any time without losing any of your data.', 'sportspress' ); ?></p>
 	  <?php } ?>
 
 	  <hr>
@@ -266,7 +266,7 @@ class SP_Admin_Welcome {
 	  <div class="feature-section three-col">
 		<div class="col">
 		  <h3>Player Assignments</h3>
-		  <p>Players will now be saved using a new data format that allows them to belong to multiple leagues, seasons, and teams and be accurately selected in <a href="<?php echo add_query_arg( array( 'post_type' => 'sp_list' ), admin_url( 'edit.php' ) ); ?>">player lists</a>.</p>
+		  <p>Players will now be saved using a new data format that allows them to belong to multiple leagues, seasons, and teams and be accurately selected in <a href="<?php echo esc_url( add_query_arg( array( 'post_type' => 'sp_list' ), admin_url( 'edit.php' ) ) ); ?>">player lists</a>.</p>
 		</div>
 		<div class="col">
 		  <h3>Current Team Column</h3>
@@ -316,7 +316,7 @@ class SP_Admin_Welcome {
 				)
 			);
 			?>
-					"><?php _e( 'Go to SportsPress Settings', 'sportspress' ); ?></a>
+					"><?php esc_html_e( 'Go to SportsPress Settings', 'sportspress' ); ?></a>
 	</div>
 		<?php
 	}
@@ -329,7 +329,7 @@ class SP_Admin_Welcome {
 	<div class="wrap about-wrap about-sportspress-wrap">
 		<?php $this->intro(); ?>
 	  
-	  <p class="about-description"><?php printf( __( 'SportsPress is developed and maintained by a worldwide team of passionate individuals and backed by an awesome developer community. Want to see your name? <a href="%s">Contribute to SportsPress</a>.', 'sportspress' ), 'https://github.com/ThemeBoy/SportsPress/blob/master/CONTRIBUTING.md' ); ?></p>
+	  <p class="about-description"><?php printf( wp_kses_post( esc_attr__( 'SportsPress is developed and maintained by a worldwide team of passionate individuals and backed by an awesome developer community. Want to see your name? <a href="%s">Contribute to SportsPress</a>.', 'sportspress' ) ), 'https://github.com/ThemeBoy/SportsPress/blob/master/CONTRIBUTING.md' ); ?></p>
 
 	  <div class="sp-feature feature-section col one-col">
 		<?php echo wp_kses_post( $this->contributors() ); ?>
@@ -347,7 +347,7 @@ class SP_Admin_Welcome {
 
 		<?php $this->intro(); ?>
 
-	  <p class="about-description"><?php printf( __( 'SportsPress has been kindly translated into several other languages thanks to our translation team. Want to see your name? <a href="%s">Translate SportsPress</a>.', 'sportspress' ), 'https://translate.wordpress.org/projects/wp-plugins/sportspress' ); ?></p>
+	  <p class="about-description"><?php printf( wp_kses_post( esc_attr__( 'SportsPress has been kindly translated into several other languages thanks to our translation team. Want to see your name? <a href="%s">Translate SportsPress</a>.', 'sportspress' ) ), 'https://translate.wordpress.org/projects/wp-plugins/sportspress' ); ?></p>
 	</div>
 		<?php
 	}
@@ -372,7 +372,7 @@ class SP_Admin_Welcome {
 			$contributor_list .= sprintf(
 				'<a href="%s" title="%s">',
 				esc_url( 'https://github.com/' . $contributor->login ),
-				esc_html( sprintf( __( 'View %s', 'sportspress' ), $contributor->login ) )
+				esc_html( sprintf( esc_attr__( 'View %s', 'sportspress' ), $contributor->login ) )
 			);
 			$contributor_list .= sprintf( '<img src="%s" width="64" height="64" class="gravatar" alt="%s" />', esc_url( $contributor->avatar_url ), esc_html( $contributor->login ) );
 			$contributor_list .= '</a>';
@@ -439,7 +439,7 @@ class SP_Admin_Welcome {
 			return;
 		}
 
-		if ( ( isset( $_GET['action'] ) && 'upgrade-plugin' == $_GET['action'] ) && ( isset( $_GET['plugin'] ) && strstr( $_GET['plugin'], 'sportspress.php' ) ) ) {
+		if ( ( isset( $_GET['action'] ) && 'upgrade-plugin' == sanitize_key( $_GET['action'] ) ) && ( isset( $_GET['plugin'] ) && strstr( $_GET['plugin'], 'sportspress.php' ) ) ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 			return;
 		}
 

@@ -24,11 +24,11 @@ if ( empty( $url ) ) {
 	return false;
 }
 ?>
-<form action="<?php echo $url; ?>"
+<form action="<?php echo esc_url( $url ); ?>"
 						 <?php
 							if ( get_option( 'sportspress_team_site_target_blank', 'no' ) == 'yes' ) {
 								?>
 	 target="_blank"<?php } ?>>
-	<input type="submit" class="button sp-button sp-team-button" value="<?php _e( 'Visit Site', 'sportspress' ); ?>">
+	<input type="submit" class="button sp-button sp-team-button" value="<?php esc_attr_e( 'Visit Site', 'sportspress' ); ?>">
 </form>
 <br>

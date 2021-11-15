@@ -42,7 +42,7 @@ class SP_Meta_Box_Player_Metrics {
 				<?php
 			endforeach;
 		else :
-			sp_post_adder( 'sp_metric', __( 'Add New', 'sportspress' ) );
+			sp_post_adder( 'sp_metric', esc_attr__( 'Add New', 'sportspress' ) );
 		endif;
 	}
 

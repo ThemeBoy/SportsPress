@@ -29,7 +29,7 @@ if ( ! class_exists( 'SP_Settings_Licenses' ) ) :
 		 */
 		public function __construct() {
 			$this->id    = 'licenses';
-			$this->label = __( 'Licenses', 'sportspress' );
+			$this->label = esc_attr__( 'Licenses', 'sportspress' );
 
 			$this->licenses = apply_filters(
 				'sportspress_licenses',
@@ -73,11 +73,11 @@ if ( ! class_exists( 'SP_Settings_Licenses' ) ) :
 							<tbody>
 								<tr>
 									<th scope="row" class="titledesc">
-										<?php _e( 'License Key', 'sportspress' ); ?>
+										<?php esc_html_e( 'License Key', 'sportspress' ); ?>
 										<?php if ( $key && $status && 'valid' == $status ) { ?>
 											<i class="dashicons dashicons-yes sp-desc-active"></i>
 										<?php } else { ?>
-											<i class="dashicons dashicons-editor-help sp-desc-tip" title="<?php _e( 'Enter the license key from your purchase receipt.', 'sportspress' ); ?>"></i>
+											<i class="dashicons dashicons-editor-help sp-desc-tip" title="<?php esc_html_e( 'Enter the license key from your purchase receipt.', 'sportspress' ); ?>"></i>
 										<?php } ?>
 									</th>
 									<td>
@@ -134,7 +134,7 @@ if ( ! class_exists( 'SP_Settings_Licenses' ) ) :
 			}
 
 			// retrieve the license key
-			$license = trim( sanitize_text_field( $_POST[ 'sp_license_key_' . $id ] ) );
+			$license = trim( sanitize_text_field( wp_unslash( $_POST[ 'sp_license_key_' . $id ] ) ) );
 
 			// get the name of the product
 			$name = $this->licenses[ $id ]['name'];
@@ -159,7 +159,7 @@ if ( ! class_exists( 'SP_Settings_Licenses' ) ) :
 
 			// Make sure the response came back okay
 			if ( is_wp_error( $response ) ) {
-				SP_Admin_Settings::add_error( __( 'Sorry, there has been an error.', 'sportspress' ) );
+				SP_Admin_Settings::add_error( esc_attr__( 'Sorry, there has been an error.', 'sportspress' ) );
 				return false;
 			}
 
@@ -172,9 +172,9 @@ if ( ! class_exists( 'SP_Settings_Licenses' ) ) :
 			// Update License or display error
 			if ( 'valid' == $license_data->license ) {
 				update_site_option( 'sportspress_' . $id . '_license_key', $license );
-				SP_Admin_Settings::add_override( __( 'License activated.', 'sportspress' ) );
+				SP_Admin_Settings::add_override( esc_attr__( 'License activated.', 'sportspress' ) );
 			} else {
-				SP_Admin_Settings::add_error( __( 'License invalid.', 'sportspress' ) );
+				SP_Admin_Settings::add_error( esc_attr__( 'License invalid.', 'sportspress' ) );
 			}
 		}
 
@@ -189,7 +189,7 @@ if ( ! class_exists( 'SP_Settings_Licenses' ) ) :
 			}
 
 			// retrieve the license key
-			$license = trim( sanitize_text_field( $_POST[ 'sp_license_key_' . $id ] ) );
+			$license = trim( sanitize_text_field( wp_unslash( $_POST[ 'sp_license_key_' . $id ] ) ) );
 
 			// get the name of the product
 			$name = $this->licenses[ $id ]['name'];
@@ -214,7 +214,7 @@ if ( ! class_exists( 'SP_Settings_Licenses' ) ) :
 
 			// make sure the response came back okay
 			if ( is_wp_error( $response ) ) {
-				SP_Admin_Settings::add_error( __( 'Sorry, there has been an error.', 'sportspress' ) );
+				SP_Admin_Settings::add_error( esc_attr__( 'Sorry, there has been an error.', 'sportspress' ) );
 				return false;
 			}
 
@@ -224,9 +224,9 @@ if ( ! class_exists( 'SP_Settings_Licenses' ) ) :
 			// $license_data->license will be either "deactivated" or "failed"
 			if ( $license_data->license == 'deactivated' ) {
 				delete_site_option( 'sportspress_' . $id . '_license_status' );
-				SP_Admin_Settings::add_override( __( 'License deactivated.', 'sportspress' ) );
+				SP_Admin_Settings::add_override( esc_attr__( 'License deactivated.', 'sportspress' ) );
 			} else {
-				SP_Admin_Settings::add_error( __( 'Sorry, there has been an error.', 'sportspress' ) );
+				SP_Admin_Settings::add_error( esc_attr__( 'Sorry, there has been an error.', 'sportspress' ) );
 			}
 		}
 	}

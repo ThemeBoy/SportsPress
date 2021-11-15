@@ -24,6 +24,6 @@ if ( $title ) {
 		$title = '<strong class="sp-staff-role">' . $role->name . '</strong> ' . $title;
 	}
 	?>
-	<h3 class="sp-staff-name"><?php echo $title; ?></h3>
+	<h3 class="sp-staff-name"><?php echo wp_kses_post( $title ); ?></h3>
 	<?php
 }

@@ -23,15 +23,15 @@ if ( class_exists( 'WP_Importer' ) ) {
 		 */
 		public function __construct() {
 			$this->import_page  = 'sp_event_csv';
-			$this->import_label = __( 'Import Events', 'sportspress' );
+			$this->import_label = esc_attr__( 'Import Events', 'sportspress' );
 			$this->columns      = array(
-				'post_date'  => __( 'Date', 'sportspress' ),
-				'post_time'  => __( 'Time', 'sportspress' ),
-				'sp_venue'   => __( 'Venue', 'sportspress' ),
-				'sp_team'    => __( 'Teams', 'sportspress' ),
-				'sp_results' => __( 'Results', 'sportspress' ),
-				'sp_outcome' => __( 'Outcome', 'sportspress' ),
-				'sp_player'  => __( 'Players', 'sportspress' ),
+				'post_date'  => esc_attr__( 'Date', 'sportspress' ),
+				'post_time'  => esc_attr__( 'Time', 'sportspress' ),
+				'sp_venue'   => esc_attr__( 'Venue', 'sportspress' ),
+				'sp_team'    => esc_attr__( 'Teams', 'sportspress' ),
+				'sp_results' => esc_attr__( 'Results', 'sportspress' ),
+				'sp_outcome' => esc_attr__( 'Outcome', 'sportspress' ),
+				'sp_player'  => esc_attr__( 'Players', 'sportspress' ),
 			);
 			$performance_labels = sp_get_var_labels( 'sp_performance' );
 			if ( $performance_labels && is_array( $performance_labels ) && sizeof( $performance_labels ) ) {
@@ -58,10 +58,10 @@ if ( class_exists( 'WP_Importer' ) ) {
 			$rows = array_chunk( $array, sizeof( $columns ) );
 
 			// Get event format, league, and season from post vars
-			$event_format = ( empty( $_POST['sp_format'] ) ? false : sanitize_text_field( $_POST['sp_format'] ) );
-			$league       = ( sp_array_value( $_POST, 'sp_league', '-1' ) == '-1' ? false : sanitize_text_field( $_POST['sp_league'] ) );
-			$season       = ( sp_array_value( $_POST, 'sp_season', '-1' ) == '-1' ? false : sanitize_text_field( $_POST['sp_season'] ) );
-			$date_format  = ( empty( $_POST['sp_date_format'] ) ? 'yyyy/mm/dd' : sanitize_text_field( $_POST['sp_date_format'] ) );
+			$event_format = ( empty( $_POST['sp_format'] ) ? false : sanitize_key( $_POST['sp_format'] ) );
+			$league       = ( sp_array_value( $_POST, 'sp_league', '-1' ) == '-1' ? false : sanitize_key( $_POST['sp_league'] ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
+			$season       = ( sp_array_value( $_POST, 'sp_season', '-1' ) == '-1' ? false : sanitize_key( $_POST['sp_season'] ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
+			$date_format  = ( empty( $_POST['sp_date_format'] ) ? 'yyyy/mm/dd' : sanitize_text_field( wp_unslash( $_POST['sp_date_format'] ) ) );
 
 			// Get labels from result and performance post types
 			$result_labels      = sp_get_var_labels( 'sp_result' );
@@ -156,7 +156,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 						'post_type'   => 'sp_event',
 						'post_status' => 'publish',
 						'post_date'   => $date,
-						'post_title'  => __( 'Event', 'sportspress' ),
+						'post_title'  => esc_attr__( 'Event', 'sportspress' ),
 					);
 
 					// Insert event
@@ -338,7 +338,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 						$title = get_the_title( $id );
 
 						// Initialize event name
-						if ( __( 'Event', 'sportspress' ) === $title ) {
+						if ( esc_attr__( 'Event', 'sportspress' ) === $title ) {
 							$title = '';
 						} else {
 							$title .= ' ' . get_option( 'sportspress_event_teams_delimiter', 'vs' ) . ' ';
@@ -470,7 +470,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 
 			// Show Result
 			echo '<div class="updated settings-error below-h2"><p>
-				' . sprintf( __( 'Import complete - imported <strong>%1$s</strong> events and skipped <strong>%2$s</strong>.', 'sportspress' ), $this->imported, $this->skipped ) . '
+				' . sprintf( esc_html__( 'Import complete - imported <strong>%1$s</strong> events and skipped <strong>%2$s</strong>.', 'sportspress' ), esc_html( $this->imported ), esc_html( $this->skipped ) ) . '
 			</p></div>';
 
 			$this->import_end();
@@ -480,7 +480,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 		 * Performs post-import cleanup of files and the cache
 		 */
 		function import_end() {
-			echo '<p>' . __( 'All done!', 'sportspress' ) . ' <a href="' . admin_url( 'edit.php?post_type=sp_event' ) . '">' . __( 'View Events', 'sportspress' ) . '</a>' . '</p>';
+			echo '<p>' . esc_html__( 'All done!', 'sportspress' ) . ' <a href="' . esc_url( admin_url( 'edit.php?post_type=sp_event' ) ) . '">' . esc_html__( 'View Events', 'sportspress' ) . '</a>' . '</p>';
 
 			do_action( 'import_end' );
 		}
@@ -493,9 +493,9 @@ if ( class_exists( 'WP_Importer' ) ) {
 		 */
 		function greet() {
 			echo '<div class="narrow">';
-			echo '<p>' . __( 'Hi there! Choose a .csv file to upload, then click "Upload file and import".', 'sportspress' ) . '</p>';
-			echo '<p>' . sprintf( __( 'Events need to be defined with columns in a specific order (3+ columns). <a href="%s">Click here to download a sample</a>.', 'sportspress' ), plugin_dir_url( SP_PLUGIN_FILE ) . 'dummy-data/events-sample.csv' ) . '</p>';
-			echo '<p>' . sprintf( __( 'Supports CSV files generated by <a href="%s">LeagueLobster</a>.', 'sportspress' ), 'http://tboy.co/leaguelobster' ) . '</p>';
+			echo '<p>' . esc_html__( 'Hi there! Choose a .csv file to upload, then click "Upload file and import".', 'sportspress' ) . '</p>';
+			echo '<p>' . sprintf( wp_kses_post( esc_attr__( 'Events need to be defined with columns in a specific order (3+ columns). <a href="%s">Click here to download a sample</a>.', 'sportspress' ) ), esc_url( plugin_dir_url( SP_PLUGIN_FILE ) ) . 'dummy-data/events-sample.csv' ) . '</p>';
+			echo '<p>' . sprintf( wp_kses_post( esc_attr__( 'Supports CSV files generated by <a href="%s">LeagueLobster</a>.', 'sportspress' ) ), 'http://tboy.co/leaguelobster' ) . '</p>';
 			wp_import_upload_form( 'admin.php?import=sp_event_csv&step=1' );
 			echo '</div>';
 		}
@@ -511,7 +511,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 			<table class="form-table">
 				<tbody>
 					<tr>
-						<th scope="row"><label><?php _e( 'Format', 'sportspress' ); ?></label><br/></th>
+						<th scope="row"><label><?php esc_html_e( 'Format', 'sportspress' ); ?></label><br/></th>
 						<td class="forminp forminp-radio" id="sp_formatdiv">
 							<fieldset id="post-formats-select">
 								<ul>
@@ -527,42 +527,42 @@ if ( class_exists( 'WP_Importer' ) ) {
 						</td>
 					</tr>
 					<tr>
-						<th scope="row"><label><?php _e( 'League', 'sportspress' ); ?></label><br/></th>
+						<th scope="row"><label><?php esc_html_e( 'League', 'sportspress' ); ?></label><br/></th>
 						<td>
 						<?php
 						$args = array(
 							'taxonomy'         => 'sp_league',
 							'name'             => 'sp_league',
 							'values'           => 'slug',
-							'show_option_none' => __( '&mdash; Not set &mdash;', 'sportspress' ),
+							'show_option_none' => esc_attr__( '&mdash; Not set &mdash;', 'sportspress' ),
 						);
 						if ( ! sp_dropdown_taxonomies( $args ) ) :
-							echo '<p>' . __( 'None', 'sportspress' ) . '</p>';
-							sp_taxonomy_adder( 'sp_league', 'sp_team', __( 'Add New', 'sportspress' ) );
+							echo '<p>' . esc_html__( 'None', 'sportspress' ) . '</p>';
+							sp_taxonomy_adder( 'sp_league', 'sp_team', esc_attr__( 'Add New', 'sportspress' ) );
 						endif;
 						?>
 						</td>
 					</tr>
 					<tr>
-						<th scope="row"><label><?php _e( 'Season', 'sportspress' ); ?></label><br/></th>
+						<th scope="row"><label><?php esc_html_e( 'Season', 'sportspress' ); ?></label><br/></th>
 						<td>
 						<?php
 						$args = array(
 							'taxonomy'         => 'sp_season',
 							'name'             => 'sp_season',
 							'values'           => 'slug',
-							'show_option_none' => __( '&mdash; Not set &mdash;', 'sportspress' ),
+							'show_option_none' => esc_attr__( '&mdash; Not set &mdash;', 'sportspress' ),
 						);
 						if ( ! sp_dropdown_taxonomies( $args ) ) :
-							echo '<p>' . __( 'None', 'sportspress' ) . '</p>';
-							sp_taxonomy_adder( 'sp_season', 'sp_team', __( 'Add New', 'sportspress' ) );
+							echo '<p>' . esc_html__( 'None', 'sportspress' ) . '</p>';
+							sp_taxonomy_adder( 'sp_season', 'sp_team', esc_attr__( 'Add New', 'sportspress' ) );
 						endif;
 						?>
 						</td>
 					</tr>
 					<tr>
 						<th scope="row" class="titledesc">
-							<?php _e( 'Date Format', 'sportspress' ); ?>
+							<?php esc_html_e( 'Date Format', 'sportspress' ); ?>
 						</th>
 						<td class="forminp forminp-radio">
 							<fieldset>

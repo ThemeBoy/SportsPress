@@ -219,7 +219,7 @@ if ( ! function_exists( 'sp_get_short_name' ) ) {
 
 if ( ! function_exists( 'sp_short_name' ) ) {
 	function sp_short_name( $post = 0 ) {
-		echo sp_get_short_name( $post );
+		echo wp_kses_post( sp_get_short_name( $post ) );
 	}
 }
 

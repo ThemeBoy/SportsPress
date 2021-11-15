@@ -70,7 +70,7 @@ elseif ( $orderby == 'rand' ) :
 endif;
 
 if ( $title ) {
-	echo '<h4 class="sp-table-caption">' . $title . '</h4>';
+	echo '<h4 class="sp-table-caption">' . wp_kses_post( $title ) . '</h4>';
 }
 
 $gallery_style = $gallery_div = '';
@@ -97,9 +97,9 @@ if ( apply_filters( 'use_default_gallery_style', ! $html5 ) ) {
 }
 $size_class  = sanitize_html_class( $size );
 $gallery_div = "<div id='$selector' class='gallery galleryid-{$id} gallery-columns-{$columns} gallery-size-{$size_class}'>";
-echo apply_filters( 'gallery_style', $gallery_style . "\n\t\t" );
+echo wp_kses_post( apply_filters( 'gallery_style', $gallery_style . "\n\t\t" ) );
 ?>
-<?php echo $gallery_div; ?>
+<?php echo wp_kses_post( $gallery_div ); ?>
 	<?php
 	if ( intval( $number ) > 0 ) {
 		$limit = $number;
@@ -143,7 +143,7 @@ echo apply_filters( 'gallery_style', $gallery_style . "\n\t\t" );
 
 	echo '<div class="sp-team-gallery-wrapper sp-gallery-wrapper">';
 
-	echo $gallery;
+	echo wp_kses_post( $gallery );
 
 	if ( ! $html5 && $columns > 0 && ++$i % $columns == 0 ) {
 		echo '<br style="clear: both" />';
@@ -152,7 +152,7 @@ echo apply_filters( 'gallery_style', $gallery_style . "\n\t\t" );
 	echo '</div>';
 
 	if ( $show_all_teams_link ) {
-		echo '<div class="sp-team-gallery-link sp-gallery-link sp-view-all-link"><a href="' . get_permalink( $id ) . '">' . __( 'View all teams', 'sportspress' ) . '</a></div>';
+		echo '<div class="sp-team-gallery-link sp-gallery-link sp-view-all-link"><a href="' . esc_url( get_permalink( $id ) ) . '">' . esc_attr__( 'View all teams', 'sportspress' ) . '</a></div>';
 	}
 
 	echo '</div>';

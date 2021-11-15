@@ -65,8 +65,8 @@ if ( ! class_exists( 'SP_Admin_Settings' ) ) :
 		public static function save() {
 			global $current_section, $current_tab;
 
-			if ( empty( $_REQUEST['_wpnonce'] ) || ! wp_verify_nonce( $_REQUEST['_wpnonce'], 'sportspress-settings' ) ) {
-				die( __( 'Action failed. Please refresh the page and retry.', 'sportspress' ) );
+			if ( empty( $_REQUEST['_wpnonce'] ) || ! wp_verify_nonce( sanitize_key( $_REQUEST['_wpnonce'] ), 'sportspress-settings' ) ) {
+				die( esc_html__( 'Action failed. Please refresh the page and retry.', 'sportspress' ) );
 			}
 
 			// Trigger actions
@@ -74,7 +74,7 @@ if ( ! class_exists( 'SP_Admin_Settings' ) ) :
 			do_action( 'sportspress_update_options_' . $current_tab );
 			do_action( 'sportspress_update_options' );
 
-			self::add_message( __( 'Your settings have been saved.', 'sportspress' ) );
+			self::add_message( esc_attr__( 'Your settings have been saved.', 'sportspress' ) );
 
 			do_action( 'sportspress_settings_saved' );
 		}
@@ -144,7 +144,7 @@ if ( ! class_exists( 'SP_Admin_Settings' ) ) :
 				'sportspress_settings',
 				'localized_strings',
 				array(
-					'none' => __( 'None', 'sportspress' ),
+					'none' => esc_attr__( 'None', 'sportspress' ),
 				)
 			);
 
@@ -152,8 +152,8 @@ if ( ! class_exists( 'SP_Admin_Settings' ) ) :
 			self::get_settings_pages();
 
 			// Get current tab/section
-			$current_tab     = empty( $_GET['tab'] ) ? 'modules' : sanitize_title( $_GET['tab'] );
-			$current_section = empty( $_REQUEST['section'] ) ? '' : sanitize_title( $_REQUEST['section'] );
+			$current_tab     = empty( $_GET['tab'] ) ? 'modules' : sanitize_title( wp_unslash( $_GET['tab'] ) );
+			$current_section = empty( $_REQUEST['section'] ) ? '' : sanitize_title( wp_unslash( $_REQUEST['section'] ) );
 
 			// Save settings if data has been posted
 			if ( ! empty( $_POST ) ) {
@@ -162,11 +162,11 @@ if ( ! class_exists( 'SP_Admin_Settings' ) ) :
 
 			// Add any posted messages
 			if ( ! empty( $_GET['sp_error'] ) ) {
-				self::add_error( stripslashes( $_GET['sp_error'] ) );
+				self::add_error( stripslashes( sanitize_text_field( wp_unslash( $_GET['sp_error'] ) ) ) );
 			}
 
 			if ( ! empty( $_GET['sp_message'] ) ) {
-				self::add_message( stripslashes( $_GET['sp_message'] ) );
+				self::add_message( stripslashes( sanitize_text_field( wp_unslash( $_GET['sp_message'] ) ) ) );
 			}
 
 			self::show_messages();
@@ -303,13 +303,13 @@ if ( ! class_exists( 'SP_Admin_Settings' ) ) :
 
 					// Section Titles
 					case 'title':
-						echo '<div class="sp-settings-section sp-settings-section-' . sanitize_title( sp_array_value( $value, 'id' ) ) . '">';
-						echo '<a name="sp-settings-section-' . sanitize_title( sp_array_value( $value, 'id' ) ) . '"></a>';
+						echo '<div class="sp-settings-section sp-settings-section-' . esc_attr( sp_array_value( $value, 'id' ) ) . '">';
+						echo '<a name="sp-settings-section-' . esc_attr( sp_array_value( $value, 'id' ) ) . '"></a>';
 						if ( ! empty( $value['title'] ) ) {
 							echo '<h3>' . esc_html( $value['title'] ) . '</h3>';
 						}
 						if ( ! empty( $value['desc'] ) ) {
-							echo wpautop( wptexturize( wp_kses_post( $value['desc'] ) ) );
+							echo wp_kses_post( wpautop( wptexturize( $value['desc'] ) ) );
 						}
 						echo '<table class="form-table">' . "\n\n";
 						if ( ! empty( $value['id'] ) ) {
@@ -359,7 +359,7 @@ if ( ! class_exists( 'SP_Admin_Settings' ) ) :
 								value="<?php echo esc_attr( $option_value ); ?>"
 								placeholder="<?php echo esc_attr( $value['placeholder'] ); ?>"
 								class="<?php echo esc_attr( $value['class'] ); ?>"
-								<?php echo implode( ' ', $custom_attributes ); ?>
+								<?php echo esc_html( implode( ' ', $custom_attributes ) ); ?>
 								/> <?php echo wp_kses_post( $description ); ?>
 						</td>
 					</tr>
@@ -384,7 +384,7 @@ if ( ! class_exists( 'SP_Admin_Settings' ) ) :
 								id="<?php echo esc_attr( $value['id'] ); ?>"
 								style="<?php echo esc_attr( $value['css'] ); ?>"
 								class="<?php echo esc_attr( $value['class'] ); ?>"
-								<?php echo implode( ' ', $custom_attributes ); ?>
+								<?php echo esc_html( implode( ' ', $custom_attributes ) ); ?>
 								><?php echo esc_textarea( $option_value ); ?></textarea>
 						</td>
 					</tr>
@@ -417,7 +417,7 @@ if ( ! class_exists( 'SP_Admin_Settings' ) ) :
 								if ( is_rtl() ) :
 									?>
 									 chosen-rtl<?php endif; ?> <?php echo esc_attr( $value['class'] ); ?>"
-								<?php echo implode( ' ', $custom_attributes ); ?>
+								<?php echo esc_html( implode( ' ', $custom_attributes ) ); ?>
 								<?php
 								if ( $value['type'] == 'multiselect' ) {
 									echo 'multiple="multiple"';}
@@ -471,7 +471,7 @@ if ( ! class_exists( 'SP_Admin_Settings' ) ) :
 								if ( is_rtl() ) :
 									?>
 									 chosen-rtl<?php endif; ?> <?php echo esc_attr( $value['class'] ); ?>"
-								<?php echo implode( ' ', $custom_attributes ); ?>
+								<?php echo esc_html( implode( ' ', $custom_attributes ) ); ?>
 								<?php
 								if ( $value['type'] == 'multiselect' ) {
 									echo 'multiple="multiple"';}
@@ -480,7 +480,7 @@ if ( ! class_exists( 'SP_Admin_Settings' ) ) :
 								<?php
 								foreach ( $value['options'] as $group => $options ) {
 									?>
-									<optgroup label="<?php _e( $group, 'sportspress' ); ?>">
+									<optgroup label="<?php esc_attr_e( $group, 'sportspress' ); ?>">
 										<?php
 										foreach ( $options as $key => $val ) {
 											?>
@@ -539,7 +539,7 @@ if ( ! class_exists( 'SP_Admin_Settings' ) ) :
 								if ( is_rtl() ) :
 									?>
 									 chosen-rtl<?php endif; ?> <?php echo esc_attr( $value['class'] ); ?>"
-								<?php echo implode( ' ', $custom_attributes ); ?>
+								<?php echo esc_html( implode( ' ', $custom_attributes ) ); ?>
 								<?php
 								if ( $value['type'] == 'multiselect' ) {
 									echo 'multiple="multiple"';}
@@ -570,11 +570,11 @@ if ( ! class_exists( 'SP_Admin_Settings' ) ) :
 									<?php
 								}
 								?>
-							</select> <?php echo wp_kses_post( $description ); ?> <a class="button button-small sp-configure-sport" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sportspress-config' ), 'admin.php' ) ) ); ?>"><?php _e( 'Configure', 'sportspress' ); ?></a>
+							</select> <?php echo wp_kses_post( $description ); ?> <a class="button button-small sp-configure-sport" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'sportspress-config' ), 'admin.php' ) ) ); ?>"><?php esc_html_e( 'Configure', 'sportspress' ); ?></a>
 							<p>
 								<label>
 									<input type="checkbox" name="add_sample_data" id="add_sample_data" <?php checked( sp_array_value( $value, 'welcome' ) ); ?>>
-									<?php _e( 'Install demo content', 'sportspress' ); ?>
+									<?php esc_html_e( 'Install demo content', 'sportspress' ); ?>
 								</label>
 							</p>
 						</td>
@@ -606,7 +606,7 @@ if ( ! class_exists( 'SP_Admin_Settings' ) ) :
 												type="radio"
 												style="<?php echo esc_attr( $value['css'] ); ?>"
 												class="<?php echo esc_attr( $value['class'] ); ?>"
-											<?php echo implode( ' ', $custom_attributes ); ?>
+											<?php echo esc_html( implode( ' ', $custom_attributes ) ); ?>
 											<?php checked( $key, $option_value ); ?>
 												/> <?php echo esc_attr( $val ); ?></label>
 										</li>
@@ -668,7 +668,7 @@ if ( ! class_exists( 'SP_Admin_Settings' ) ) :
 								type="checkbox"
 								value="1"
 								<?php checked( $option_value, 'yes' ); ?>
-								<?php echo implode( ' ', $custom_attributes ); ?>
+								<?php echo esc_html( implode( ' ', $custom_attributes ) ); ?>
 							/> <?php echo wp_kses_post( $description ); ?>
 						</label> <?php echo wp_kses_post( $tip ); ?>
 						<?php
@@ -737,7 +737,7 @@ if ( ! class_exists( 'SP_Admin_Settings' ) ) :
 
 					case 'textarea':
 						if ( isset( $_POST[ $value['id'] ] ) ) {
-							$option_value = wp_kses_post( trim( stripslashes( $_POST[ $value['id'] ] ) ) );
+							$option_value = wp_kses_post( trim( stripslashes( sanitize_text_field( wp_unslash( $_POST[ $value['id'] ] ) ) ) ) );
 						} else {
 							$option_value = '';
 						}
@@ -754,7 +754,7 @@ if ( ! class_exists( 'SP_Admin_Settings' ) ) :
 					case 'password':
 					case 'radio':
 						if ( isset( $_POST[ $value['id'] ] ) ) {
-							$option_value = sanitize_text_field( stripslashes( $_POST[ $value['id'] ] ) );
+							$option_value = sanitize_text_field( wp_unslash( $_POST[ $value['id'] ] ) );
 						} else {
 							$option_value = '';
 						}
@@ -766,7 +766,7 @@ if ( ! class_exists( 'SP_Admin_Settings' ) ) :
 					case 'multi_select_countries':
 						// Get countries array
 						if ( isset( $_POST[ $value['id'] ] ) ) {
-							$selected_countries = array_map( 'sanitize_text_field', array_map( 'stripslashes', (array) $_POST[ $value['id'] ] ) );
+							$selected_countries = array_map( 'sanitize_text_field', array_map( 'wp_unslash', (array) $_POST[ $value['id'] ] ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 						} else {
 							$selected_countries = array();
 						}

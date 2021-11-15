@@ -114,7 +114,7 @@ if ( ! isset( $post ) || ! $post ) {
 }
 
 if ( $title ) {
-	echo '<h4 class="sp-table-caption">' . $title . '</h4>';
+	echo '<h4 class="sp-table-caption">' . wp_kses_post( $title ) . '</h4>';
 }
 
 $title = $post->post_title;
@@ -130,10 +130,10 @@ if ( isset( $show_status ) && $show_status ) {
 	$statuses = apply_filters(
 		'sportspress_event_statuses',
 		array(
-			'ok'        => __( 'On time', 'sportspress' ),
-			'tbd'       => __( 'TBD', 'sportspress' ),
-			'postponed' => __( 'Postponed', 'sportspress' ),
-			'cancelled' => __( 'Canceled', 'sportspress' ),
+			'ok'        => esc_attr__( 'On time', 'sportspress' ),
+			'tbd'       => esc_attr__( 'TBD', 'sportspress' ),
+			'postponed' => esc_attr__( 'Postponed', 'sportspress' ),
+			'cancelled' => esc_attr__( 'Canceled', 'sportspress' ),
 		)
 	);
 	$title    = $title . ' (' . $statuses[ $sp_status ] . ')';
@@ -160,7 +160,7 @@ if ( isset( $show_status ) && $show_status ) {
 						$i++;
 						if ( has_post_thumbnail( $team ) ) {
 							if ( $link_teams ) {
-								echo '<a class="team-logo logo-' . ( $i % 2 ? 'odd' : 'even' ) . '" href="' . get_post_permalink( $team ) . '" title="' . get_the_title( $team ) . '">' . get_the_post_thumbnail( $team, 'sportspress-fit-icon' ) . '</a>';
+								echo '<a class="team-logo logo-' . ( $i % 2 ? 'odd' : 'even' ) . '" href="' . esc_url( get_post_permalink( $team ) ) . '" title="' . esc_attr( get_the_title( $team ) ) . '">' . get_the_post_thumbnail( $team, 'sportspress-fit-icon' ) . '</a>';
 							} else {
 								echo get_the_post_thumbnail( $team, 'sportspress-fit-icon', array( 'class' => 'team-logo logo-' . ( $i % 2 ? 'odd' : 'even' ) ) );
 							}
@@ -169,14 +169,14 @@ if ( isset( $show_status ) && $show_status ) {
 				}
 			}
 			?>
-			<?php echo $title; ?>
+			<?php echo wp_kses_post( $title ); ?>
 		</h3>
 		<?php
 		if ( isset( $show_date ) && $show_date ) :
 			?>
 			<h5 class="event-venue sp-event-venue event-date sp-event-date">
 				<?php
-				echo get_the_time( get_option( 'date_format' ), $post );
+				echo wp_kses_post( get_the_time( get_option( 'date_format' ), $post ) );
 				?>
 			</h5>
 			<?php
@@ -195,7 +195,7 @@ if ( isset( $show_status ) && $show_status ) {
 						foreach ( $venues as $venue ) {
 							$venue_names[] = $venue->name;
 						}
-						echo implode( '/', $venue_names );
+						echo wp_kses_post( implode( '/', $venue_names ) );
 					}
 					?>
 				</h5>
@@ -209,7 +209,7 @@ if ( isset( $show_status ) && $show_status ) {
 				foreach ( $leagues as $league ) :
 					$term = get_term( $league->term_id, 'sp_league' );
 					?>
-					<h5 class="event-league sp-event-league"><?php echo $term->name; ?></h5>
+					<h5 class="event-league sp-event-league"><?php echo wp_kses_post( $term->name ); ?></h5>
 					<?php
 				endforeach;
 			endif;
@@ -229,15 +229,15 @@ if ( isset( $show_status ) && $show_status ) {
 		if ( $days >= 10 ) :
 			?>
 			 long-countdown<?php endif; ?>">
-			<time datetime="<?php echo $post->post_date; ?>"
+			<time datetime="<?php echo esc_attr( $post->post_date ); ?>"
 									   <?php
 										if ( $live ) :
 											?>
-				 data-countdown="<?php echo str_replace( '-', '/', get_gmt_from_date( $post->post_date ) ); ?>"<?php endif; ?>>
-				<span><?php echo sprintf( '%02s', $days ); ?> <small><?php _e( 'days', 'sportspress' ); ?></small></span>
-				<span><?php echo sprintf( '%02s', $h ); ?> <small><?php _e( 'hrs', 'sportspress' ); ?></small></span>
-				<span><?php echo sprintf( '%02s', $i ); ?> <small><?php _e( 'mins', 'sportspress' ); ?></small></span>
-				<span><?php echo sprintf( '%02s', $s ); ?> <small><?php _e( 'secs', 'sportspress' ); ?></small></span>
+				 data-countdown="<?php echo esc_attr( str_replace( '-', '/', get_gmt_from_date( $post->post_date ) ) ); ?>"<?php endif; ?>>
+				<span><?php echo wp_kses_post( sprintf( '%02s', $days ) ); ?> <small><?php esc_attr_e( 'days', 'sportspress' ); ?></small></span>
+				<span><?php echo wp_kses_post( sprintf( '%02s', $h ) ); ?> <small><?php esc_attr_e( 'hrs', 'sportspress' ); ?></small></span>
+				<span><?php echo wp_kses_post( sprintf( '%02s', $i ) ); ?> <small><?php esc_attr_e( 'mins', 'sportspress' ); ?></small></span>
+				<span><?php echo wp_kses_post( sprintf( '%02s', $s ) ); ?> <small><?php esc_attr_e( 'secs', 'sportspress' ); ?></small></span>
 			</time>
 		</p>
 	</div>

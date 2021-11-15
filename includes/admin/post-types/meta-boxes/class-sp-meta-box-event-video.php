@@ -25,21 +25,21 @@ class SP_Meta_Box_Event_Video {
 		if ( $video ) :
 			?>
 		<fieldset class="sp-video-embed">
-			<?php echo apply_filters( 'the_content', '[embed width="254"]' . $video . '[/embed]' ); ?>
-			<p><a href="#" class="sp-remove-video"><?php _e( 'Remove video', 'sportspress' ); ?></a></p>
+			<?php echo wp_kses( apply_filters( 'the_content', '[embed width="254"]' . esc_url( $video ) . '[/embed]' ), array( 'iframe' => array( 'title' => array(), 'width' => array(), 'height' => array(), 'src' => array(), 'frameborder' => array(), 'allow' => array(), 'allowfullscreen' => array(), 'style' => array()) ) ); ?>
+			<p><a href="#" class="sp-remove-video"><?php esc_attr_e( 'Remove video', 'sportspress' ); ?></a></p>
 		</fieldset>
 		<?php endif; ?>
 		<fieldset class="sp-video-field hidden">
-			<p><strong><?php _e( 'URL', 'sportspress' ); ?></strong></p>
+			<p><strong><?php esc_attr_e( 'URL', 'sportspress' ); ?></strong></p>
 			<p><input class="widefat" type="text" name="sp_video" id="sp_video" value="<?php echo esc_url( $video ); ?>"></p>
-			<p><a href="#" class="sp-remove-video"><?php _e( 'Cancel', 'sportspress' ); ?></a></p>
+			<p><a href="#" class="sp-remove-video"><?php esc_attr_e( 'Cancel', 'sportspress' ); ?></a></p>
 		</fieldset>
 		<fieldset class="sp-video-adder
 		<?php
 		if ( $video ) :
 			?>
 			 hidden<?php endif; ?>">
-			<p><a href="#" class="sp-add-video"><?php _e( 'Add video', 'sportspress' ); ?></a></p>
+			<p><a href="#" class="sp-add-video"><?php esc_attr_e( 'Add video', 'sportspress' ); ?></a></p>
 		</fieldset>
 		<?php
 	}

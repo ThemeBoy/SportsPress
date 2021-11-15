@@ -27,7 +27,7 @@ class SP_Meta_Box_List_Shortcode {
 		}
 		?>
 		<p class="howto">
-			<?php _e( 'Copy this code and paste it into your post, page or text widget content.', 'sportspress' ); ?>
+			<?php esc_html_e( 'Copy this code and paste it into your post, page or text widget content.', 'sportspress' ); ?>
 		</p>
 		<p><input type="text" value="<?php sp_shortcode_template( 'player_' . $the_format, $post->ID ); ?>" readonly="readonly" class="code widefat"></p>
 		<?php

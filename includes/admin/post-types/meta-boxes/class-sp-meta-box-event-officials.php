@@ -54,21 +54,21 @@ class SP_Meta_Box_Event_Officials {
 					'name'        => 'sp_officials[' . $duty->term_id . '][]',
 					'selected'    => sp_array_value( $officials, $duty->term_id, array() ),
 					'values'      => 'ID',
-					'placeholder' => sprintf( __( 'Select %s', 'sportspress' ), __( 'Officials', 'sportspress' ) ),
+					'placeholder' => sprintf( esc_attr__( 'Select %s', 'sportspress' ), esc_attr__( 'Officials', 'sportspress' ) ),
 					'class'       => 'widefat',
 					'property'    => 'multiple',
 					'chosen'      => true,
 				);
 
 				if ( ! sp_dropdown_pages( $args ) ) {
-					  sp_post_adder( 'sp_official', __( 'Add New', 'sportspress' ) );
+					  sp_post_adder( 'sp_official', esc_attr__( 'Add New', 'sportspress' ) );
 				}
 				?>
 		</p>
 				<?php
 			}
 		} else {
-			sp_taxonomy_adder( 'sp_duty', 'sp_official', __( 'Duty', 'sportspress' ) );
+			sp_taxonomy_adder( 'sp_duty', 'sp_official', esc_attr__( 'Duty', 'sportspress' ) );
 		}
 	}
 

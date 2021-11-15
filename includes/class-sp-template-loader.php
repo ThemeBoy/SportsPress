@@ -34,7 +34,7 @@ class SP_Template_Loader {
 
 		// Return password form if required
 		if ( post_password_required() ) {
-			echo get_the_password_form();
+			echo wp_kses_post( get_the_password_form() );
 			return;
 		}
 
@@ -126,7 +126,7 @@ class SP_Template_Loader {
 				// Put tab content into buffer
 				ob_start();
 				if ( 'content' === $key ) {
-					echo $content;
+					echo wp_kses_post( $content );
 				} else {
 					call_user_func( $template['action'] );
 				}
@@ -170,9 +170,9 @@ class SP_Template_Loader {
 		if ( is_singular( 'sp_event' ) ) {
 			$status = sp_get_status( get_the_ID() );
 			if ( 'results' == $status ) {
-				$caption = __( 'Recap', 'sportspress' );
+				$caption = esc_attr__( 'Recap', 'sportspress' );
 			} else {
-				$caption = __( 'Preview', 'sportspress' );
+				$caption = esc_attr__( 'Preview', 'sportspress' );
 			}
 			$content = self::add_content( $content, 'event', apply_filters( 'sportspress_event_content_priority', 10 ), $caption );
 		}

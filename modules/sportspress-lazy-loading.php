@@ -210,11 +210,11 @@ if ( ! class_exists( 'SportsPress_Lazy_Loading' ) ) :
 				}
 			}
 			?>
-		<div id="<?php echo $slug; ?>-all" class="posttypediv tabs-panel wp-tab-panel sp-tab-panel sp-ajax-checklist sp-select-all-range" style="display: <?php echo $display; ?>;">
-			<input type="hidden" value="0" name="<?php echo $slug; ?>
+		<div id="<?php echo esc_attr( $slug ); ?>-all" class="posttypediv tabs-panel wp-tab-panel sp-tab-panel sp-ajax-checklist sp-select-all-range" style="display: <?php echo esc_attr( $display ); ?>;">
+			<input type="hidden" value="0" name="<?php echo esc_attr( $slug ); ?>
 															<?php
 															if ( isset( $index ) ) {
-																echo '[' . $index . ']';}
+																echo '[' . esc_attr( $index ) . ']';}
 															?>
 			[]" />
 			<ul class="categorychecklist form-no-clear">
@@ -222,16 +222,16 @@ if ( ! class_exists( 'SportsPress_Lazy_Loading' ) ) :
 					<li class="sp-select-all-container">
 						<label class="selectit">
 							<input type="checkbox" class="sp-select-all" <?php checked( empty( $diff ) ); ?>>
-							<strong><?php _e( 'Select All', 'sportspress' ); ?></strong>
+							<strong><?php esc_attr_e( 'Select All', 'sportspress' ); ?></strong>
 						</label>
 					</li>
 					<?php foreach ( $posts as $post ) { ?>
 						<li>
 							<label class="selectit">
-								<input type="checkbox" value="<?php echo $post->ID; ?>" name="<?php echo $slug; ?>
+								<input type="checkbox" value="<?php echo esc_attr( $post->ID ); ?>" name="<?php echo esc_attr( $slug ); ?>
 																		 <?php
 																			if ( isset( $index ) ) {
-																				echo '[' . $index . ']';}
+																				echo '[' . esc_attr( $index ) . ']';}
 																			?>
 								[]" <?php checked( array_key_exists( $post->ID, $selected ) ); ?>>
 								<?php
@@ -257,10 +257,10 @@ if ( ! class_exists( 'SportsPress_Lazy_Loading' ) ) :
 													?>
 						<li>
 							<label class="selectit">
-								<input type="checkbox" value="<?php echo $post_id; ?>" name="<?php echo $slug; ?>
+								<input type="checkbox" value="<?php echo esc_attr( $post_id ); ?>" name="<?php echo esc_attr( $slug ); ?>
 																		 <?php
 																			if ( isset( $index ) ) {
-																				echo '[' . $index . ']';}
+																				echo '[' . esc_attr( $index ) . ']';}
 																			?>
 								[]" <?php checked( true ); ?>>
 														<?php
@@ -278,10 +278,10 @@ if ( ! class_exists( 'SportsPress_Lazy_Loading' ) ) :
 						}
 					}
 					?>
-					<li class="sp-ajax-show-all-container"><a class="sp-ajax-show-all" href="#show-all-<?php echo $slug; ?>s"><?php _e( 'Show all', 'sportspress' ); ?></a></li>
+					<li class="sp-ajax-show-all-container"><a class="sp-ajax-show-all" href="#show-all-<?php echo esc_attr( $slug ); ?>s"><?php esc_attr_e( 'Show all', 'sportspress' ); ?></a></li>
 				<?php } else { ?>
-					<li class="sp-ajax-show-all-container"><?php _e( 'No results found.', 'sportspress' ); ?>
-					<a class="sp-ajax-show-all" href="#show-all-<?php echo $slug; ?>s"><?php _e( 'Show all', 'sportspress' ); ?></a></li>
+					<li class="sp-ajax-show-all-container"><?php esc_attr_e( 'No results found.', 'sportspress' ); ?>
+					<a class="sp-ajax-show-all" href="#show-all-<?php echo esc_attr( $slug ); ?>s"><?php esc_attr_e( 'Show all', 'sportspress' ); ?></a></li>
 				<?php } ?>
 			</ul>
 		</div>
@@ -295,10 +295,10 @@ if ( ! class_exists( 'SportsPress_Lazy_Loading' ) ) :
 			$strings = array_merge(
 				$strings,
 				array(
-					'no_results_found'        => __( 'No results found.', 'sportspress' ),
-					'select_all'              => __( 'Select All', 'sportspress' ),
-					'show_all'                => __( 'Show all', 'sportspress' ),
-					'loading'                 => __( 'Loading&hellip;', 'sportspress' ),
+					'no_results_found'        => esc_attr__( 'No results found.', 'sportspress' ),
+					'select_all'              => esc_attr__( 'Select All', 'sportspress' ),
+					'show_all'                => esc_attr__( 'Show all', 'sportspress' ),
+					'loading'                 => esc_attr__( 'Loading&hellip;', 'sportspress' ),
 					'option_filter_by_league' => get_option( 'sportspress_event_filter_teams_by_league', 'no' ),
 					'option_filter_by_season' => get_option( 'sportspress_event_filter_teams_by_season', 'no' ),
 				)

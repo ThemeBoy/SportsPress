@@ -82,9 +82,9 @@ if ( ! class_exists( 'SportsPress_Tutorials' ) ) :
 								'sportspress_get_started_tutorial_videos',
 								array(
 									__( 'Installation', 'sportspress' ) => '//www.youtube-nocookie.com/embed/nE8-RlbotmU?rel=0&amp;showinfo=0',
-									__( 'Leagues', 'sportspress' ) . ' &amp; ' . __( 'Seasons', 'sportspress' ) => '//www.youtube-nocookie.com/embed/XAf2EsDrf8M?rel=0&amp;showinfo=0',
+									__( 'Leagues', 'sportspress' ) . ' &amp; ' . esc_attr__( 'Seasons', 'sportspress' ) => '//www.youtube-nocookie.com/embed/XAf2EsDrf8M?rel=0&amp;showinfo=0',
 									__( 'Venues', 'sportspress' ) => '//www.youtube-nocookie.com/embed/iTZnC_7VvYk?rel=0&amp;showinfo=0',
-									__( 'Positions', 'sportspress' ) . ' &amp; ' . __( 'Jobs', 'sportspress' ) => '//www.youtube-nocookie.com/embed/g6QKbDH05n0?rel=0&amp;showinfo=0',
+									__( 'Positions', 'sportspress' ) . ' &amp; ' . esc_attr__( 'Jobs', 'sportspress' ) => '//www.youtube-nocookie.com/embed/g6QKbDH05n0?rel=0&amp;showinfo=0',
 								)
 							),
 							__( 'Teams', 'sportspress' )  => apply_filters(
@@ -94,7 +94,7 @@ if ( ! class_exists( 'SportsPress_Tutorials' ) ) :
 									__( 'League Tables', 'sportspress' ) => '//www.youtube-nocookie.com/embed/8AXh399Vstc?rel=0&amp;showinfo=0',
 								)
 							),
-							__( 'Players', 'sportspress' ) . ' &amp; ' . __( 'Staff', 'sportspress' ) => array_merge(
+							__( 'Players', 'sportspress' ) . ' &amp; ' . esc_attr__( 'Staff', 'sportspress' ) => array_merge(
 								apply_filters(
 									'sportspress_player_tutorial_videos',
 									array(
@@ -131,7 +131,7 @@ if ( ! class_exists( 'SportsPress_Tutorials' ) ) :
 							__( 'Events', 'sportspress' )  => apply_filters(
 								'sportspress_event_advanced_videos',
 								array(
-									__( 'Event Outcomes', 'sportspress' ) . ' ' . __( '(Auto)', 'sportspress' ) => '//www.youtube-nocookie.com/embed/pCVfPv2O5yY?rel=0&amp;showinfo=0',
+									__( 'Event Outcomes', 'sportspress' ) . ' ' . esc_attr__( '(Auto)', 'sportspress' ) => '//www.youtube-nocookie.com/embed/pCVfPv2O5yY?rel=0&amp;showinfo=0',
 									__( 'Box Score', 'sportspress' ) => '//www.youtube-nocookie.com/embed/rERU6X7vjTc?rel=0&amp;showinfo=0',
 								)
 							),
@@ -177,9 +177,9 @@ if ( ! class_exists( 'SportsPress_Tutorials' ) ) :
 		 */
 		public function admin_menu() {
 			if ( current_user_can( 'manage_sportspress' ) ) {
-				add_submenu_page( 'sportspress', __( 'Tutorials', 'sportspress' ), __( 'Tutorials', 'sportspress' ), 'manage_sportspress', 'sportspress-tutorials', array( $this, 'tutorials_page' ) );
+				add_submenu_page( 'sportspress', esc_attr__( 'Tutorials', 'sportspress' ), esc_attr__( 'Tutorials', 'sportspress' ), 'manage_sportspress', 'sportspress-tutorials', array( $this, 'tutorials_page' ) );
 			} else {
-				add_menu_page( __( 'Tutorials', 'sportspress' ), __( 'Tutorials', 'sportspress' ), 'edit_sp_players', 'sportspress-tutorials', array( $this, 'tutorials_page' ), 'dashicons-video-alt3' );
+				add_menu_page( esc_attr__( 'Tutorials', 'sportspress' ), esc_attr__( 'Tutorials', 'sportspress' ), 'edit_sp_players', 'sportspress-tutorials', array( $this, 'tutorials_page' ), 'dashicons-video-alt3' );
 			}
 		}
 
@@ -190,11 +190,11 @@ if ( ! class_exists( 'SportsPress_Tutorials' ) ) :
 			$tabs = apply_filters(
 				'sportspress_tutorial_tabs',
 				array(
-					'tutorials' => __( 'Tutorials', 'sportspress' ),
-					'advanced'  => __( 'Advanced', 'sportspress' ),
+					'tutorials' => esc_attr__( 'Tutorials', 'sportspress' ),
+					'advanced'  => esc_attr__( 'Advanced', 'sportspress' ),
 				)
 			);
-			if ( isset( $_GET['tab'] ) && array_key_exists( $_GET['tab'], $tabs ) ) {
+			if ( isset( $_GET['tab'] ) && array_key_exists( wp_unslash( $_GET['tab'] ), $tabs ) ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 				$current_tab = sanitize_key( $_GET['tab'] );
 			} else {
 				$current_tab = key( $tabs );
@@ -206,11 +206,11 @@ if ( ! class_exists( 'SportsPress_Tutorials' ) ) :
 				<?php
 				foreach ( $tabs as $name => $label ) :
 					?>
-					<a href="<?php echo admin_url( 'admin.php?page=sportspress-tutorials&tab=' . $name ); ?>" class="nav-tab <?php echo ( $current_tab == $name ? 'nav-tab-active' : '' ); ?>"><?php echo $label; ?></a><?php endforeach; ?>
+					<a href="<?php echo esc_url( admin_url( 'admin.php?page=sportspress-tutorials&tab=' . $name ) ); ?>" class="nav-tab <?php echo ( $current_tab == $name ? 'nav-tab-active' : '' ); ?>"><?php echo wp_kses_post( $label ); ?></a><?php endforeach; ?>
 			</h2>
 			<div class="sp-tutorials-main">
 				<?php foreach ( $this->ids[ $current_tab ] as $section => $urls ) { ?>
-					<h3><?php echo $section; ?></h3>
+					<h3><?php echo wp_kses_post( $section ); ?></h3>
 					<ul class="sp-tutorials-list">
 						<?php
 						foreach ( $urls as $label => $url ) {
@@ -220,16 +220,16 @@ if ( ! class_exists( 'SportsPress_Tutorials' ) ) :
 								<table class="widefat" cellspacing="0">
 									<thead>
 										<tr><th>
-											<strong><?php echo $i; ?></strong> 
-											<?php echo $label; ?>
-											<a href="#" class="sp-popup sp-icon-popup" title="<?php _e( 'Pop-out', 'sportspress' ); ?>" onclick="window.open('<?php echo esc_url( add_query_arg( 'autoplay', 1, $url ) ); ?>', '_blank', 'width=640, height=360');return false;"></a>
+											<strong><?php echo wp_kses_post( $i ); ?></strong> 
+											<?php echo wp_kses_post( $label ); ?>
+											<a href="#" class="sp-popup sp-icon-popup" title="<?php esc_attr_e( 'Pop-out', 'sportspress' ); ?>" onclick="window.open('<?php echo esc_url( add_query_arg( 'autoplay', 1, $url ) ); ?>', '_blank', 'width=640, height=360');return false;"></a>
 										</th></tr>
 									</thead>
 									<tbody>
 										<tr>
 											<td>
 												<div class="sp-fitvids">
-													<iframe width="320" height="180" src="<?php echo $url; ?>" frameborder="0" allowfullscreen></iframe>
+													<iframe width="320" height="180" src="<?php echo esc_url( $url ); ?>" frameborder="0" allowfullscreen></iframe>
 												</div>
 											</td>
 										</tr>
@@ -260,7 +260,7 @@ if ( ! class_exists( 'SportsPress_Tutorials' ) ) :
 				'tutorials' => array(
 					'link'  => admin_url( add_query_arg( array( 'page' => 'sportspress-tutorials' ), 'admin.php' ) ),
 					'icon'  => 'dashicons dashicons-video-alt3',
-					'label' => __( 'Watch Tutorials', 'sportspress' ),
+					'label' => esc_attr__( 'Watch Tutorials', 'sportspress' ),
 				),
 			) + $steps;
 			return $steps;

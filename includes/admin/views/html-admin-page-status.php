@@ -1,9 +1,9 @@
 <div class="wrap sportspress">
-	<h2><?php _e( 'System Status', 'sportspress' ); ?></h2>
+	<h2><?php esc_attr_e( 'System Status', 'sportspress' ); ?></h2>
 </div>
 <div class="updated sportspress-message">
-	<p><?php _e( 'Please include this information when requesting support:', 'sportspress' ); ?> </p>
-	<p class="submit"><a href="#" class="button-primary debug-report"><?php _e( 'Get System Report', 'sportspress' ); ?></a></p>
+	<p><?php esc_attr_e( 'Please include this information when requesting support:', 'sportspress' ); ?> </p>
+	<p class="submit"><a href="#" class="button-primary debug-report"><?php esc_attr_e( 'Get System Report', 'sportspress' ); ?></a></p>
 	<div id="debug-report"><textarea readonly="readonly"></textarea></div>
 </div>
 <br/>
@@ -11,45 +11,45 @@
 
 	<thead>
 		<tr>
-			<th colspan="2"><?php _e( 'Environment', 'sportspress' ); ?></th>
+			<th colspan="2"><?php esc_attr_e( 'Environment', 'sportspress' ); ?></th>
 		</tr>
 	</thead>
 
 	<tbody>
 		<tr>
-			<td><?php _e( 'Home URL', 'sportspress' ); ?>:</td>
-			<td><?php echo home_url(); ?></td>
+			<td><?php esc_attr_e( 'Home URL', 'sportspress' ); ?>:</td>
+			<td><?php echo esc_url( home_url() ); ?></td>
 		</tr>
 		<tr>
-			<td><?php _e( 'Site URL', 'sportspress' ); ?>:</td>
-			<td><?php echo site_url(); ?></td>
+			<td><?php esc_attr_e( 'Site URL', 'sportspress' ); ?>:</td>
+			<td><?php echo esc_url( site_url() ); ?></td>
 		</tr>
 		<tr>
-			<td><?php _e( 'SP Version', 'sportspress' ); ?>:</td>
+			<td><?php esc_attr_e( 'SP Version', 'sportspress' ); ?>:</td>
 			<td><?php echo esc_html( SP()->version ); ?></td>
 		</tr>
 		<tr>
-			<td><?php _e( 'WP Version', 'sportspress' ); ?>:</td>
+			<td><?php esc_attr_e( 'WP Version', 'sportspress' ); ?>:</td>
 			<td><?php bloginfo( 'version' ); ?></td>
 		</tr>
 		<tr>
-			<td><?php _e( 'WP Multisite Enabled', 'sportspress' ); ?>:</td>
+			<td><?php esc_attr_e( 'WP Multisite Enabled', 'sportspress' ); ?>:</td>
 			<td>
 			<?php
 			if ( is_multisite() ) {
-				_e( 'Yes', 'sportspress' );
+				esc_attr_e( 'Yes', 'sportspress' );
 			} else {
-				_e( 'No', 'sportspress' );
+				esc_attr_e( 'No', 'sportspress' );
 			}
 			?>
 			</td>
 		</tr>
 		<tr>
-			<td><?php _e( 'Web Server Info', 'sportspress' ); ?>:</td>
-			<td><?php echo esc_html( $_SERVER['SERVER_SOFTWARE'] ); ?></td>
+			<td><?php esc_attr_e( 'Web Server Info', 'sportspress' ); ?>:</td>
+			<td><?php echo esc_html( $_SERVER['SERVER_SOFTWARE'] ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput ?></td>
 		</tr>
 		<tr>
-			<td><?php _e( 'PHP Version', 'sportspress' ); ?>:</td>
+			<td><?php esc_attr_e( 'PHP Version', 'sportspress' ); ?>:</td>
 			<td>
 			<?php
 			if ( function_exists( 'phpversion' ) ) {
@@ -58,74 +58,74 @@
 			</td>
 		</tr>
 		<tr>
-			<td><?php _e( 'WP Memory Limit', 'sportspress' ); ?>:</td>
+			<td><?php esc_attr_e( 'WP Memory Limit', 'sportspress' ); ?>:</td>
 			<td>
 			<?php
 				$memory = sp_let_to_num( WP_MEMORY_LIMIT );
 
 			if ( $memory < 67108864 ) {
-				echo '<mark class="error">' . sprintf( __( '%1$s - We recommend setting memory to at least 64MB. See: <a href="%2$s">Increasing memory allocated to PHP</a>', 'sportspress' ), size_format( $memory ), 'http://codex.wordpress.org/Editing_wp-config.php#Increasing_memory_allocated_to_PHP' ) . '</mark>';
+        echo '<mark class="error">' . wp_kses_post( sprintf( esc_attr__( '%1$s - We recommend setting memory to at least 64MB. See: <a href="%2$s">Increasing memory allocated to PHP</a>', 'sportspress' ), esc_html( size_format( $memory ) ), 'http://codex.wordpress.org/Editing_wp-config.php#Increasing_memory_allocated_to_PHP' ) ) . '</mark>';
 			} else {
-				echo '<mark class="yes">' . size_format( $memory ) . '</mark>';
+				echo '<mark class="yes">' . esc_html( size_format( $memory ) ) . '</mark>';
 			}
 			?>
 			</td>
 		</tr>
 		<tr>
-			<td><?php _e( 'WP Debug Mode', 'sportspress' ); ?>:</td>
+			<td><?php esc_attr_e( 'WP Debug Mode', 'sportspress' ); ?>:</td>
 			<td>
 			<?php
 			if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
-				echo '<mark class="yes">' . __( 'Yes', 'sportspress' ) . '</mark>';
+				echo '<mark class="yes">' . esc_html__( 'Yes', 'sportspress' ) . '</mark>';
 			} else {
-				echo '<mark class="no">' . __( 'No', 'sportspress' ) . '</mark>';
+				echo '<mark class="no">' . esc_html__( 'No', 'sportspress' ) . '</mark>';
 			}
 			?>
 			</td>
 		</tr>
 		<tr>
-			<td><?php _e( 'WP Language', 'sportspress' ); ?>:</td>
+			<td><?php esc_attr_e( 'WP Language', 'sportspress' ); ?>:</td>
 			<td>
 			<?php
 			if ( defined( 'WPLANG' ) && WPLANG ) {
-				echo WPLANG;
+				echo esc_html( WPLANG );
 			} else {
-				_e( 'Default', 'sportspress' );
+				esc_html_e( 'Default', 'sportspress' );
 			}
 			?>
 			</td>
 		</tr>
 		<tr>
-			<td><?php _e( 'WP Max Upload Size', 'sportspress' ); ?>:</td>
-			<td><?php echo size_format( wp_max_upload_size() ); ?></td>
+			<td><?php esc_attr_e( 'WP Max Upload Size', 'sportspress' ); ?>:</td>
+			<td><?php echo esc_html( size_format( wp_max_upload_size() ) ); ?></td>
 		</tr>
 		<?php if ( function_exists( 'ini_get' ) ) : ?>
 			<tr>
-				<td><?php _e( 'PHP Post Max Size', 'sportspress' ); ?>:</td>
-				<td><?php echo size_format( sp_let_to_num( ini_get( 'post_max_size' ) ) ); ?></td>
+				<td><?php esc_attr_e( 'PHP Post Max Size', 'sportspress' ); ?>:</td>
+				<td><?php echo esc_html( size_format( sp_let_to_num( ini_get( 'post_max_size' ) ) ) ); ?></td>
 			</tr>
 			<tr>
-				<td><?php _e( 'PHP Time Limit', 'sportspress' ); ?>:</td>
-				<td><?php echo ini_get( 'max_execution_time' ); ?></td>
+				<td><?php esc_attr_e( 'PHP Time Limit', 'sportspress' ); ?>:</td>
+				<td><?php echo esc_html( ini_get( 'max_execution_time' ) ); ?></td>
 			</tr>
 			<tr>
-				<td><?php _e( 'PHP Max Input Vars', 'sportspress' ); ?>:</td>
-				<td><?php echo ini_get( 'max_input_vars' ); ?></td>
+				<td><?php esc_attr_e( 'PHP Max Input Vars', 'sportspress' ); ?>:</td>
+				<td><?php echo esc_html( ini_get( 'max_input_vars' ) ); ?></td>
 			</tr>
 			<tr>
-				<td><?php _e( 'SUHOSIN Installed', 'sportspress' ); ?>:</td>
-				<td><?php echo extension_loaded( 'suhosin' ) ? __( 'Yes', 'sportspress' ) : __( 'No', 'sportspress' ); ?></td>
+				<td><?php esc_attr_e( 'SUHOSIN Installed', 'sportspress' ); ?>:</td>
+				<td><?php echo extension_loaded( 'suhosin' ) ? esc_html__( 'Yes', 'sportspress' ) : esc_html__( 'No', 'sportspress' ); ?></td>
 			</tr>
 		<?php endif; ?>
 		<tr>
-			<td><?php _e( 'Default Timezone', 'sportspress' ); ?>:</td>
+			<td><?php esc_attr_e( 'Default Timezone', 'sportspress' ); ?>:</td>
 			<td>
 			<?php
 				$default_timezone = date_default_timezone_get();
 			if ( 'UTC' !== $default_timezone ) {
-				echo '<mark class="error">' . sprintf( __( 'Default timezone is %s - it should be UTC', 'sportspress' ), $default_timezone ) . '</mark>';
+				echo '<mark class="error">' . sprintf( esc_html__( 'Default timezone is %s - it should be UTC', 'sportspress' ), esc_html( $default_timezone ) ) . '</mark>';
 			} else {
-				echo '<mark class="yes">' . sprintf( __( 'Default timezone is %s', 'sportspress' ), $default_timezone ) . '</mark>';
+				echo '<mark class="yes">' . sprintf( esc_html__( 'Default timezone is %s', 'sportspress' ), esc_html( $default_timezone ) ) . '</mark>';
 			}
 			?>
 			</td>
@@ -134,28 +134,28 @@
 			$posting = array();
 
 			// fsockopen/cURL
-			$posting['fsockopen_curl']['name'] = __( 'fsockopen/cURL', 'sportspress' );
+			$posting['fsockopen_curl']['name'] = esc_attr__( 'fsockopen/cURL', 'sportspress' );
 		if ( function_exists( 'fsockopen' ) || function_exists( 'curl_init' ) ) {
 			if ( function_exists( 'fsockopen' ) && function_exists( 'curl_init' ) ) {
-				$posting['fsockopen_curl']['note'] = __( 'Your server has fsockopen and cURL enabled.', 'sportspress' );
+				$posting['fsockopen_curl']['note'] = esc_attr__( 'Your server has fsockopen and cURL enabled.', 'sportspress' );
 			} elseif ( function_exists( 'fsockopen' ) ) {
-				$posting['fsockopen_curl']['note'] = __( 'Your server has fsockopen enabled, cURL is disabled.', 'sportspress' );
+				$posting['fsockopen_curl']['note'] = esc_attr__( 'Your server has fsockopen enabled, cURL is disabled.', 'sportspress' );
 			} else {
-				$posting['fsockopen_curl']['note'] = __( 'Your server has cURL enabled, fsockopen is disabled.', 'sportspress' );
+				$posting['fsockopen_curl']['note'] = esc_attr__( 'Your server has cURL enabled, fsockopen is disabled.', 'sportspress' );
 			}
 			$posting['fsockopen_curl']['success'] = true;
 		} else {
-			$posting['fsockopen_curl']['note']    = __( 'Your server does not have fsockopen or cURL enabled - PayPal IPN and other scripts which communicate with other servers will not work. Contact your hosting provider.', 'sportspress' ) . '</mark>';
+			$posting['fsockopen_curl']['note']    = esc_attr__( 'Your server does not have fsockopen or cURL enabled - PayPal IPN and other scripts which communicate with other servers will not work. Contact your hosting provider.', 'sportspress' ) . '</mark>';
 			$posting['fsockopen_curl']['success'] = false;
 		}
 
 			// SOAP
-			$posting['soap_client']['name'] = __( 'SOAP Client', 'sportspress' );
+			$posting['soap_client']['name'] = esc_attr__( 'SOAP Client', 'sportspress' );
 		if ( class_exists( 'SoapClient' ) ) {
-			$posting['soap_client']['note']    = __( 'Your server has the SOAP Client class enabled.', 'sportspress' );
+			$posting['soap_client']['note']    = esc_attr__( 'Your server has the SOAP Client class enabled.', 'sportspress' );
 			$posting['soap_client']['success'] = true;
 		} else {
-			$posting['soap_client']['note']    = sprintf( __( 'Your server does not have the <a href="%s">SOAP Client</a> class enabled - some gateway plugins which use SOAP may not work as expected.', 'sportspress' ), 'http://php.net/manual/en/class.soapclient.php' ) . '</mark>';
+			$posting['soap_client']['note']    = sprintf( esc_attr__( 'Your server does not have the <a href="%s">SOAP Client</a> class enabled - some gateway plugins which use SOAP may not work as expected.', 'sportspress' ), 'http://php.net/manual/en/class.soapclient.php' ) . '</mark>';
 			$posting['soap_client']['success'] = false;
 		}
 
@@ -167,7 +167,7 @@
 				<tr>
 					<td><?php echo esc_html( $post['name'] ); ?>:</td>
 					<td>
-						<mark class="<?php echo $mark; ?>">
+						<mark class="<?php echo esc_attr( $mark ); ?>">
 						<?php echo wp_kses_data( $post['note'] ); ?>
 						</mark>
 					</td>
@@ -179,13 +179,13 @@
 
 	<thead>
 		<tr>
-			<th colspan="2"><?php _e( 'Plugins', 'sportspress' ); ?></th>
+			<th colspan="2"><?php esc_attr_e( 'Plugins', 'sportspress' ); ?></th>
 		</tr>
 	</thead>
 
 	<tbody>
 		<tr>
-			<td><?php _e( 'Installed Plugins', 'sportspress' ); ?>:</td>
+			<td><?php esc_attr_e( 'Installed Plugins', 'sportspress' ); ?>:</td>
 			<td>
 			<?php
 				$active_plugins = (array) get_option( 'active_plugins', array() );
@@ -207,7 +207,7 @@
 					// link the plugin name to the plugin url if available
 					$plugin_name = $plugin_data['Name'];
 					if ( ! empty( $plugin_data['PluginURI'] ) ) {
-						$plugin_name = '<a href="' . esc_url( $plugin_data['PluginURI'] ) . '" title="' . __( 'Visit plugin homepage', 'sportspress' ) . '">' . $plugin_name . '</a>';
+						$plugin_name = '<a href="' . esc_url( $plugin_data['PluginURI'] ) . '" title="' . esc_attr__( 'Visit plugin homepage', 'sportspress' ) . '">' . $plugin_name . '</a>';
 					}
 
 					if ( strstr( $dirname, 'sportspress' ) ) {
@@ -236,11 +236,11 @@
 						}
 
 						if ( ! empty( $version_data['version'] ) && version_compare( $version_data['version'], $plugin_data['Version'], '>' ) ) {
-							$version_string = ' &ndash; <strong style="color:red;">' . $version_data['version'] . ' ' . __( 'is available', 'sportspress' ) . '</strong>';
+							$version_string = ' &ndash; <strong style="color:red;">' . $version_data['version'] . ' ' . esc_attr__( 'is available', 'sportspress' ) . '</strong>';
 						}
 					}
 
-					$sp_plugins[] = $plugin_name . ' ' . __( 'by', 'sportspress' ) . ' ' . $plugin_data['Author'] . ' ' . __( 'version', 'sportspress' ) . ' ' . $plugin_data['Version'] . $version_string;
+					$sp_plugins[] = $plugin_name . ' ' . esc_attr__( 'by', 'sportspress' ) . ' ' . $plugin_data['Author'] . ' ' . esc_attr__( 'version', 'sportspress' ) . ' ' . $plugin_data['Version'] . $version_string;
 
 				}
 			}
@@ -248,7 +248,7 @@
 			if ( sizeof( $sp_plugins ) == 0 ) {
 				echo '-';
 			} else {
-				echo implode( ', <br/>', $sp_plugins );
+				echo wp_kses_post( implode( ', <br/>', $sp_plugins ) );
 			}
 
 			?>
@@ -258,17 +258,17 @@
 
 	<thead>
 		<tr>
-			<th colspan="2"><?php _e( 'SP Configuration', 'sportspress' ); ?></th>
+			<th colspan="2"><?php esc_attr_e( 'SP Configuration', 'sportspress' ); ?></th>
 		</tr>
 	</thead>
 
 	<tbody>
 		<tr>
-			<td><?php _e( 'Sport', 'sportspress' ); ?>:</td>
-			<td><?php echo get_option( 'sportspress_sport', __( 'None', 'sportspress' ) ); ?></td>
+			<td><?php esc_attr_e( 'Sport', 'sportspress' ); ?>:</td>
+			<td><?php echo esc_html( get_option( 'sportspress_sport', esc_attr__( 'None', 'sportspress' ) ) ); ?></td>
 		</tr>
 		<tr>
-			<td><?php _e( 'Event Outcomes', 'sportspress' ); ?>:</td>
+			<td><?php esc_attr_e( 'Event Outcomes', 'sportspress' ); ?>:</td>
 			<td>
 			<?php
 				$display_posts = array();
@@ -289,7 +289,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td><?php _e( 'Event Results', 'sportspress' ); ?>:</td>
+			<td><?php esc_attr_e( 'Event Results', 'sportspress' ); ?>:</td>
 			<td>
 			<?php
 				$display_posts = array();
@@ -310,7 +310,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td><?php _e( 'Player Performance', 'sportspress' ); ?>:</td>
+			<td><?php esc_attr_e( 'Player Performance', 'sportspress' ); ?>:</td>
 			<td>
 			<?php
 				$display_posts = array();
@@ -331,7 +331,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td><?php _e( 'Table Columns', 'sportspress' ); ?>:</td>
+			<td><?php esc_attr_e( 'Table Columns', 'sportspress' ); ?>:</td>
 			<td>
 			<?php
 				$display_posts = array();
@@ -352,7 +352,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td><?php _e( 'Player Metrics', 'sportspress' ); ?>:</td>
+			<td><?php esc_attr_e( 'Player Metrics', 'sportspress' ); ?>:</td>
 			<td>
 			<?php
 				$display_posts = array();
@@ -373,7 +373,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td><?php _e( 'Player Statistics', 'sportspress' ); ?>:</td>
+			<td><?php esc_attr_e( 'Player Statistics', 'sportspress' ); ?>:</td>
 			<td>
 			<?php
 				$display_posts = array();
@@ -397,13 +397,13 @@
 
 	<thead>
 		<tr>
-			<th colspan="2"><?php _e( 'SP Taxonomies', 'sportspress' ); ?></th>
+			<th colspan="2"><?php esc_attr_e( 'SP Taxonomies', 'sportspress' ); ?></th>
 		</tr>
 	</thead>
 
 	<tbody>
 		<tr>
-			<td><?php _e( 'Leagues', 'sportspress' ); ?>:</td>
+			<td><?php esc_attr_e( 'Leagues', 'sportspress' ); ?>:</td>
 			<td>
 			<?php
 				$display_terms = array();
@@ -416,7 +416,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td><?php _e( 'Seasons', 'sportspress' ); ?>:</td>
+			<td><?php esc_attr_e( 'Seasons', 'sportspress' ); ?>:</td>
 			<td>
 			<?php
 				$display_terms = array();
@@ -429,7 +429,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td><?php _e( 'Venues', 'sportspress' ); ?>:</td>
+			<td><?php esc_attr_e( 'Venues', 'sportspress' ); ?>:</td>
 			<td>
 			<?php
 				$display_terms = array();
@@ -442,7 +442,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td><?php _e( 'Positions', 'sportspress' ); ?>:</td>
+			<td><?php esc_attr_e( 'Positions', 'sportspress' ); ?>:</td>
 			<td>
 			<?php
 				$display_terms = array();
@@ -458,7 +458,7 @@
 
 	<thead>
 		<tr>
-			<th colspan="2"><?php _e( 'SP Post Types', 'sportspress' ); ?></th>
+			<th colspan="2"><?php esc_attr_e( 'SP Post Types', 'sportspress' ); ?></th>
 		</tr>
 	</thead>
 
@@ -477,7 +477,7 @@
 			</td>
 			<td>
 				<?php $count = wp_count_posts( $post_type ); ?>
-				<?php echo $count->publish; ?> publish, <?php echo $count->future; ?> future, <?php echo $count->draft; ?> draft, <?php echo $count->private; ?> private, <?php echo $count->trash; ?> trash, <?php echo $count->{'auto-draft'}; ?> auto-draft, <?php echo $count->inherit; ?> inherit
+				<?php echo esc_html( $count->publish ); ?> publish, <?php echo esc_html( $count->future ); ?> future, <?php echo esc_html( $count->draft ); ?> draft, <?php echo esc_html( $count->private ); ?> private, <?php echo esc_html( $count->trash ); ?> trash, <?php echo esc_html( $count->{'auto-draft'} ); ?> auto-draft, <?php echo esc_html( $count->inherit ); ?> inherit
 			</td>
 		</tr>
 		<?php endforeach; ?>
@@ -485,7 +485,7 @@
 
 	<thead>
 		<tr>
-			<th colspan="2"><?php _e( 'Theme', 'sportspress' ); ?></th>
+			<th colspan="2"><?php esc_attr_e( 'Theme', 'sportspress' ); ?></th>
 		</tr>
 	</thead>
 
@@ -527,7 +527,7 @@
 		?>
 	<tbody>
 			<tr>
-				<td><?php _e( 'Theme Name', 'sportspress' ); ?>:</td>
+				<td><?php esc_attr_e( 'Theme Name', 'sportspress' ); ?>:</td>
 				<td>
 				<?php
 					echo esc_html( $active_theme->Name );
@@ -535,19 +535,19 @@
 				</td>
 			</tr>
 			<tr>
-				<td><?php _e( 'Theme Version', 'sportspress' ); ?>:</td>
+				<td><?php esc_attr_e( 'Theme Version', 'sportspress' ); ?>:</td>
 				<td>
 				<?php
-					echo $active_theme->Version;
+					echo esc_html( $active_theme->Version );
 
 				if ( ! empty( $theme_version_data['version'] ) && version_compare( $theme_version_data['version'], $active_theme->Version, '!=' ) ) {
-					echo ' &ndash; <strong style="color:red;">' . $theme_version_data['version'] . ' ' . __( 'is available', 'sportspress' ) . '</strong>';
+					echo ' &ndash; <strong style="color:red;">' . esc_html( $theme_version_data['version'] ) . ' ' . esc_html__( 'is available', 'sportspress' ) . '</strong>';
 				}
 				?>
 				</td>
 			</tr>
 			<tr>
-				<td><?php _e( 'Author URL', 'sportspress' ); ?>:</td>
+				<td><?php esc_attr_e( 'Author URL', 'sportspress' ); ?>:</td>
 				<td>
 				<?php
 					echo esc_url( $active_theme->{'Author URI'} );
@@ -558,7 +558,7 @@
 
 	<thead>
 		<tr>
-			<th colspan="2"><?php _e( 'Templates', 'sportspress' ); ?></th>
+			<th colspan="2"><?php esc_attr_e( 'Templates', 'sportspress' ); ?></th>
 		</tr>
 	</thead>
 
@@ -592,7 +592,7 @@
 						$theme_version = $this->get_file_version( $theme_file );
 
 						if ( $core_version && ( empty( $theme_version ) || version_compare( $theme_version, $core_version, '<' ) ) ) {
-							$found_files[ $plugin_name ][] = sprintf( __( '<code>%1$s</code> version <strong style="color:red">%2$s</strong> is out of date. The core version is %3$s', 'sportspress' ), basename( $theme_file ), $theme_version ? $theme_version : '-', $core_version );
+							$found_files[ $plugin_name ][] = sprintf( esc_attr__( '<code>%1$s</code> version <strong style="color:red">%2$s</strong> is out of date. The core version is %3$s', 'sportspress' ), basename( $theme_file ), $theme_version ? $theme_version : '-', $core_version );
 						} else {
 							$found_files[ $plugin_name ][] = sprintf( '<code>%s</code>', basename( $theme_file ) );
 						}
@@ -603,14 +603,14 @@
 			if ( $found_files ) {
 				foreach ( $found_files as $plugin_name => $found_plugin_files ) {
 					?>
-						<td><?php _e( 'Template Overrides', 'sportspress' ); ?> (<?php echo $plugin_name; ?>):</td>
-						<td><?php echo implode( ', <br/>', $found_plugin_files ); ?></td>
+						<td><?php esc_attr_e( 'Template Overrides', 'sportspress' ); ?> (<?php echo esc_html( $plugin_name ); ?>):</td>
+						<td><?php echo wp_kses_post( implode( ', <br/>', $found_plugin_files ) ); ?></td>
 						<?php
 				}
 			} else {
 				?>
-					<td><?php _e( 'Template Overrides', 'sportspress' ); ?>:</td>
-					<td><?php _e( 'No overrides present in theme.', 'sportspress' ); ?></td>
+					<td><?php esc_attr_e( 'Template Overrides', 'sportspress' ); ?>:</td>
+					<td><?php esc_attr_e( 'No overrides present in theme.', 'sportspress' ); ?></td>
 					<?php
 			}
 			?>

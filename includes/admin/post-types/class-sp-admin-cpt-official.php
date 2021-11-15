@@ -45,7 +45,7 @@ if ( ! class_exists( 'SP_Admin_CPT_Official' ) ) :
 		 */
 		public function enter_title_here( $text, $post ) {
 			if ( $post->post_type == 'sp_official' ) {
-				return __( 'Name', 'sportspress' );
+				return esc_attr__( 'Name', 'sportspress' );
 			}
 
 			return $text;

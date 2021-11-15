@@ -70,7 +70,7 @@ if ( ! class_exists( 'SP_REST_API' ) ) :
 					'get_callback'    => 'SP_REST_API::get_post_meta_recursive',
 					'update_callback' => 'SP_REST_API::update_post_meta_recursive',
 					'schema'          => array(
-						'description' => __( 'Teams', 'sportspress' ),
+						'description' => esc_attr__( 'Teams', 'sportspress' ),
 						'type'        => 'array',
 						'context'     => array( 'view', 'edit', 'embed' ),
 						'arg_options' => array(
@@ -86,7 +86,7 @@ if ( ! class_exists( 'SP_REST_API' ) ) :
 				array(
 					'get_callback' => 'SP_REST_API::get_post_data',
 					'schema'       => array(
-						'description' => __( 'Main Results', 'sportspress' ),
+						'description' => esc_attr__( 'Main Results', 'sportspress' ),
 						'type'        => 'array',
 						'context'     => array( 'view', 'embed' ),
 						'arg_options' => array(
@@ -102,7 +102,7 @@ if ( ! class_exists( 'SP_REST_API' ) ) :
 				array(
 					'get_callback' => 'SP_REST_API::get_post_data',
 					'schema'       => array(
-						'description' => __( 'Outcome', 'sportspress' ),
+						'description' => esc_attr__( 'Outcome', 'sportspress' ),
 						'type'        => 'array',
 						'context'     => array( 'view', 'embed' ),
 						'arg_options' => array(
@@ -118,7 +118,7 @@ if ( ! class_exists( 'SP_REST_API' ) ) :
 				array(
 					'get_callback' => 'SP_REST_API::get_post_data',
 					'schema'       => array(
-						'description' => __( 'Winner', 'sportspress' ),
+						'description' => esc_attr__( 'Winner', 'sportspress' ),
 						'type'        => 'integer',
 						'context'     => array( 'view', 'embed' ),
 						'arg_options' => array(
@@ -135,7 +135,7 @@ if ( ! class_exists( 'SP_REST_API' ) ) :
 					'get_callback'    => 'SP_REST_API::get_post_data',
 					'update_callback' => 'SP_REST_API::update_post_meta',
 					'schema'          => array(
-						'description' => __( 'Format', 'sportspress' ),
+						'description' => esc_attr__( 'Format', 'sportspress' ),
 						'type'        => 'string',
 						'context'     => array( 'view', 'edit', 'embed' ),
 						'arg_options' => array(
@@ -152,7 +152,7 @@ if ( ! class_exists( 'SP_REST_API' ) ) :
 					'get_callback'    => 'SP_REST_API::get_post_data',
 					'update_callback' => 'SP_REST_API::update_post_meta',
 					'schema'          => array(
-						'description' => __( 'Mode', 'sportspress' ),
+						'description' => esc_attr__( 'Mode', 'sportspress' ),
 						'type'        => 'string',
 						'context'     => array( 'view', 'edit', 'embed' ),
 						'arg_options' => array(
@@ -169,7 +169,7 @@ if ( ! class_exists( 'SP_REST_API' ) ) :
 					'get_callback'    => 'SP_REST_API::get_post_data',
 					'update_callback' => 'SP_REST_API::update_post_meta',
 					'schema'          => array(
-						'description' => __( 'Match Day', 'sportspress' ),
+						'description' => esc_attr__( 'Match Day', 'sportspress' ),
 						'type'        => 'string',
 						'context'     => array( 'view', 'edit', 'embed' ),
 						'arg_options' => array(
@@ -186,7 +186,7 @@ if ( ! class_exists( 'SP_REST_API' ) ) :
 					'get_callback'    => 'SP_REST_API::get_post_data',
 					'update_callback' => 'SP_REST_API::update_post_meta',
 					'schema'          => array(
-						'description' => __( 'Full Time', 'sportspress' ),
+						'description' => esc_attr__( 'Full Time', 'sportspress' ),
 						'type'        => 'integer',
 						'context'     => array( 'view', 'edit', 'embed' ),
 						'arg_options' => array(
@@ -203,7 +203,7 @@ if ( ! class_exists( 'SP_REST_API' ) ) :
 					'get_callback'    => 'SP_REST_API::get_post_meta_recursive',
 					'update_callback' => 'SP_REST_API::update_post_meta_recursive',
 					'schema'          => array(
-						'description' => __( 'Players', 'sportspress' ),
+						'description' => esc_attr__( 'Players', 'sportspress' ),
 						'type'        => 'array',
 						'context'     => array( 'view', 'edit' ),
 						'arg_options' => array(
@@ -220,7 +220,7 @@ if ( ! class_exists( 'SP_REST_API' ) ) :
 					'get_callback'    => 'SP_REST_API::get_post_meta_recursive',
 					'update_callback' => 'SP_REST_API::update_post_meta_recursive',
 					'schema'          => array(
-						'description' => __( 'Offense', 'sportspress' ),
+						'description' => esc_attr__( 'Offense', 'sportspress' ),
 						'type'        => 'array',
 						'context'     => array( 'view', 'edit' ),
 						'arg_options' => array(
@@ -237,7 +237,7 @@ if ( ! class_exists( 'SP_REST_API' ) ) :
 					'get_callback'    => 'SP_REST_API::get_post_meta_recursive',
 					'update_callback' => 'SP_REST_API::update_post_meta_recursive',
 					'schema'          => array(
-						'description' => __( 'Defense', 'sportspress' ),
+						'description' => esc_attr__( 'Defense', 'sportspress' ),
 						'type'        => 'array',
 						'context'     => array( 'view', 'edit' ),
 						'arg_options' => array(
@@ -254,7 +254,7 @@ if ( ! class_exists( 'SP_REST_API' ) ) :
 					'get_callback'    => 'SP_REST_API::get_post_meta_recursive',
 					'update_callback' => 'SP_REST_API::update_post_meta_recursive',
 					'schema'          => array(
-						'description' => __( 'Staff', 'sportspress' ),
+						'description' => esc_attr__( 'Staff', 'sportspress' ),
 						'type'        => 'array',
 						'context'     => array( 'view', 'edit' ),
 						'arg_options' => array(
@@ -271,7 +271,7 @@ if ( ! class_exists( 'SP_REST_API' ) ) :
 					'get_callback'    => 'SP_REST_API::get_post_data',
 					'update_callback' => 'SP_REST_API::update_post_meta_arrays',
 					'schema'          => array(
-						'description' => __( 'Results', 'sportspress' ),
+						'description' => esc_attr__( 'Results', 'sportspress' ),
 						'type'        => 'object',
 						'context'     => array( 'view', 'edit' ),
 						'arg_options' => array(
@@ -288,7 +288,7 @@ if ( ! class_exists( 'SP_REST_API' ) ) :
 					'get_callback'    => 'SP_REST_API::get_post_data',
 					'update_callback' => 'SP_REST_API::update_post_meta_arrays_multi',
 					'schema'          => array(
-						'description' => __( 'Box Score', 'sportspress' ),
+						'description' => esc_attr__( 'Box Score', 'sportspress' ),
 						'type'        => 'object',
 						'context'     => array( 'view', 'edit' ),
 						'arg_options' => array(
@@ -305,7 +305,7 @@ if ( ! class_exists( 'SP_REST_API' ) ) :
 					'get_callback'    => 'SP_REST_API::get_post_meta_recursive',
 					'update_callback' => 'SP_REST_API::update_post_meta_recursive',
 					'schema'          => array(
-						'description' => __( 'Staff', 'sportspress' ),
+						'description' => esc_attr__( 'Staff', 'sportspress' ),
 						'type'        => 'array',
 						'context'     => array( 'view', 'edit' ),
 						'arg_options' => array(
@@ -322,7 +322,7 @@ if ( ! class_exists( 'SP_REST_API' ) ) :
 					'get_callback'    => 'SP_REST_API::get_post_meta_recursive',
 					'update_callback' => 'SP_REST_API::update_post_meta_recursive',
 					'schema'          => array(
-						'description' => __( 'League Tables', 'sportspress' ),
+						'description' => esc_attr__( 'League Tables', 'sportspress' ),
 						'type'        => 'array',
 						'context'     => array( 'view', 'edit' ),
 						'arg_options' => array(
@@ -339,7 +339,7 @@ if ( ! class_exists( 'SP_REST_API' ) ) :
 					'get_callback'    => 'SP_REST_API::get_post_meta_recursive',
 					'update_callback' => 'SP_REST_API::update_post_meta_recursive',
 					'schema'          => array(
-						'description' => __( 'Player Lists', 'sportspress' ),
+						'description' => esc_attr__( 'Player Lists', 'sportspress' ),
 						'type'        => 'array',
 						'context'     => array( 'view', 'edit' ),
 						'arg_options' => array(
@@ -355,7 +355,7 @@ if ( ! class_exists( 'SP_REST_API' ) ) :
 				array(
 					'get_callback' => 'SP_REST_API::get_post_ids_with_meta',
 					'schema'       => array(
-						'description' => __( 'Events', 'sportspress' ),
+						'description' => esc_attr__( 'Events', 'sportspress' ),
 						'type'        => 'array',
 						'context'     => array( 'view' ),
 						'arg_options' => array(
@@ -372,7 +372,7 @@ if ( ! class_exists( 'SP_REST_API' ) ) :
 					'get_callback'    => 'SP_REST_API::get_post_meta',
 					'update_callback' => 'SP_REST_API::update_post_meta',
 					'schema'          => array(
-						'description' => __( 'Abbreviation', 'sportspress' ),
+						'description' => esc_attr__( 'Abbreviation', 'sportspress' ),
 						'type'        => 'string',
 						'context'     => array( 'view', 'edit', 'embed' ),
 						'arg_options' => array(
@@ -389,7 +389,7 @@ if ( ! class_exists( 'SP_REST_API' ) ) :
 					'get_callback'    => 'SP_REST_API::get_post_meta',
 					'update_callback' => 'SP_REST_API::update_post_meta',
 					'schema'          => array(
-						'description' => __( 'Site URL', 'sportspress' ),
+						'description' => esc_attr__( 'Site URL', 'sportspress' ),
 						'type'        => 'string',
 						'context'     => array( 'view', 'edit', 'embed' ),
 						'arg_options' => array(
@@ -406,7 +406,7 @@ if ( ! class_exists( 'SP_REST_API' ) ) :
 					'get_callback'    => 'SP_REST_API::get_post_meta',
 					'update_callback' => 'SP_REST_API::update_post_meta',
 					'schema'          => array(
-						'description' => __( 'Squad Number', 'sportspress' ),
+						'description' => esc_attr__( 'Squad Number', 'sportspress' ),
 						'type'        => 'integer',
 						'context'     => array( 'view', 'edit', 'embed' ),
 						'arg_options' => array(
@@ -423,7 +423,7 @@ if ( ! class_exists( 'SP_REST_API' ) ) :
 					'get_callback'    => 'SP_REST_API::get_post_meta_recursive',
 					'update_callback' => 'SP_REST_API::update_post_meta_recursive',
 					'schema'          => array(
-						'description' => __( 'Teams', 'sportspress' ),
+						'description' => esc_attr__( 'Teams', 'sportspress' ),
 						'type'        => 'array',
 						'context'     => array( 'view', 'edit' ),
 						'arg_options' => array(
@@ -440,7 +440,7 @@ if ( ! class_exists( 'SP_REST_API' ) ) :
 					'get_callback'    => 'SP_REST_API::get_post_meta_recursive',
 					'update_callback' => 'SP_REST_API::update_post_meta_recursive',
 					'schema'          => array(
-						'description' => __( 'Current Teams', 'sportspress' ),
+						'description' => esc_attr__( 'Current Teams', 'sportspress' ),
 						'type'        => 'array',
 						'context'     => array( 'view', 'edit' ),
 						'arg_options' => array(
@@ -457,7 +457,7 @@ if ( ! class_exists( 'SP_REST_API' ) ) :
 					'get_callback'    => 'SP_REST_API::get_post_meta_recursive',
 					'update_callback' => 'SP_REST_API::update_post_meta_recursive',
 					'schema'          => array(
-						'description' => __( 'Past Teams', 'sportspress' ),
+						'description' => esc_attr__( 'Past Teams', 'sportspress' ),
 						'type'        => 'array',
 						'context'     => array( 'view', 'edit' ),
 						'arg_options' => array(
@@ -474,7 +474,7 @@ if ( ! class_exists( 'SP_REST_API' ) ) :
 					'get_callback'    => 'SP_REST_API::get_post_data',
 					'update_callback' => 'SP_REST_API::update_post_meta_recursive',
 					'schema'          => array(
-						'description' => __( 'Nationalities', 'sportspress' ),
+						'description' => esc_attr__( 'Nationalities', 'sportspress' ),
 						'type'        => 'array',
 						'context'     => array( 'view', 'embed' ),
 						'arg_options' => array(
@@ -491,7 +491,7 @@ if ( ! class_exists( 'SP_REST_API' ) ) :
 					'get_callback'    => 'SP_REST_API::get_post_data',
 					'update_callback' => 'SP_REST_API::update_post_meta_array',
 					'schema'          => array(
-						'description' => __( 'Metrics', 'sportspress' ),
+						'description' => esc_attr__( 'Metrics', 'sportspress' ),
 						'context'     => array( 'view', 'edit' ),
 						'arg_options' => array(
 							'sanitize_callback' => 'rest_sanitize_request_arg',
@@ -507,7 +507,7 @@ if ( ! class_exists( 'SP_REST_API' ) ) :
 					'get_callback'    => 'SP_REST_API::get_post_data',
 					'update_callback' => 'SP_REST_API::update_post_meta_arrays_multi',
 					'schema'          => array(
-						'description' => __( 'Statistics', 'sportspress' ),
+						'description' => esc_attr__( 'Statistics', 'sportspress' ),
 						'type'        => 'object',
 						'context'     => array( 'view', 'edit' ),
 						'arg_options' => array(
@@ -524,7 +524,7 @@ if ( ! class_exists( 'SP_REST_API' ) ) :
 					'get_callback'    => 'SP_REST_API::get_post_meta_recursive',
 					'update_callback' => 'SP_REST_API::update_post_meta_recursive',
 					'schema'          => array(
-						'description' => __( 'Teams', 'sportspress' ),
+						'description' => esc_attr__( 'Teams', 'sportspress' ),
 						'type'        => 'array',
 						'context'     => array( 'view', 'edit' ),
 						'arg_options' => array(
@@ -541,7 +541,7 @@ if ( ! class_exists( 'SP_REST_API' ) ) :
 					'get_callback'    => 'SP_REST_API::get_post_meta_recursive',
 					'update_callback' => 'SP_REST_API::update_post_meta_recursive',
 					'schema'          => array(
-						'description' => __( 'Current Teams', 'sportspress' ),
+						'description' => esc_attr__( 'Current Teams', 'sportspress' ),
 						'type'        => 'array',
 						'context'     => array( 'view', 'edit' ),
 						'arg_options' => array(
@@ -558,7 +558,7 @@ if ( ! class_exists( 'SP_REST_API' ) ) :
 					'get_callback'    => 'SP_REST_API::get_post_meta_recursive',
 					'update_callback' => 'SP_REST_API::update_post_meta_recursive',
 					'schema'          => array(
-						'description' => __( 'Past Teams', 'sportspress' ),
+						'description' => esc_attr__( 'Past Teams', 'sportspress' ),
 						'type'        => 'array',
 						'context'     => array( 'view', 'edit' ),
 						'arg_options' => array(
@@ -575,7 +575,7 @@ if ( ! class_exists( 'SP_REST_API' ) ) :
 					'get_callback'    => 'SP_REST_API::get_post_data',
 					'update_callback' => 'SP_REST_API::update_post_meta_recursive',
 					'schema'          => array(
-						'description' => __( 'Nationalities', 'sportspress' ),
+						'description' => esc_attr__( 'Nationalities', 'sportspress' ),
 						'type'        => 'array',
 						'context'     => array( 'view', 'embed' ),
 						'arg_options' => array(

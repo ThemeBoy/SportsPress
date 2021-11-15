@@ -64,7 +64,7 @@ class SP_Meta_Box_Table_Data {
 
 		<?php if ( $readonly ) { ?>
 			<p>
-				<strong><?php echo get_the_title( $id ); ?></strong>
+				<strong><?php echo esc_attr( get_the_title( $id ) ); ?></strong>
 				<a class="add-new-h2 sp-add-new-h2" href="
 				<?php
 				echo esc_url(
@@ -79,13 +79,13 @@ class SP_Meta_Box_Table_Data {
 					)
 				);
 				?>
-															"><?php _e( 'Edit', 'sportspress' ); ?></a>
+															"><?php esc_attr_e( 'Edit', 'sportspress' ); ?></a>
 			</p>
 		<?php } else { ?>
 			<input type="hidden" name="sp_highlight" value="0">
 			<ul class="subsubsub sp-table-bar">
-				<li><a href="#sp-table-values" class="current"><?php _e( 'Values', 'sportspress' ); ?></a></li> | 
-				<li><a href="#sp-table-adjustments" class=""><?php _e( 'Adjustments', 'sportspress' ); ?></a></li>
+				<li><a href="#sp-table-values" class="current"><?php esc_attr_e( 'Values', 'sportspress' ); ?></a></li> | 
+				<li><a href="#sp-table-adjustments" class=""><?php esc_attr_e( 'Adjustments', 'sportspress' ); ?></a></li>
 			</ul>
 		<?php } ?>
 
@@ -94,9 +94,9 @@ class SP_Meta_Box_Table_Data {
 				<thead>
 					<tr>
 						<?php if ( ! $readonly ) { ?>
-							<th class="radio"><span class="dashicons <?php echo $icon_class; ?> sp-tip" title="<?php _e( 'Highlight', 'sportspress' ); ?>"></span></th>
+							<th class="radio"><span class="dashicons <?php echo esc_attr( $icon_class ); ?> sp-tip" title="<?php esc_attr_e( 'Highlight', 'sportspress' ); ?>"></span></th>
 						<?php } ?>
-						<th><?php _e( 'Team', 'sportspress' ); ?></th>
+						<th><?php esc_attr_e( 'Team', 'sportspress' ); ?></th>
 						<?php foreach ( $columns as $key => $label ) : ?>
 							<th><label for="sp_columns_<?php echo esc_attr( $key ); ?>">
 								<?php if ( ! $readonly ) { ?>
@@ -140,12 +140,12 @@ class SP_Meta_Box_Table_Data {
 									<?php } else { ?>
 										<span class="sp-default-value">
 											<span class="sp-default-value-input"><?php echo esc_html( $default_name ); ?></span>
-											<a class="dashicons dashicons-edit sp-edit" title="<?php _e( 'Edit', 'sportspress' ); ?>"></a>
+											<a class="dashicons dashicons-edit sp-edit" title="<?php esc_attr_e( 'Edit', 'sportspress' ); ?>"></a>
 										</span>
 										<span class="hidden sp-custom-value">
 											<input type="text" name="sp_teams[<?php echo esc_attr( $team_id ); ?>][name]" class="name sp-custom-value-input" value="<?php echo esc_attr( sp_array_value( $team_stats, 'name', '' ) ); ?>" placeholder="<?php echo esc_attr( get_the_title( $team_id ) ); ?>" size="6">
-											<a class="button button-secondary sp-cancel"><?php _e( 'Cancel', 'sportspress' ); ?></a>
-											<a class="button button-primary sp-save"><?php _e( 'Save', 'sportspress' ); ?></a>
+											<a class="button button-secondary sp-cancel"><?php esc_attr_e( 'Cancel', 'sportspress' ); ?></a>
+											<a class="button button-primary sp-save"><?php esc_attr_e( 'Save', 'sportspress' ); ?></a>
 										</span>
 									<?php } ?>
 								</td>
@@ -167,10 +167,10 @@ class SP_Meta_Box_Table_Data {
 						<td colspan="
 						<?php
 						$colspan = sizeof( $columns ) + ( $readonly ? 1 : 2 );
-						echo $colspan;
+						echo esc_attr( $colspan );
 						?>
 						">
-							<?php printf( __( 'Select %s', 'sportspress' ), __( 'Data', 'sportspress' ) ); ?>
+							<?php printf( esc_attr__( 'Select %s', 'sportspress' ), esc_attr__( 'Data', 'sportspress' ) ); ?>
 						</td>
 					</tr>
 						<?php
@@ -183,7 +183,7 @@ class SP_Meta_Box_Table_Data {
 			<table class="widefat sp-data-table sp-league-table">
 				<thead>
 					<tr>
-						<th><?php _e( 'Team', 'sportspress' ); ?></th>
+						<th><?php esc_attr_e( 'Team', 'sportspress' ); ?></th>
 						<?php foreach ( $columns as $key => $label ) : ?>
 							<th><?php echo esc_html( $label ); ?></th>
 						<?php endforeach; ?>
@@ -205,7 +205,7 @@ class SP_Meta_Box_Table_Data {
 							?>
 							">
 								<td>
-									<?php echo get_the_title( $team_id ); ?>
+									<?php echo esc_attr( get_the_title( $team_id ) ); ?>
 								</td>
 								<?php
 								foreach ( $columns as $column => $label ) :
@@ -223,10 +223,10 @@ class SP_Meta_Box_Table_Data {
 						<td colspan="
 						<?php
 						$colspan = sizeof( $columns ) + 1;
-						echo $colspan;
+						echo esc_attr( $colspan );
 						?>
 						">
-							<?php printf( __( 'Select %s', 'sportspress' ), __( 'Data', 'sportspress' ) ); ?>
+							<?php printf( esc_attr__( 'Select %s', 'sportspress' ), esc_attr__( 'Data', 'sportspress' ) ); ?>
 						</td>
 					</tr>
 						<?php

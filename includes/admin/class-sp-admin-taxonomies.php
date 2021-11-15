@@ -76,7 +76,7 @@ class SP_Admin_Taxonomies {
 		<?php if ( function_exists( 'get_term_meta' ) ) { ?>
 			<?php $order = get_term_meta( $t_id, 'sp_order', true ); ?>
 			<tr class="form-field">
-				<th scope="row" valign="top"><label for="sp_order"><?php _e( 'Order', 'sportspress' ); ?></label></th>
+				<th scope="row" valign="top"><label for="sp_order"><?php esc_html_e( 'Order', 'sportspress' ); ?></label></th>
 				<td><input name="sp_order" class="sp-number-input" type="text" step="1" size="4" id="sp_order" value="<?php echo (int) $order; ?>"></td>
 			</tr>
 		<?php } ?>
@@ -115,18 +115,18 @@ class SP_Admin_Taxonomies {
 		?>
 		<div class="form-field">
 			<div id="sp-location-picker" class="sp-location-picker" style="width: 95%; height: 320px"></div>
-			<p><?php _e( "Drag the marker to the venue's location.", 'sportspress' ); ?></p>
+			<p><?php esc_html_e( "Drag the marker to the venue's location.", 'sportspress' ); ?></p>
 		</div>
 		<div class="form-field">
-			<label for="term_meta[sp_address]"><?php _e( 'Address', 'sportspress' ); ?></label>
+			<label for="term_meta[sp_address]"><?php esc_html_e( 'Address', 'sportspress' ); ?></label>
 			<input type="text" class="sp-address" name="term_meta[sp_address]" id="term_meta[sp_address]" value="<?php echo esc_attr( $address ); ?>">
 		</div>
 		<div class="form-field">
-			<label for="term_meta[sp_latitude]"><?php _e( 'Latitude', 'sportspress' ); ?></label>
+			<label for="term_meta[sp_latitude]"><?php esc_html_e( 'Latitude', 'sportspress' ); ?></label>
 			<input type="text" class="sp-latitude" name="term_meta[sp_latitude]" id="term_meta[sp_latitude]" value="<?php echo esc_attr( $latitude ); ?>">
 		</div>
 		<div class="form-field">
-			<label for="term_meta[sp_longitude]"><?php _e( 'Longitude', 'sportspress' ); ?></label>
+			<label for="term_meta[sp_longitude]"><?php esc_html_e( 'Longitude', 'sportspress' ); ?></label>
 			<input type="text" class="sp-longitude" name="term_meta[sp_longitude]" id="term_meta[sp_longitude]" value="<?php echo esc_attr( $longitude ); ?>">
 		</div>
 		<?php
@@ -149,23 +149,23 @@ class SP_Admin_Taxonomies {
 		<tr class="form-field">
 			<td colspan="2">
 				<p><div id="sp-location-picker" class="sp-location-picker" style="width: 95%; height: 320px"></div></p>
-				<p class="description"><?php _e( "Drag the marker to the venue's location.", 'sportspress' ); ?></p>
+				<p class="description"><?php esc_html_e( "Drag the marker to the venue's location.", 'sportspress' ); ?></p>
 			</td>
 		</tr>
 		<tr class="form-field">
-			<th scope="row" valign="top"><label for="term_meta[sp_address]"><?php _e( 'Address', 'sportspress' ); ?></label></th>
+			<th scope="row" valign="top"><label for="term_meta[sp_address]"><?php esc_html_e( 'Address', 'sportspress' ); ?></label></th>
 			<td>
 				<input type="text" class="sp-address" name="term_meta[sp_address]" id="term_meta[sp_address]" value="<?php echo esc_attr( $address ); ?>">
 			</td>
 		</tr>
 		<tr class="form-field">
-			<th scope="row" valign="top"><label for="term_meta[sp_latitude]"><?php _e( 'Latitude', 'sportspress' ); ?></label></th>
+			<th scope="row" valign="top"><label for="term_meta[sp_latitude]"><?php esc_html_e( 'Latitude', 'sportspress' ); ?></label></th>
 			<td>
 				<input type="text" class="sp-latitude" name="term_meta[sp_latitude]" id="term_meta[sp_latitude]" value="<?php echo esc_attr( $latitude ); ?>">
 			</td>
 		</tr>
 		<tr class="form-field">
-			<th scope="row" valign="top"><label for="term_meta[sp_longitude]"><?php _e( 'Longitude', 'sportspress' ); ?></label></th>
+			<th scope="row" valign="top"><label for="term_meta[sp_longitude]"><?php esc_html_e( 'Longitude', 'sportspress' ); ?></label></th>
 			<td>
 				<input type="text" class="sp-longitude" name="term_meta[sp_longitude]" id="term_meta[sp_longitude]" value="<?php echo esc_attr( $longitude ); ?>">
 			</td>
@@ -183,7 +183,7 @@ class SP_Admin_Taxonomies {
 	public function add_position_fields() {
 		?>
 		<div class="form-field">
-			<label><?php _e( 'Statistics', 'sportspress' ); ?></label>
+			<label><?php esc_html_e( 'Statistics', 'sportspress' ); ?></label>
 			<select name="term_meta[sp_sections][]" id="term_meta[sp_sections][]" class="widefat chosen-select
 			<?php
 			if ( is_rtl() ) :
@@ -193,15 +193,15 @@ class SP_Admin_Taxonomies {
 				$options = apply_filters(
 					'sportspress_performance_sections',
 					array(
-						0 => __( 'Offense', 'sportspress' ),
-						1 => __(
+						0 => esc_attr__( 'Offense', 'sportspress' ),
+						1 => esc_attr__(
 							'Defense',
 							'sportspress'
 						),
 					)
 				);
 				foreach ( $options as $key => $value ) :
-					printf( '<option value="%s" %s>%s</option>', $key, selected( true ), $value );
+					printf( '<option value="%s" %s>%s</option>', esc_attr( $key ), selected( true ), esc_html( $value ) );
 				endforeach;
 				?>
 			</select>
@@ -220,7 +220,7 @@ class SP_Admin_Taxonomies {
 		$sections = sp_get_term_sections( $t_id );
 		?>
 		<tr class="form-field">
-			<th scope="row" valign="top"><label for="term_meta[sp_sections]"><?php _e( 'Statistics', 'sportspress' ); ?></label></th>
+			<th scope="row" valign="top"><label for="term_meta[sp_sections]"><?php esc_html_e( 'Statistics', 'sportspress' ); ?></label></th>
 			<input type="hidden" name="term_meta[sp_sections]" value="">
 			<td>
 				<select name="term_meta[sp_sections][]" id="term_meta[sp_sections][]" class="widefat chosen-select
@@ -232,15 +232,15 @@ class SP_Admin_Taxonomies {
 					$options = apply_filters(
 						'sportspress_performance_sections',
 						array(
-							0 => __( 'Offense', 'sportspress' ),
-							1 => __(
+							0 => esc_attr__( 'Offense', 'sportspress' ),
+							1 => esc_attr__(
 								'Defense',
 								'sportspress'
 							),
 						)
 					);
 					foreach ( $options as $key => $value ) :
-						printf( '<option value="%s" %s>%s</option>', $key, selected( in_array( $key, $sections ), true, false ), $value );
+						printf( '<option value="%s" %s>%s</option>', esc_attr( $key ), selected( in_array( $key, $sections ), true, false ), esc_html( $value ) );
 					endforeach;
 					?>
 				</select>
@@ -249,7 +249,7 @@ class SP_Admin_Taxonomies {
 		<?php if ( function_exists( 'get_term_meta' ) ) { ?>
 			<?php $order = get_term_meta( $t_id, 'sp_order', true ); ?>
 			<tr class="form-field">
-				<th scope="row" valign="top"><label for="sp_order"><?php _e( 'Order', 'sportspress' ); ?></label></th>
+				<th scope="row" valign="top"><label for="sp_order"><?php esc_html_e( 'Order', 'sportspress' ); ?></label></th>
 				<td><input name="sp_order" class="sp-number-input" type="text" step="1" size="4" id="sp_order" value="<?php echo (int) $order; ?>"></td>
 			</tr>
 		<?php } ?>
@@ -267,10 +267,10 @@ class SP_Admin_Taxonomies {
 		if ( isset( $_POST['term_meta'] ) ) {
 			$t_id      = $term_id;
 			$term_meta = get_option( "taxonomy_$t_id" );
-			$cat_keys  = array_keys( $_POST['term_meta'] );
+			$cat_keys  = array_keys( wp_unslash( $_POST['term_meta'] ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 			foreach ( $cat_keys as $key ) {
 				if ( isset( $_POST['term_meta'][ $key ] ) ) {
-					$term_meta[ $key ] = sanitize_text_field( $_POST['term_meta'][ $key ] );
+					$term_meta[ $key ] = sanitize_text_field( wp_unslash( $_POST['term_meta'][ $key ] ) );
 				}
 			}
 			update_option( "taxonomy_$t_id", $term_meta );
@@ -291,7 +291,7 @@ class SP_Admin_Taxonomies {
 		$new_columns = array();
 
 		if ( function_exists( 'get_term_meta' ) ) {
-			$new_columns['sp_order'] = __( 'Order', 'sportspress' );
+			$new_columns['sp_order'] = esc_attr__( 'Order', 'sportspress' );
 		}
 
 		if ( array_key_exists( 'posts', $columns ) ) {
@@ -312,7 +312,7 @@ class SP_Admin_Taxonomies {
 	 */
 	public function venue_columns( $columns ) {
 		$new_columns               = array();
-		$new_columns['sp_address'] = __( 'Address', 'sportspress' );
+		$new_columns['sp_address'] = esc_attr__( 'Address', 'sportspress' );
 
 		if ( array_key_exists( 'posts', $columns ) ) {
 			$new_columns['posts'] = $columns['posts'];
@@ -334,10 +334,10 @@ class SP_Admin_Taxonomies {
 	 */
 	public function position_columns( $columns ) {
 		$new_columns                = array();
-		$new_columns['sp_sections'] = __( 'Statistics', 'sportspress' );
+		$new_columns['sp_sections'] = esc_attr__( 'Statistics', 'sportspress' );
 
 		if ( function_exists( 'get_term_meta' ) ) {
-			$new_columns['sp_order'] = __( 'Order', 'sportspress' );
+			$new_columns['sp_order'] = esc_attr__( 'Order', 'sportspress' );
 		}
 
 		if ( array_key_exists( 'posts', $columns ) ) {
@@ -375,8 +375,8 @@ class SP_Admin_Taxonomies {
 			$options = apply_filters(
 				'sportspress_performance_sections',
 				array(
-					0 => __( 'Offense', 'sportspress' ),
-					1 => __(
+					0 => esc_attr__( 'Offense', 'sportspress' ),
+					1 => esc_attr__(
 						'Defense',
 						'sportspress'
 					),

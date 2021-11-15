@@ -54,12 +54,12 @@ if ( ! class_exists( 'SportsPress_Default_Nationality' ) ) :
 		 * Add option to SportsPress General Settings.
 		 */
 		public function add_general_options( $settings ) {
-			$countries[''] = __( '&mdash; None &mdash;', 'sportspress' );
+			$countries[''] = esc_attr__( '&mdash; None &mdash;', 'sportspress' );
 			$sp_countries  = new SP_Countries();
 			$countries     = array_merge( $countries, $sp_countries->countries );
 
 			$settings[] = array(
-				'title'   => __( 'Default Nationality', 'sportspress' ),
+				'title'   => esc_attr__( 'Default Nationality', 'sportspress' ),
 				'id'      => 'sportspress_default_nationality',
 				'default' => '',
 				'type'    => 'select',

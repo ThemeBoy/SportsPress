@@ -49,13 +49,13 @@ if ( ! class_exists( 'SP_Admin_CPT_Calendar' ) ) :
 			$columns = array_merge(
 				array(
 					'cb'        => '<input type="checkbox" />',
-					'title'     => __( 'Title', 'sportspress' ),
-					'sp_league' => __( 'League', 'sportspress' ),
-					'sp_season' => __( 'Season', 'sportspress' ),
-					'sp_venue'  => __( 'Venue', 'sportspress' ),
-					'sp_team'   => __( 'Team', 'sportspress' ),
-					'sp_events' => __( 'Events', 'sportspress' ),
-					'sp_layout' => __( 'Layout', 'sportspress' ),
+					'title'     => esc_attr__( 'Title', 'sportspress' ),
+					'sp_league' => esc_attr__( 'League', 'sportspress' ),
+					'sp_season' => esc_attr__( 'Season', 'sportspress' ),
+					'sp_venue'  => esc_attr__( 'Venue', 'sportspress' ),
+					'sp_team'   => esc_attr__( 'Team', 'sportspress' ),
+					'sp_events' => esc_attr__( 'Events', 'sportspress' ),
+					'sp_layout' => esc_attr__( 'Layout', 'sportspress' ),
 				),
 				$existing_columns
 			);
@@ -70,19 +70,19 @@ if ( ! class_exists( 'SP_Admin_CPT_Calendar' ) ) :
 		public function custom_columns( $column, $post_id ) {
 			switch ( $column ) :
 				case 'sp_league':
-					echo get_the_terms( $post_id, 'sp_league' ) ? the_terms( $post_id, 'sp_league' ) : __( 'All', 'sportspress' );
+					echo get_the_terms( $post_id, 'sp_league' ) ? wp_kses_post( the_terms( $post_id, 'sp_league' ) ) : esc_html__( 'All', 'sportspress' );
 					break;
 				case 'sp_season':
-					echo get_the_terms( $post_id, 'sp_season' ) ? the_terms( $post_id, 'sp_season' ) : __( 'All', 'sportspress' );
+					echo get_the_terms( $post_id, 'sp_season' ) ? wp_kses_post( the_terms( $post_id, 'sp_season' ) ) : esc_html__( 'All', 'sportspress' );
 					break;
 				case 'sp_venue':
-					echo get_the_terms( $post_id, 'sp_venue' ) ? the_terms( $post_id, 'sp_venue' ) : __( 'All', 'sportspress' );
+					echo get_the_terms( $post_id, 'sp_venue' ) ? wp_kses_post( the_terms( $post_id, 'sp_venue' ) ) : esc_html__( 'All', 'sportspress' );
 					break;
 				case 'sp_team':
 					$teams = (array) get_post_meta( $post_id, 'sp_team', false );
 					$teams = array_filter( $teams );
 					if ( empty( $teams ) ) :
-						echo __( 'All', 'sportspress' );
+						echo esc_html__( 'All', 'sportspress' );
 					else :
 						$current_team = get_post_meta( $post_id, 'sp_current_team', true );
 						foreach ( $teams as $team_id ) :
@@ -93,7 +93,7 @@ if ( ! class_exists( 'SP_Admin_CPT_Calendar' ) ) :
 							if ( $team ) :
 								echo esc_html( $team->post_title );
 								if ( $team_id == $current_team ) :
-									echo '<span class="dashicons dashicons-yes" title="' . __( 'Current Team', 'sportspress' ) . '"></span>';
+									echo '<span class="dashicons dashicons-yes" title="' . esc_attr__( 'Current Team', 'sportspress' ) . '"></span>';
 								endif;
 								echo '<br>';
 							endif;
@@ -102,7 +102,7 @@ if ( ! class_exists( 'SP_Admin_CPT_Calendar' ) ) :
 					break;
 				case 'sp_events':
 					$calendar = new SP_Calendar( $post_id );
-					echo sizeof( $calendar->data() );
+					echo esc_html( sizeof( $calendar->data() ) );
 					break;
 				case 'sp_layout':
 					echo esc_html( sp_array_value( SP()->formats->calendar, get_post_meta( $post_id, 'sp_format', true ), '&mdash;' ) );
@@ -122,7 +122,7 @@ if ( ! class_exists( 'SP_Admin_CPT_Calendar' ) ) :
 
 			$selected = isset( $_REQUEST['sp_league'] ) ? sanitize_key( $_REQUEST['sp_league'] ) : null;
 			$args     = array(
-				'show_option_all' => __( 'Show all leagues', 'sportspress' ),
+				'show_option_all' => esc_attr__( 'Show all leagues', 'sportspress' ),
 				'taxonomy'        => 'sp_league',
 				'name'            => 'sp_league',
 				'selected'        => $selected,
@@ -131,7 +131,7 @@ if ( ! class_exists( 'SP_Admin_CPT_Calendar' ) ) :
 
 			$selected = isset( $_REQUEST['sp_season'] ) ? sanitize_key( $_REQUEST['sp_season'] ) : null;
 			$args     = array(
-				'show_option_all' => __( 'Show all seasons', 'sportspress' ),
+				'show_option_all' => esc_attr__( 'Show all seasons', 'sportspress' ),
 				'taxonomy'        => 'sp_season',
 				'name'            => 'sp_season',
 				'selected'        => $selected,
@@ -142,11 +142,11 @@ if ( ! class_exists( 'SP_Admin_CPT_Calendar' ) ) :
 			$args     = array(
 				'post_type'        => 'sp_team',
 				'name'             => 'team',
-				'show_option_none' => __( 'Show all teams', 'sportspress' ),
+				'show_option_none' => esc_attr__( 'Show all teams', 'sportspress' ),
 				'selected'         => $selected,
 				'values'           => 'ID',
 			);
-			wp_dropdown_pages( $args );
+			wp_dropdown_pages( $args ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}
 
 		/**

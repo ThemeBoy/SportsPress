@@ -31,7 +31,7 @@ foreach ( $members as $staff ) :
 		$name  = '<span class="sp-staff-role">' . implode( '<span class="sp-staff-role-delimiter">/</span>', $roles ) . '</span> ' . $name;
 	endif;
 	?>
-	<h4 class="sp-staff-name"><?php echo $link_staff ? '<a href="' . get_permalink( $id ) . '">' . $name . '</a>' : $name; ?></h4>
+	<h4 class="sp-staff-name"><?php echo $link_staff ? '<a href="' . esc_url( get_permalink( $id ) ) . '">' . wp_kses_post( $name ) . '</a>' : wp_kses_post( $name ); ?></h4>
 	<?php
 	sp_get_template( 'staff-photo.php', array( 'id' => $id ) );
 	sp_get_template( 'staff-details.php', array( 'id' => $id ) );

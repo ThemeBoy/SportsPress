@@ -84,12 +84,12 @@ class SP_Frontend_Scripts {
 			'sportspress',
 			'localized_strings',
 			array(
-				'days'     => __( 'days', 'sportspress' ),
-				'hrs'      => __( 'hrs', 'sportspress' ),
-				'mins'     => __( 'mins', 'sportspress' ),
-				'secs'     => __( 'secs', 'sportspress' ),
-				'previous' => __( 'Previous', 'sportspress' ),
-				'next'     => __(
+				'days'     => esc_attr__( 'days', 'sportspress' ),
+				'hrs'      => esc_attr__( 'hrs', 'sportspress' ),
+				'mins'     => esc_attr__( 'mins', 'sportspress' ),
+				'secs'     => esc_attr__( 'secs', 'sportspress' ),
+				'previous' => esc_attr__( 'Previous', 'sportspress' ),
+				'next'     => esc_attr__(
 					'Next',
 					'sportspress'
 				),
@@ -198,46 +198,46 @@ class SP_Frontend_Scripts {
 			echo '.sp-event-calendar tbody td a,.sp-event-calendar tbody td a:hover{background: none;}';
 
 			if ( isset( $colors['primary'] ) ) {
-				echo '.sp-data-table th,.sp-calendar th,.sp-data-table tfoot,.sp-calendar tfoot,.sp-button,.sp-heading{background:' . $colors['primary'] . ' !important}.sp-calendar tbody a{color:' . $colors['primary'] . ' !important}';
+				echo '.sp-data-table th,.sp-calendar th,.sp-data-table tfoot,.sp-calendar tfoot,.sp-button,.sp-heading{background:' . esc_attr( $colors['primary'] ) . ' !important}.sp-calendar tbody a{color:' . esc_attr( $colors['primary'] ) . ' !important}';
 			}
 
 			if ( isset( $colors['background'] ) ) {
-				echo '.sp-data-table tbody,.sp-calendar tbody{background: ' . $colors['background'] . ' !important}';
+				echo '.sp-data-table tbody,.sp-calendar tbody{background: ' . esc_attr( $colors['background'] ) . ' !important}';
 			}
 
 			if ( isset( $colors['text'] ) ) {
-				echo '.sp-data-table tbody,.sp-calendar tbody{color: ' . $colors['text'] . ' !important}';
+				echo '.sp-data-table tbody,.sp-calendar tbody{color: ' . esc_attr( $colors['text'] ) . ' !important}';
 			}
 
 			if ( isset( $colors['heading'] ) ) {
-				echo '.sp-data-table th,.sp-data-table th a,.sp-data-table tfoot,.sp-data-table tfoot a,.sp-calendar th,.sp-calendar th a,.sp-calendar tfoot,.sp-calendar tfoot a,.sp-button,.sp-heading{color: ' . $colors['heading'] . ' !important}';
+				echo '.sp-data-table th,.sp-data-table th a,.sp-data-table tfoot,.sp-data-table tfoot a,.sp-calendar th,.sp-calendar th a,.sp-calendar tfoot,.sp-calendar tfoot a,.sp-button,.sp-heading{color: ' . esc_attr( $colors['heading'] ) . ' !important}';
 			}
 
 			if ( isset( $colors['link'] ) ) {
-				echo '.sp-data-table tbody a,.sp-data-table tbody a:hover,.sp-calendar tbody a:focus{color: ' . $colors['link'] . ' !important}';
+				echo '.sp-data-table tbody a,.sp-data-table tbody a:hover,.sp-calendar tbody a:focus{color: ' . esc_attr( $colors['link'] ) . ' !important}';
 			}
 
 			if ( isset( $colors['highlight'] ) ) {
-				echo '.sp-highlight,.sp-calendar td#today{background: ' . $colors['highlight'] . ' !important}';
+				echo '.sp-highlight,.sp-calendar td#today{background: ' . esc_attr( $colors['highlight'] ) . ' !important}';
 			}
 
 			do_action( 'sportspress_frontend_css', $colors );
 		}
 
 		if ( $align != 'default' ) {
-			echo '.sp-data-table th,.sp-data-table td{text-align: ' . $align . ' !important}';
+			echo '.sp-data-table th,.sp-data-table td{text-align: ' . esc_attr( $align ) . ' !important}';
 		}
 
 		if ( $padding != null ) {
-			echo '.sp-data-table th,.sp-data-table td{padding: ' . $padding . 'px !important}';
+			echo '.sp-data-table th,.sp-data-table td{padding: ' . esc_attr( $padding ) . 'px !important}';
 		}
 
 		if ( $offset != 0 ) {
-			echo ' @media only screen and (min-width: 40.063em) {.sp-header{top: ' . $offset . 'px}}';
+			echo ' @media only screen and (min-width: 40.063em) {.sp-header{top: ' . esc_attr( $offset ) . 'px}}';
 		}
 
 		if ( ! empty( $custom ) ) {
-			echo ' /* SportsPress Custom CSS */ ' . $custom;
+			echo ' /* SportsPress Custom CSS */ ' . wp_kses_post( $custom );
 		}
 
 		echo '</style>';

@@ -40,11 +40,11 @@ foreach ( $venues as $venue ) :
 	$address = urlencode( $address );
 	?>
 	<div class="sp-template sp-template-event-venue">
-		<h4 class="sp-table-caption"><?php _e( 'Venue', 'sportspress' ); ?></h4>
+		<h4 class="sp-table-caption"><?php esc_attr_e( 'Venue', 'sportspress' ); ?></h4>
 		<table class="sp-data-table sp-event-venue">
 			<thead>
 				<tr>
-					<th><?php echo $name; ?></th>
+					<th><?php echo wp_kses_post( $name ); ?></th>
 				</tr>
 			</thead>
 			<?php if ( $show_maps ) : ?>
@@ -54,7 +54,7 @@ foreach ( $venues as $venue ) :
 					</tr>
 					<?php if ( $address != null ) { ?>
 						<tr class="sp-event-venue-address-row">
-							<td><?php echo urldecode( $address ); ?></td>
+							<td><?php echo wp_kses_post( urldecode( $address ) ); ?></td>
 						</tr>
 					<?php } ?>
 				</tbody>

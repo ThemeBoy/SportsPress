@@ -29,17 +29,17 @@ if ( ! class_exists( 'SP_Settings_Modules' ) ) :
 		 */
 		public function __construct() {
 			$this->id    = 'modules';
-			$this->label = __( 'Modules', 'sportspress' );
+			$this->label = esc_attr__( 'Modules', 'sportspress' );
 
 			$this->sections = apply_filters(
 				'sportspress_module_sections',
 				array(
-					'general'      => __( 'General', 'sportspress' ),
-					'event'        => __( 'Events', 'sportspress' ),
-					'team'         => __( 'Teams', 'sportspress' ),
-					'player_staff' => __( 'Players', 'sportspress' ) . ' &amp; ' . __( 'Staff', 'sportspress' ),
-					'admin'        => __( 'Dashboard', 'sportspress' ),
-					'other'        => __( 'Other', 'sportspress' ),
+					'general'      => esc_attr__( 'General', 'sportspress' ),
+					'event'        => esc_attr__( 'Events', 'sportspress' ),
+					'team'         => esc_attr__( 'Teams', 'sportspress' ),
+					'player_staff' => esc_attr__( 'Players', 'sportspress' ) . ' &amp; ' . esc_attr__( 'Staff', 'sportspress' ),
+					'admin'        => esc_attr__( 'Dashboard', 'sportspress' ),
+					'other'        => esc_attr__( 'Other', 'sportspress' ),
 				)
 			);
 
@@ -64,15 +64,15 @@ if ( ! class_exists( 'SP_Settings_Modules' ) ) :
 				<table class="widefat" cellspacing="0">
 					<thead>
 						<tr><th>
-							<a href="<?php echo apply_filters( 'sportspress_pro_url', 'http://tboy.co/pro' ); ?>" target="_blank"><img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>/assets/images/modules/sportspress-pro.png" alt="<?php _e( 'SportsPress Pro', 'sportspress' ); ?>" width="174"></a>
+							<a href="<?php echo esc_url( apply_filters( 'sportspress_pro_url', 'http://tboy.co/pro' ) ); ?>" target="_blank"><img src="<?php echo esc_url( plugin_dir_url( SP_PLUGIN_FILE ) ); ?>/assets/images/modules/sportspress-pro.png" alt="<?php esc_html_e( 'SportsPress Pro', 'sportspress' ); ?>" width="174"></a>
 						</th></tr>
 					</thead>
 					<tbody>
 						<tr><td>
-							<p><?php _e( 'Get SportsPress Pro to get access to all modules. You can upgrade any time without losing any of your data.', 'sportspress' ); ?></p>
+							<p><?php esc_html_e( 'Get SportsPress Pro to get access to all modules. You can upgrade any time without losing any of your data.', 'sportspress' ); ?></p>
 							<p class="sp-module-actions">
-								<span><?php _e( 'Premium', 'sportspress' ); ?></span>
-								<a class="button button-primary" href="<?php echo apply_filters( 'sportspress_pro_url', 'http://tboy.co/pro' ); ?>" target="_blank"><?php _e( 'Upgrade Now', 'sportspress' ); ?></a>
+								<span><?php esc_html_e( 'Premium', 'sportspress' ); ?></span>
+								<a class="button button-primary" href="<?php echo esc_url( apply_filters( 'sportspress_pro_url', 'http://tboy.co/pro' ) ); ?>" target="_blank"><?php esc_html_e( 'Upgrade Now', 'sportspress' ); ?></a>
 							</p>
 						</td></tr>
 					</tbody>
@@ -83,15 +83,15 @@ if ( ! class_exists( 'SP_Settings_Modules' ) ) :
 				<table class="widefat" cellspacing="0">
 					<thead>
 						<tr><th>
-							<strong><?php _e( 'Get Freebies', 'sportspress' ); ?></strong>
+							<strong><?php esc_html_e( 'Get Freebies', 'sportspress' ); ?></strong>
 						</th></tr>
 					</thead>
 					<tbody>
 						<tr><td>
-							<p><?php _e( 'Instant access to exclusive SportsPress extensions and free downloads.', 'sportspress' ); ?></p>
+							<p><?php esc_html_e( 'Instant access to exclusive SportsPress extensions and free downloads.', 'sportspress' ); ?></p>
 							<p class="sp-module-actions">
-								<span><?php _e( 'Create a free account', 'sportspress' ); ?></span>
-								<a class="button" href="http://tboy.co/account" target="_blank"><?php _e( 'Sign Up', 'sportspress' ); ?></a>
+								<span><?php esc_html_e( 'Create a free account', 'sportspress' ); ?></span>
+								<a class="button" href="http://tboy.co/account" target="_blank"><?php esc_html_e( 'Sign Up', 'sportspress' ); ?></a>
 							</p>
 						</td></tr>
 					</tbody>
@@ -104,16 +104,16 @@ if ( ! class_exists( 'SP_Settings_Modules' ) ) :
 						<table class="widefat" cellspacing="0">
 							<thead>
 								<tr><th>
-									<strong><?php _e( 'Current Theme', 'sportspress' ); ?></strong>
+									<strong><?php esc_html_e( 'Current Theme', 'sportspress' ); ?></strong>
 								</th></tr>
 							</thead>
 							<tbody>
 								<tr><td>
 									<img src="<?php echo esc_url( $theme->get_screenshot() ); ?>" class="sp-theme-screenshot">
-									<p><?php _e( 'Rookie is a free starter theme for SportsPress designed by ThemeBoy.', 'sportspress' ); ?></p>
+									<p><?php esc_html_e( 'Rookie is a free starter theme for SportsPress designed by ThemeBoy.', 'sportspress' ); ?></p>
 									<p class="sp-module-actions">
-										<span><?php _e( 'Need a better theme?', 'sportspress' ); ?></span>
-										<a class="button" href="<?php echo apply_filters( 'sportspress_pro_url', 'http://tboy.co/themes' ); ?>" target="_blank"><?php _e( 'Upgrade', 'sportspress' ); ?></a>
+										<span><?php esc_html_e( 'Need a better theme?', 'sportspress' ); ?></span>
+										<a class="button" href="<?php echo esc_url( apply_filters( 'sportspress_pro_url', 'http://tboy.co/themes' ) ); ?>" target="_blank"><?php esc_html_e( 'Upgrade', 'sportspress' ); ?></a>
 									</p>
 								</td></tr>
 							</tbody>
@@ -122,16 +122,16 @@ if ( ! class_exists( 'SP_Settings_Modules' ) ) :
 						<table class="widefat" cellspacing="0">
 							<thead>
 								<tr><th>
-									<strong><?php _e( 'Free SportsPress Theme', 'sportspress' ); ?></strong>
+									<strong><?php esc_html_e( 'Free SportsPress Theme', 'sportspress' ); ?></strong>
 								</th></tr>
 							</thead>
 							<tbody>
 								<tr><td>
-									<img src="<?php echo plugin_dir_url( SP_PLUGIN_FILE ); ?>/assets/images/welcome/rookie.png" class="sp-theme-screenshot">
-									<p><?php _e( 'Rookie is a free starter theme for SportsPress designed by ThemeBoy.', 'sportspress' ); ?></p>
+									<img src="<?php echo esc_url( plugin_dir_url( SP_PLUGIN_FILE ) ); ?>/assets/images/welcome/rookie.png" class="sp-theme-screenshot">
+									<p><?php esc_html_e( 'Rookie is a free starter theme for SportsPress designed by ThemeBoy.', 'sportspress' ); ?></p>
 									<p class="sp-module-actions">
-										<span><?php _e( 'Free', 'sportspress' ); ?></span>
-										<a class="button" href="<?php echo add_query_arg( array( 'theme' => 'rookie' ), network_admin_url( 'theme-install.php' ) ); ?>"><?php _e( 'Install Now', 'sportspress' ); ?></a>
+										<span><?php esc_html_e( 'Free', 'sportspress' ); ?></span>
+										<a class="button" href="<?php echo esc_url( add_query_arg( array( 'theme' => 'rookie' ), network_admin_url( 'theme-install.php' ) ) ); ?>"><?php esc_html_e( 'Install Now', 'sportspress' ); ?></a>
 									</p>
 								</td></tr>
 							</tbody>
@@ -143,46 +143,46 @@ if ( ! class_exists( 'SP_Settings_Modules' ) ) :
 				$categories = array(
 					'documentation' => array(
 						'icon'  => 'sp-icon-book',
-						'label' => __( 'Documentation', 'sportspress' ),
+						'label' => esc_attr__( 'Documentation', 'sportspress' ),
 						'links' => array(
-							'http://tboy.co/installation' => __( 'Getting Started', 'sportspress' ),
-							'http://tboy.co/manuals'      => __( 'Manuals', 'sportspress' ),
-							'http://tboy.co/videos'       => __( 'Videos', 'sportspress' ),
+							'http://tboy.co/installation' => esc_attr__( 'Getting Started', 'sportspress' ),
+							'http://tboy.co/manuals'      => esc_attr__( 'Manuals', 'sportspress' ),
+							'http://tboy.co/videos'       => esc_attr__( 'Videos', 'sportspress' ),
 						),
 					),
 					'help'          => array(
 						'icon'  => 'dashicons dashicons-heart',
-						'label' => __( 'Help', 'sportspress' ),
+						'label' => esc_attr__( 'Help', 'sportspress' ),
 						'links' => array(
-							'http://tboy.co/forums' => __( 'Support Forums', 'sportspress' ),
-							'http://tboy.co/ideas'  => __( 'Feature Requests', 'sportspress' ),
+							'http://tboy.co/forums' => esc_attr__( 'Support Forums', 'sportspress' ),
+							'http://tboy.co/ideas'  => esc_attr__( 'Feature Requests', 'sportspress' ),
 						),
 					),
 					'social'        => array(
 						'icon'  => 'dashicons dashicons-share',
-						'label' => __( 'Connect', 'sportspress' ),
+						'label' => esc_attr__( 'Connect', 'sportspress' ),
 						'links' => array(
-							'http://tboy.co/twitter'  => __( 'Twitter', 'sportspress' ),
-							'http://tboy.co/facebook' => __( 'Facebook', 'sportspress' ),
-							'http://tboy.co/youtube'  => __( 'YouTube', 'sportspress' ),
-							'http://tboy.co/gplus'    => __( 'Google+', 'sportspress' ),
+							'http://tboy.co/twitter'  => esc_attr__( 'Twitter', 'sportspress' ),
+							'http://tboy.co/facebook' => esc_attr__( 'Facebook', 'sportspress' ),
+							'http://tboy.co/youtube'  => esc_attr__( 'YouTube', 'sportspress' ),
+							'http://tboy.co/gplus'    => esc_attr__( 'Google+', 'sportspress' ),
 						),
 					),
 					'developers'    => array(
 						'icon'  => 'dashicons dashicons-editor-code',
-						'label' => __( 'Developers', 'sportspress' ),
+						'label' => esc_attr__( 'Developers', 'sportspress' ),
 						'links' => array(
-							'http://tboy.co/developers' => __( 'Reference', 'sportspress' ),
-							'http://tboy.co/slack'      => __( 'Slack', 'sportspress' ),
-							'http://tboy.co/github'     => __( 'GitHub', 'sportspress' ),
+							'http://tboy.co/developers' => esc_attr__( 'Reference', 'sportspress' ),
+							'http://tboy.co/slack'      => esc_attr__( 'Slack', 'sportspress' ),
+							'http://tboy.co/github'     => esc_attr__( 'GitHub', 'sportspress' ),
 						),
 					),
 				);
 
 				if ( class_exists( 'SportsPress_Pro' ) ) {
-					$categories['help']['links']['http://support.themeboy.com/'] = __( 'Premium Support', 'sportspress' );
+					$categories['help']['links']['http://support.themeboy.com/'] = esc_attr__( 'Premium Support', 'sportspress' );
 				} else {
-					$categories['help']['links'][ apply_filters( 'sportspress_pro_url', 'http://tboy.co/pro' ) ] = '<span class="sp-desc-tip" title="' . __( 'Upgrade to Pro', 'sportspress' ) . '">' . __( 'Premium Support', 'sportspress' ) . '</span>';
+					$categories['help']['links'][ apply_filters( 'sportspress_pro_url', 'http://tboy.co/pro' ) ] = '<span class="sp-desc-tip" title="' . esc_attr__( 'Upgrade to Pro', 'sportspress' ) . '">' . esc_attr__( 'Premium Support', 'sportspress' ) . '</span>';
 				}
 
 				$categories = apply_filters( 'sportspress_modules_welcome_links', $categories );
@@ -192,7 +192,7 @@ if ( ! class_exists( 'SP_Settings_Modules' ) ) :
 					<table class="widefat" cellspacing="0">
 						<thead>
 							<tr><th>
-								<strong><?php _e( 'Welcome to SportsPress', 'sportspress' ); ?></strong>
+								<strong><?php esc_html_e( 'Welcome to SportsPress', 'sportspress' ); ?></strong>
 							</th></tr>
 						</thead>
 						<tbody>
@@ -218,7 +218,7 @@ if ( ! class_exists( 'SP_Settings_Modules' ) ) :
 				<table class="sp-modules-table widefat" cellspacing="0">
 					<thead>
 						<tr><th>
-							<?php echo esc_html( sp_array_value( $this->sections, $section, __( 'Modules', 'sportspress' ) ) ); ?>
+							<?php echo esc_html( sp_array_value( $this->sections, $section, esc_attr__( 'Modules', 'sportspress' ) ) ); ?>
 						</th></tr>
 					</thead>
 					<tbody>
@@ -226,7 +226,7 @@ if ( ! class_exists( 'SP_Settings_Modules' ) ) :
 							<?php if ( isset( $module['class'] ) && ! class_exists( $module['class'] ) ) { ?>
 							<tr class="sp-module-unavailable"><td>
 								<input type="checkbox" disabled="disabled">
-								<span class="sp-desc-tip" title="<?php echo esc_attr( sp_array_value( $module, 'tip', __( 'Upgrade to Pro', 'sportspress' ) ) ); ?>">
+								<span class="sp-desc-tip" title="<?php echo esc_attr( sp_array_value( $module, 'tip', esc_attr__( 'Upgrade to Pro', 'sportspress' ) ) ); ?>">
 									<i class="<?php echo esc_attr( sp_array_value( $module, 'icon', 'dashicons dashicons-admin-generic' ) ); ?>"></i>
 									<?php echo esc_html( sp_array_value( $module, 'label', $id ) ); ?>
 								</span>
@@ -234,15 +234,15 @@ if ( ! class_exists( 'SP_Settings_Modules' ) ) :
 									<span class="sp-desc">
 										<?php echo wp_kses_post( $module['desc'] ); ?>
 										<?php if ( array_key_exists( 'link', $module ) ) { ?>
-											<a href="<?php echo apply_filters( 'sportspress_pro_url', $module['link'] ); ?>" target="_blank"><?php echo esc_html( sp_array_value( $module, 'action', __( 'Learn more', 'sportspress' ) ) ); ?></a>
+											<a href="<?php echo esc_url( apply_filters( 'sportspress_pro_url', $module['link'] ) ); ?>" target="_blank"><?php echo esc_html( sp_array_value( $module, 'action', esc_attr__( 'Learn more', 'sportspress' ) ) ); ?></a>
 										<?php } ?>
 									</span>
 								<?php } ?>
 							</td></tr>
 							<?php } else { ?>
 							<tr><td>
-								<input type="checkbox" name="sportspress_load_<?php echo $id; ?>_module" id="sportspress_load_<?php echo $id; ?>_module" <?php checked( 'yes' == get_option( 'sportspress_load_' . $id . '_module', sp_array_value( $module, 'default', 'yes' ) ) ); ?>>
-								<label for="sportspress_load_<?php echo $id; ?>_module">
+								<input type="checkbox" name="sportspress_load_<?php echo esc_attr( $id ); ?>_module" id="sportspress_load_<?php echo esc_attr( $id ); ?>_module" <?php checked( 'yes' == get_option( 'sportspress_load_' . $id . '_module', sp_array_value( $module, 'default', 'yes' ) ) ); ?>>
+								<label for="sportspress_load_<?php echo esc_attr( $id ); ?>_module">
 									<i class="<?php echo esc_attr( sp_array_value( $module, 'icon', 'dashicons dashicons-admin-generic' ) ); ?>"></i>
 									<?php echo esc_html( sp_array_value( $module, 'label', $id ) ); ?>
 								</label>
@@ -257,7 +257,7 @@ if ( ! class_exists( 'SP_Settings_Modules' ) ) :
 				<?php } ?>
 
 				<p class="submit">
-					<input name="save" class="button button-primary" type="submit" value="<?php _e( 'Save Changes', 'sportspress' ); ?>" />
+					<input name="save" class="button button-primary" type="submit" value="<?php esc_attr_e( 'Save Changes', 'sportspress' ); ?>" />
 					<?php $GLOBALS['hide_save_button'] = true; ?>
 				</p>
 			</div>

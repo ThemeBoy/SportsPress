@@ -72,15 +72,15 @@ if ( ! class_exists( 'SportsPress_League_Tables' ) ) :
 					'sportspress_register_post_type_table',
 					array(
 						'labels'                => array(
-							'name'               => __( 'League Tables', 'sportspress' ),
-							'singular_name'      => __( 'League Table', 'sportspress' ),
-							'add_new_item'       => __( 'Add New League Table', 'sportspress' ),
-							'edit_item'          => __( 'Edit League Table', 'sportspress' ),
-							'new_item'           => __( 'New', 'sportspress' ),
-							'view_item'          => __( 'View League Table', 'sportspress' ),
-							'search_items'       => __( 'Search', 'sportspress' ),
-							'not_found'          => __( 'No results found.', 'sportspress' ),
-							'not_found_in_trash' => __( 'No results found.', 'sportspress' ),
+							'name'               => esc_attr__( 'League Tables', 'sportspress' ),
+							'singular_name'      => esc_attr__( 'League Table', 'sportspress' ),
+							'add_new_item'       => esc_attr__( 'Add New League Table', 'sportspress' ),
+							'edit_item'          => esc_attr__( 'Edit League Table', 'sportspress' ),
+							'new_item'           => esc_attr__( 'New', 'sportspress' ),
+							'view_item'          => esc_attr__( 'View League Table', 'sportspress' ),
+							'search_items'       => esc_attr__( 'Search', 'sportspress' ),
+							'not_found'          => esc_attr__( 'No results found.', 'sportspress' ),
+							'not_found_in_trash' => esc_attr__( 'No results found.', 'sportspress' ),
 						),
 						'public'                => true,
 						'show_ui'               => true,
@@ -147,7 +147,7 @@ if ( ! class_exists( 'SportsPress_League_Tables' ) ) :
 					'get_callback'    => 'SP_REST_API::get_post_data',
 					'update_callback' => 'SP_REST_API::update_post_meta_arrays',
 					'schema'          => array(
-						'description' => __( 'League Table', 'sportspress' ),
+						'description' => esc_attr__( 'League Table', 'sportspress' ),
 						'type'        => 'array',
 						'context'     => array( 'view', 'edit' ),
 						'arg_options' => array(
@@ -166,7 +166,7 @@ if ( ! class_exists( 'SportsPress_League_Tables' ) ) :
 		public function add_meta_boxes( $meta_boxes ) {
 			if ( 'yes' == get_option( 'sportspress_team_column_editing', 'no' ) ) {
 				$meta_boxes['sp_team']['columns'] = array(
-					'title'    => __( 'Table Columns', 'sportspress' ),
+					'title'    => esc_attr__( 'Table Columns', 'sportspress' ),
 					'output'   => 'SP_Meta_Box_Team_Columns::output',
 					'save'     => 'SP_Meta_Box_Team_Columns::save',
 					'context'  => 'normal',
@@ -174,7 +174,7 @@ if ( ! class_exists( 'SportsPress_League_Tables' ) ) :
 				);
 			}
 			$meta_boxes['sp_team']['tables'] = array(
-				'title'    => __( 'League Tables', 'sportspress' ),
+				'title'    => esc_attr__( 'League Tables', 'sportspress' ),
 				'output'   => 'SP_Meta_Box_Team_Tables::output',
 				'save'     => 'SP_Meta_Box_Team_Tables::save',
 				'context'  => 'normal',
@@ -182,34 +182,34 @@ if ( ! class_exists( 'SportsPress_League_Tables' ) ) :
 			);
 			$meta_boxes['sp_table']          = array(
 				'mode'      => array(
-					'title'    => __( 'Mode', 'sportspress' ),
+					'title'    => esc_attr__( 'Mode', 'sportspress' ),
 					'save'     => 'SP_Meta_Box_Table_Mode::save',
 					'output'   => 'SP_Meta_Box_Table_Mode::output',
 					'context'  => 'side',
 					'priority' => 'default',
 				),
 				'shortcode' => array(
-					'title'    => __( 'Shortcode', 'sportspress' ),
+					'title'    => esc_attr__( 'Shortcode', 'sportspress' ),
 					'output'   => 'SP_Meta_Box_Table_Shortcode::output',
 					'context'  => 'side',
 					'priority' => 'default',
 				),
 				'format'    => array(
-					'title'    => __( 'Layout', 'sportspress' ),
+					'title'    => esc_attr__( 'Layout', 'sportspress' ),
 					'save'     => 'SP_Meta_Box_Table_Format::save',
 					'output'   => 'SP_Meta_Box_Table_Format::output',
 					'context'  => 'side',
 					'priority' => 'default',
 				),
 				'details'   => array(
-					'title'    => __( 'Details', 'sportspress' ),
+					'title'    => esc_attr__( 'Details', 'sportspress' ),
 					'save'     => 'SP_Meta_Box_Table_Details::save',
 					'output'   => 'SP_Meta_Box_Table_Details::output',
 					'context'  => 'side',
 					'priority' => 'default',
 				),
 				'data'      => array(
-					'title'    => __( 'League Table', 'sportspress' ),
+					'title'    => esc_attr__( 'League Table', 'sportspress' ),
 					'save'     => 'SP_Meta_Box_Table_Data::save',
 					'output'   => 'SP_Meta_Box_Table_Data::output',
 					'context'  => 'normal',
@@ -240,7 +240,7 @@ if ( ! class_exists( 'SportsPress_League_Tables' ) ) :
 				$settings,
 				array(
 					array(
-						'title' => __( 'League Tables', 'sportspress' ),
+						'title' => esc_attr__( 'League Tables', 'sportspress' ),
 						'type'  => 'title',
 						'id'    => 'table_options',
 					),
@@ -249,35 +249,35 @@ if ( ! class_exists( 'SportsPress_League_Tables' ) ) :
 					'sportspress_table_options',
 					array(
 						array(
-							'title'   => __( 'Title', 'sportspress' ),
-							'desc'    => __( 'Display title', 'sportspress' ),
+							'title'   => esc_attr__( 'Title', 'sportspress' ),
+							'desc'    => esc_attr__( 'Display title', 'sportspress' ),
 							'id'      => 'sportspress_table_show_title',
 							'default' => 'yes',
 							'type'    => 'checkbox',
 						),
 
 						array(
-							'title'   => __( 'Teams', 'sportspress' ),
-							'desc'    => __( 'Display logos', 'sportspress' ),
+							'title'   => esc_attr__( 'Teams', 'sportspress' ),
+							'desc'    => esc_attr__( 'Display logos', 'sportspress' ),
 							'id'      => 'sportspress_table_show_logos',
 							'default' => 'yes',
 							'type'    => 'checkbox',
 						),
 
 						array(
-							'title'   => __( 'Pagination', 'sportspress' ),
-							'desc'    => __( 'Paginate', 'sportspress' ),
+							'title'   => esc_attr__( 'Pagination', 'sportspress' ),
+							'desc'    => esc_attr__( 'Paginate', 'sportspress' ),
 							'id'      => 'sportspress_table_paginated',
 							'default' => 'yes',
 							'type'    => 'checkbox',
 						),
 
 						array(
-							'title'             => __( 'Limit', 'sportspress' ),
+							'title'             => esc_attr__( 'Limit', 'sportspress' ),
 							'id'                => 'sportspress_table_rows',
 							'class'             => 'small-text',
 							'default'           => '10',
-							'desc'              => __( 'teams', 'sportspress' ),
+							'desc'              => esc_attr__( 'teams', 'sportspress' ),
 							'type'              => 'number',
 							'custom_attributes' => array(
 								'min'  => 1,
@@ -286,11 +286,11 @@ if ( ! class_exists( 'SportsPress_League_Tables' ) ) :
 						),
 
 						array(
-							'title'             => __( 'Form', 'sportspress' ),
+							'title'             => esc_attr__( 'Form', 'sportspress' ),
 							'id'                => 'sportspress_form_limit',
 							'class'             => 'small-text',
 							'default'           => '5',
-							'desc'              => __( 'events', 'sportspress' ),
+							'desc'              => esc_attr__( 'events', 'sportspress' ),
 							'type'              => 'number',
 							'custom_attributes' => array(
 								'min'  => 1,
@@ -299,21 +299,21 @@ if ( ! class_exists( 'SportsPress_League_Tables' ) ) :
 						),
 
 						array(
-							'title'   => __( 'Pos', 'sportspress' ),
-							'desc'    => __( 'Always increment', 'sportspress' ),
+							'title'   => esc_attr__( 'Pos', 'sportspress' ),
+							'desc'    => esc_attr__( 'Always increment', 'sportspress' ),
 							'id'      => 'sportspress_table_increment',
 							'default' => 'no',
 							'type'    => 'checkbox',
 						),
 
 						array(
-							'title'   => __( 'Tiebreaker', 'sportspress' ),
+							'title'   => esc_attr__( 'Tiebreaker', 'sportspress' ),
 							'id'      => 'sportspress_table_tiebreaker',
 							'default' => 'none',
 							'type'    => 'select',
 							'options' => array(
-								'none' => __( 'None', 'sportspress' ),
-								'h2h'  => __( 'Head to head', 'sportspress' ),
+								'none' => esc_attr__( 'None', 'sportspress' ),
+								'h2h'  => esc_attr__( 'Head to head', 'sportspress' ),
 							),
 						),
 					)
@@ -337,8 +337,8 @@ if ( ! class_exists( 'SportsPress_League_Tables' ) ) :
 				$templates,
 				array(
 					'tables' => array(
-						'title'   => __( 'League Tables', 'sportspress' ),
-						'label'   => __( 'League Table', 'sportspress' ),
+						'title'   => esc_attr__( 'League Tables', 'sportspress' ),
+						'label'   => esc_attr__( 'League Table', 'sportspress' ),
 						'option'  => 'sportspress_team_show_tables',
 						'action'  => 'sportspress_output_team_tables',
 						'default' => 'yes',

@@ -24,12 +24,12 @@ $data = array();
 
 if ( 'yes' === get_option( 'sportspress_event_show_date', 'yes' ) ) {
 	$date                                = get_the_time( get_option( 'date_format' ), $id );
-	$data[ __( 'Date', 'sportspress' ) ] = $date;
+	$data[ esc_attr__( 'Date', 'sportspress' ) ] = $date;
 }
 
 if ( 'yes' === get_option( 'sportspress_event_show_time', 'yes' ) ) {
 	$time                                = get_the_time( get_option( 'time_format' ), $id );
-	$data[ __( 'Time', 'sportspress' ) ] = apply_filters( 'sportspress_event_time', $time, $id );
+	$data[ esc_attr__( 'Time', 'sportspress' ) ] = apply_filters( 'sportspress_event_time', $time, $id );
 }
 
 $taxonomies = apply_filters(
@@ -52,7 +52,7 @@ endforeach;
 if ( 'yes' === get_option( 'sportspress_event_show_day', 'yes' ) ) {
 	$day = get_post_meta( $id, 'sp_day', true );
 	if ( '' !== $day ) {
-		$data[ __( 'Match Day', 'sportspress' ) ] = $day;
+		$data[ esc_attr__( 'Match Day', 'sportspress' ) ] = $day;
 	}
 }
 
@@ -61,7 +61,7 @@ if ( 'yes' === get_option( 'sportspress_event_show_full_time', 'yes' ) ) {
 	if ( '' === $full_time ) {
 		$full_time = get_option( 'sportspress_event_minutes', 90 );
 	}
-	$data[ __( 'Full Time', 'sportspress' ) ] = $full_time . '\'';
+	$data[ esc_attr__( 'Full Time', 'sportspress' ) ] = $full_time . '\'';
 }
 
 $data = apply_filters( 'sportspress_event_details', $data, $id );
@@ -71,7 +71,7 @@ if ( ! sizeof( $data ) ) {
 }
 ?>
 <div class="sp-template sp-template-event-details">
-	<h4 class="sp-table-caption"><?php _e( 'Details', 'sportspress' ); ?></h4>
+	<h4 class="sp-table-caption"><?php esc_attr_e( 'Details', 'sportspress' ); ?></h4>
 	<div class="sp-table-wrapper">
 		<table class="sp-event-details sp-data-table
 		<?php
@@ -81,7 +81,7 @@ if ( ! sizeof( $data ) ) {
 			<thead>
 				<tr>
 					<?php $i = 0; foreach ( $data as $label => $value ) : ?>
-						<th><?php echo $label; ?></th>
+						<th><?php echo wp_kses_post( $label ); ?></th>
 						<?php
 						$i++;
 endforeach;
@@ -91,7 +91,7 @@ endforeach;
 			<tbody>
 				<tr class="odd">
 					<?php $i = 0; foreach ( $data as $value ) : ?>
-						<td><?php echo $value; ?></td>
+						<td><?php echo wp_kses_post( $value ); ?></td>
 						<?php
 						$i++;
 endforeach;

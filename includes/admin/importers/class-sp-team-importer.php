@@ -23,14 +23,14 @@ if ( class_exists( 'WP_Importer' ) ) {
 		 */
 		public function __construct() {
 			$this->import_page  = 'sp_team_csv';
-			$this->import_label = __( 'Import Teams', 'sportspress' );
+			$this->import_label = esc_attr__( 'Import Teams', 'sportspress' );
 			$this->columns      = array(
-				'post_title'      => __( 'Name', 'sportspress' ),
-				'sp_league'       => __( 'Leagues', 'sportspress' ),
-				'sp_season'       => __( 'Seasons', 'sportspress' ),
-				'sp_url'          => __( 'Site URL', 'sportspress' ),
-				'sp_abbreviation' => __( 'Abbreviation', 'sportspress' ),
-				'sp_venue'        => __( 'Home', 'sportspress' ),
+				'post_title'      => esc_attr__( 'Name', 'sportspress' ),
+				'sp_league'       => esc_attr__( 'Leagues', 'sportspress' ),
+				'sp_season'       => esc_attr__( 'Seasons', 'sportspress' ),
+				'sp_url'          => esc_attr__( 'Site URL', 'sportspress' ),
+				'sp_abbreviation' => esc_attr__( 'Abbreviation', 'sportspress' ),
+				'sp_venue'        => esc_attr__( 'Home', 'sportspress' ),
 			);
 			parent::__construct();
 		}
@@ -120,7 +120,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 
 			// Show Result
 			echo '<div class="updated settings-error below-h2"><p>
-				' . sprintf( __( 'Import complete - imported <strong>%1$s</strong> teams and skipped <strong>%2$s</strong>.', 'sportspress' ), $this->imported, $this->skipped ) . '
+				' . sprintf( esc_html__( 'Import complete - imported <strong>%1$s</strong> teams and skipped <strong>%2$s</strong>.', 'sportspress' ), esc_html( $this->imported ), esc_html( $this->skipped ) ) . '
 			</p></div>';
 
 			$this->import_end();
@@ -130,7 +130,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 		 * Performs post-import cleanup of files and the cache
 		 */
 		function import_end() {
-			echo '<p>' . __( 'All done!', 'sportspress' ) . ' <a href="' . admin_url( 'edit.php?post_type=sp_team' ) . '">' . __( 'View Teams', 'sportspress' ) . '</a>' . '</p>';
+			echo '<p>' . esc_html__( 'All done!', 'sportspress' ) . ' <a href="' . esc_url( admin_url( 'edit.php?post_type=sp_team' ) ) . '">' . esc_html__( 'View Teams', 'sportspress' ) . '</a>' . '</p>';
 
 			do_action( 'import_end' );
 		}
@@ -143,8 +143,8 @@ if ( class_exists( 'WP_Importer' ) ) {
 		 */
 		function greet() {
 			echo '<div class="narrow">';
-			echo '<p>' . __( 'Hi there! Choose a .csv file to upload, then click "Upload file and import".', 'sportspress' ) . '</p>';
-			echo '<p>' . sprintf( __( 'Teams need to be defined with columns in a specific order (3 columns). <a href="%s">Click here to download a sample</a>.', 'sportspress' ), plugin_dir_url( SP_PLUGIN_FILE ) . 'dummy-data/teams-sample.csv' ) . '</p>';
+			echo '<p>' . esc_html__( 'Hi there! Choose a .csv file to upload, then click "Upload file and import".', 'sportspress' ) . '</p>';
+			echo '<p>' . sprintf( wp_kses_post( esc_attr__( 'Teams need to be defined with columns in a specific order (3 columns). <a href="%s">Click here to download a sample</a>.', 'sportspress' ) ), esc_url( plugin_dir_url( SP_PLUGIN_FILE ) ) . 'dummy-data/teams-sample.csv' ) . '</p>';
 			wp_import_upload_form( 'admin.php?import=sp_team_csv&step=1' );
 			echo '</div>';
 		}
@@ -164,7 +164,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 							<label>
 								<input type="hidden" name="merge" value="0">
 								<input type="checkbox" name="merge" value="1" checked="checked">
-								<?php _e( 'Merge duplicates', 'sportspress' ); ?>
+								<?php esc_html_e( 'Merge duplicates', 'sportspress' ); ?>
 							</label>
 						</td>
 					</tr>

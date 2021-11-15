@@ -49,12 +49,12 @@ if ( ! class_exists( 'SP_Admin_CPT_List' ) ) :
 			$columns = array_merge(
 				array(
 					'cb'        => '<input type="checkbox" />',
-					'title'     => __( 'Title', 'sportspress' ),
-					'sp_league' => __( 'League', 'sportspress' ),
-					'sp_season' => __( 'Season', 'sportspress' ),
-					'sp_team'   => __( 'Team', 'sportspress' ),
-					'sp_player' => __( 'Players', 'sportspress' ),
-					'sp_layout' => __( 'Layout', 'sportspress' ),
+					'title'     => esc_attr__( 'Title', 'sportspress' ),
+					'sp_league' => esc_attr__( 'League', 'sportspress' ),
+					'sp_season' => esc_attr__( 'Season', 'sportspress' ),
+					'sp_team'   => esc_attr__( 'Team', 'sportspress' ),
+					'sp_player' => esc_attr__( 'Players', 'sportspress' ),
+					'sp_layout' => esc_attr__( 'Layout', 'sportspress' ),
 				),
 				$existing_columns
 			);
@@ -72,22 +72,22 @@ if ( ! class_exists( 'SP_Admin_CPT_List' ) ) :
 					$select = get_post_meta( $post_id, 'sp_select', true );
 					if ( 'manual' == $select ) :
 						$players = array_filter( get_post_meta( $post_id, 'sp_player' ) );
-						echo sizeof( $players );
+						echo esc_html( sizeof( $players ) );
 					else :
-						_e( 'Auto', 'sportspress' );
+						esc_html_e( 'Auto', 'sportspress' );
 					endif;
 					break;
 				case 'sp_league':
-					echo get_the_terms( $post_id, 'sp_league' ) ? the_terms( $post_id, 'sp_league' ) : __( 'All', 'sportspress' );
+					echo get_the_terms( $post_id, 'sp_league' ) ? wp_kses_post( the_terms( $post_id, 'sp_league' ) ) : esc_html__( 'All', 'sportspress' );
 					break;
 				case 'sp_season':
-					echo get_the_terms( $post_id, 'sp_season' ) ? the_terms( $post_id, 'sp_season' ) : __( 'All', 'sportspress' );
+					echo get_the_terms( $post_id, 'sp_season' ) ? wp_kses_post( the_terms( $post_id, 'sp_season' ) ) : esc_html__( 'All', 'sportspress' );
 					break;
 				case 'sp_team':
 					$teams = (array) get_post_meta( $post_id, 'sp_team', false );
 					$teams = array_filter( $teams );
 					if ( empty( $teams ) ) :
-						echo __( 'All', 'sportspress' );
+						echo esc_html__( 'All', 'sportspress' );
 					else :
 						foreach ( $teams as $team_id ) :
 							if ( ! $team_id ) {
@@ -118,7 +118,7 @@ if ( ! class_exists( 'SP_Admin_CPT_List' ) ) :
 
 			$selected = isset( $_REQUEST['sp_league'] ) ? sanitize_key( $_REQUEST['sp_league'] ) : null;
 			$args     = array(
-				'show_option_all' => __( 'Show all leagues', 'sportspress' ),
+				'show_option_all' => esc_attr__( 'Show all leagues', 'sportspress' ),
 				'taxonomy'        => 'sp_league',
 				'name'            => 'sp_league',
 				'selected'        => $selected,
@@ -127,7 +127,7 @@ if ( ! class_exists( 'SP_Admin_CPT_List' ) ) :
 
 			$selected = isset( $_REQUEST['sp_season'] ) ? sanitize_key( $_REQUEST['sp_season'] ) : null;
 			$args     = array(
-				'show_option_all' => __( 'Show all seasons', 'sportspress' ),
+				'show_option_all' => esc_attr__( 'Show all seasons', 'sportspress' ),
 				'taxonomy'        => 'sp_season',
 				'name'            => 'sp_season',
 				'selected'        => $selected,
@@ -138,11 +138,11 @@ if ( ! class_exists( 'SP_Admin_CPT_List' ) ) :
 			$args     = array(
 				'post_type'        => 'sp_team',
 				'name'             => 'team',
-				'show_option_none' => __( 'Show all teams', 'sportspress' ),
+				'show_option_none' => esc_attr__( 'Show all teams', 'sportspress' ),
 				'selected'         => $selected,
 				'values'           => 'ID',
 			);
-			wp_dropdown_pages( $args );
+			wp_dropdown_pages( $args ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}
 
 		/**

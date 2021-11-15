@@ -30,7 +30,7 @@ function sp_get_time( $post = 0, $format = null ) {
 }
 
 function sp_the_time( $post = 0, $format = null ) {
-	echo sp_get_time( $post, $format );
+	echo wp_kses_post( sp_get_time( $post, $format ) );
 }
 
 function sp_get_date( $post = 0, $format = null ) {
@@ -41,7 +41,7 @@ function sp_get_date( $post = 0, $format = null ) {
 }
 
 function sp_the_date( $post = 0, $format = null ) {
-	echo sp_get_date( $post, $format );
+	echo wp_kses_post( sp_get_date( $post, $format ) );
 }
 
 function sp_get_posts( $post_type = 'post', $args = array() ) {
@@ -80,7 +80,7 @@ function sp_the_leagues( $post = 0, $delimiter = ', ' ) {
 			$arr[] = $term->name;
 		endforeach;
 	}
-	echo implode( $delimiter, $arr );
+	echo wp_kses_post( implode( $delimiter, $arr ) );
 }
 
 function sp_the_seasons( $post = 0, $delimiter = ', ' ) {
@@ -91,7 +91,7 @@ function sp_the_seasons( $post = 0, $delimiter = ', ' ) {
 			$arr[] = $term->name;
 		endforeach;
 	}
-	echo implode( $delimiter, $arr );
+	echo wp_kses_post( implode( $delimiter, $arr ) );
 }
 
 /*
@@ -140,7 +140,7 @@ function sp_get_main_results( $post = 0 ) {
 
 function sp_the_main_results( $post = 0, $delimiter = '-' ) {
 	$results = sp_get_main_results( $post );
-	echo implode( $delimiter, $results );
+	echo wp_kses_post( implode( $delimiter, $results ) );
 }
 
 function sp_update_main_results( $post = 0, $results = array() ) {
@@ -158,7 +158,7 @@ function sp_get_main_results_or_time( $post = 0 ) {
 }
 
 function sp_the_main_results_or_time( $post = 0, $delimiter = '-' ) {
-	echo implode( $delimiter, sp_get_main_results_or_time( $post ) );
+	echo wp_kses_post( implode( $delimiter, sp_get_main_results_or_time( $post ) ) );
 }
 
 function sp_get_main_results_or_date( $post = 0, $format = null ) {
@@ -307,7 +307,7 @@ function sp_the_venues( $post = 0, $delimiter = ', ' ) {
 			$arr[] = $term->name;
 		endforeach;
 	}
-	echo implode( $delimiter, $arr );
+	echo wp_kses_post( implode( $delimiter, $arr ) );
 }
 
 function sp_is_home_venue( $post = 0, $event = 0 ) {
@@ -321,7 +321,7 @@ function sp_is_home_venue( $post = 0, $event = 0 ) {
 }
 
 function sp_the_logo( $post = 0, $size = 'icon', $attr = array() ) {
-	echo sp_get_logo( $post, $size, $attr );
+	echo wp_kses_post( sp_get_logo( $post, $size, $attr ) );
 }
 
 function sp_team_logo( $post = 0 ) {
@@ -338,7 +338,7 @@ function sp_team_abbreviation( $post = 0, $forced = false ) {
 }
 
 function sp_the_abbreviation( $post = 0, $forced = false ) {
-	echo sp_team_abbreviation( $post, $forced );
+	echo wp_kses_post( sp_team_abbreviation( $post, $forced ) );
 }
 
 function sp_team_short_name( $post = 0 ) {
@@ -351,7 +351,7 @@ function sp_team_short_name( $post = 0 ) {
 }
 
 function sp_the_short_name( $post = 0 ) {
-	echo sp_team_short_name( $post );
+	echo wp_kses_post( sp_team_short_name( $post ) );
 }
 
 function sp_team_name( $post = 0, $length = 'full' ) {

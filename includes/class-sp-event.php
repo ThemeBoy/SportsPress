@@ -66,7 +66,7 @@ class SP_Event extends SP_Custom_Post {
 			return array( $columns, $usecolumns, $data );
 		else :
 			// Add outcome to result columns
-			$columns['outcome'] = __( 'Outcome', 'sportspress' );
+			$columns['outcome'] = esc_attr__( 'Outcome', 'sportspress' );
 			if ( is_array( $usecolumns ) ) :
 				if ( 'manual' == get_option( 'sportspress_event_result_columns', 'auto' ) ) :
 					foreach ( $columns as $key => $label ) :
@@ -87,7 +87,7 @@ class SP_Event extends SP_Custom_Post {
 				endif;
 
 				if ( 'yes' == get_option( 'sportspress_event_show_outcome', 'no' ) ) :
-					$columns['outcome'] = __( 'Outcome', 'sportspress' );
+					$columns['outcome'] = esc_attr__( 'Outcome', 'sportspress' );
 				endif;
 			endif;
 			$data[0] = $columns;
@@ -179,7 +179,7 @@ class SP_Event extends SP_Custom_Post {
 		else :
 			// Add position to performance labels
 			if ( taxonomy_exists( 'sp_position' ) ) :
-				$labels = array_merge( array( 'position' => __( 'Position', 'sportspress' ) ), $labels );
+				$labels = array_merge( array( 'position' => esc_attr__( 'Position', 'sportspress' ) ), $labels );
 			endif;
 			if ( 'manual' == get_option( 'sportspress_event_performance_columns', 'auto' ) && is_array( $columns ) ) :
 				foreach ( $labels as $key => $label ) :
@@ -457,7 +457,7 @@ class SP_Event extends SP_Custom_Post {
 				$stats[ $index ]['label'] = $name;
 				$stats[ $index ]['icon']  = sp_get_logo( $details['team'] );
 			} elseif ( 'sub' === $details['key'] ) {
-				$sub_name   = sp_array_value( $player_names, $details['sub'], __( 'Substitute', 'sportspress' ) );
+				$sub_name   = sp_array_value( $player_names, $details['sub'], esc_attr__( 'Substitute', 'sportspress' ) );
 				$sub_number = sp_array_value( $player_numbers, $details['sub'] );
 
 				if ( '' !== $sub_number ) {
@@ -468,7 +468,7 @@ class SP_Event extends SP_Custom_Post {
 
 				$stats[ $index ]['sub_name']   = $sub_name;
 				$stats[ $index ]['sub_number'] = $sub_number;
-				$stats[ $index ]['label']      = __( 'Substitute', 'sportspress' );
+				$stats[ $index ]['label']      = esc_attr__( 'Substitute', 'sportspress' );
 				$stats[ $index ]['icon']       = '<i class="sp-icon-sub" title="' . $icon_title . '"></i>';
 			} else {
 				$stats[ $index ]['label'] = sp_array_value( $performance_labels, $details['key'] );

@@ -36,25 +36,25 @@ class SP_Meta_Box_Equation {
 			switch ( $group ) :
 				case 'player_event':
 					$options['Events'] = array(
-						'$eventsattended' => __( 'Attended', 'sportspress' ),
-						'$eventsplayed'   => __( 'Played', 'sportspress' ),
-						'$eventsstarted'  => __( 'Started', 'sportspress' ),
-						'$eventssubbed'   => __( 'Substituted', 'sportspress' ),
-						'$eventminutes'   => __( 'Minutes', 'sportspress' ),
+						'$eventsattended' => esc_attr__( 'Attended', 'sportspress' ),
+						'$eventsplayed'   => esc_attr__( 'Played', 'sportspress' ),
+						'$eventsstarted'  => esc_attr__( 'Started', 'sportspress' ),
+						'$eventssubbed'   => esc_attr__( 'Substituted', 'sportspress' ),
+						'$eventminutes'   => esc_attr__( 'Minutes', 'sportspress' ),
 					);
 					break;
 				case 'team_event':
 					$options['Events'] = array(
-						'$eventsplayed' => __( 'Played', 'sportspress' ),
-						'$eventminutes' => __( 'Minutes', 'sportspress' ),
+						'$eventsplayed' => esc_attr__( 'Played', 'sportspress' ),
+						'$eventminutes' => esc_attr__( 'Minutes', 'sportspress' ),
 					);
 					break;
 				case 'result':
 					$options['Results'] = self::optgroup(
 						'sp_result',
 						array(
-							'for'     => '(' . __( 'for', 'sportspress' ) . ')',
-							'against' => '(' . __(
+							'for'     => '(' . esc_attr__( 'for', 'sportspress' ) . ')',
+							'against' => '(' . esc_attr__(
 								'against',
 								'sportspress'
 							) . ')',
@@ -68,20 +68,20 @@ class SP_Meta_Box_Equation {
 					break;
 				case 'preset':
 					$options['Presets'] = array(
-						'$gamesback'  => __( 'Games Back', 'sportspress' ),
-						'$homerecord' => __( 'Home Record', 'sportspress' ),
-						'$awayrecord' => __( 'Away Record', 'sportspress' ),
-						'$streak'     => __( 'Streak', 'sportspress' ),
-						'$form'       => __( 'Form', 'sportspress' ),
-						'$last5'      => __( 'Last 5', 'sportspress' ),
-						'$last10'     => __( 'Last 10', 'sportspress' ),
+						'$gamesback'  => esc_attr__( 'Games Back', 'sportspress' ),
+						'$homerecord' => esc_attr__( 'Home Record', 'sportspress' ),
+						'$awayrecord' => esc_attr__( 'Away Record', 'sportspress' ),
+						'$streak'     => esc_attr__( 'Streak', 'sportspress' ),
+						'$form'       => esc_attr__( 'Form', 'sportspress' ),
+						'$last5'      => esc_attr__( 'Last 5', 'sportspress' ),
+						'$last10'     => esc_attr__( 'Last 10', 'sportspress' ),
 					);
 					break;
 				case 'subset':
 					$options['Subsets'] = array(
-						'_home'  => '@' . __( 'Home', 'sportspress' ),
-						'_away'  => '@' . __( 'Away', 'sportspress' ),
-						'_venue' => '@' . __( 'Venue', 'sportspress' ),
+						'_home'  => '@' . esc_attr__( 'Home', 'sportspress' ),
+						'_away'  => '@' . esc_attr__( 'Away', 'sportspress' ),
+						'_venue' => '@' . esc_attr__( 'Venue', 'sportspress' ),
 					);
 					break;
 				case 'performance':
@@ -127,7 +127,7 @@ class SP_Meta_Box_Equation {
 						if ( $i % 2 == 0 ) :
 							?>
 							 class="alternate"<?php endif; ?>>
-							<th><?php _e( $label, 'sportspress' ); ?></th>
+							<th><?php esc_attr_e( $label, 'sportspress' ); ?></th>
 							<td>
 								<?php
 								foreach ( $option as $key => $value ) :

@@ -48,11 +48,11 @@ if ( $positions ) {
 // Determine order of sections
 if ( 1 == $sections ) {
 	$section_order = array(
-		1 => __( 'Defense', 'sportspress' ),
-		0 => __( 'Offense', 'sportspress' ),
+		1 => esc_attr__( 'Defense', 'sportspress' ),
+		0 => esc_attr__( 'Offense', 'sportspress' ),
 	);
 } elseif ( 0 == $sections ) {
-	$section_order = array( __( 'Offense', 'sportspress' ), __( 'Defense', 'sportspress' ) );
+	$section_order = array( esc_attr__( 'Offense', 'sportspress' ), esc_attr__( 'Defense', 'sportspress' ) );
 } else {
 	$section_order = array( -1 => null );
 }
@@ -65,7 +65,7 @@ if ( is_array( $leagues ) ) :
 		}
 
 		if ( sizeof( $leagues ) > 1 ) {
-			printf( '<h3 class="sp-post-caption sp-player-statistics-section">%s</h3>', $section_label );
+			printf( '<h3 class="sp-post-caption sp-player-statistics-section">%s</h3>', wp_kses_post( $section_label ) );
 		}
 
 		foreach ( $leagues as $league ) :
@@ -94,7 +94,7 @@ if ( is_array( $leagues ) ) :
 				'player-statistics-league.php',
 				array(
 					'data'       => $player->data( 0, false, $section_id ),
-					'caption'    => __( 'Career Total', 'sportspress' ),
+					'caption'    => esc_attr__( 'Career Total', 'sportspress' ),
 					'scrollable' => $scrollable,
 					'hide_teams' => true,
 				)

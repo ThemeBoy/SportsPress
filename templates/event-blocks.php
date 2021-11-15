@@ -135,7 +135,7 @@ if ( $show_title && false === $title && $id ) :
 endif;
 
 if ( $title ) {
-	echo '<h4 class="sp-table-caption">' . $title . '</h4>';
+	echo '<h4 class="sp-table-caption">' . wp_kses_post( $title ) . '</h4>';
 }
 ?>
 <div class="sp-template sp-template-event-blocks">
@@ -144,7 +144,7 @@ if ( $title ) {
 		<?php
 		if ( $paginated ) {
 			?>
-			 sp-paginated-table<?php } ?>" data-sp-rows="<?php echo $rows; ?>">
+			 sp-paginated-table<?php } ?>" data-sp-rows="<?php echo esc_attr( $rows ); ?>">
 			<thead><tr><th></th></tr></thead> <?php // Required for DataTables ?>
 			<tbody>
 				<?php
@@ -198,15 +198,15 @@ if ( $title ) {
 						$event_group = get_post_meta( $event->ID, 'sp_day', true );
 						if ( ! isset( $group ) || $event_group !== $group ) :
 							$group = $event_group;
-							echo '<tr><th><strong class="sp-event-group-name">', __( 'Match Day', 'sportspress' ), ' ', $group, '</strong></th></tr>';
+							echo '<tr><th><strong class="sp-event-group-name">', esc_attr__( 'Match Day', 'sportspress' ), ' ', wp_kses_post( $group ), '</strong></th></tr>';
 						endif;
 					endif;
 					?>
 					<tr class="sp-row sp-post<?php echo ( $i % 2 == 0 ? ' alternate' : '' ); ?>" itemscope itemtype="http://schema.org/SportsEvent">
 						<td>
 							<?php do_action( 'sportspress_event_blocks_before', $event, $usecolumns ); ?>
-							<?php echo implode( ' ', $logos ); ?>
-							<time class="sp-event-date" datetime="<?php echo $event->post_date; ?>" itemprop="startDate" content="<?php echo mysql2date( 'Y-m-d\TH:iP', $event->post_date ); ?>">
+							<?php echo wp_kses_post( implode( ' ', $logos ) ); ?>
+							<time class="sp-event-date" datetime="<?php echo esc_attr( $event->post_date ); ?>" itemprop="startDate" content="<?php echo esc_attr( mysql2date( 'Y-m-d\TH:iP', $event->post_date ) ); ?>">
 								<?php echo wp_kses_post( sp_add_link( get_the_time( get_option( 'date_format' ), $event ), $permalink, $link_events ) ); ?>
 							</time>
 							<?php
@@ -227,7 +227,7 @@ endif;
 								if ( $leagues ) :
 									$league = array_shift( $leagues );
 									?>
-								<div class="sp-event-league"><?php echo $league->name; ?></div>
+								<div class="sp-event-league"><?php echo wp_kses_post( $league->name ); ?></div>
 															<?php
 															endif;
 endif;
@@ -238,7 +238,7 @@ endif;
 								if ( $seasons ) :
 									$season = array_shift( $seasons );
 									?>
-								<div class="sp-event-season"><?php echo $season->name; ?></div>
+								<div class="sp-event-season"><?php echo wp_kses_post( $season->name ); ?></div>
 															<?php
 															endif;
 endif;
@@ -249,13 +249,13 @@ endif;
 								if ( $venues ) :
 									$venue = array_shift( $venues );
 									?>
-								<div class="sp-event-venue" itemprop="location" itemscope itemtype="http://schema.org/Place"><div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress"><?php echo $venue->name; ?></div></div>
+								<div class="sp-event-venue" itemprop="location" itemscope itemtype="http://schema.org/Place"><div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress"><?php echo wp_kses_post( $venue->name ); ?></div></div>
 															<?php
 															endif;
 endif;
 							?>
 							<?php if ( ! $show_venue || ! $venues ) : ?>
-								<div style="display:none;" class="sp-event-venue" itemprop="location" itemscope itemtype="http://schema.org/Place"><div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress"><?php _e( 'N/A', 'sportspress' ); ?></div></div>
+								<div style="display:none;" class="sp-event-venue" itemprop="location" itemscope itemtype="http://schema.org/Place"><div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress"><?php esc_attr_e( 'N/A', 'sportspress' ); ?></div></div>
 							<?php endif; ?>
 							<h4 class="sp-event-title" itemprop="name">
 								<?php echo wp_kses_post( sp_add_link( $event->post_title, $permalink, $link_events ) ); ?>
@@ -273,7 +273,7 @@ endif;
 	</div>
 	<?php
 	if ( $id && $show_all_events_link ) {
-		echo '<div class="sp-calendar-link sp-view-all-link"><a href="' . get_permalink( $id ) . '">' . __( 'View all events', 'sportspress' ) . '</a></div>';
+		echo '<div class="sp-calendar-link sp-view-all-link"><a href="' . esc_url( get_permalink( $id ) ) . '">' . esc_attr__( 'View all events', 'sportspress' ) . '</a></div>';
 	}
 	?>
 </div>

@@ -31,7 +31,7 @@ class SP_Admin_AJAX {
 	function save_primary_result() {
 		check_ajax_referer( 'sp-save-primary-result', 'nonce' );
 
-		$primary_result = sanitize_key( $_POST['primary_result'] );
+		$primary_result = sanitize_key( $_POST['primary_result'] ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 
 		update_option( 'sportspress_primary_result', $primary_result );
 		wp_send_json_success();
@@ -45,7 +45,7 @@ class SP_Admin_AJAX {
 	function save_primary_performance() {
 		check_ajax_referer( 'sp-save-primary-performance', 'nonce' );
 
-		$primary_performance = sanitize_key( $_POST['primary_performance'] );
+		$primary_performance = sanitize_key( $_POST['primary_performance'] ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 
 		update_option( 'sportspress_primary_performance', $primary_performance );
 		wp_send_json_success();

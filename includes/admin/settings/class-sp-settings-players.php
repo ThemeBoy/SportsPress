@@ -24,7 +24,7 @@ if ( ! class_exists( 'SP_Settings_Players' ) ) :
 		 */
 		public function __construct() {
 			$this->id       = 'players';
-			$this->label    = __( 'Players', 'sportspress' );
+			$this->label    = esc_attr__( 'Players', 'sportspress' );
 			$this->template = 'player';
 
 			add_filter( 'sportspress_settings_tabs_array', array( $this, 'add_settings_page' ), 20 );
@@ -44,7 +44,7 @@ if ( ! class_exists( 'SP_Settings_Players' ) ) :
 			$settings = array_merge(
 				array(
 					array(
-						'title' => __( 'Player Options', 'sportspress' ),
+						'title' => esc_attr__( 'Player Options', 'sportspress' ),
 						'type'  => 'title',
 						'desc'  => '',
 						'id'    => 'player_options',
@@ -58,16 +58,16 @@ if ( ! class_exists( 'SP_Settings_Players' ) ) :
 						array( 'type' => 'player_tabs' ),
 
 						array(
-							'title'   => __( 'Link', 'sportspress' ),
-							'desc'    => __( 'Link players', 'sportspress' ),
+							'title'   => esc_attr__( 'Link', 'sportspress' ),
+							'desc'    => esc_attr__( 'Link players', 'sportspress' ),
 							'id'      => 'sportspress_link_players',
 							'default' => 'yes',
 							'type'    => 'checkbox',
 						),
 
 						array(
-							'title'         => __( 'Details', 'sportspress' ),
-							'desc'          => __( 'Squad Number', 'sportspress' ),
+							'title'         => esc_attr__( 'Details', 'sportspress' ),
+							'desc'          => esc_attr__( 'Squad Number', 'sportspress' ),
 							'id'            => 'sportspress_player_show_number',
 							'default'       => 'no',
 							'type'          => 'checkbox',
@@ -75,7 +75,7 @@ if ( ! class_exists( 'SP_Settings_Players' ) ) :
 						),
 
 						array(
-							'desc'          => __( 'Name', 'sportspress' ),
+							'desc'          => esc_attr__( 'Name', 'sportspress' ),
 							'id'            => 'sportspress_player_show_name',
 							'default'       => 'no',
 							'type'          => 'checkbox',
@@ -83,7 +83,7 @@ if ( ! class_exists( 'SP_Settings_Players' ) ) :
 						),
 
 						array(
-							'desc'          => __( 'Nationality', 'sportspress' ),
+							'desc'          => esc_attr__( 'Nationality', 'sportspress' ),
 							'id'            => 'sportspress_player_show_nationality',
 							'default'       => 'yes',
 							'type'          => 'checkbox',
@@ -91,7 +91,7 @@ if ( ! class_exists( 'SP_Settings_Players' ) ) :
 						),
 
 						array(
-							'desc'          => __( 'Position', 'sportspress' ),
+							'desc'          => esc_attr__( 'Position', 'sportspress' ),
 							'id'            => 'sportspress_player_show_positions',
 							'default'       => 'yes',
 							'type'          => 'checkbox',
@@ -99,7 +99,7 @@ if ( ! class_exists( 'SP_Settings_Players' ) ) :
 						),
 
 						array(
-							'desc'          => __( 'Current Team', 'sportspress' ),
+							'desc'          => esc_attr__( 'Current Team', 'sportspress' ),
 							'id'            => 'sportspress_player_show_current_teams',
 							'default'       => 'yes',
 							'type'          => 'checkbox',
@@ -107,7 +107,7 @@ if ( ! class_exists( 'SP_Settings_Players' ) ) :
 						),
 
 						array(
-							'desc'          => __( 'Past Teams', 'sportspress' ),
+							'desc'          => esc_attr__( 'Past Teams', 'sportspress' ),
 							'id'            => 'sportspress_player_show_past_teams',
 							'default'       => 'yes',
 							'type'          => 'checkbox',
@@ -115,7 +115,7 @@ if ( ! class_exists( 'SP_Settings_Players' ) ) :
 						),
 
 						array(
-							'desc'          => __( 'Leagues', 'sportspress' ),
+							'desc'          => esc_attr__( 'Leagues', 'sportspress' ),
 							'id'            => 'sportspress_player_show_leagues',
 							'default'       => 'no',
 							'type'          => 'checkbox',
@@ -123,7 +123,7 @@ if ( ! class_exists( 'SP_Settings_Players' ) ) :
 						),
 
 						array(
-							'desc'          => __( 'Seasons', 'sportspress' ),
+							'desc'          => esc_attr__( 'Seasons', 'sportspress' ),
 							'id'            => 'sportspress_player_show_seasons',
 							'default'       => 'no',
 							'type'          => 'checkbox',
@@ -131,8 +131,8 @@ if ( ! class_exists( 'SP_Settings_Players' ) ) :
 						),
 
 						array(
-							'title'   => __( 'Nationality', 'sportspress' ),
-							'desc'    => __( 'Display national flags', 'sportspress' ),
+							'title'   => esc_attr__( 'Nationality', 'sportspress' ),
+							'desc'    => esc_attr__( 'Display national flags', 'sportspress' ),
 							'id'      => 'sportspress_player_show_flags',
 							'default' => 'yes',
 							'type'    => 'checkbox',
@@ -147,49 +147,49 @@ if ( ! class_exists( 'SP_Settings_Players' ) ) :
 				),
 				array(
 					array(
-						'title' => __( 'Statistics', 'sportspress' ),
+						'title' => esc_attr__( 'Statistics', 'sportspress' ),
 						'type'  => 'title',
 						'desc'  => '',
 						'id'    => 'player_statistic_options',
 					),
 
 					array(
-						'title'   => __( 'Columns', 'sportspress' ),
+						'title'   => esc_attr__( 'Columns', 'sportspress' ),
 						'id'      => 'sportspress_player_columns',
 						'default' => 'auto',
 						'type'    => 'radio',
 						'options' => array(
-							'auto'   => __( 'Auto', 'sportspress' ),
-							'manual' => __( 'Manual', 'sportspress' ),
+							'auto'   => esc_attr__( 'Auto', 'sportspress' ),
+							'manual' => esc_attr__( 'Manual', 'sportspress' ),
 						),
 					),
 
 					array(
-						'title'   => __( 'Mode', 'sportspress' ),
+						'title'   => esc_attr__( 'Mode', 'sportspress' ),
 						'id'      => 'sportspress_player_statistics_mode',
 						'default' => 'values',
 						'type'    => 'radio',
 						'options' => array(
-							'values' => __( 'Values', 'sportspress' ),
-							'icons'  => __( 'Icons', 'sportspress' ),
+							'values' => esc_attr__( 'Values', 'sportspress' ),
+							'icons'  => esc_attr__( 'Icons', 'sportspress' ),
 						),
 					),
 
 					array(
-						'title'   => __( 'Categories', 'sportspress' ),
+						'title'   => esc_attr__( 'Categories', 'sportspress' ),
 						'id'      => 'sportspress_player_performance_sections',
 						'default' => -1,
 						'type'    => 'radio',
 						'options' => array(
-							-1 => __( 'Combined', 'sportspress' ),
-							0  => __( 'Offense', 'sportspress' ) . ' &rarr; ' . __( 'Defense', 'sportspress' ),
-							1  => __( 'Defense', 'sportspress' ) . ' &rarr; ' . __( 'Offense', 'sportspress' ),
+							-1 => esc_attr__( 'Combined', 'sportspress' ),
+							0  => esc_attr__( 'Offense', 'sportspress' ) . ' &rarr; ' . esc_attr__( 'Defense', 'sportspress' ),
+							1  => esc_attr__( 'Defense', 'sportspress' ) . ' &rarr; ' . esc_attr__( 'Offense', 'sportspress' ),
 						),
 					),
 
 					array(
-						'title'         => __( 'Display', 'sportspress' ),
-						'desc'          => __( 'Total', 'sportspress' ),
+						'title'         => esc_attr__( 'Display', 'sportspress' ),
+						'desc'          => esc_attr__( 'Total', 'sportspress' ),
 						'id'            => 'sportspress_player_show_total',
 						'default'       => 'no',
 						'type'          => 'checkbox',
@@ -197,7 +197,7 @@ if ( ! class_exists( 'SP_Settings_Players' ) ) :
 					),
 
 					array(
-						'desc'          => __( 'Career Total', 'sportspress' ),
+						'desc'          => esc_attr__( 'Career Total', 'sportspress' ),
 						'id'            => 'sportspress_player_show_career_total',
 						'default'       => 'no',
 						'type'          => 'checkbox',

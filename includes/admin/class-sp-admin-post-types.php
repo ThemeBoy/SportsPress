@@ -74,38 +74,38 @@ if ( ! class_exists( 'SP_Admin_Post_Types' ) ) :
 				$obj = get_post_type_object( $typenow );
 
 				for ( $i = 0; $i <= 10; $i++ ) :
-					$messages['post'][ $i ] = __( 'Settings saved.', 'sportspress' ) .
+					$messages['post'][ $i ] = esc_attr__( 'Settings saved.', 'sportspress' ) .
 					' <a href="' . esc_url( admin_url( 'edit.php?post_type=' . $typenow ) ) . '">' .
 					__( 'View All', 'sportspress' ) . '</a>';
 				endfor;
 			elseif ( is_sp_post_type( $typenow ) ) :
 				$obj = get_post_type_object( $typenow );
 
-				$messages['post'][1] = __( 'Changes saved.', 'sportspress' ) .
+				$messages['post'][1] = esc_attr__( 'Changes saved.', 'sportspress' ) .
 				' <a href="' . esc_url( get_permalink( $post->ID ) ) . '">' . $obj->labels->view_item . '</a>';
 
-				$messages['post'][4] = __( 'Changes saved.', 'sportspress' );
+				$messages['post'][4] = esc_attr__( 'Changes saved.', 'sportspress' );
 
-				$messages['post'][6] = __( 'Success!', 'sportspress' ) .
+				$messages['post'][6] = esc_attr__( 'Success!', 'sportspress' ) .
 				' <a href="' . esc_url( get_permalink( $post->ID ) ) . '">' . $obj->labels->view_item . '</a>';
 
-				$messages['post'][7] = __( 'Changes saved.', 'sportspress' );
+				$messages['post'][7] = esc_attr__( 'Changes saved.', 'sportspress' );
 
-				$messages['post'][8] = __( 'Success!', 'sportspress' ) .
+				$messages['post'][8] = esc_attr__( 'Success!', 'sportspress' ) .
 				' <a target="_blank" href="' . esc_url( add_query_arg( 'preview', 'true', get_permalink( $post->ID ) ) ) . '">' .
-				sprintf( __( 'Preview %s', 'sportspress' ), $obj->labels->singular_name ) . '</a>';
+				sprintf( esc_attr__( 'Preview %s', 'sportspress' ), $obj->labels->singular_name ) . '</a>';
 
 				$messages['post'][9] = sprintf(
 					__( 'Scheduled for: <b>%1$s</b>.', 'sportspress' ),
-					date_i18n( __( 'M j, Y @ G:i', 'sportspress' ), strtotime( $post->post_date ) ),
+					date_i18n( esc_attr__( 'M j, Y @ G:i', 'sportspress' ), strtotime( $post->post_date ) ),
 					esc_url( get_permalink( $post->ID ) )
 				) .
 					' <a target="_blank" href="' . esc_url( get_permalink( $post->ID ) ) . '">' .
-					sprintf( __( 'Preview %s', 'sportspress' ), $obj->labels->singular_name ) . '</a>';
+					sprintf( esc_attr__( 'Preview %s', 'sportspress' ), $obj->labels->singular_name ) . '</a>';
 
-				$messages['post'][10] = __( 'Success!', 'sportspress' ) .
+				$messages['post'][10] = esc_attr__( 'Success!', 'sportspress' ) .
 					' <a target="_blank" href="' . esc_url( add_query_arg( 'preview', 'true', get_permalink( $post->ID ) ) ) . '">' .
-					sprintf( __( 'Preview %s', 'sportspress' ), $obj->labels->singular_name ) . '</a>';
+					sprintf( esc_attr__( 'Preview %s', 'sportspress' ), $obj->labels->singular_name ) . '</a>';
 			endif;
 
 			return $messages;

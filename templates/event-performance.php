@@ -51,7 +51,7 @@ if ( is_array( $teams ) ) :
 
 	// Add position to labels if selected
 	if ( $show_position ) {
-		$labels = array_merge( array( 'position' => __( 'Position', 'sportspress' ) ), $labels );
+		$labels = array_merge( array( 'position' => esc_attr__( 'Position', 'sportspress' ) ), $labels );
 	}
 
 	// Remove the first row to leave us with the actual data
@@ -129,7 +129,7 @@ if ( is_array( $teams ) ) :
 				'show_numbers'    => $show_numbers,
 				'show_minutes'    => $show_minutes,
 				'show_total'      => $show_total,
-				'caption'         => __( 'Box Score', 'sportspress' ),
+				'caption'         => esc_attr__( 'Box Score', 'sportspress' ),
 				'labels'          => $labels,
 				'formats'         => $formats,
 				'mode'            => $mode,
@@ -148,11 +148,11 @@ if ( is_array( $teams ) ) :
 			// Determine order of sections
 			if ( 1 == $sections ) {
 				$section_order = array(
-					1 => __( 'Defense', 'sportspress' ),
-					0 => __( 'Offense', 'sportspress' ),
+					1 => esc_attr__( 'Defense', 'sportspress' ),
+					0 => esc_attr__( 'Offense', 'sportspress' ),
 				);
 			} else {
-				$section_order = array( __( 'Offense', 'sportspress' ), __( 'Defense', 'sportspress' ) );
+				$section_order = array( esc_attr__( 'Offense', 'sportspress' ), esc_attr__( 'Defense', 'sportspress' ) );
 			}
 
 			// Initialize labels
@@ -161,7 +161,7 @@ if ( is_array( $teams ) ) :
 
 			// Add positions if applicable
 			if ( $show_position ) {
-				$labels[0]['position'] = $labels[1]['position'] = __( 'Position', 'sportspress' );
+				$labels[0]['position'] = $labels[1]['position'] = esc_attr__( 'Position', 'sportspress' );
 			}
 
 			// Get labels by section
@@ -325,7 +325,7 @@ if ( is_array( $teams ) ) :
 	if ( ! empty( $content ) ) :
 		?>
 		<div class="sp-event-performance-tables sp-event-performance-teams">
-			<?php echo $content; ?>
+			<?php echo wp_kses_post( $content ); ?>
 		</div><!-- .sp-event-performance-tables -->
 		<?php
 	endif;

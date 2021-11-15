@@ -36,37 +36,37 @@ class SP_Meta_Box_Column_Details extends SP_Meta_Box_Config {
 			$precision = 0;
 		}
 		?>
-		<p><strong><?php _e( 'Key', 'sportspress' ); ?></strong></p>
+		<p><strong><?php esc_html_e( 'Key', 'sportspress' ); ?></strong></p>
 		<p>
 			<input name="sp_default_key" type="hidden" id="sp_default_key" value="<?php echo esc_attr( $post->post_name ); ?>">
 			<input name="sp_key" type="text" id="sp_key" value="<?php echo esc_attr( $post->post_name ); ?>">
 		</p>
-		<p><strong><?php _e( 'Decimal Places', 'sportspress' ); ?></strong></p>
+		<p><strong><?php esc_html_e( 'Decimal Places', 'sportspress' ); ?></strong></p>
 		<p class="sp-precision-selector">
 			<input name="sp_precision" type="text" size="4" id="sp_precision" value="<?php echo esc_attr( $precision ); ?>" placeholder="0">
 		</p>
-		<p><strong><?php _e( 'Sort Order', 'sportspress' ); ?></strong></p>
+		<p><strong><?php esc_html_e( 'Sort Order', 'sportspress' ); ?></strong></p>
 		<p class="sp-order-selector">
 			<select name="sp_priority">
 				<?php
-				$options = array( '0' => __( 'Disable', 'sportspress' ) );
+				$options = array( '0' => esc_attr__( 'Disable', 'sportspress' ) );
 				$count   = wp_count_posts( 'sp_column' );
 				for ( $i = 1; $i <= $count->publish; $i++ ) :
 					$options[ $i ] = $i;
 				endfor;
 				foreach ( $options as $key => $value ) :
-					printf( '<option value="%s" %s>%s</option>', $key, selected( true, $key == $priority, false ), $value );
+					printf( '<option value="%s" %s>%s</option>', esc_attr( $key ), selected( true, $key == $priority, false ), esc_html( $value ) );
 				endforeach;
 				?>
 			</select>
 			<select name="sp_order">
 				<?php
 				$options = array(
-					'DESC' => __( 'Descending', 'sportspress' ),
-					'ASC'  => __( 'Ascending', 'sportspress' ),
+					'DESC' => esc_attr__( 'Descending', 'sportspress' ),
+					'ASC'  => esc_attr__( 'Ascending', 'sportspress' ),
 				);
 				foreach ( $options as $key => $value ) :
-					printf( '<option value="%s" %s>%s</option>', $key, selected( true, $key == $order, false ), $value );
+					printf( '<option value="%s" %s>%s</option>', esc_attr( $key ), selected( true, $key == $order, false ), esc_html( $value ) );
 				endforeach;
 				?>
 			</select>

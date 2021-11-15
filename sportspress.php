@@ -89,7 +89,7 @@ if ( ! class_exists( 'SportsPress' ) ) :
 		 * @since 0.7
 		 */
 		public function __clone() {
-			_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'sportspress' ), '0.7' );
+			_doing_it_wrong( __FUNCTION__, esc_html__( 'Cheatin&#8217; huh?', 'sportspress' ), '0.7' );
 		}
 
 		/**
@@ -98,7 +98,7 @@ if ( ! class_exists( 'SportsPress' ) ) :
 		 * @since 0.7
 		 */
 		public function __wakeup() {
-			_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'sportspress' ), '0.7' );
+			_doing_it_wrong( __FUNCTION__, esc_html__( 'Cheatin&#8217; huh?', 'sportspress' ), '0.7' );
 		}
 
 		/**
@@ -144,9 +144,9 @@ if ( ! class_exists( 'SportsPress' ) ) :
 		public function action_links( $links ) {
 			return array_merge(
 				array(
-					'<a href="' . admin_url( 'admin.php?page=sportspress' ) . '">' . __( 'Settings', 'sportspress' ) . '</a>',
-					'<a href="' . apply_filters( 'sportspress_docs_url', 'http://tboy.co/docs' ) . '">' . __( 'Docs', 'sportspress' ) . '</a>',
-					'<a href="' . apply_filters( 'sportspress_pro_url', 'http://tboy.co/pro' ) . '">' . __( 'Upgrade', 'sportspress' ) . '</a>',
+					'<a href="' . admin_url( 'admin.php?page=sportspress' ) . '">' . esc_attr__( 'Settings', 'sportspress' ) . '</a>',
+					'<a href="' . apply_filters( 'sportspress_docs_url', 'http://tboy.co/docs' ) . '">' . esc_attr__( 'Docs', 'sportspress' ) . '</a>',
+					'<a href="' . apply_filters( 'sportspress_pro_url', 'http://tboy.co/pro' ) . '">' . esc_attr__( 'Upgrade', 'sportspress' ) . '</a>',
 				),
 				$links
 			);

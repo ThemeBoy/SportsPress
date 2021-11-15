@@ -24,19 +24,19 @@ class SP_Meta_Box_Event_Shortcode {
 		$shortcodes = apply_filters(
 			'sportspress_event_shortcodes',
 			array(
-				'event_results'     => __( 'Results', 'sportspress' ),
-				'event_details'     => __( 'Details', 'sportspress' ),
-				'event_performance' => __( 'Box Score', 'sportspress' ),
-				'event_venue'       => __( 'Venue', 'sportspress' ),
-				'event_officials'   => __( 'Officials', 'sportspress' ),
-				'event_teams'       => __( 'Teams', 'sportspress' ),
-				'event_full'        => __( 'Full Info', 'sportspress' ),
+				'event_results'     => esc_attr__( 'Results', 'sportspress' ),
+				'event_details'     => esc_attr__( 'Details', 'sportspress' ),
+				'event_performance' => esc_attr__( 'Box Score', 'sportspress' ),
+				'event_venue'       => esc_attr__( 'Venue', 'sportspress' ),
+				'event_officials'   => esc_attr__( 'Officials', 'sportspress' ),
+				'event_teams'       => esc_attr__( 'Teams', 'sportspress' ),
+				'event_full'        => esc_attr__( 'Full Info', 'sportspress' ),
 			)
 		);
 		if ( $shortcodes ) {
 			?>
 		<p class="howto">
-			<?php _e( 'Copy this code and paste it into your post, page or text widget content.', 'sportspress' ); ?>
+			<?php esc_attr_e( 'Copy this code and paste it into your post, page or text widget content.', 'sportspress' ); ?>
 		</p>
 			<?php foreach ( $shortcodes as $id => $label ) { ?>
 		<p>
