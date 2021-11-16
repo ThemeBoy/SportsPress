@@ -1,5 +1,9 @@
 == SportsPress Changelog ==
 
+= 2.7.10 =
+* Fix - Players not selectable in event edit page.
+* Fix - Videos embedded in post content not rendering.
+
 = 2.7.9 =
 * Tweak - Add support for event format in REST API.
 * Tweak - Add "Order" and "Order by" selection fields for countdown widget.
