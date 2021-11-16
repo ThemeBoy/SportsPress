@@ -211,12 +211,7 @@ if ( ! class_exists( 'SportsPress_Lazy_Loading' ) ) :
 			}
 			?>
 		<div id="<?php echo esc_attr( $slug ); ?>-all" class="posttypediv tabs-panel wp-tab-panel sp-tab-panel sp-ajax-checklist sp-select-all-range" style="display: <?php echo esc_attr( $display ); ?>;">
-			<input type="hidden" value="0" name="<?php echo esc_attr( $slug ); ?>
-															<?php
-															if ( isset( $index ) ) {
-																echo '[' . esc_attr( $index ) . ']';}
-															?>
-			[]" />
+			<input type="hidden" value="0" name="<?php echo esc_attr( $slug ); ?><?php if ( isset( $index ) ) { echo '[' . esc_attr( $index ) . ']';} ?>[]" />
 			<ul class="categorychecklist form-no-clear">
 				<?php if ( is_array( $posts ) && sizeof( $posts ) ) { ?>
 					<li class="sp-select-all-container">
@@ -228,12 +223,7 @@ if ( ! class_exists( 'SportsPress_Lazy_Loading' ) ) :
 					<?php foreach ( $posts as $post ) { ?>
 						<li>
 							<label class="selectit">
-								<input type="checkbox" value="<?php echo esc_attr( $post->ID ); ?>" name="<?php echo esc_attr( $slug ); ?>
-																		 <?php
-																			if ( isset( $index ) ) {
-																				echo '[' . esc_attr( $index ) . ']';}
-																			?>
-								[]" <?php checked( array_key_exists( $post->ID, $selected ) ); ?>>
+								<input type="checkbox" value="<?php echo esc_attr( $post->ID ); ?>" name="<?php echo esc_attr( $slug ); ?><?php if ( isset( $index ) ) { echo '[' . esc_attr( $index ) . ']';} ?>[]" <?php checked( array_key_exists( $post->ID, $selected ) ); ?>>
 								<?php
 								switch ( $player_sort ) {
 									case 'name':
@@ -257,21 +247,16 @@ if ( ! class_exists( 'SportsPress_Lazy_Loading' ) ) :
 													?>
 						<li>
 							<label class="selectit">
-								<input type="checkbox" value="<?php echo esc_attr( $post_id ); ?>" name="<?php echo esc_attr( $slug ); ?>
-																		 <?php
-																			if ( isset( $index ) ) {
-																				echo '[' . esc_attr( $index ) . ']';}
-																			?>
-								[]" <?php checked( true ); ?>>
-														<?php
-														switch ( $player_sort ) {
-															case 'name':
-																echo esc_html( sp_get_player_name_then_number( $post_id ) );
-																break;
-															default:  // 'jersey'
-																echo esc_html( sp_get_player_name_with_number( $post_id ) );
-														}
-														?>
+								<input type="checkbox" value="<?php echo esc_attr( $post_id ); ?>" name="<?php echo esc_attr( $slug ); ?><?php if ( isset( $index ) ) { echo '[' . esc_attr( $index ) . ']';} ?>[]" <?php checked( true ); ?>>
+								<?php
+								switch ( $player_sort ) {
+									case 'name':
+										echo esc_html( sp_get_player_name_then_number( $post_id ) );
+										break;
+									default:  // 'jersey'
+										echo esc_html( sp_get_player_name_with_number( $post_id ) );
+								}
+								?>
 							</label>
 						</li>
 											<?php
