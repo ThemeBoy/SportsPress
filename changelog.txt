@@ -1,5 +1,8 @@
 == SportsPress Changelog ==
 
+= 2.7.12 =
+* Fix - OpenStreetMap not displaying map after update.
+
 = 2.7.11 =
 * Fix - Player status selector not reflecting changes in match edit screen.
 * Fix - Player dropdown template not displaying names.
