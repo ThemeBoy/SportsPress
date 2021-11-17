@@ -80,7 +80,7 @@ if ( sizeof( $options ) > 1 ) :
 	?>
 	<div class="sp-template sp-template-player-selector sp-template-profile-selector">
 		<select class="sp-profile-selector sp-player-selector sp-selector-redirect">
-			<?php echo wp_kses_post( implode( $options ) ); ?>
+			<?php echo wp_kses( implode( $options ), array( 'option' => array( 'value' => array(), 'selected' => array() ) ) ); ?>
 		</select>
 	</div>
 	<?php
