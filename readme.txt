@@ -4,7 +4,7 @@ Tags: calendars, club, club management, esports, events, fixtures, leagues, leag
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
 Tested up to: 5.8.1
-Stable tag: 2.7.10
+Stable tag: 2.7.11
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -239,6 +239,11 @@ There are [3 different licenses](http://tboy.co/pro) that you can choose from: C
 When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
 
 == Changelog ==
+
+= 2.7.11 =
+* Fix - Player status selector not reflecting changes in match edit screen.
+* Fix - Player dropdown template not displaying names.
+* Fix - Staff dropdown template not displaying names.
 
 = 2.7.10 =
 * Fix - Players not selectable in event edit page.

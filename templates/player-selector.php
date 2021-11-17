@@ -4,7 +4,7 @@
  *
  * @author      ThemeBoy
  * @package     SportsPress/Templates
- * @version   2.6.8
+ * @version   2.7.11
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

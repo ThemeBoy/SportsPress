@@ -1,5 +1,10 @@
 == SportsPress Changelog ==
 
+= 2.7.11 =
+* Fix - Player status selector not reflecting changes in match edit screen.
+* Fix - Player dropdown template not displaying names.
+* Fix - Staff dropdown template not displaying names.
+
 = 2.7.10 =
 * Fix - Players not selectable in event edit page.
 * Fix - Videos embedded in post content not rendering.
