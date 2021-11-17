@@ -20,14 +20,6 @@ $lists = $team->lists();
 
 foreach ( $lists as $list ) :
 	$id       = $list->ID;
-	$grouping = get_post_meta( $id, 'sp_grouping', true );
-
-	if ( $grouping == 0 && sizeof( $lists ) > 1 ) :
-		?>
-		<h4 class="sp-table-caption"><?php echo wp_kses_post( $list->post_title ); ?></h4>
-		<?php
-	endif;
-
 	$format = get_post_meta( $id, 'sp_format', true );
 	if ( array_key_exists( $format, SP()->formats->list ) ) {
 		sp_get_template( 'player-' . $format . '.php', array( 'id' => $id ) );
