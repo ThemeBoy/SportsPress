@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 <div id="message" class="error sportspress-message">
-	<p><?php esc_attr_e( '<strong>Your theme does not declare SportsPress support</strong> &#8211; if you encounter layout issues please read our integration guide or choose a SportsPress theme :)', 'sportspress' ); ?></p>
+	<p><?php echo wp_kses_post( __( '<strong>Your theme does not declare SportsPress support</strong> &#8211; if you encounter layout issues please read our integration guide or choose a SportsPress theme :)', 'sportspress' ) ); ?></p>
 	<p><?php esc_attr_e( 'Have you tried the free Rookie theme yet?', 'sportspress' ); ?></p>
 	<p class="submit">
 		<a class="button-primary" href="<?php echo esc_url( add_query_arg( array( 'theme' => 'rookie' ), network_admin_url( 'theme-install.php' ) ) ); ?>"><?php esc_attr_e( 'Install Now', 'sportspress' ); ?></a>
