@@ -1195,7 +1195,7 @@ if ( ! function_exists( 'sp_post_checklist' ) ) {
 						endif;
 					?>
 					">
-						<?php echo wp_kses( str_repeat( '<ul><li>', sizeof( $parents ) ) ); ?>
+						<?php echo str_repeat( '<ul><li>', sizeof( $parents ) ); ?>
 						<label class="selectit">
 							<input type="checkbox" value="<?php echo esc_attr( $post->ID ); ?>" name="<?php echo esc_attr( $slug ); ?><?php if ( isset( $index ) ) { echo '[' . esc_attr( $index ) . ']';} ?>[]"
 							<?php
@@ -1205,7 +1205,7 @@ if ( ! function_exists( 'sp_post_checklist' ) ) {
 >
 							<?php echo esc_html( sp_get_player_name_with_number( $post->ID ) ); ?>
 						</label>
-						<?php echo wp_kses( str_repeat( '</li></ul>', sizeof( $parents ) ) ); ?>
+						<?php echo str_repeat( '</li></ul>', sizeof( $parents ) ); ?>
 					</li>
 					<?php
 				endforeach;
