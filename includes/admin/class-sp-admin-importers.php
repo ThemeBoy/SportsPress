@@ -36,27 +36,27 @@ if ( ! class_exists( 'SP_Admin_Importers' ) ) :
 				array(
 					'sp_event_csv'   => array(
 						'name'        => esc_attr__( 'SportsPress Events (CSV)', 'sportspress' ),
-						'description' => esc_attr__( 'Import <strong>events</strong> from a csv file.', 'sportspress' ),
+						'description' => wp_kses_post( __( 'Import <strong>events</strong> from a csv file.', 'sportspress' ) ),
 						'callback'    => array( $this, 'events_importer' ),
 					),
 					'sp_fixture_csv' => array(
 						'name'        => esc_attr__( 'SportsPress Fixtures (CSV)', 'sportspress' ),
-						'description' => esc_attr__( 'Import <strong>upcoming events</strong> from a csv file.', 'sportspress' ),
+						'description' => wp_kses_post( __( 'Import <strong>upcoming events</strong> from a csv file.', 'sportspress' ) ),
 						'callback'    => array( $this, 'fixtures_importer' ),
 					),
 					'sp_team_csv'    => array(
 						'name'        => esc_attr__( 'SportsPress Teams (CSV)', 'sportspress' ),
-						'description' => esc_attr__( 'Import <strong>teams</strong> from a csv file.', 'sportspress' ),
+						'description' => wp_kses_post( __( 'Import <strong>teams</strong> from a csv file.', 'sportspress' ) ),
 						'callback'    => array( $this, 'teams_importer' ),
 					),
 					'sp_player_csv'  => array(
 						'name'        => esc_attr__( 'SportsPress Players (CSV)', 'sportspress' ),
-						'description' => esc_attr__( 'Import <strong>players</strong> from a csv file.', 'sportspress' ),
+						'description' => wp_kses_post( __( 'Import <strong>players</strong> from a csv file.', 'sportspress' ) ),
 						'callback'    => array( $this, 'players_importer' ),
 					),
 					'sp_staff_csv'   => array(
 						'name'        => esc_attr__( 'SportsPress Staff (CSV)', 'sportspress' ),
-						'description' => esc_attr__( 'Import <strong>staff</strong> from a csv file.', 'sportspress' ),
+						'description' => wp_kses_post( __( 'Import <strong>staff</strong> from a csv file.', 'sportspress' ) ),
 						'callback'    => array( $this, 'staff_importer' ),
 					),
 				)

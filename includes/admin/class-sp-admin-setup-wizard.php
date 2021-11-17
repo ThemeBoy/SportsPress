@@ -204,7 +204,7 @@ class SP_Admin_Setup_Wizard {
 	public function sp_setup_introduction() {
 		?>
 	<h1><?php esc_html_e( 'Welcome to SportsPress', 'sportspress' ); ?></h1>
-	<p><?php esc_html_e( 'Thank you for choosing SportsPress to power your sports website! This quick setup wizard will help you configure the basic settings. <strong>It’s completely optional and shouldn’t take longer than five minutes.</strong>', 'sportspress' ); ?></p>
+	<p><?php echo wp_kses_post( __( 'Thank you for choosing SportsPress to power your sports website! This quick setup wizard will help you configure the basic settings. <strong>It’s completely optional and shouldn’t take longer than five minutes.</strong>', 'sportspress' ) ); ?></p>
 	<p><?php esc_html_e( 'No time right now? If you don’t want to go through the wizard, you can skip and return to the WordPress dashboard. Come back anytime if you change your mind!', 'sportspress' ); ?></p>
 	<p class="sp-setup-actions step">
 	  <a href="<?php echo esc_url( $this->get_next_step_link() ); ?>" class="button-primary button button-large button-next"><?php esc_html_e( 'Let\'s Go!', 'sportspress' ); ?></a>

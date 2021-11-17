@@ -64,7 +64,7 @@
 				$memory = sp_let_to_num( WP_MEMORY_LIMIT );
 
 			if ( $memory < 67108864 ) {
-        echo '<mark class="error">' . wp_kses_post( sprintf( esc_attr__( '%1$s - We recommend setting memory to at least 64MB. See: <a href="%2$s">Increasing memory allocated to PHP</a>', 'sportspress' ), esc_html( size_format( $memory ) ), 'http://codex.wordpress.org/Editing_wp-config.php#Increasing_memory_allocated_to_PHP' ) ) . '</mark>';
+        echo '<mark class="error">' . wp_kses_post( sprintf( __( '%1$s - We recommend setting memory to at least 64MB. See: <a href="%2$s">Increasing memory allocated to PHP</a>', 'sportspress' ), esc_html( size_format( $memory ) ), 'http://codex.wordpress.org/Editing_wp-config.php#Increasing_memory_allocated_to_PHP' ) ) . '</mark>';
 			} else {
 				echo '<mark class="yes">' . esc_html( size_format( $memory ) ) . '</mark>';
 			}
@@ -592,7 +592,7 @@
 						$theme_version = $this->get_file_version( $theme_file );
 
 						if ( $core_version && ( empty( $theme_version ) || version_compare( $theme_version, $core_version, '<' ) ) ) {
-							$found_files[ $plugin_name ][] = sprintf( esc_attr__( '<code>%1$s</code> version <strong style="color:red">%2$s</strong> is out of date. The core version is %3$s', 'sportspress' ), basename( $theme_file ), $theme_version ? $theme_version : '-', $core_version );
+							$found_files[ $plugin_name ][] = wp_kses_post( sprintf( __( '<code>%1$s</code> version <strong style="color:red">%2$s</strong> is out of date. The core version is %3$s', 'sportspress' ), basename( $theme_file ), $theme_version ? $theme_version : '-', $core_version ) );
 						} else {
 							$found_files[ $plugin_name ][] = sprintf( '<code>%s</code>', basename( $theme_file ) );
 						}

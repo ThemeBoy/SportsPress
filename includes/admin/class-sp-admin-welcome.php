@@ -329,7 +329,7 @@ class SP_Admin_Welcome {
 	<div class="wrap about-wrap about-sportspress-wrap">
 		<?php $this->intro(); ?>
 	  
-	  <p class="about-description"><?php printf( wp_kses_post( esc_attr__( 'SportsPress is developed and maintained by a worldwide team of passionate individuals and backed by an awesome developer community. Want to see your name? <a href="%s">Contribute to SportsPress</a>.', 'sportspress' ) ), 'https://github.com/ThemeBoy/SportsPress/blob/master/CONTRIBUTING.md' ); ?></p>
+	  <p class="about-description"><?php printf( wp_kses_post( __( 'SportsPress is developed and maintained by a worldwide team of passionate individuals and backed by an awesome developer community. Want to see your name? <a href="%s">Contribute to SportsPress</a>.', 'sportspress' ) ), 'https://github.com/ThemeBoy/SportsPress/blob/master/CONTRIBUTING.md' ); ?></p>
 
 	  <div class="sp-feature feature-section col one-col">
 		<?php echo wp_kses_post( $this->contributors() ); ?>
@@ -347,7 +347,7 @@ class SP_Admin_Welcome {
 
 		<?php $this->intro(); ?>
 
-	  <p class="about-description"><?php printf( wp_kses_post( esc_attr__( 'SportsPress has been kindly translated into several other languages thanks to our translation team. Want to see your name? <a href="%s">Translate SportsPress</a>.', 'sportspress' ) ), 'https://translate.wordpress.org/projects/wp-plugins/sportspress' ); ?></p>
+	  <p class="about-description"><?php printf( wp_kses_post( __( 'SportsPress has been kindly translated into several other languages thanks to our translation team. Want to see your name? <a href="%s">Translate SportsPress</a>.', 'sportspress' ) ), 'https://translate.wordpress.org/projects/wp-plugins/sportspress' ); ?></p>
 	</div>
 		<?php
 	}

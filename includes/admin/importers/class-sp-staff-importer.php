@@ -164,7 +164,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 
 			// Show Result
 			echo '<div class="updated settings-error below-h2"><p>
-				' . sprintf( esc_html__( 'Import complete - imported <strong>%1$s</strong> staff and skipped <strong>%2$s</strong>.', 'sportspress' ), esc_html( $this->imported ), esc_html( $this->skipped ) ) . '
+				' . wp_kses_post( sprintf( __( 'Import complete - imported <strong>%1$s</strong> staff and skipped <strong>%2$s</strong>.', 'sportspress' ), esc_html( $this->imported ), esc_html( $this->skipped ) ) ) . '
 			</p></div>';
 
 			$this->import_end();
@@ -198,7 +198,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 		function greet() {
 			echo '<div class="narrow">';
 			echo '<p>' . esc_html__( 'Hi there! Choose a .csv file to upload, then click "Upload file and import".', 'sportspress' ) . '</p>';
-			echo '<p>' . sprintf( wp_kses_post( esc_attr__( 'Staff need to be defined with columns in a specific order (6 columns). <a href="%s">Click here to download a sample</a>.', 'sportspress' ) ), esc_url( plugin_dir_url( SP_PLUGIN_FILE ) ) . 'dummy-data/staff-sample.csv' ) . '</p>';
+			echo '<p>' . wp_kses_post( sprintf( __( 'Staff need to be defined with columns in a specific order (6 columns). <a href="%s">Click here to download a sample</a>.', 'sportspress' ), esc_url( plugin_dir_url( SP_PLUGIN_FILE ) ) . 'dummy-data/staff-sample.csv' ) ) . '</p>';
 			wp_import_upload_form( 'admin.php?import=sp_staff_csv&step=1' );
 			echo '</div>';
 		}

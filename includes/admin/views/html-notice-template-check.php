@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 <div id="message" class="updated sportspress-message wc-connect">
-	<p><?php esc_attr_e( '<strong>Your theme has bundled outdated copies of SportsPress template files</strong> &#8211; if you encounter functionality issues on the frontend this could the reason. Ensure you update or remove them (in general we recommend only bundling the template files you actually need to customize). See the system report for full details.', 'sportspress' ); ?></p>
+	<p><?php echo wp_kses_post( __( '<strong>Your theme has bundled outdated copies of SportsPress template files</strong> &#8211; if you encounter functionality issues on the frontend this could the reason. Ensure you update or remove them (in general we recommend only bundling the template files you actually need to customize). See the system report for full details.', 'sportspress' ) ); ?></p>
 	<p class="submit"><a class="button-primary" href="
 	<?php
 	echo esc_url(

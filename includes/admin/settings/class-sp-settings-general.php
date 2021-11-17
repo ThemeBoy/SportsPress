@@ -359,7 +359,7 @@ if ( ! class_exists( 'SP_Settings_General' ) ) :
 			<td class="forminp">
 				<legend class="screen-reader-text"><span><?php esc_html_e( 'Timezone', 'sportspress' ); ?></span></legend>
 				<select id="timezone_string" name="timezone_string" class="<?php echo esc_attr( $class ); ?>">
-					<?php echo wp_kses( wp_timezone_choice( $tzstring ), array( 'option' => array( 'value' => array(), 'selected' => array() ) ) ); ?>
+					<?php echo esc_html( wp_timezone_choice( $tzstring ) ); ?>
 				</select>
 			   </td>
 		   </tr>

@@ -74,7 +74,7 @@ if ( ! class_exists( 'SportsPress_Birthdays' ) ) :
 					case 'Published on: <b>%1$s</b>':
 					case 'Schedule for: <b>%1$s</b>':
 					case 'Publish on: <b>%1$s</b>':
-						return esc_attr__( 'Birthday: <b>%1$s</b>', 'sportspress' );
+						return wp_kses_post( __( 'Birthday: <b>%1$s</b>', 'sportspress' ) );
 					case 'Publish <b>immediately</b>':
 						return esc_attr__( 'Birthday', 'sportspress' );
 					case 'M j, Y @ G:i':

@@ -78,7 +78,7 @@ if ( ! class_exists( 'SP_Admin_Permalink_Settings' ) ) :
 		 * Show the settings
 		 */
 		public function settings() {
-			echo wp_kses_post( wpautop( esc_attr__( 'These settings control the permalinks used for SportsPress. These settings only apply when <strong>not using "default" permalinks above</strong>.', 'sportspress' ) ) );
+			echo wp_kses_post( wpautop( __( 'These settings control the permalinks used for SportsPress. These settings only apply when <strong>not using "default" permalinks above</strong>.', 'sportspress' ) ) );
 		}
 
 		/**

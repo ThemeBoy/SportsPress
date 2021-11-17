@@ -423,7 +423,7 @@ if ( ! class_exists( 'SportsPress_Officials' ) ) :
 		public function register_importer( $importers = array() ) {
 			$importers['sp_official_csv'] = array(
 				'name'        => esc_attr__( 'SportsPress Officials (CSV)', 'sportspress' ),
-				'description' => esc_attr__( 'Import <strong>officials</strong> from a csv file.', 'sportspress' ),
+				'description' => wp_kses_post( __( 'Import <strong>officials</strong> from a csv file.', 'sportspress' ) ),
 				'callback'    => array( $this, 'officials_importer' ),
 			);
 			return $importers;

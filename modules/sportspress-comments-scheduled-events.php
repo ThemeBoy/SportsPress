@@ -88,16 +88,16 @@ if ( ! class_exists( 'SportsPress_Comments_Scheduled_Events' ) ) :
 			if ( get_option( 'require_name_email' ) && ! $user->exists() ) {
 				if ( '' == $comment_author_email || '' == $comment_author ) {
 					// return new WP_Error( 'require_name_email', esc_attr__( '<strong>ERROR</strong>: please fill the required fields (name, email).' ), 200 );
-					wp_die( esc_attr__( '<strong>ERROR</strong>: please fill the required fields (name, email).' ), esc_attr__( 'ERROR: please fill the required fields (name, email).' ), array( 'back_link' => true ) );
+					wp_die( wp_kses_post( __( '<strong>ERROR</strong>: please fill the required fields (name, email).' ) ), esc_attr__( 'ERROR: please fill the required fields (name, email).' ), array( 'back_link' => true ) );
 				} elseif ( ! is_email( $comment_author_email ) ) {
 					// return new WP_Error( 'require_valid_email', esc_attr__( '<strong>ERROR</strong>: please enter a valid email address.' ), 200 );
-					wp_die( esc_attr__( '<strong>ERROR</strong>: please enter a valid email address.' ), esc_attr__( 'ERROR: please enter a valid email address.' ), array( 'back_link' => true ) );
+					wp_die( wp_kses_post( __( '<strong>ERROR</strong>: please enter a valid email address.' ) ), esc_attr__( 'ERROR: please enter a valid email address.' ), array( 'back_link' => true ) );
 				}
 			}
 
 			if ( '' == $comment_content ) {
 				// return new WP_Error( 'require_valid_comment', esc_attr__( '<strong>ERROR</strong>: please type a comment.' ), 200 );
-				wp_die( esc_attr__( '<strong>ERROR</strong>: please type a comment.' ), esc_attr__( 'ERROR: please type a comment.' ), array( 'back_link' => true ) );
+				wp_die( wp_kses_post( __( '<strong>ERROR</strong>: please type a comment.' ) ), esc_attr__( 'ERROR: please type a comment.' ), array( 'back_link' => true ) );
 			}
 
 			$comment_parent = isset( $_POST['comment_parent'] ) ? absint( $_POST['comment_parent'] ) : 0;
@@ -125,7 +125,7 @@ if ( ! class_exists( 'SportsPress_Comments_Scheduled_Events' ) ) :
 
 			if ( ! $comment_id ) {
 				// return new WP_Error( 'comment_save_error', esc_attr__( '<strong>ERROR</strong>: The comment could not be saved. Please try again later.' ), 500 );
-				wp_die( esc_attr__( '<strong>ERROR</strong>: The comment could not be saved. Please try again later.' ), esc_attr__( 'ERROR: The comment could not be saved. Please try again later.' ), array( 'back_link' => true ) );
+				wp_die( wp_kses_post( __( '<strong>ERROR</strong>: The comment could not be saved. Please try again later.' ) ), esc_attr__( 'ERROR: The comment could not be saved. Please try again later.' ), array( 'back_link' => true ) );
 			}
 
 			$comment = get_comment( $comment_id );
