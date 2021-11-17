@@ -4,7 +4,7 @@
  *
  * @author      ThemeBoy
  * @package     SportsPress/Templates
- * @version     2.3
+ * @version     2.7.11
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -72,7 +72,7 @@ if ( sizeof( $options ) > 1 ) :
 	?>
 	<div class="sp-template sp-template-staff-selector sp-template-profile-selector">
 		<select class="sp-profile-selector sp-staff-selector sp-selector-redirect">
-			<?php echo wp_kses_post( implode( $options ) ); ?>
+			<?php echo wp_kses( implode( $options ), array( 'option' => array( 'value' => array(), 'selected' => array() ) ) ); ?>
 		</select>
 	</div>
 	<?php

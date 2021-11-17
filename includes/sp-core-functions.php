@@ -7,7 +7,7 @@
  * @author      ThemeBoy
  * @category    Core
  * @package     SportsPress/Functions
- * @version   2.7.9
+ * @version   2.7.11
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -1151,12 +1151,7 @@ if ( ! function_exists( 'sp_post_checklist' ) ) {
 		}
 		?>
 		<div id="<?php echo esc_attr( $slug ); ?>-all" class="posttypediv tabs-panel wp-tab-panel sp-tab-panel sp-tab-filter-panel sp-select-all-range" style="display: <?php echo esc_attr( $display ); ?>;">
-			<input type="hidden" value="0" name="<?php echo esc_attr( $slug ); ?>
-															<?php
-															if ( isset( $index ) ) {
-																echo '[' . esc_attr( $index ) . ']';}
-															?>
-			[]" />
+			<input type="hidden" value="0" name="<?php echo esc_attr( $slug ); ?><?php if ( isset( $index ) ) { echo '[' . esc_attr( $index ) . ']';} ?>[]" />
 			<ul class="categorychecklist form-no-clear">
 				<li class="sp-select-all-container"><label class="selectit"><input type="checkbox" class="sp-select-all"> <strong><?php esc_attr_e( 'Select All', 'sportspress' ); ?></strong></label></li>
 				<?php
@@ -1220,14 +1215,9 @@ if ( ! function_exists( 'sp_post_checklist' ) ) {
 						endif;
 					?>
 					">
-						<?php echo wp_kses( str_repeat( '<ul><li>', sizeof( $parents ) ) ); ?>
+						<?php echo str_repeat( '<ul><li>', sizeof( $parents ) ); ?>
 						<label class="selectit">
-							<input type="checkbox" value="<?php echo esc_attr( $post->ID ); ?>" name="<?php echo esc_attr( $slug ); ?>
-																	 <?php
-																		if ( isset( $index ) ) {
-																			echo '[' . esc_attr( $index ) . ']';}
-																		?>
-							[]"
+							<input type="checkbox" value="<?php echo esc_attr( $post->ID ); ?>" name="<?php echo esc_attr( $slug ); ?><?php if ( isset( $index ) ) { echo '[' . esc_attr( $index ) . ']';} ?>[]"
 							<?php
 							if ( in_array( $post->ID, $selected ) ) {
 								echo ' checked="checked"';}
@@ -1235,7 +1225,7 @@ if ( ! function_exists( 'sp_post_checklist' ) ) {
 >
 							<?php echo esc_html( sp_get_player_name_with_number( $post->ID ) ); ?>
 						</label>
-						<?php echo wp_kses( str_repeat( '</li></ul>', sizeof( $parents ) ) ); ?>
+						<?php echo str_repeat( '</li></ul>', sizeof( $parents ) ); ?>
 					</li>
 					<?php
 				endforeach;
