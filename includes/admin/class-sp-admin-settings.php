@@ -404,12 +404,7 @@ if ( ! class_exists( 'SP_Admin_Settings' ) ) :
 						</th>
 						<td class="forminp forminp-<?php echo esc_attr( $value['type'] ); ?>">
 							<select
-								name="<?php echo esc_attr( $value['id'] ); ?>
-												 <?php
-													if ( $value['type'] == 'multiselect' ) {
-														echo '[]';}
-													?>
-								"
+								name="<?php echo esc_attr( $value['id'] ); ?><?php if ( $value['type'] == 'multiselect' ) { echo '[]';} ?>"
 								id="<?php echo esc_attr( $value['id'] ); ?>"
 								style="<?php echo esc_attr( $value['css'] ); ?>"
 								class="chosen-select
@@ -458,12 +453,7 @@ if ( ! class_exists( 'SP_Admin_Settings' ) ) :
 						</th>
 						<td class="forminp forminp-<?php echo esc_attr( $value['type'] ); ?>">
 							<select
-								name="<?php echo esc_attr( $value['id'] ); ?>
-												 <?php
-													if ( $value['type'] == 'multiselect' ) {
-														echo '[]';}
-													?>
-								"
+								name="<?php echo esc_attr( $value['id'] ); ?><?php if ( $value['type'] == 'multiselect' ) { echo '[]';} ?>"
 								id="<?php echo esc_attr( $value['id'] ); ?>"
 								style="<?php echo esc_attr( $value['css'] ); ?>"
 								class="chosen-select
@@ -526,12 +516,7 @@ if ( ! class_exists( 'SP_Admin_Settings' ) ) :
 						</th>
 						<td class="forminp forminp-<?php echo esc_attr( $value['type'] ); ?>">
 							<select
-								name="<?php echo esc_attr( $value['id'] ); ?>
-												 <?php
-													if ( $value['type'] == 'multiselect' ) {
-														echo '[]';}
-													?>
-								"
+								name="<?php echo esc_attr( $value['id'] ); ?><?php if ( $value['type'] == 'multiselect' ) { echo '[]';} ?>"
 								id="<?php echo esc_attr( $value['id'] ); ?>"
 								style="<?php echo esc_attr( $value['css'] ); ?>"
 								class="sp-select-sport chosen-select
@@ -718,7 +703,7 @@ if ( ! class_exists( 'SP_Admin_Settings' ) ) :
 					continue;
 				}
 
-				$type = isset( $value['type'] ) ? esc_attr( $value['type'] ) : '';
+				$type = isset( $value['type'] ) ? sanitize_key( $value['type'] ) : '';
 
 				// Get the option name
 				$option_value = null;
