@@ -145,7 +145,6 @@ class SP_Admin_Setup_Wizard {
 	  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	  <title><?php esc_html_e( 'SportsPress', 'sportspress' ); ?> &rsaquo; <?php echo esc_html( $this->steps[ $this->step ]['name'] ); ?></title>
 		<?php do_action( 'admin_print_styles' ); ?>
-		<?php do_action( 'admin_head' ); ?>
 	</head>
 	<body class="sp-setup wp-core-ui">
 	  <h1 id="sp-logo"><?php echo wp_kses_post( apply_filters( 'sportspress_logo', '<img src="' . plugin_dir_url( SP_PLUGIN_FILE ) . 'assets/images/modules/sportspress' . ( class_exists( 'SportsPress_Pro' ) ? '-pro' : '' ) . '.png" alt="' . esc_attr__( 'SportsPress', 'sportspress' ) . '">' ) ); ?></h1>
