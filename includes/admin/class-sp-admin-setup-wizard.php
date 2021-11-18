@@ -248,7 +248,7 @@ class SP_Admin_Setup_Wizard {
 						$tzstring = 'UTC+' . $current_offset;
 					}
 				}
-				echo esc_attr( wp_timezone_choice( $tzstring ) );
+				echo wp_kses( wp_timezone_choice( $tzstring ), array( 'option' => array( 'value' => array(), 'selected' => array() ) ) );
 				?>
 			</select>
 		  </td>
