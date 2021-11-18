@@ -4,7 +4,7 @@ Tags: calendars, club, club management, esports, events, fixtures, leagues, leag
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
 Tested up to: 5.8.1
-Stable tag: 2.7.12
+Stable tag: 2.7.13
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -239,6 +239,13 @@ There are [3 different licenses](http://tboy.co/pro) that you can choose from: C
 When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
 
 == Changelog ==
+
+= 2.7.13 =
+* Fix - Theme notice escaping.
+* Fix - Timezone dropdown selection now shown in general settings.
+* Fix - Double header when multiple player lists are displayed in team.
+* Fix - Dropdown options not saving in settings.
+* Fix - Setup page conflict with WooCommerce.
 
 = 2.7.12 =
 * Fix - OpenStreetMap not displaying map after update.

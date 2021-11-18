@@ -1,5 +1,12 @@
 == SportsPress Changelog ==
 
+= 2.7.13 =
+* Fix - Theme notice escaping.
+* Fix - Timezone dropdown selection now shown in general settings.
+* Fix - Double header when multiple player lists are displayed in team.
+* Fix - Dropdown options not saving in settings.
+* Fix - Setup page conflict with WooCommerce.
+
 = 2.7.12 =
 * Fix - OpenStreetMap not displaying map after update.
 

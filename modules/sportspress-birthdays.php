@@ -5,7 +5,7 @@
  * @author    ThemeBoy
  * @category  Modules
  * @package   SportsPress/Modules
- * @version   2.7.9
+ * @version   2.7.13
  */
 
 // Exit if accessed directly
