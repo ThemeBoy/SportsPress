@@ -772,7 +772,7 @@ endif;
 					$placeholder = sp_solve( $stat->equation, $placeholders[ $player_id ], $stat->precision );
 
 					// Adjustment
-					$adjustment = sp_array_value( $player_adjustments, $stat->post_name, 0 );
+					$adjustment = (float) sp_array_value( $player_adjustments, $stat->post_name, 0 );
 
 					// Apply adjustment
 					if ( $adjustment != 0 ) :
