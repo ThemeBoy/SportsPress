@@ -96,17 +96,17 @@ $results = ob_get_clean();
 
 if ( false == $fixtures || false == $results ) {
 
-	echo wp_kses_post( $fixtures );
-	echo wp_kses_post( $results );
+	echo $fixtures;
+	echo $results;
 
 } else {
 
 	echo '<div class="sp-widget-align-left">';
-	echo wp_kses_post( $fixtures );
+	echo $fixtures;
 	echo '</div>';
 
 	echo '<div class="sp-widget-align-right">';
-	echo wp_kses_post( $results );
+	echo $results;
 	echo '</div>';
 }
 
