@@ -96,17 +96,17 @@ $results = ob_get_clean();
 
 if ( false == $fixtures || false == $results ) {
 
-	echo $fixtures;
-	echo $results;
+	echo $fixtures; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	echo $results; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 } else {
 
 	echo '<div class="sp-widget-align-left">';
-	echo $fixtures;
+	echo $fixtures; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	echo '</div>';
 
 	echo '<div class="sp-widget-align-right">';
-	echo $results;
+	echo $results; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	echo '</div>';
 }
 
