@@ -128,7 +128,7 @@ if ( ! class_exists( 'SportsPress_OpenStreetMap' ) ) :
 			  $lon_sec = floor( $lon_sec - ( $lon_min * 60 ) );
 			  $lon_dir = $longitude > 0 ? 'E' : 'W';
 			?>
-		<a href="https://www.google.com/maps/place/<?php echo esc_url( urlencode( "{$lat_deg}°{$lat_min}'{$lat_sec}\"{$lat_dir}" ) ) . '+' . esc_url( urlencode( "{$lon_deg}°{$lon_min}'{$lon_sec}\"{$lon_dir}" ) ); ?>/@<?php echo esc_url($latitude); ?>,<?php echo esc_url($longitude); ?>,<?php echo esc_url($zoom); ?>z" target="_blank"><div id="sp_openstreetmaps_container" style="width: 100%; height: 320px"></div></a>
+		<a href="<?php echo esc_url( 'https://www.google.com/maps/place/' . urlencode( "{$lat_deg}°{$lat_min}'{$lat_sec}\"{$lat_dir}" ) . '+' . urlencode( "{$lon_deg}°{$lon_min}'{$lon_sec}\"{$lon_dir}" ) . '/@' . $latitude . ',' . $longitude . ',' . $zoom . 'z' ); ?>" target="_blank"><div id="sp_openstreetmaps_container" style="width: 100%; height: 320px"></div></a>
 	<script>
 	// position we will use later
 	var lat = <?php echo esc_attr( $latitude ); ?>;
