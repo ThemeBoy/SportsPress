@@ -199,7 +199,18 @@ class SP_Meta_Box_Player_Statistics {
 									if ( 0 === $div_id ) {
 										esc_attr_e( 'Total', 'sportspress' );
 									} elseif ( 'WP_Error' != get_class( $div ) ) {
-										echo esc_attr( apply_filters( 'sportspress_meta_box_player_statistics_season_name', $div->name, $league_id, $div_id, $div_stats ) );
+										$allowed_html = array(
+															'input'      => array(
+																'type'  => array(),
+																'class' => array(),
+																'name' => array(),
+																'value' => array(),
+																'size' => array(),
+																'placeholder' => array(),
+																'id' => array(),
+															),
+														);
+										echo wp_kses( apply_filters( 'sportspress_meta_box_player_statistics_season_name', $div->name, $league_id, $div_id, $div_stats ), $allowed_html );
 									}
 									?>
 								</label>
