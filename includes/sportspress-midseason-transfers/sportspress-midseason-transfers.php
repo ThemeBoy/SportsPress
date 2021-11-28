@@ -178,7 +178,7 @@ class SportsPress_Midseason_Transfers {
 	public function season_name( $name = array(), $league_id = 0, $season_id = 0, $season_stats = array() ) {
 		if ( (int) $season_id === $season_id ) return $name;
 		$date_from = sp_array_value( $season_stats, 'date_from', false );
-		return '<input type="text" class="sp-datepicker" name="sp_statistics[' . $league_id . '][' . $season_id . '][date_from]" value="' . ( $date_from ? $date_from : '' ) . '" size="10" placeholder="' . __( 'Date from', 'sportspress' ) . '">';
+		return '<input type="text" readonly="readonly" class="sp-datepicker" name="sp_statistics[' . $league_id . '][' . $season_id . '][date_from]" value="' . ( $date_from ? $date_from : '' ) . '" size="10" placeholder="' . __( 'Date from', 'sportspress' ) . '">';
 	}
 	
 	/**
