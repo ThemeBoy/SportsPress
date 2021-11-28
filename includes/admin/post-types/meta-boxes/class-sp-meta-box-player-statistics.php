@@ -208,6 +208,7 @@ class SP_Meta_Box_Player_Statistics {
 																'size' => array(),
 																'placeholder' => array(),
 																'id' => array(),
+																'readonly' => array(),
 															),
 														);
 										echo wp_kses( apply_filters( 'sportspress_meta_box_player_statistics_season_name', $div->name, $league_id, $div_id, $div_stats ), $allowed_html );
