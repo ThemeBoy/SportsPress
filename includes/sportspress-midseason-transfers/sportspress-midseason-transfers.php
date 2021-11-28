@@ -68,7 +68,7 @@ class SportsPress_Midseason_Transfers {
 			wp_enqueue_style( 'sportspress-midseason-transfers-admin', SP_MIDSEASON_TRANSFERS_URL . 'css/admin.css', array(), SP_MIDSEASON_TRANSFERS_VERSION );
 
 			// Localize script
-			wp_localize_script( 'sportspress-midseason-transfers', 'date_from_string', __( 'Date from', 'sportspress' ) );
+			wp_localize_script( 'sportspress-midseason-transfers', 'date_from_string', array( __( 'Date from', 'sportspress' ) ) );
 		}
 	}
 
