@@ -1,5 +1,5 @@
 jQuery(document).ready(function($){
-	$( ".sp-sponsor[data-ajaxurl]" ).on( "click", function() {
+	$( document ).on( "click", ".sp-sponsor[data-ajaxurl]", function() {
 		var self = $( this );
 		ajax_options = {
 			action: "sp_clicks",
