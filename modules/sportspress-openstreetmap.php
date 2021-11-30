@@ -5,7 +5,7 @@
  * @author    ThemeBoy
  * @category  Modules
  * @package   SportsPress/Modules
- * @version   2.7.9
+ * @version   2.7.14
  */
 
 // Exit if accessed directly
@@ -19,7 +19,7 @@ if ( ! class_exists( 'SportsPress_OpenStreetMap' ) ) :
 	 * Main SportsPress OpenStreetMap Class
 	 *
 	 * @class SportsPress_OpenStreetMap
-	 * @version 2.7.5
+	 * @version 2.7.14
 	 */
 
 	class SportsPress_OpenStreetMap {
@@ -47,7 +47,7 @@ if ( ! class_exists( 'SportsPress_OpenStreetMap' ) ) :
 		 */
 		private function define_constants() {
 			if ( ! defined( 'SP_OPENSTREETMAP_VERSION' ) ) {
-				define( 'SP_OPENSTREETMAP_VERSION', '2.7.5' );
+				define( 'SP_OPENSTREETMAP_VERSION', '2.7.14' );
 			}
 
 			if ( ! defined( 'SP_OPENSTREETMAP_URL' ) ) {

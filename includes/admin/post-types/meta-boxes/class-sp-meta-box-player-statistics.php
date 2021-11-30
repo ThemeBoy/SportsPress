@@ -5,7 +5,7 @@
  * @author      ThemeBoy
  * @category    Admin
  * @package     SportsPress/Admin/Meta_Boxes
- * @version     2.7.9
+ * @version     2.7.14
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

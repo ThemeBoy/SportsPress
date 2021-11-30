@@ -1,5 +1,11 @@
 == SportsPress Changelog ==
 
+= 2.7.14 =
+* Fix - Error when non-value added as adjustment.
+* Fix - Map links not escaped properly.
+* Fix - Event blocks missing attributes.
+* Fix - Player statistics meta escaping.
+
 = 2.7.13 =
 * Fix - Theme notice escaping.
 * Fix - Timezone dropdown selection now shown in general settings.

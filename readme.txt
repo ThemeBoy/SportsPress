@@ -4,7 +4,7 @@ Tags: calendars, club, club management, esports, events, fixtures, leagues, leag
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
 Tested up to: 5.8.1
-Stable tag: 2.7.13
+Stable tag: 2.7.14
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -239,6 +239,12 @@ There are [3 different licenses](http://tboy.co/pro) that you can choose from: C
 When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
 
 == Changelog ==
+
+= 2.7.14 =
+* Fix - Error when non-value added as adjustment.
+* Fix - Map links not escaped properly.
+* Fix - Event blocks missing attributes.
+* Fix - Player statistics meta escaping.
 
 = 2.7.13 =
 * Fix - Theme notice escaping.
