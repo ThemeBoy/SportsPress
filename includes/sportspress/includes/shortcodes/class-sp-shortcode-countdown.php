@@ -2,9 +2,9 @@
 /**
  * Countdown Shortcode
  *
- * @author 		ThemeBoy
- * @category 	Shortcodes
- * @package 	SportsPress/Shortcodes/Countdown
+ * @author      ThemeBoy
+ * @category    Shortcodes
+ * @package     SportsPress/Shortcodes/Countdown
  * @version     0.7
  */
 class SP_Shortcode_Countdown {
@@ -16,8 +16,9 @@ class SP_Shortcode_Countdown {
 	 */
 	public static function output( $atts ) {
 
-		if ( ! isset( $atts['id'] ) && isset( $atts[0] ) && is_numeric( $atts[0] ) )
+		if ( ! isset( $atts['id'] ) && isset( $atts[0] ) && is_numeric( $atts[0] ) ) {
 			$atts['id'] = $atts[0];
+		}
 
 		sp_get_template( 'countdown.php', $atts );
 	}

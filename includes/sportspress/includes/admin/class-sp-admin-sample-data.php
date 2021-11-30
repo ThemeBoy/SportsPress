@@ -4,11 +4,11 @@
  *
  * The SportsPress admin sample data class stores demo content.
  *
- * @class 		SP_Admin_Sample_Data
- * @version		2.5
- * @package		SportsPress/Admin
- * @category	Class
- * @author 		ThemeBoy
+ * @class       SP_Admin_Sample_Data
+ * @version     2.5
+ * @package     SportsPress/Admin
+ * @category    Class
+ * @author      ThemeBoy
  */
 class SP_Admin_Sample_Data {
 
@@ -23,18 +23,18 @@ class SP_Admin_Sample_Data {
 
 		// Initialize inserted ids array
 		$inserted_ids = array(
-			'sp_league' => array(),
-			'sp_season' => array(),
-			'sp_venue' => array(),
+			'sp_league'   => array(),
+			'sp_season'   => array(),
+			'sp_venue'    => array(),
 			'sp_position' => array(),
-			'sp_role' => array(),
-			'sp_event' => array(),
+			'sp_role'     => array(),
+			'sp_event'    => array(),
 			'sp_calendar' => array(),
-			'sp_team' => array(),
-			'sp_table' => array(),
-			'sp_player' => array(),
-			'sp_list' => array(),
-			'sp_staff' => array(),
+			'sp_team'     => array(),
+			'sp_table'    => array(),
+			'sp_player'   => array(),
+			'sp_list'     => array(),
+			'sp_staff'    => array(),
 		);
 
 		// Terms to insert
@@ -44,33 +44,33 @@ class SP_Admin_Sample_Data {
 		$taxonomies['sp_league'] = array( _x( 'Primary League', 'example', 'sportspress' ), _x( 'Secondary League', 'example', 'sportspress' ) );
 
 		// Seasons
-		$current_year = date( 'Y' );
-		$current_year = intval( $current_year );
+		$current_year            = date( 'Y' );
+		$current_year            = intval( $current_year );
 		$taxonomies['sp_season'] = array( $current_year - 1, $current_year, $current_year + 1 );
 
 		// Venues
-		$taxonomies['sp_venue'] = array( 
+		$taxonomies['sp_venue'] = array(
 			array(
 				'name' => 'Bentleigh',
 				'meta' => array(
-					'sp_address' => '12A Bolinda Street, Bentleigh VIC 3204, Australia',
-					'sp_latitude' => -37.920537,
+					'sp_address'   => '12A Bolinda Street, Bentleigh VIC 3204, Australia',
+					'sp_latitude'  => -37.920537,
 					'sp_longitude' => 145.043199,
 				),
 			),
 			array(
 				'name' => 'Essendon',
 				'meta' => array(
-					'sp_address' => '74 Napier Street, Essendon VIC 3040, Australia',
-					'sp_latitude' => -37.751940,
+					'sp_address'   => '74 Napier Street, Essendon VIC 3040, Australia',
+					'sp_latitude'  => -37.751940,
 					'sp_longitude' => 144.919549,
 				),
 			),
 			array(
 				'name' => 'Kensington',
 				'meta' => array(
-					'sp_address' => '50 Altona Street, Kensington, Victoria, Australia',
-					'sp_latitude' => -37.797789,
+					'sp_address'   => '50 Altona Street, Kensington, Victoria, Australia',
+					'sp_latitude'  => -37.797789,
 					'sp_longitude' => 144.924709,
 				),
 			),
@@ -92,14 +92,21 @@ class SP_Admin_Sample_Data {
 				}
 
 				// Insert term
-				$inserted = wp_insert_term( $name, $taxonomy, array( 'description' => $name, 'slug' => sanitize_title( $name ) ) );
+				$inserted = wp_insert_term(
+					$name,
+					$taxonomy,
+					array(
+						'description' => $name,
+						'slug'        => sanitize_title( $name ),
+					)
+				);
 
 				// Add meta to term if is array
 				if ( ! is_wp_error( $inserted ) && is_array( $term ) && array_key_exists( 'meta', $term ) ) {
 					$t_id = sp_array_value( $inserted, 'term_id', 1 );
 					$meta = sp_array_value( $term, 'meta' );
 					update_option( "taxonomy_$t_id", $meta );
-					
+
 					// Add to inserted ids array
 					$inserted_ids[ $taxonomy ][] = $t_id;
 				}
@@ -113,15 +120,15 @@ class SP_Admin_Sample_Data {
 		$teams = array(
 			array(
 				'name' => 'Bluebirds',
-				'url' => 'http://tboy.co/bluebirds',
+				'url'  => 'http://tboy.co/bluebirds',
 			),
 			array(
 				'name' => 'Eagles',
-				'url' => 'http://tboy.co/eagles',
+				'url'  => 'http://tboy.co/eagles',
 			),
 			array(
 				'name' => 'Kangaroos',
-				'url' => 'http://tboy.co/kangaroos',
+				'url'  => 'http://tboy.co/kangaroos',
 			),
 		);
 
@@ -160,19 +167,35 @@ class SP_Admin_Sample_Data {
 		 * Insert teams
 		 */
 		foreach ( $teams as $index => $team ) {
-			$post['post_title'] = $team['name'];
-			$post['post_type'] = 'sp_team';
-			$post['post_status'] = 'publish';
-			$post['post_content'] = sprintf( $sample_content, __( 'Team', 'sportspress' ), __( 'Teams', 'sportspress' ), add_query_arg( 'post_type', 'sp_team', admin_url( 'edit.php' ) ) );
+			$post['post_title']   = $team['name'];
+			$post['post_type']    = 'sp_team';
+			$post['post_status']  = 'publish';
+			$post['post_content'] = sprintf( $sample_content, esc_attr__( 'Team', 'sportspress' ), esc_attr__( 'Teams', 'sportspress' ), add_query_arg( 'post_type', 'sp_team', admin_url( 'edit.php' ) ) );
 
 			// Terms
 			$post['tax_input'] = array();
-			$taxonomies = array( 'sp_league', 'sp_season' );
+			$taxonomies        = array( 'sp_league', 'sp_season' );
 			foreach ( $taxonomies as $taxonomy ) {
-				$post['tax_input'][ $taxonomy ] = get_terms( $taxonomy, array( 'hide_empty' => 0, 'fields' => 'ids' ) );
-			};
+				$post['tax_input'][ $taxonomy ] = get_terms(
+					$taxonomy,
+					array(
+						'hide_empty' => 0,
+						'fields'     => 'ids',
+					)
+				);
+			}
 
-			$post['tax_input']['sp_venue'] = get_terms( 'sp_venue', array( 'hide_empty' => 0, 'fields' => 'ids', 'orderby' => 'id', 'order' => 'ASC', 'number' => 1, 'offset' => $index ) );
+			$post['tax_input']['sp_venue'] = get_terms(
+				'sp_venue',
+				array(
+					'hide_empty' => 0,
+					'fields'     => 'ids',
+					'orderby'    => 'id',
+					'order'      => 'ASC',
+					'number'     => 1,
+					'offset'     => $index,
+				)
+			);
 
 			// Insert post
 			$id = wp_insert_post( $post );
@@ -189,13 +212,13 @@ class SP_Admin_Sample_Data {
 
 		// Get columns
 		$columns = array( 'team' );
-		$args = array(
-			'post_type' => array( 'sp_performance', 'sp_statistic' ),
+		$args    = array(
+			'post_type'      => array( 'sp_performance', 'sp_statistic' ),
 			'posts_per_page' => 2,
-			'orderby' => 'menu_order',
-			'order' => 'ASC',
+			'orderby'        => 'menu_order',
+			'order'          => 'ASC',
 		);
-		$vars = get_posts( $args );
+		$vars    = get_posts( $args );
 		foreach ( $vars as $var ) {
 			$columns[] = $var->post_name;
 		}
@@ -204,24 +227,39 @@ class SP_Admin_Sample_Data {
 		 * Insert players
 		 */
 		foreach ( $players as $index => $name ) {
-			$post['post_title'] = $name;
-			$post['post_type'] = 'sp_player';
-			$post['post_status'] = 'publish';
-			$post['post_content'] = sprintf( $sample_content, __( 'Player', 'sportspress' ), __( 'Players', 'sportspress' ), add_query_arg( 'post_type', 'sp_player', admin_url( 'edit.php' ) ) );
+			$post['post_title']   = $name;
+			$post['post_type']    = 'sp_player';
+			$post['post_status']  = 'publish';
+			$post['post_content'] = sprintf( $sample_content, esc_attr__( 'Player', 'sportspress' ), esc_attr__( 'Players', 'sportspress' ), add_query_arg( 'post_type', 'sp_player', admin_url( 'edit.php' ) ) );
 
 			// Terms
 			$post['tax_input'] = array();
-			$taxonomies = array( 'sp_league', 'sp_season' );
+			$taxonomies        = array( 'sp_league', 'sp_season' );
 			foreach ( $taxonomies as $taxonomy ) {
-				$post['tax_input'][ $taxonomy ] = get_terms( $taxonomy, array( 'hide_empty' => 0, 'fields' => 'ids' ) );
-			};
+				$post['tax_input'][ $taxonomy ] = get_terms(
+					$taxonomy,
+					array(
+						'hide_empty' => 0,
+						'fields'     => 'ids',
+					)
+				);
+			}
 			$taxonomies = array( 'sp_position' );
 			foreach ( $taxonomies as $taxonomy ) {
-				$terms = get_terms( $taxonomy, array( 'hide_empty' => 0, 'fields' => 'ids', 'orderby' => 'slug', 'number' => 1, 'offset' => $index % 4 ) );
+				$terms = get_terms(
+					$taxonomy,
+					array(
+						'hide_empty' => 0,
+						'fields'     => 'ids',
+						'orderby'    => 'slug',
+						'number'     => 1,
+						'offset'     => $index % 4,
+					)
+				);
 				if ( $terms && ! is_wp_error( $terms ) ) {
 					$post['tax_input'][ $taxonomy ] = $terms;
 				}
-			};
+			}
 
 			// Insert post
 			$id = wp_insert_post( $post );
@@ -233,13 +271,13 @@ class SP_Admin_Sample_Data {
 			update_post_meta( $id, '_sp_sample', 1 );
 
 			// Calculate meta
-			$nationality = array_rand( $countries->countries );
-			$team_index = floor( $index / 4 );
+			$nationality     = array_rand( $countries->countries );
+			$team_index      = floor( $index / 4 );
 			$past_team_index = ( $team_index + 1 ) % 3;
-			$current_team = sp_array_value( $inserted_ids['sp_team'], $team_index, 0 );
-			$past_team = sp_array_value( $inserted_ids['sp_team'], $past_team_index, 0 );
-			$primary_league = reset( $post['tax_input']['sp_league'] );
-			$season_teams = $season_stats = array();
+			$current_team    = sp_array_value( $inserted_ids['sp_team'], $team_index, 0 );
+			$past_team       = sp_array_value( $inserted_ids['sp_team'], $past_team_index, 0 );
+			$primary_league  = reset( $post['tax_input']['sp_league'] );
+			$season_teams    = $season_stats = array();
 			foreach ( $post['tax_input']['sp_season'] as $season_index => $season_id ) {
 				$season_stats[ $season_id ] = array();
 				if ( $season_index == 0 ) {
@@ -253,7 +291,7 @@ class SP_Admin_Sample_Data {
 					}
 				}
 			}
-			$player_stats = array( $primary_league => $season_stats );
+			$player_stats   = array( $primary_league => $season_stats );
 			$player_leagues = array( $primary_league => $season_teams );
 
 			// Update meta
@@ -268,30 +306,32 @@ class SP_Admin_Sample_Data {
 		}
 
 		// Get columns
-		$columns = array();
-		$args = array(
-			'post_type' => 'sp_performance',
+		$columns           = array();
+		$args              = array(
+			'post_type'      => 'sp_performance',
 			'posts_per_page' => -1,
-			'orderby' => 'menu_order',
-			'order' => 'ASC',
+			'orderby'        => 'menu_order',
+			'order'          => 'ASC',
 		);
 		$performance_posts = get_posts( $args );
 		foreach ( $performance_posts as $performance_post ) {
-			if ( sizeof( $columns ) >= 5 ) continue;
+			if ( sizeof( $columns ) >= 5 ) {
+				continue;
+			}
 			$columns[] = $performance_post->post_name;
 		}
-		$args = array(
-			'post_type' => 'sp_result',
+		$args          = array(
+			'post_type'      => 'sp_result',
 			'posts_per_page' => -1,
-			'orderby' => 'menu_order',
-			'order' => 'ASC',
+			'orderby'        => 'menu_order',
+			'order'          => 'ASC',
 		);
-		$result_posts = get_posts( $args );
-		$args = array(
-			'post_type' => 'sp_outcome',
+		$result_posts  = get_posts( $args );
+		$args          = array(
+			'post_type'      => 'sp_outcome',
 			'posts_per_page' => -1,
-			'orderby' => 'menu_order',
-			'order' => 'ASC',
+			'orderby'        => 'menu_order',
+			'order'          => 'ASC',
 		);
 		$outcome_posts = get_posts( $args );
 
@@ -299,22 +339,37 @@ class SP_Admin_Sample_Data {
 		 * Insert staff
 		 */
 		foreach ( $staff as $index => $name ) {
-			$post['post_title'] = $name;
-			$post['post_type'] = 'sp_staff';
-			$post['post_status'] = 'publish';
-			$post['post_content'] = sprintf( $sample_content, __( 'Staff', 'sportspress' ), __( 'Staff', 'sportspress' ), add_query_arg( 'post_type', 'sp_staff', admin_url( 'edit.php' ) ) );
+			$post['post_title']   = $name;
+			$post['post_type']    = 'sp_staff';
+			$post['post_status']  = 'publish';
+			$post['post_content'] = sprintf( $sample_content, esc_attr__( 'Staff', 'sportspress' ), esc_attr__( 'Staff', 'sportspress' ), add_query_arg( 'post_type', 'sp_staff', admin_url( 'edit.php' ) ) );
 
 			// Terms
 			$post['tax_input'] = array();
-			$taxonomies = array( 'sp_league', 'sp_season' );
+			$taxonomies        = array( 'sp_league', 'sp_season' );
 			foreach ( $taxonomies as $taxonomy ) {
-				$post['tax_input'][ $taxonomy ] = get_terms( $taxonomy, array( 'hide_empty' => 0, 'fields' => 'ids' ) );
-			};
+				$post['tax_input'][ $taxonomy ] = get_terms(
+					$taxonomy,
+					array(
+						'hide_empty' => 0,
+						'fields'     => 'ids',
+					)
+				);
+			}
 			$taxonomies = array( 'sp_role' );
 			foreach ( $taxonomies as $taxonomy ) {
-				$terms = get_terms( $taxonomy, array( 'hide_empty' => 0, 'fields' => 'ids', 'orderby' => 'slug', 'number' => 1, 'offset' => $index % 4 ) );
+				$terms                          = get_terms(
+					$taxonomy,
+					array(
+						'hide_empty' => 0,
+						'fields'     => 'ids',
+						'orderby'    => 'slug',
+						'number'     => 1,
+						'offset'     => $index % 4,
+					)
+				);
 				$post['tax_input'][ $taxonomy ] = $terms;
-			};
+			}
 
 			// Insert post
 			$id = wp_insert_post( $post );
@@ -326,8 +381,8 @@ class SP_Admin_Sample_Data {
 			update_post_meta( $id, '_sp_sample', 1 );
 
 			// Calculate meta
-			$team_index = floor( $index / 4 );
-			$past_teams = $inserted_ids['sp_team'];
+			$team_index   = floor( $index / 4 );
+			$past_teams   = $inserted_ids['sp_team'];
 			$current_team = sp_array_value( $past_teams, $team_index, 0 );
 			unset( $past_teams[ $team_index ] );
 
@@ -347,27 +402,67 @@ class SP_Admin_Sample_Data {
 			// Determine team index and post status
 			$i = $index % 3;
 			if ( $index < 3 ) {
-				$post_status = 'publish';
-				$post_year = $current_year - 1;
-				$event_season = get_terms( 'sp_season', array( 'hide_empty' => 0, 'fields' => 'ids', 'orderby' => 'id', 'order' => 'ASC', 'number' => 1 ) );
+				$post_status  = 'publish';
+				$post_year    = $current_year - 1;
+				$event_season = get_terms(
+					'sp_season',
+					array(
+						'hide_empty' => 0,
+						'fields'     => 'ids',
+						'orderby'    => 'id',
+						'order'      => 'ASC',
+						'number'     => 1,
+					)
+				);
 			} else {
-				$post_status = 'future';
-				$post_year = $current_year + 1;
-				$event_season = get_terms( 'sp_season', array( 'hide_empty' => 0, 'fields' => 'ids', 'orderby' => 'id', 'order' => 'DESC', 'number' => 1 ) );
+				$post_status  = 'future';
+				$post_year    = $current_year + 1;
+				$event_season = get_terms(
+					'sp_season',
+					array(
+						'hide_empty' => 0,
+						'fields'     => 'ids',
+						'orderby'    => 'id',
+						'order'      => 'DESC',
+						'number'     => 1,
+					)
+				);
 			}
 			// The away team should be the next inserted team, or the first if this is the last event
-			if ( $i == 2 ) $away_index = 0;
-			else $away_index = $i + 1;
+			if ( $i == 2 ) {
+				$away_index = 0;
+			} else {
+				$away_index = $i + 1;
+			}
 			$post = array(
-				'post_title' => $teams[ $i ]['name'] . ' ' . get_option( 'sportspress_event_teams_delimiter', 'vs' ) . ' ' . $teams[ $away_index ]['name'],
-				'post_type' => 'sp_event',
-				'post_status' => $post_status,
-				'post_content' => sprintf( $sample_content, __( 'Event', 'sportspress' ), __( 'Events', 'sportspress' ), add_query_arg( 'post_type', 'sp_event', admin_url( 'edit.php' ) ) ),
-				'post_date' => $post_year . '-' . sprintf( '%02d', 3 + $i * 3 ) . '-' . sprintf( '%02d', 5 + $i * 10 ) . ' ' . ( 18 + $i ) . ':00:00',
-				'tax_input' => array(
-					'sp_league' => get_terms( 'sp_league', array( 'hide_empty' => 0, 'fields' => 'ids', 'orderby' => 'id', 'order' => 'ASC', 'number' => 1 ) ),
+				'post_title'   => $teams[ $i ]['name'] . ' ' . get_option( 'sportspress_event_teams_delimiter', 'vs' ) . ' ' . $teams[ $away_index ]['name'],
+				'post_type'    => 'sp_event',
+				'post_status'  => $post_status,
+				'post_content' => sprintf( $sample_content, esc_attr__( 'Event', 'sportspress' ), esc_attr__( 'Events', 'sportspress' ), add_query_arg( 'post_type', 'sp_event', admin_url( 'edit.php' ) ) ),
+				'post_date'    => $post_year . '-' . sprintf( '%02d', 3 + $i * 3 ) . '-' . sprintf( '%02d', 5 + $i * 10 ) . ' ' . ( 18 + $i ) . ':00:00',
+				'tax_input'    => array(
+					'sp_league' => get_terms(
+						'sp_league',
+						array(
+							'hide_empty' => 0,
+							'fields'     => 'ids',
+							'orderby'    => 'id',
+							'order'      => 'ASC',
+							'number'     => 1,
+						)
+					),
 					'sp_season' => $event_season,
-					'sp_venue' => get_terms( 'sp_venue', array( 'hide_empty' => 0, 'fields' => 'ids', 'orderby' => 'id', 'order' => 'ASC', 'number' => 1, 'offset' => $i ) ),
+					'sp_venue'  => get_terms(
+						'sp_venue',
+						array(
+							'hide_empty' => 0,
+							'fields'     => 'ids',
+							'orderby'    => 'id',
+							'order'      => 'ASC',
+							'number'     => 1,
+							'offset'     => $i,
+						)
+					),
 				),
 			);
 
@@ -383,23 +478,23 @@ class SP_Admin_Sample_Data {
 			// Calculate home and away team ids
 			$home_team_index = ( $i ) % 3;
 			$away_team_index = ( $i + 1 ) % 3;
-			$home_team_id = sp_array_value( $inserted_ids['sp_team'], $home_team_index, 0 );
-			$away_team_id = sp_array_value( $inserted_ids['sp_team'], $away_team_index, 0 );
-			$event_teams = array(
+			$home_team_id    = sp_array_value( $inserted_ids['sp_team'], $home_team_index, 0 );
+			$away_team_id    = sp_array_value( $inserted_ids['sp_team'], $away_team_index, 0 );
+			$event_teams     = array(
 				$home_team_id,
 				$away_team_id,
 			);
 
 			// Initialize meta
 			$event_players = array( 0 );
-			$performance = $results = array();
+			$performance   = $results = array();
 
 			if ( $home_team_id ) {
 				// Add home team player performance
 				$performance[ $home_team_id ] = array();
 				for ( $j = 0; $j < 4; $j ++ ) {
-					$player_id = sp_array_value( $inserted_ids['sp_player'], $home_team_index * 4 + $j );
-					$event_players[] = $player_id;
+					$player_id          = sp_array_value( $inserted_ids['sp_player'], $home_team_index * 4 + $j );
+					$event_players[]    = $player_id;
 					$player_performance = array();
 					foreach ( $performance_posts as $performance_post ) {
 						$player_performance[ $performance_post->post_name ] = rand( 0, 1 );
@@ -413,7 +508,9 @@ class SP_Admin_Sample_Data {
 					$results[ $home_team_id ][ $result_post->post_name ] = 1 + $result_post_index;
 				}
 				$outcome = reset( $outcome_posts );
-				if ( is_object( $outcome ) ) $results[ $home_team_id ]['outcome'] = array( $outcome->post_name );
+				if ( is_object( $outcome ) ) {
+					$results[ $home_team_id ]['outcome'] = array( $outcome->post_name );
+				}
 			}
 
 			// Separate teams with zero
@@ -422,8 +519,8 @@ class SP_Admin_Sample_Data {
 			if ( $away_team_id ) {
 				$performance[ $away_team_id ] = array();
 				for ( $j = 0; $j < 4; $j ++ ) {
-					$player_id = sp_array_value( $inserted_ids['sp_player'], $away_team_index * 4 + $j );
-					$event_players[] = $player_id;
+					$player_id          = sp_array_value( $inserted_ids['sp_player'], $away_team_index * 4 + $j );
+					$event_players[]    = $player_id;
 					$player_performance = array();
 					foreach ( $performance_posts as $performance_post ) {
 						$player_performance[ $performance_post->post_name ] = rand( 0, 1 );
@@ -437,15 +534,17 @@ class SP_Admin_Sample_Data {
 					$results[ $away_team_id ][ $result_post->post_name ] = '0';
 				}
 				$outcome = next( $outcome_posts );
-				if ( is_object( $outcome ) ) $results[ $away_team_id ]['outcome'] = array( $outcome->post_name );
+				if ( is_object( $outcome ) ) {
+					$results[ $away_team_id ]['outcome'] = array( $outcome->post_name );
+				}
 			}
 
 			if ( 'publish' === $post_status ) {
 				// Swap results for last event only
 				if ( $i == 2 ) {
-					$k = array_keys( $results );
-					$v = array_values( $results );
-					$rv = array_reverse( $v );
+					$k       = array_keys( $results );
+					$v       = array_values( $results );
+					$rv      = array_reverse( $v );
 					$results = array_combine( $k, $rv );
 				}
 
@@ -466,10 +565,10 @@ class SP_Admin_Sample_Data {
 		 * Insert calendar
 		 */
 		$post = array(
-			'post_title' => _x( 'Fixtures & Results', 'example', 'sportspress' ),
-			'post_type' => 'sp_calendar',
-			'post_status' => 'publish',
-			'post_content' => sprintf( $sample_content, __( 'Calendar', 'sportspress' ), __( 'Calendars', 'sportspress' ), add_query_arg( 'post_type', 'sp_calendar', admin_url( 'edit.php' ) ) )
+			'post_title'   => _x( 'Fixtures & Results', 'example', 'sportspress' ),
+			'post_type'    => 'sp_calendar',
+			'post_status'  => 'publish',
+			'post_content' => sprintf( $sample_content, esc_attr__( 'Calendar', 'sportspress' ), esc_attr__( 'Calendars', 'sportspress' ), add_query_arg( 'post_type', 'sp_calendar', admin_url( 'edit.php' ) ) ),
 		);
 
 		// Insert post
@@ -495,16 +594,32 @@ class SP_Admin_Sample_Data {
 		/*
 		 * Insert league table
 		 */
-		$leagues = get_terms( 'sp_league', array( 'hide_empty' => 0, 'orderby' => 'id', 'order' => 'ASC', 'number' => 1 ) );
-		$league = reset( $leagues );
-		$seasons = get_terms( 'sp_season', array( 'hide_empty' => 0, 'orderby' => 'id', 'order' => 'ASC', 'number' => 1 ) );
-		$season = reset( $seasons );
-		$post = array(
-			'post_title' => $league->name . ' ' . $season->name,
-			'post_type' => 'sp_table',
-			'post_status' => 'publish',
-			'post_content' => sprintf( $sample_content, __( 'League Table', 'sportspress' ), __( 'League Tables', 'sportspress' ), add_query_arg( 'post_type', 'sp_table', admin_url( 'edit.php' ) ) ),
-			'tax_input' => array(
+		$leagues = get_terms(
+			'sp_league',
+			array(
+				'hide_empty' => 0,
+				'orderby'    => 'id',
+				'order'      => 'ASC',
+				'number'     => 1,
+			)
+		);
+		$league  = reset( $leagues );
+		$seasons = get_terms(
+			'sp_season',
+			array(
+				'hide_empty' => 0,
+				'orderby'    => 'id',
+				'order'      => 'ASC',
+				'number'     => 1,
+			)
+		);
+		$season  = reset( $seasons );
+		$post    = array(
+			'post_title'   => $league->name . ' ' . $season->name,
+			'post_type'    => 'sp_table',
+			'post_status'  => 'publish',
+			'post_content' => sprintf( $sample_content, esc_attr__( 'League Table', 'sportspress' ), esc_attr__( 'League Tables', 'sportspress' ), add_query_arg( 'post_type', 'sp_table', admin_url( 'edit.php' ) ) ),
+			'tax_input'    => array(
 				'sp_league' => $league->term_id,
 				'sp_season' => $season->term_id,
 			),
@@ -520,12 +635,12 @@ class SP_Admin_Sample_Data {
 		update_post_meta( $id, '_sp_sample', 1 );
 
 		// Get columns
-		$columns = array();
-		$args = array(
-			'post_type' => 'sp_column',
+		$columns      = array();
+		$args         = array(
+			'post_type'      => 'sp_column',
 			'posts_per_page' => 8,
-			'orderby' => 'menu_order',
-			'order' => 'ASC',
+			'orderby'        => 'menu_order',
+			'order'          => 'ASC',
 		);
 		$column_posts = get_posts( $args );
 		foreach ( $column_posts as $column_post ) {
@@ -542,10 +657,10 @@ class SP_Admin_Sample_Data {
 		 */
 		foreach ( $inserted_ids['sp_team'] as $index => $team_id ) {
 			$post = array(
-				'post_title' => get_the_title( $team_id ) . ' ' . _x( 'Roster', 'example', 'sportspress' ),
-				'post_type' => 'sp_list',
-				'post_status' => 'publish',
-				'post_content' => sprintf( $sample_content, __( 'Player List', 'sportspress' ), __( 'Player Lists', 'sportspress' ), add_query_arg( 'post_type', 'sp_list', admin_url( 'edit.php' ) ) ),
+				'post_title'   => get_the_title( $team_id ) . ' ' . _x( 'Roster', 'example', 'sportspress' ),
+				'post_type'    => 'sp_list',
+				'post_status'  => 'publish',
+				'post_content' => sprintf( $sample_content, esc_attr__( 'Player List', 'sportspress' ), esc_attr__( 'Player Lists', 'sportspress' ), add_query_arg( 'post_type', 'sp_list', admin_url( 'edit.php' ) ) ),
 			);
 
 			// Insert post
@@ -561,12 +676,12 @@ class SP_Admin_Sample_Data {
 			$list_players = array_slice( $inserted_ids['sp_player'], $index * 4, 4 );
 
 			// Get columns
-			$columns = array();
-			$args = array(
-				'post_type' => array( 'sp_metric' ),
+			$columns      = array();
+			$args         = array(
+				'post_type'      => array( 'sp_metric' ),
 				'posts_per_page' => 2,
-				'orderby' => 'menu_order',
-				'order' => 'ASC',
+				'orderby'        => 'menu_order',
+				'order'          => 'ASC',
 			);
 			$column_posts = get_posts( $args );
 			foreach ( $column_posts as $column_post ) {
@@ -587,10 +702,10 @@ class SP_Admin_Sample_Data {
 		 * Insert player list for player ranking
 		 */
 		$post = array(
-			'post_title' => _x( 'Player Ranking', 'example', 'sportspress' ),
-			'post_type' => 'sp_list',
-			'post_status' => 'publish',
-			'post_content' => sprintf( $sample_content, __( 'Player List', 'sportspress' ), __( 'Player Lists', 'sportspress' ), add_query_arg( 'post_type', 'sp_list', admin_url( 'edit.php' ) ) ),
+			'post_title'   => _x( 'Player Ranking', 'example', 'sportspress' ),
+			'post_type'    => 'sp_list',
+			'post_status'  => 'publish',
+			'post_content' => sprintf( $sample_content, esc_attr__( 'Player List', 'sportspress' ), esc_attr__( 'Player Lists', 'sportspress' ), add_query_arg( 'post_type', 'sp_list', admin_url( 'edit.php' ) ) ),
 		);
 
 		// Insert post
@@ -603,9 +718,11 @@ class SP_Admin_Sample_Data {
 		update_post_meta( $id, '_sp_sample', 1 );
 
 		// Get columns
-		$columns = array( 'team' );
+		$columns          = array( 'team' );
 		$performance_post = reset( $performance_posts );
-		if ( is_object( $performance_post ) ) $columns[] = $performance_post->post_name;
+		if ( is_object( $performance_post ) ) {
+			$columns[] = $performance_post->post_name;
+		}
 
 		// Update meta
 		update_post_meta( $id, 'sp_format', 'list' );
@@ -613,7 +730,9 @@ class SP_Admin_Sample_Data {
 		update_post_meta( $id, 'sp_columns', $columns );
 		update_post_meta( $id, 'sp_grouping', '0' );
 		update_post_meta( $id, 'sp_order', 'DESC' );
-		if ( is_object( $performance_post ) ) update_post_meta( $id, 'sp_orderby', $performance_post->post_name );
+		if ( is_object( $performance_post ) ) {
+			update_post_meta( $id, 'sp_orderby', $performance_post->post_name );
+		}
 
 		/*
 		 * Update player list and league table per team
@@ -631,21 +750,21 @@ class SP_Admin_Sample_Data {
 	 */
 	public static function delete_posts() {
 		$post_types = sp_post_types();
-		$args = array(
-			'post_type' => $post_types,
+		$args       = array(
+			'post_type'      => $post_types,
 			'posts_per_page' => -1,
-			'post_status' => array( 'publish', 'pending', 'draft', 'auto-draft', 'future', 'private', 'inherit', 'trash' ),
-			'meta_query' => array(
+			'post_status'    => array( 'publish', 'pending', 'draft', 'auto-draft', 'future', 'private', 'inherit', 'trash' ),
+			'meta_query'     => array(
 				array(
-					'key' => '_sp_sample',
-					'value' => 1
-				)
+					'key'   => '_sp_sample',
+					'value' => 1,
+				),
 			),
 		);
 
 		// Delete posts
 		$old_posts = get_posts( $args );
-		foreach( $old_posts as $post ):
+		foreach ( $old_posts as $post ) :
 			wp_delete_post( $post->ID, true );
 		endforeach;
 	}

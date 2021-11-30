@@ -22,9 +22,9 @@ class phpStack {
 	 * Initializes the stack
 	 */
 	public function __construct() {
-		//define the private vars
+		// define the private vars
 		$this->locArray = array();
-		$this->index = -1;
+		$this->index    = -1;
 	}
 
 	/**
@@ -35,10 +35,11 @@ class phpStack {
 	 * @return Mixed An element of the array or false if none exist
 	 */
 	public function peek() {
-		if($this->index > -1)
-			return $this->locArray[$this->index];
-		else
+		if ( $this->index > -1 ) {
+			return $this->locArray[ $this->index ];
+		} else {
 			return false;
+		}
 	}
 
 	/**
@@ -48,8 +49,8 @@ class phpStack {
 	 *
 	 * @param Mixed Element to add
 	 */
-	public function poke($data) {
-		$this->locArray[++$this->index] = $data;
+	public function poke( $data ) {
+		$this->locArray[ ++$this->index ] = $data;
 	}
 
 	/**
@@ -60,9 +61,9 @@ class phpStack {
 	 *
 	 * @param Mixed Element to add
 	 */
-	public function push($data) {
-		//allias for 'poke'
-		$this->poke($data);
+	public function push( $data ) {
+		// allias for 'poke'
+		$this->poke( $data );
 	}
 
 	/**
@@ -74,13 +75,12 @@ class phpStack {
 	 * @return Mixed Element at end of stack or false if none exist
 	 */
 	public function pop() {
-		if($this->index > -1)
-		{
+		if ( $this->index > -1 ) {
 			$this->index--;
-			return $this->locArray[$this->index+1];
-		}
-		else
+			return $this->locArray[ $this->index + 1 ];
+		} else {
 			return false;
+		}
 	}
 
 	/**
@@ -89,7 +89,7 @@ class phpStack {
 	 * Clears the stack to be reused.
 	 */
 	public function clear() {
-		$this->index = -1;
+		$this->index    = -1;
 		$this->locArray = array();
 	}
 
@@ -101,13 +101,12 @@ class phpStack {
 	 * @return Mixed Array of stack elements or false if none exist.
 	 */
 	public function getStack() {
-		if($this->index > -1)
-		{
-			return array_values($this->locArray);
-		}
-		else
+		if ( $this->index > -1 ) {
+			return array_values( $this->locArray );
+		} else {
 			return false;
+		}
 	}
 }
 
-?>
+

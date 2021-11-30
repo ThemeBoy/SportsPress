@@ -4,13 +4,15 @@
  *
  * API functions for admin and front-end templates.
  *
- * @author 		ThemeBoy
- * @category 	Core
- * @package 	SportsPress/Functions
- * @version		2.7
+ * @author      ThemeBoy
+ * @category    Core
+ * @package     SportsPress/Functions
+ * @version     2.7
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 /*
  * General functions
@@ -21,64 +23,75 @@ function sp_post_exists( $post = 0 ) {
 }
 
 function sp_get_time( $post = 0, $format = null ) {
-	if ( null == $format ) $format = get_option( 'time_format' );
+	if ( null == $format ) {
+		$format = get_option( 'time_format' );
+	}
 	return get_post_time( $format, false, $post, true );
 }
 
 function sp_the_time( $post = 0, $format = null ) {
-	echo sp_get_time( $post, $format );
+	echo wp_kses_post( sp_get_time( $post, $format ) );
 }
 
 function sp_get_date( $post = 0, $format = null ) {
-	if ( null == $format ) $format = get_option( 'date_format' );
+	if ( null == $format ) {
+		$format = get_option( 'date_format' );
+	}
 	return get_post_time( $format, false, $post, true );
 }
 
 function sp_the_date( $post = 0, $format = null ) {
-	echo sp_get_date( $post, $format );
+	echo wp_kses_post( sp_get_date( $post, $format ) );
 }
 
 function sp_get_posts( $post_type = 'post', $args = array() ) {
-	$args = array_merge( array(
-		'post_type' => $post_type,
-		'numberposts' => -1,
-		'posts_per_page' => -1,
-	), $args );
+	$args = array_merge(
+		array(
+			'post_type'      => $post_type,
+			'numberposts'    => -1,
+			'posts_per_page' => -1,
+		),
+		$args
+	);
 	return get_posts( $args );
 }
 
 function sp_get_leagues( $post = 0, $ids = true ) {
 	$terms = get_the_terms( $post, 'sp_league' );
-	if ( $terms && $ids ) $terms = wp_list_pluck( $terms, 'term_id' );
+	if ( $terms && $ids ) {
+		$terms = wp_list_pluck( $terms, 'term_id' );
+	}
 	return $terms;
 }
 
 function sp_get_seasons( $post = 0, $ids = true ) {
 	$terms = get_the_terms( $post, 'sp_season' );
-	if ( $terms && $ids ) $terms = wp_list_pluck( $terms, 'term_id' );
+	if ( $terms && $ids ) {
+		$terms = wp_list_pluck( $terms, 'term_id' );
+	}
 	return $terms;
 }
 
 function sp_the_leagues( $post = 0, $delimiter = ', ' ) {
 	$terms = sp_get_leagues( $post, false );
-	$arr = array();
+	$arr   = array();
 	if ( $terms ) {
-		foreach ( $terms as $term ):
+		foreach ( $terms as $term ) :
 			$arr[] = $term->name;
 		endforeach;
 	}
-	echo implode( $delimiter, $arr ); 
+	echo wp_kses_post( implode( $delimiter, $arr ) );
 }
 
 function sp_the_seasons( $post = 0, $delimiter = ', ' ) {
 	$terms = sp_get_seasons( $post, false );
-	$arr = array();
+	$arr   = array();
 	if ( $terms ) {
-		foreach ( $terms as $term ):
+		foreach ( $terms as $term ) :
 			$arr[] = $term->name;
 		endforeach;
 	}
-	echo implode( $delimiter, $arr ); 
+	echo wp_kses_post( implode( $delimiter, $arr ) );
 }
 
 /*
@@ -101,11 +114,22 @@ function sp_get_teams( $post = 0 ) {
 
 function sp_get_main_result_option() {
 	$main_result = get_option( 'sportspress_primary_result', null );
-	if ( $main_result ) return $main_result;
-	$results = get_posts( array( 'post_type' => 'sp_result', 'posts_per_page' => 1, 'orderby' => 'menu_order', 'order' => 'DESC' ) );
-	if ( ! $results ) return null;
+	if ( $main_result ) {
+		return $main_result;
+	}
+	$results = get_posts(
+		array(
+			'post_type'      => 'sp_result',
+			'posts_per_page' => 1,
+			'orderby'        => 'menu_order',
+			'order'          => 'DESC',
+		)
+	);
+	if ( ! $results ) {
+		return null;
+	}
 	$result = reset( $results );
-	$slug = $result->post_name;
+	$slug   = $result->post_name;
 	return $slug;
 }
 
@@ -116,12 +140,12 @@ function sp_get_main_results( $post = 0 ) {
 
 function sp_the_main_results( $post = 0, $delimiter = '-' ) {
 	$results = sp_get_main_results( $post );
-	echo implode( $delimiter, $results );
+	echo wp_kses_post( implode( $delimiter, $results ) );
 }
 
 function sp_update_main_results( $post = 0, $results = array() ) {
 	$event = new SP_Event( $post );
-	return $event->update_main_results ( $results );
+	return $event->update_main_results( $results );
 }
 
 function sp_get_main_results_or_time( $post = 0 ) {
@@ -134,7 +158,7 @@ function sp_get_main_results_or_time( $post = 0 ) {
 }
 
 function sp_the_main_results_or_time( $post = 0, $delimiter = '-' ) {
-	echo implode( $delimiter, sp_get_main_results_or_time( $post ) );
+	echo wp_kses_post( implode( $delimiter, sp_get_main_results_or_time( $post ) ) );
 }
 
 function sp_get_main_results_or_date( $post = 0, $format = null ) {
@@ -163,11 +187,22 @@ function sp_get_winner( $post = 0 ) {
 
 function sp_get_main_performance_option() {
 	$main_performance = get_option( 'sportspress_primary_performance', null );
-	if ( $main_performance ) return $main_performance;
-	$options = get_posts( array( 'post_type' => 'sp_performance', 'posts_per_page' => 1, 'orderby' => 'menu_order', 'order' => 'ASC' ) );
-	if ( ! $options ) return null;
+	if ( $main_performance ) {
+		return $main_performance;
+	}
+	$options = get_posts(
+		array(
+			'post_type'      => 'sp_performance',
+			'posts_per_page' => 1,
+			'orderby'        => 'menu_order',
+			'order'          => 'ASC',
+		)
+	);
+	if ( ! $options ) {
+		return null;
+	}
 	$performance = reset( $options );
-	$slug = $performance->post_name;
+	$slug        = $performance->post_name;
 	return $slug;
 }
 
@@ -239,7 +274,7 @@ function sp_event_blocks( $post = 0 ) {
  */
 
 function sp_has_logo( $post = 0 ) {
-	return has_post_thumbnail ( $post );
+	return has_post_thumbnail( $post );
 }
 
 function sp_get_logo( $post = 0, $size = 'icon', $attr = array() ) {
@@ -248,7 +283,7 @@ function sp_get_logo( $post = 0, $size = 'icon', $attr = array() ) {
 
 function sp_get_logo_url( $post = 0, $size = 'icon' ) {
 	$thumbnail_id = get_post_thumbnail_id( $post );
-	$src = wp_get_attachment_image_src( $thumbnail_id, $size, false );
+	$src          = wp_get_attachment_image_src( $thumbnail_id, $size, false );
 	return $src[0];
 }
 
@@ -258,19 +293,21 @@ function sp_get_abbreviation( $post = 0 ) {
 
 function sp_get_venues( $post = 0, $ids = true ) {
 	$terms = get_the_terms( $post, 'sp_venue' );
-	if ( $terms && $ids ) $terms = wp_list_pluck( $terms, 'term_id' );
+	if ( $terms && $ids ) {
+		$terms = wp_list_pluck( $terms, 'term_id' );
+	}
 	return $terms;
 }
 
 function sp_the_venues( $post = 0, $delimiter = ', ' ) {
 	$terms = sp_get_venues( $post, false );
-	$arr = array();
+	$arr   = array();
 	if ( $terms ) {
-		foreach ( $terms as $term ):
+		foreach ( $terms as $term ) :
 			$arr[] = $term->name;
 		endforeach;
 	}
-	echo implode( $delimiter, $arr ); 
+	echo wp_kses_post( implode( $delimiter, $arr ) );
 }
 
 function sp_is_home_venue( $post = 0, $event = 0 ) {
@@ -284,7 +321,7 @@ function sp_is_home_venue( $post = 0, $event = 0 ) {
 }
 
 function sp_the_logo( $post = 0, $size = 'icon', $attr = array() ) {
-	echo sp_get_logo( $post, $size, $attr );
+	echo wp_kses_post( sp_get_logo( $post, $size, $attr ) );
 }
 
 function sp_team_logo( $post = 0 ) {
@@ -301,7 +338,7 @@ function sp_team_abbreviation( $post = 0, $forced = false ) {
 }
 
 function sp_the_abbreviation( $post = 0, $forced = false ) {
-	echo sp_team_abbreviation( $post, $forced );
+	echo wp_kses_post( sp_team_abbreviation( $post, $forced ) );
 }
 
 function sp_team_short_name( $post = 0 ) {
@@ -314,7 +351,7 @@ function sp_team_short_name( $post = 0 ) {
 }
 
 function sp_the_short_name( $post = 0 ) {
-	echo sp_team_short_name( $post );
+	echo wp_kses_post( sp_team_short_name( $post ) );
 }
 
 function sp_team_name( $post = 0, $length = 'full' ) {
@@ -372,7 +409,7 @@ function sp_get_player_number_in_event( $player_id, $team_id, $event_id ) {
 	if ( ! array_key_exists( $player_id, $event_players[ $team_id ] ) ) {
 		return;
 	}
-	return $event_players[ $team_id ][ $player_id ][ 'number' ];
+	return $event_players[ $team_id ][ $player_id ]['number'];
 }
 
 function sp_get_player_number_in_event_or_profile( $player_id, $team_id, $event_id ) {
@@ -388,7 +425,7 @@ function sp_get_player_name( $post = 0 ) {
 }
 
 function sp_get_player_name_with_number( $post = 0, $prepend = '', $append = '. ' ) {
-	$name = sp_get_player_name( $post );
+	$name   = sp_get_player_name( $post );
 	$number = sp_get_player_number( $post );
 	if ( isset( $number ) && '' !== $number ) {
 		return apply_filters( 'sportspress_player_name_with_number', $prepend . $number . $append . $name, $post );
@@ -398,7 +435,7 @@ function sp_get_player_name_with_number( $post = 0, $prepend = '', $append = '. 
 }
 
 function sp_get_player_name_then_number( $post = 0, $prepend = ' (', $append = ')' ) {
-	$name = sp_get_player_name( $post );
+	$name   = sp_get_player_name( $post );
 	$number = sp_get_player_number( $post );
 	if ( isset( $number ) && '' !== $number ) {
 		return apply_filters( 'sportspress_player_name_then_number', $name . $prepend . $number . $append, $post );
@@ -449,16 +486,14 @@ function sp_staff_photo( $post = 0 ) {
  */
 
 function sp_venue_map( $term = 0 ) {
-    $meta = get_option( "taxonomy_$term" );
+	$meta = get_option( "taxonomy_$term" );
 	sp_get_template( 'venue-map.php', array( 'meta' => $meta ) );
 }
 
-/*
- *
- */
+
 
 function sp_get_position_caption( $term = 0 ) {
-    $meta = get_option( "taxonomy_$term" );
+	$meta    = get_option( "taxonomy_$term" );
 	$caption = sp_array_value( $meta, 'sp_caption', '' );
 	if ( $caption ) {
 		return $caption;

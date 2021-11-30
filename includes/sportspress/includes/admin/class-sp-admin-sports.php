@@ -4,11 +4,11 @@
  *
  * The SportsPress admin sports class stores preset sport data.
  *
- * @class 		SP_Admin_Sports
- * @version		2.6
- * @package		SportsPress/Admin
- * @category	Class
- * @author 		ThemeBoy
+ * @class       SP_Admin_Sports
+ * @version     2.6
+ * @package     SportsPress/Admin
+ * @category    Class
+ * @author      ThemeBoy
  */
 class SP_Admin_Sports {
 
@@ -20,18 +20,18 @@ class SP_Admin_Sports {
 	 */
 	public static function get_presets() {
 		if ( empty( self::$presets ) ) {
-			$presets = array();
+			$presets       = array();
 			self::$options = array(
-				'team-sports' => array(),
+				'team-sports'   => array(),
 				'racket-sports' => array(),
-				'water-sports' => array(),
+				'water-sports'  => array(),
 				'target-sports' => array(),
-				'esports' => array(),
-				'other' => array(),
+				'esports'       => array(),
+				'other'         => array(),
 			);
 
 			foreach ( self::$options as $slug => $options ) {
-				$dir = scandir( SP()->plugin_path() . '/presets/' . $slug );
+				$dir   = scandir( SP()->plugin_path() . '/presets/' . $slug );
 				$files = array();
 				if ( $dir ) {
 					foreach ( $dir as $key => $value ) {
@@ -40,13 +40,15 @@ class SP_Admin_Sports {
 						}
 					}
 				}
-				foreach( $files as $file ) {
+				foreach ( $files as $file ) {
 					$json_data = file_get_contents( SP()->plugin_path() . '/presets/' . $slug . '/' . $file );
-					$data = json_decode( $json_data, true );
-					if ( ! is_array( $data ) ) continue;
-					$id = preg_replace('/\\.[^.\\s]{3,4}$/', '', $file );
+					$data      = json_decode( $json_data, true );
+					if ( ! is_array( $data ) ) {
+						continue;
+					}
+					$id             = preg_replace( '/\\.[^.\\s]{3,4}$/', '', $file );
 					$presets[ $id ] = $data;
-					$name = array_key_exists( 'name', $data ) ? __( $data['name'], 'sportspress' ) : $id;
+					$name           = array_key_exists( 'name', $data ) ? esc_attr__( $data['name'], 'sportspress' ) : $id;
 
 					// Conditionally append filename in parentheses for clarity
 					if ( false === strpos( str_replace( ' ', '', strtolower( $data['name'] ) ), str_replace( '-', '', $id ) ) ) {
@@ -69,15 +71,19 @@ class SP_Admin_Sports {
 
 	public static function get_preset( $id ) {
 		$json_data = @file_get_contents( SP()->plugin_path() . '/presets/' . $id . '.json', true );
-		
-		if ( $json_data ) return json_decode( $json_data, true );
-		
+
+		if ( $json_data ) {
+			return json_decode( $json_data, true );
+		}
+
 		$dir = scandir( SP()->plugin_path() . '/presets' );
 		if ( $dir ) {
 			foreach ( $dir as $key => $value ) {
 				if ( substr( $value, 0, 1 ) !== '.' && strpos( $value, '.' ) === false ) {
 					$json_data = @file_get_contents( SP()->plugin_path() . '/presets/' . $value . '/' . $id . '.json', true );
-					if ( $json_data ) return json_decode( $json_data, true );
+					if ( $json_data ) {
+						return json_decode( $json_data, true );
+					}
 				}
 			}
 		}
@@ -99,19 +105,21 @@ class SP_Admin_Sports {
 
 		// Positions
 		$positions = sp_array_value( $preset, 'positions', array() );
-		$i = 0;
+		$i         = 0;
 		foreach ( $positions as $position ) {
 			if ( is_string( $position ) ) {
-				$name = $position;
+				$name     = $position;
 				$sections = array( 0, 1 );
 			} else {
-				$name = sp_array_value( $position, 'name', __( 'Position', 'sportspress' ) );
+				$name     = sp_array_value( $position, 'name', esc_attr__( 'Position', 'sportspress' ) );
 				$sections = sp_array_value( $position, 'sections', array( 0, 1 ) );
 			}
 			$term = wp_insert_term( $name, 'sp_position' );
-			if ( is_wp_error( $term ) ) continue;
-			$t_id = $term['term_id'];
-			$term_meta = get_option( "taxonomy_$t_id" );
+			if ( is_wp_error( $term ) ) {
+				continue;
+			}
+			$t_id                     = $term['term_id'];
+			$term_meta                = get_option( "taxonomy_$t_id" );
 			$term_meta['sp_sections'] = $sections;
 			update_option( "taxonomy_$t_id", $term_meta );
 			update_term_meta( $t_id, 'sp_order', $i + 1 );
@@ -120,11 +128,13 @@ class SP_Admin_Sports {
 
 		// Outcomes
 		$post_type = 'sp_outcome';
-		$outcomes = sp_array_value( $preset, 'outcomes', array() );
+		$outcomes  = sp_array_value( $preset, 'outcomes', array() );
 		self::delete_preset_posts( $post_type );
 		foreach ( $outcomes as $index => $outcome ) {
 			$post = self::get_post_array( $outcome, $post_type );
-			if ( empty( $post ) ) continue;
+			if ( empty( $post ) ) {
+				continue;
+			}
 			$id = self::insert_preset_post( $post, $index );
 			update_post_meta( $id, 'sp_abbreviation', sp_array_value( $outcome, 'abbreviation', null ) );
 			update_post_meta( $id, 'sp_condition', sp_array_value( $outcome, 'condition', null ) );
@@ -132,14 +142,18 @@ class SP_Admin_Sports {
 
 		// Results
 		$post_type = 'sp_result';
-		$results = sp_array_value( $preset, 'results', array() );
+		$results   = sp_array_value( $preset, 'results', array() );
 		self::delete_preset_posts( $post_type );
 		$primary_result = 0;
 		foreach ( $results as $index => $result ) {
 			$post = self::get_post_array( $result, $post_type );
-			if ( empty( $post ) ) continue;
+			if ( empty( $post ) ) {
+				continue;
+			}
 			$id = self::insert_preset_post( $post, $index );
-			if ( is_array( $result ) && array_key_exists( 'primary', $result ) ) $primary_result = $post['post_name'];
+			if ( is_array( $result ) && array_key_exists( 'primary', $result ) ) {
+				$primary_result = $post['post_name'];
+			}
 			update_post_meta( $id, 'sp_equation', sp_array_value( $result, 'equation', null ) );
 		}
 
@@ -147,12 +161,14 @@ class SP_Admin_Sports {
 		$i = 0;
 
 		// Performance
-		$post_type = 'sp_performance';
+		$post_type    = 'sp_performance';
 		$performances = sp_array_value( $preset, 'performance', array() );
 		self::delete_preset_posts( $post_type );
 		foreach ( $performances as $index => $performance ) {
 			$post = self::get_post_array( $performance, $post_type );
-			if ( empty( $post ) ) continue;
+			if ( empty( $post ) ) {
+				continue;
+			}
 			$id = self::insert_preset_post( $post, $index );
 			if ( isset( $performance['position'] ) ) {
 				wp_set_object_terms( $id, $performance['position'], 'sp_position', false );
@@ -170,11 +186,13 @@ class SP_Admin_Sports {
 
 		// Columns
 		$post_type = 'sp_column';
-		$columns = sp_array_value( $preset, 'columns', array() );
+		$columns   = sp_array_value( $preset, 'columns', array() );
 		self::delete_preset_posts( $post_type );
 		foreach ( $columns as $index => $column ) {
 			$post = self::get_post_array( $column, $post_type );
-			if ( empty( $post ) ) continue;
+			if ( empty( $post ) ) {
+				continue;
+			}
 			$id = self::insert_preset_post( $post, $index );
 			update_post_meta( $id, 'sp_equation', sp_array_value( $column, 'equation', null ) );
 			update_post_meta( $id, 'sp_precision', sp_array_value( $column, 'precision', 0 ) );
@@ -184,39 +202,44 @@ class SP_Admin_Sports {
 
 		// Metrics
 		$post_type = 'sp_metric';
-		$metrics = sp_array_value( $preset, 'metrics', array() );
+		$metrics   = sp_array_value( $preset, 'metrics', array() );
 		self::delete_preset_posts( $post_type );
 		foreach ( $metrics as $index => $metric ) {
 			$post = self::get_post_array( $metric, $post_type );
-			if ( empty( $post ) ) continue;
+			if ( empty( $post ) ) {
+				continue;
+			}
 			$id = self::insert_preset_post( $post, $i + $index );
 			$i ++;
 		}
-		
+
 		// Event Specs
 		$post_type = 'sp_spec';
-		$specs = sp_array_value( $preset, 'specs', array() );
+		$specs     = sp_array_value( $preset, 'specs', array() );
 		self::delete_preset_posts( $post_type );
 		foreach ( $specs as $index => $spec ) {
 			$post = self::get_post_array( $spec, $post_type );
-			if ( empty( $post ) ) continue;
+			if ( empty( $post ) ) {
+				continue;
+			}
 			$id = self::insert_preset_post( $post, $i + $index );
 			$i ++;
 		}
 
 		// Statistics
-		$post_type = 'sp_statistic';
+		$post_type  = 'sp_statistic';
 		$statistics = sp_array_value( $preset, 'statistics', array() );
 		self::delete_preset_posts( $post_type );
 		foreach ( $statistics as $index => $statistic ) {
 			$post = self::get_post_array( $statistic, $post_type );
-			if ( empty( $post ) ) continue;
+			if ( empty( $post ) ) {
+				continue;
+			}
 			$id = self::insert_preset_post( $post, $i + $index );
 			update_post_meta( $id, 'sp_equation', sp_array_value( $statistic, 'equation', null ) );
 			update_post_meta( $id, 'sp_precision', sp_array_value( $statistic, 'precision', 0 ) );
 			update_post_meta( $id, 'sp_type', sp_array_value( $statistic, 'type', 'total' ) );
 		}
-
 
 		// Options
 		$options = sp_array_value( $preset, 'options', array() );
@@ -230,20 +253,20 @@ class SP_Admin_Sports {
 
 	public static function delete_preset_posts( $post_type = null ) {
 		$args = array(
-			'post_type' => $post_type,
+			'post_type'      => $post_type,
 			'posts_per_page' => -1,
-			'post_status' => array( 'publish', 'pending', 'draft', 'auto-draft', 'future', 'private', 'inherit', 'trash' ),
-			'meta_query' => array(
+			'post_status'    => array( 'publish', 'pending', 'draft', 'auto-draft', 'future', 'private', 'inherit', 'trash' ),
+			'meta_query'     => array(
 				array(
-					'key' => '_sp_preset',
-					'value' => 1
-				)
-			)
+					'key'   => '_sp_preset',
+					'value' => 1,
+				),
+			),
 		);
 
 		// Delete posts
 		$old_posts = get_posts( $args );
-		foreach( $old_posts as $post ):
+		foreach ( $old_posts as $post ) :
 			wp_delete_post( $post->ID, true );
 		endforeach;
 	}
@@ -252,15 +275,19 @@ class SP_Admin_Sports {
 		$post_array = array();
 		if ( is_string( $post ) ) {
 			$post_array['post_title'] = $post;
-			$post_array['post_name'] = sp_get_eos_safe_slug( $post_array['post_title'] );
+			$post_array['post_name']  = sp_get_eos_safe_slug( $post_array['post_title'] );
 		} elseif ( is_array( $post ) ) {
-			if ( ! array_key_exists( 'name', $post ) ) $post_array = array();
+			if ( ! array_key_exists( 'name', $post ) ) {
+				$post_array = array();
+			}
 			$post_array['post_title'] = $post['name'];
-			$post_array['post_name'] = sp_array_value( $post, 'id', sp_get_eos_safe_slug( $post_array['post_title'] ) );
+			$post_array['post_name']  = sp_array_value( $post, 'id', sp_get_eos_safe_slug( $post_array['post_title'] ) );
 		}
 
 		// Return empty array if post with same slug already exists
-		if ( get_page_by_path( $post_array['post_name'], OBJECT, $post_type ) ) return array();
+		if ( get_page_by_path( $post_array['post_name'], OBJECT, $post_type ) ) {
+			return array();
+		}
 
 		// Set post type
 		$post_array['post_type'] = $post_type;
@@ -275,9 +302,9 @@ class SP_Admin_Sports {
 
 	public static function insert_preset_post( $post, $index = 0 ) {
 		// Increment menu order by 10 and publish post
-		$post['menu_order'] = $index * 10 + 10;
+		$post['menu_order']  = $index * 10 + 10;
 		$post['post_status'] = 'publish';
-		$id = wp_insert_post( $post );
+		$id                  = wp_insert_post( $post );
 
 		// Flag as preset
 		update_post_meta( $id, '_sp_preset', 1 );
@@ -287,21 +314,26 @@ class SP_Admin_Sports {
 
 	/**
 	 * Sport category names
+	 *
 	 * @return null
 	 */
 	public static function sport_category_names() {
-		return apply_filters( 'sportspress_sport_categories', array(
-			'team-sports' => __( 'Team Sports', 'sportspress' ),
-			'racket-sports' => __( 'Racket Sports', 'sportspress' ),
-			'water-sports' => __( 'Water Sports', 'sportspress' ),
-			'target-sports' => __( 'Target Sports', 'sportspress' ),
-			'esports' => __( 'Esports', 'sportspress' ),
-			'other' => __( 'Other', 'sportspress' ),
-		) );
+		return apply_filters(
+			'sportspress_sport_categories',
+			array(
+				'team-sports'   => esc_attr__( 'Team Sports', 'sportspress' ),
+				'racket-sports' => esc_attr__( 'Racket Sports', 'sportspress' ),
+				'water-sports'  => esc_attr__( 'Water Sports', 'sportspress' ),
+				'target-sports' => esc_attr__( 'Target Sports', 'sportspress' ),
+				'esports'       => esc_attr__( 'Esports', 'sportspress' ),
+				'other'         => esc_attr__( 'Other', 'sportspress' ),
+			)
+		);
 	}
 
 	/**
 	 * Sport preset names for localization
+	 *
 	 * @return null
 	 */
 	public static function sport_preset_names() {
