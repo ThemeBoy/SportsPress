@@ -197,7 +197,7 @@ class SP_Meta_Box_Performance_Details extends SP_Meta_Box_Config {
 		self::delete_duplicate( $_POST );
 		update_post_meta( $post_id, 'sp_singular', sp_array_value( $_POST, 'sp_singular', '', 'text' ) );
 		update_post_meta( $post_id, 'sp_section', (int) sp_array_value( $_POST, 'sp_section', -1, 'int' ) );
-		update_post_meta( $post_id, 'sp_format', sp_array_value( $_POST, 'sp_format', 'number', 'int' ) );
+		update_post_meta( $post_id, 'sp_format', sp_array_value( $_POST, 'sp_format', 'number', 'text' ) );
 		update_post_meta( $post_id, 'sp_precision', sp_array_value( $_POST, 'sp_precision', 0, 'int' ) );
 		update_post_meta( $post_id, 'sp_timed', sp_array_value( $_POST, 'sp_timed', 0, 'int' ) );
 		update_post_meta( $post_id, 'sp_sendoff', sp_array_value( $_POST, 'sp_sendoff', 0, 'int' ) );
