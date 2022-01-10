@@ -7,7 +7,7 @@
  * @author      ThemeBoy
  * @category    Core
  * @package     SportsPress/Functions
- * @version   2.7.11
+ * @version   2.7.15
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

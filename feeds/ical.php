@@ -5,7 +5,7 @@
  * @author      ThemeBoy
  * @category    Feeds
  * @package     SportsPress/Feeds
- * @version     2.7.5
+ * @version     2.7.15
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -95,7 +95,7 @@ foreach ( $events as $event ) :
 		$latitude  = sp_array_value( $meta, 'sp_latitude', false );
 		$longitude = sp_array_value( $meta, 'sp_longitude', false );
 		if ( false !== $latitude && false !== $longitude ) {
-			$geo = trim($latitude) . ';' . trim($longitude);
+			$geo = $latitude . ';' . $longitude;
 		} else {
 			$geo = false;
 		}
