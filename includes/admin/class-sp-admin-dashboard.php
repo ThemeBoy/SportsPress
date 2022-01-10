@@ -33,7 +33,7 @@ if ( ! class_exists( 'SP_Admin_Dashboard' ) ) :
 		 * Init dashboard widgets
 		 */
 		public function init() {
-			// wp_add_dashboard_widget( 'sportspress_dashboard_news', esc_attr__( 'Sports News', 'sportspress' ), array( $this, 'news_widget' ), null, null, 'side' );
+			wp_add_dashboard_widget( 'sportspress_dashboard_news', esc_attr__( 'Sports News', 'sportspress' ), array( $this, 'news_widget' ), null, null, 'side' );
 			wp_add_dashboard_widget( 'sportspress_dashboard_status', esc_attr__( 'SportsPress', 'sportspress' ), array( $this, 'status_widget' ) );
 			add_filter( 'dashboard_glance_items', array( $this, 'glance_items' ), 10, 1 );
 		}
