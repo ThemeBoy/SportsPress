@@ -95,7 +95,7 @@ foreach ( $events as $event ) :
 		$latitude  = sp_array_value( $meta, 'sp_latitude', false );
 		$longitude = sp_array_value( $meta, 'sp_longitude', false );
 		if ( false !== $latitude && false !== $longitude ) {
-			$geo = $latitude . ';' . $longitude;
+			$geo = trim($latitude) . ';' . trim($longitude);
 		} else {
 			$geo = false;
 		}
