@@ -1,5 +1,12 @@
 == SportsPress Changelog ==
 
+= 2.7.15 =
+* Feature - Sports news widget in dashboard.
+* Fix - Fixture importer bug with extended characters in league and season name.
+* Fix - Player list not loading (too many resources).
+* Fix - Performance format not updating.
+* Fix - Trim whitespace on geo coordinates to avoid import error.
+
 = 2.7.14 =
 * Fix - Error when non-value added as adjustment.
 * Fix - Map links not escaped properly.

@@ -5,7 +5,7 @@
  * @author      ThemeBoy
  * @category    Feeds
  * @package     SportsPress/Feeds
- * @version     2.7.5
+ * @version     2.7.15
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

@@ -7,7 +7,7 @@
  * @author      ThemeBoy
  * @category    Core
  * @package     SportsPress/Functions
- * @version   2.7.11
+ * @version   2.7.15
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -1923,15 +1923,24 @@ function sp_has_shortcodes( $content, $tags ) {
 /**
  * Check if a custom flag was uploaded from the user
  *
- * @return bool
+ * @return string
  */
 function sp_flags( $nationality ) {
 	$nationality = strtolower( $nationality );
 	$flag        = '';
-	global $wpdb;
-	$flag_post_id = intval( $wpdb->get_var( "SELECT post_id FROM {$wpdb->postmeta} WHERE meta_value LIKE '%/$nationality'" ) );
-	if ( $flag_post_id ) {
-		$flag_src = wp_get_attachment_image_url( $flag_post_id, array( 23, 15 ), false );
+	$custom_flag_post_id = false;
+	$args = array(
+		'post_type' => 'attachment',
+		'title' => $nationality,
+		'posts_per_page' => 1,
+		'fields' => 'ids',
+	);
+	$custom_flag = get_posts( $args );
+	if( $custom_flag ){
+		$custom_flag_post_id = $custom_flag[0];
+	}
+	if ( $custom_flag_post_id ) {
+		$flag_src = wp_get_attachment_image_url( $custom_flag_post_id, array( 23, 15 ), false );
 		$flag     = '<img src="' . $flag_src . '" alt="' . $nationality . '">';
 	} else {
 		$flag = '<img src="' . plugin_dir_url( SP_PLUGIN_FILE ) . 'assets/images/flags/' . $nationality . '.png" alt="' . $nationality . '">';

@@ -5,7 +5,7 @@
  * @author      ThemeBoy
  * @category    Admin
  * @package     SportsPress/Admin/Importers
- * @version     2.7.13
+ * @version     2.7.15
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -55,8 +55,8 @@ if ( class_exists( 'WP_Importer' ) ) {
 
 			// Get event format, league, and season from post vars
 			$event_format = ( empty( $_POST['sp_format'] ) ? false : sanitize_key( $_POST['sp_format'] ) );
-			$league       = ( sp_array_value( $_POST, 'sp_league', '-1' ) == '-1' ? false : sanitize_key( $_POST['sp_league'] ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
-			$season       = ( sp_array_value( $_POST, 'sp_season', '-1' ) == '-1' ? false : sanitize_key( $_POST['sp_season'] ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
+			$league       = ( sp_array_value( $_POST, 'sp_league', '-1' ) == '-1' ? false : $_POST['sp_league'] ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
+			$season       = ( sp_array_value( $_POST, 'sp_season', '-1' ) == '-1' ? false : $_POST['sp_season'] ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 			$date_format  = ( empty( $_POST['sp_date_format'] ) ? 'yyyy/mm/dd' : sanitize_text_field( wp_unslash( $_POST['sp_date_format'] ) ) );
 
 			foreach ( $rows as $row ) :

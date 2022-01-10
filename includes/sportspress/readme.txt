@@ -4,7 +4,7 @@ Tags: calendars, club, club management, esports, events, fixtures, leagues, leag
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
 Tested up to: 5.8.1
-Stable tag: 2.7.14
+Stable tag: 2.7.15
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -239,6 +239,13 @@ There are [3 different licenses](http://tboy.co/pro) that you can choose from: C
 When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
 
 == Changelog ==
+
+= 2.7.15 =
+* Feature - Sports news widget in dashboard.
+* Fix - Fixture importer bug with extended characters in league and season name.
+* Fix - Player list not loading (too many resources).
+* Fix - Performance format not updating.
+* Fix - Trim whitespace on geo coordinates to avoid import error.
 
 = 2.7.14 =
 * Fix - Error when non-value added as adjustment.
