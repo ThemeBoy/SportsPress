@@ -2,8 +2,8 @@
 Contributors: ThemeBoy, brianmiyaji, aylaview, savvasha, kadimi, rochesterj
 Tags: calendars, club, club management, esports, events, fixtures, leagues, league management, sports, sports club, sports data, team rosters
 Requires at least: 3.8
-Tested up to: 5.7
-Stable tag: 2.7.8
+Tested up to: 5.8.1
+Stable tag: 2.7.15
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -114,6 +114,55 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 If on the off-chance you do encounter issues with the event/team/player/staff/sponsor pages after an update you simply need to flush the permalinks by going to WordPress > Settings > Permalinks and hitting 'save'. That should return things to normal.
 
 == Changelog ==
+
+= 2.7.15 =
+* Feature - Sports news widget in dashboard.
+* Fix - Fixture importer bug with extended characters in league and season name.
+* Fix - Player list not loading (too many resources).
+* Fix - Performance format not updating.
+* Fix - Trim whitespace on geo coordinates to avoid import error.
+
+= 2.7.14 =
+* Fix - Error when non-value added as adjustment.
+* Fix - Map links not escaped properly.
+* Fix - Event blocks missing attributes.
+* Fix - Player statistics meta escaping.
+
+= 2.7.13 =
+* Fix - Theme notice escaping.
+* Fix - Timezone dropdown selection now shown in general settings.
+* Fix - Double header when multiple player lists are displayed in team.
+* Fix - Dropdown options not saving in settings.
+* Fix - Setup page conflict with WooCommerce.
+
+= 2.7.12 =
+* Fix - OpenStreetMap not displaying map after update.
+
+= 2.7.11 =
+* Fix - Player status selector not reflecting changes in match edit screen.
+* Fix - Player dropdown template not displaying names.
+* Fix - Staff dropdown template not displaying names.
+
+= 2.7.10 =
+* Fix - Players not selectable in event edit page.
+* Fix - Videos embedded in post content not rendering.
+
+= 2.7.9 =
+* Tweak - Add support for event format in REST API.
+* Tweak - Add "Order" and "Order by" selection fields for countdown widget.
+* Tweak - Add option to display event status in countdown widget.
+* Tweak - Add ability to filter events by format in calendar template.
+* Tweak - Update TGM plugin activation library.
+* Fix - Remove plugin headers from modules for improved compatibility.
+* Fix - Reverse order not applying to teams in event lists.
+* Fix - Add validation to user inputs for improved security.
+* Fix - Sanitize all user inputs for improved security.
+* Fix - Escape all outputs in admin for improved security.
+* Fix - Filtering based on format for event blocks.
+* Fix - Last week and next week filter not applying to player lists.
+* Fix - Deselecting a selected team in settings.
+* Fix - PHP 8.0 deprecated warnings.
+* Localization - Add nationalities and flags for French Guiana, French Polynesia, Guadeloupe, Greenland, Martinique, Reunion, and Sint Maarten.
 
 = 2.7.8 =
 * Fix - Event results, box scores, and players stats not updating via REST API.

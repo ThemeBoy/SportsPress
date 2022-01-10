@@ -3,7 +3,7 @@
  * Plugin Name: SportsPress Pro
  * Plugin URI: http://tboy.co/pro
  * Description: Advanced club & league management from ThemeBoy.
- * Version: 2.7.8
+ * Version: 2.7.15
  * Author: ThemeBoy
  * Author URI: http://themeboy.com
  * Requires at least: 3.8
@@ -26,14 +26,14 @@ if ( ! class_exists( 'SportsPress_Pro' ) ) :
  * Main SportsPress Pro Class
  *
  * @class SportsPress_Pro
- * @version	2.7.8
+ * @version	2.7.15
  */
 final class SportsPress_Pro {
 
 	/**
 	 * @var string
 	 */
-	public $version = '2.7.8';
+	public $version = '2.7.15';
 
 	/**
 	 * SportsPress Pro Constructor.
@@ -109,8 +109,8 @@ final class SportsPress_Pro {
 	 */
 	public function action_links( $links ) {
 		return array_merge( array(
-			'<a href="' . admin_url( 'admin.php?page=sportspress' ) . '">' . __( 'Settings', 'sportspress' ) . '</a>',
-			'<a href="' . apply_filters( 'sportspress_docs_url', 'http://tboy.co/docs' ) . '">' . __( 'Docs', 'sportspress' ) . '</a>',
+			'<a href="' . admin_url( 'admin.php?page=sportspress' ) . '">' . esc_attr__( 'Settings', 'sportspress' ) . '</a>',
+			'<a href="' . apply_filters( 'sportspress_docs_url', 'http://tboy.co/docs' ) . '">' . esc_attr__( 'Docs', 'sportspress' ) . '</a>',
 		), $links );
 	}
 
@@ -119,8 +119,8 @@ final class SportsPress_Pro {
 	 */
 	public function next_steps( $steps ) {
 		$steps['last'] = array(
-      'label' => __( 'SportsPress Themes', 'sportspress' ),
-      'content' => __( 'Install an official SportsPress theme for 100% guaranteed compatibility with SportsPress Pro features.', 'sportspress' ) . ' <a href="http://tboy.co/themes" target="_blank">' . __( 'Learn more', 'sportspress' ) . '</a>',
+      'label' => esc_attr__( 'SportsPress Themes', 'sportspress' ),
+      'content' => esc_attr__( 'Install an official SportsPress theme for 100% guaranteed compatibility with SportsPress Pro features.', 'sportspress' ) . ' <a href="http://tboy.co/themes" target="_blank">' . esc_attr__( 'Learn more', 'sportspress' ) . '</a>',
     );
 
     return $steps;
