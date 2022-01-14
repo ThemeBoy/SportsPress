@@ -76,7 +76,7 @@ class SP_Meta_Box_Outcome_Details extends SP_Meta_Box_Config {
 				);
 
 				foreach ( $options as $key => $value ) :
-					printf( '<option value="%s" %s>%s</option>', esc_attr( $key ), selected( true, $key == $condition, false ), esc_attr( $value ) );
+					printf( '<option value="%s" %s>%s</option>', esc_attr( $key ), selected( true, $key == htmlspecialchars_decode( $condition ), false ), esc_attr( $value ) );
 				endforeach;
 				?>
 			</select>
