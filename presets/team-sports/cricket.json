@@ -12,10 +12,10 @@
 						"No Result"
 	],
 	"results": [
-						{ "name" : "Runs", "equation" : "$runs", "description" : "Runs", "primary" : 1 },
 						{ "name" : "Wickets Lost", "description" : "Wickets lost" },
 						{ "name" : "Overs", "equation" : "$o", "description" : "Overs" },
-						{ "name" : "BP", "description" : "Bonus points"}
+						{ "name" : "BP", "description" : "Bonus points"},
+						{ "name" : "Runs", "equation" : "$runs", "description" : "Runs", "primary" : 1 }
 	],
 	"performance": [
 						{ "name" : "&nbsp;", "id" : "notes", "section" : 0, "format" : "text", "description" : "Notes" },
