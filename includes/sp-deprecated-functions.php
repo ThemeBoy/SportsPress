@@ -4,13 +4,15 @@
  *
  * Where functions come to retire.
  *
- * @author 		ThemeBoy
- * @category 	Core
- * @package 	ThemeBoy/Functions
- * @version		2.6
+ * @author      ThemeBoy
+ * @category    Core
+ * @package     ThemeBoy/Functions
+ * @version     2.7.9
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 /* Shortcodes */
 add_shortcode( 'events-calendar', 'SP_Shortcodes::event_calendar' );
@@ -83,7 +85,7 @@ function sportspress_post_checklist( $post_id = null, $meta = 'post', $display =
 	return sp_post_checklist( $post_id, $meta, $display, $filter, $index );
 }
 function sportspress_calculate_selector( $post_id, $selected = null ) {
-	return sp_calculate_selector( $post_id, $selected);
+	return sp_calculate_selector( $post_id, $selected );
 }
 function sportspress_get_equation_optgroup_array( $post_id, $type = null, $variations = null, $defaults = null, $totals = true ) {
 	return sp_get_equation_optgroup_array( $post_id, $type, $variations, $defaults, $totals );
@@ -109,7 +111,7 @@ function sportspress_edit_player_list_table( $columns = array(), $usecolumns = n
 function sportspress_edit_team_columns_table( $league_id, $columns = array(), $data = array(), $placeholders = array(), $merged = array(), $seasons = array(), $readonly = true ) {
 	return sp_edit_team_columns_table( $league_id, $columns, $data, $placeholders, $merged, $seasons, $readonly );
 }
-function sportspress_edit_player_performance_table( $id = null, $league_id, $columns = array(), $data = array(), $placeholders = array(), $merged = array(), $seasons_teams = array(), $readonly = true ) {
+function sportspress_edit_player_performance_table( $id = null, $league_id = null, $columns = array(), $data = array(), $placeholders = array(), $merged = array(), $seasons_teams = array(), $readonly = true ) {
 	return sp_edit_player_performance_table( $id, $league_id, $columns, $data, $placeholders, $merged, $seasons_teams, $readonly );
 }
 function sportspress_edit_event_results_table( $columns = array(), $data = array() ) {
@@ -121,7 +123,7 @@ function sportspress_event_player_status_selector( $team_id, $player_id, $value 
 function sportspress_event_player_sub_selector( $team_id, $player_id, $value, $data = array() ) {
 	return sp_event_player_sub_selector( $team_id, $player_id, $value, $data );
 }
-function sportspress_edit_event_players_table( $columns = array(), $data = array(), $team_id ) {
+function sportspress_edit_event_players_table( $columns = array(), $data = array(), $team_id = null ) {
 	return sp_edit_event_players_table( $columns, $data, $team_id );
 }
 function sportspress_post_adder( $post_type = 'post', $label = null ) {
@@ -151,7 +153,7 @@ function sportspress_get_team_columns_data( $post_id, $league_id, $admin = false
 function sportspress_get_league_table_data( $post_id, $breakdown = false ) {
 	return sp_get_league_table_data( $post_id, $breakdown );
 }
-function sportspress_sort_table_teams ( $a, $b ) {
+function sportspress_sort_table_teams( $a, $b ) {
 	return sp_sort_table_teams( $a, $b );
 }
 function sportspress_get_player_list_data( $post_id, $admin = false ) {
@@ -160,7 +162,7 @@ function sportspress_get_player_list_data( $post_id, $admin = false ) {
 function sportspress_get_player_roster_data( $post_id, $admin = false ) {
 	return sp_get_player_roster_data( $post_id, $admin );
 }
-function sportspress_sort_list_players ( $a, $b ) {
+function sportspress_sort_list_players( $a, $b ) {
 	return sp_sort_list_players( $a, $b );
 }
 function sportspress_get_player_metrics_data( $post_id ) {
@@ -176,35 +178,35 @@ function sportspress_highlight_admin_menu( $p = 'options-general.php', $s = 'spo
 	return sp_highlight_admin_menu( $p, $s );
 }
 
-if ( !function_exists( 'sp_get_team_columns_data' ) ) {
+if ( ! function_exists( 'sp_get_team_columns_data' ) ) {
 	function sp_get_team_columns_data( $post_id, $league_id, $admin = false ) {
 		$team = new SP_Team( $post_id );
 		return $team->data( $league_id, $admin );
 	}
 }
 
-if ( !function_exists( 'sp_get_league_table_data' ) ) {
-	function sp_get_league_table_data( $post_id, $admin = false ) {		
+if ( ! function_exists( 'sp_get_league_table_data' ) ) {
+	function sp_get_league_table_data( $post_id, $admin = false ) {
 		$table = new SP_League_Table( $post_id );
 		return $table->data( $admin );
 	}
 }
 
-if ( !function_exists( 'sp_get_player_statistics_data' ) ) {
+if ( ! function_exists( 'sp_get_player_statistics_data' ) ) {
 	function sp_get_player_statistics_data( $post_id, $league_id, $admin = false ) {
 		$list = new SP_Player_List( $post_id );
 		return $list->data( $league_id, $admin );
 	}
 }
 
-if ( !function_exists( 'sp_get_player_list_data' ) ) {
+if ( ! function_exists( 'sp_get_player_list_data' ) ) {
 	function sp_get_player_list_data( $post_id, $admin = false ) {
 		$list = new SP_Player_List( $post_id );
 		return $list->data( $admin );
 	}
 }
 
-if ( !function_exists( 'sp_get_short_name' ) ) {
+if ( ! function_exists( 'sp_get_short_name' ) ) {
 	function sp_get_short_name( $post = 0 ) {
 		$abbreviation = sp_get_abbreviation( $post, 'sp_abbreviation', true );
 		if ( $abbreviation ) {
@@ -215,13 +217,13 @@ if ( !function_exists( 'sp_get_short_name' ) ) {
 	}
 }
 
-if ( !function_exists( 'sp_short_name' ) ) {
+if ( ! function_exists( 'sp_short_name' ) ) {
 	function sp_short_name( $post = 0 ) {
-		echo sp_get_short_name( $post );
+		echo wp_kses_post( sp_get_short_name( $post ) );
 	}
 }
 
-if ( !function_exists( 'sp_get_team_name' ) ) {
+if ( ! function_exists( 'sp_get_team_name' ) ) {
 	function sp_get_team_name( $post = 0, $short = true ) {
 		if ( $short ) {
 			return sp_team_abbreviation( $post );

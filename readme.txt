@@ -1,10 +1,10 @@
 === SportsPress - Sports Club & League Manager ===
-Contributors: ThemeBoy, brianmiyaji, aylaview, savvasha, nabil_kadimi
+Contributors: ThemeBoy, brianmiyaji, aylaview, savvasha, nabil_kadimi, rochesterj
 Tags: calendars, club, club management, esports, events, fixtures, leagues, league management, sports, sports club, sports data, team rosters
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
-Tested up to: 5.2
-Stable tag: 2.6.20
+Tested up to: 5.8.1
+Stable tag: 2.7.15
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -239,6 +239,121 @@ There are [3 different licenses](http://tboy.co/pro) that you can choose from: C
 When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
 
 == Changelog ==
+
+= 2.7.15 =
+* Feature - Sports news widget in dashboard.
+* Fix - Fixture importer bug with extended characters in league and season name.
+* Fix - Player list not loading (too many resources).
+* Fix - Performance format not updating.
+* Fix - Trim whitespace on geo coordinates to avoid import error.
+
+= 2.7.14 =
+* Fix - Error when non-value added as adjustment.
+* Fix - Map links not escaped properly.
+* Fix - Event blocks missing attributes.
+* Fix - Player statistics meta escaping.
+
+= 2.7.13 =
+* Fix - Theme notice escaping.
+* Fix - Timezone dropdown selection now shown in general settings.
+* Fix - Double header when multiple player lists are displayed in team.
+* Fix - Dropdown options not saving in settings.
+* Fix - Setup page conflict with WooCommerce.
+
+= 2.7.12 =
+* Fix - OpenStreetMap not displaying map after update.
+
+= 2.7.11 =
+* Fix - Player status selector not reflecting changes in match edit screen.
+* Fix - Player dropdown template not displaying names.
+* Fix - Staff dropdown template not displaying names.
+
+= 2.7.10 =
+* Fix - Players not selectable in event edit page.
+* Fix - Videos embedded in post content not rendering.
+
+= 2.7.9 =
+* Tweak - Add support for event format in REST API.
+* Tweak - Add "Order" and "Order by" selection fields for countdown widget.
+* Tweak - Add option to display event status in countdown widget.
+* Tweak - Add ability to filter events by format in calendar template.
+* Tweak - Update TGM plugin activation library.
+* Fix - Remove plugin headers from modules for improved compatibility.
+* Fix - Reverse order not applying to teams in event lists.
+* Fix - Add validation to user inputs for improved security.
+* Fix - Sanitize all user inputs for improved security.
+* Fix - Escape all outputs in admin for improved security.
+* Fix - Filtering based on format for event blocks.
+* Fix - Last week and next week filter not applying to player lists.
+* Fix - Deselecting a selected team in settings.
+* Fix - PHP 8.0 deprecated warnings.
+* Localization - Add nationalities and flags for French Guiana, French Polynesia, Guadeloupe, Greenland, Martinique, Reunion, and Sint Maarten.
+
+= 2.7.8 =
+* Fix - Event results, box scores, and players stats not updating via REST API.
+
+= 2.7.7 =
+* Fix - Events not appearing due to filter malfunction.
+
+= 2.7.6 =
+* Feature - Add ability to bulk set events as on time.
+* Fix - Players in events not being filtered by team.
+
+= 2.7.5 =
+* Tweak - Add ability to filter events by team and match day in one query.
+* Tweak - Improve performance by updating leaflet script and only loading when required.
+* Tweak - Add overtime notation compatibility for minutes played.
+* Fix - Issue with event edit page where the scripts were not working.
+* Fix - No records when format is default in event list shortcode.
+
+= 2.7.4 =
+* Tweak - Add option to display birthday, age, or both in birthdays widget.
+* Fix - Player list data showing zeroes in some cases.
+
+= 2.7.3 =
+* Compatibility - Tested for compatibility with WordPress 5.5 with changes made where necessary.
+* Tweak - Avoid showing minutes box for subs when not needed.
+* Tweak - Improve filtering speed for queries without leagues or seasons.
+* Tweak - Apply reverse order setting in event lists.
+* Tweak - Enable filtering a player's events played on a specific team.
+* Fix - Include future events in REST API for WordPress 5.5.
+* Fix - Enable updating player metrics using the REST API.
+* Fix - Deprecated code for PHP 7.4.
+* Fix - Elementor compatibility.
+* Localization - Update country names for Czechia, North Macedonia, Myanmar, and Eswatini.
+* Localization - Adjust RTL stylesheet for event performance icons.
+
+= 2.7.2 =
+* Tweak - Sanitize delimiter field in event settings.
+
+= 2.7.1 =
+* Feature - Enable player list filtering by nationality.
+* Feature - Add option to display date of birth in player lists.
+* Tweak - Exclude postponed and canceled events from countdowns.
+* Tweak - Apply reverse order option to event results.
+* Tweak - When a team has more than one home venue, separate with commas.
+* Fix - Venue address containing pluses in events.
+* Fix - Event blocks showing the wrong dates when embedded within other event pages.
+* Fix - Statistics not adding manual values when not based on equations.
+* Fix - Event lists ignoring the format parameter.
+* Fix - League table order when displaying multiple tables in team profiles.
+* Fix - Error when deleting configuration columns.
+* Fix - Player lists not including past players in some cases.
+* Fix - Prevent error when viewing event calendar in some cases.
+
+= 2.7 =
+* Feature - New bulk actions to postpone and cancel multiple events.
+* Feature - Add date of birth to player importer.
+* Feature - Automatically select the home team's venue as the default venue when importing fixtures.
+* Feature - Add ability to turn on comment for team profiles.
+* Feature - Filter league tables by event status.
+* Tweak - When an icon is used for player performance, display the icon in player lists and profiles.
+* Tweak - Add title attribute for player statistic icons.
+* Tweak - Default stylesheet sorting icon width.
+* Fix - Icon color picker rendering issue.
+* Fix - Image selector not working for player statistics.
+* Fix - Enqueue scripts and styles for OpenStreetMap when used in shortcodes.
+* Localization - Add translation options for countdown units.
 
 = 2.6.20 =
 * Tweak - Improve compatibility with volleyball for checkbox performance.

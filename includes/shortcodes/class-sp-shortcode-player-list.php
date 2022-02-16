@@ -2,9 +2,9 @@
 /**
  * Player List Shortcode
  *
- * @author 		ThemeBoy
- * @category 	Shortcodes
- * @package 	SportsPress/Shortcodes/Player_List
+ * @author      ThemeBoy
+ * @category    Shortcodes
+ * @package     SportsPress/Shortcodes/Player_List
  * @version     0.7
  */
 class SP_Shortcode_Player_List {
@@ -16,8 +16,9 @@ class SP_Shortcode_Player_List {
 	 */
 	public static function output( $atts ) {
 
-		if ( ! isset( $atts['id'] ) && isset( $atts[0] ) && is_numeric( $atts[0] ) )
+		if ( ! isset( $atts['id'] ) && isset( $atts[0] ) && is_numeric( $atts[0] ) ) {
 			$atts['id'] = $atts[0];
+		}
 
 		sp_get_template( 'player-list.php', $atts );
 	}

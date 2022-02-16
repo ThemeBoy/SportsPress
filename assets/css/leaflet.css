@@ -22,9 +22,13 @@
 .leaflet-marker-shadow {
 	-webkit-user-select: none;
 	   -moz-user-select: none;
-	        user-select: none;
+			user-select: none;
 	  -webkit-user-drag: none;
 	}
+/* Prevents IE11 from highlighting tiles in blue */
+.leaflet-tile::selection {
+	background: transparent;
+}
 /* Safari renders non-retina tile on retina better with this, but Chrome is worse */
 .leaflet-safari .leaflet-tile {
 	image-rendering: -webkit-optimize-contrast;
@@ -82,7 +86,7 @@
 	width: 0;
 	height: 0;
 	-moz-box-sizing: border-box;
-	     box-sizing: border-box;
+		 box-sizing: border-box;
 	z-index: 800;
 	}
 /* workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=888319 */
@@ -169,15 +173,15 @@
 	opacity: 0;
 	-webkit-transition: opacity 0.2s linear;
 	   -moz-transition: opacity 0.2s linear;
-	        transition: opacity 0.2s linear;
+			transition: opacity 0.2s linear;
 	}
 .leaflet-fade-anim .leaflet-map-pane .leaflet-popup {
 	opacity: 1;
 	}
 .leaflet-zoom-animated {
 	-webkit-transform-origin: 0 0;
-	    -ms-transform-origin: 0 0;
-	        transform-origin: 0 0;
+		-ms-transform-origin: 0 0;
+			transform-origin: 0 0;
 	}
 .leaflet-zoom-anim .leaflet-zoom-animated {
 	will-change: transform;
@@ -185,13 +189,13 @@
 .leaflet-zoom-anim .leaflet-zoom-animated {
 	-webkit-transition: -webkit-transform 0.25s cubic-bezier(0,0,0.25,1);
 	   -moz-transition:    -moz-transform 0.25s cubic-bezier(0,0,0.25,1);
-	        transition:         transform 0.25s cubic-bezier(0,0,0.25,1);
+			transition:         transform 0.25s cubic-bezier(0,0,0.25,1);
 	}
 .leaflet-zoom-anim .leaflet-tile,
 .leaflet-pan-anim .leaflet-tile {
 	-webkit-transition: none;
 	   -moz-transition: none;
-	        transition: none;
+			transition: none;
 	}
 
 .leaflet-zoom-anim .leaflet-zoom-hide {
@@ -237,7 +241,8 @@
 
 .leaflet-marker-icon.leaflet-interactive,
 .leaflet-image-layer.leaflet-interactive,
-.leaflet-pane > svg path.leaflet-interactive {
+.leaflet-pane > svg path.leaflet-interactive,
+svg.leaflet-image-layer.leaflet-interactive path {
 	pointer-events: visiblePainted; /* IE 9-10 doesn't have auto */
 	pointer-events: auto;
 	}
@@ -430,7 +435,7 @@
 	white-space: nowrap;
 	overflow: hidden;
 	-moz-box-sizing: border-box;
-	     box-sizing: border-box;
+		 box-sizing: border-box;
 
 	background: #fff;
 	background: rgba(255, 255, 255, 0.5);
@@ -493,8 +498,8 @@
 
 	-webkit-transform: rotate(45deg);
 	   -moz-transform: rotate(45deg);
-	    -ms-transform: rotate(45deg);
-	        transform: rotate(45deg);
+		-ms-transform: rotate(45deg);
+			transform: rotate(45deg);
 	}
 .leaflet-popup-content-wrapper,
 .leaflet-popup-tip {
@@ -527,7 +532,7 @@
 	}
 
 .leaflet-oldie .leaflet-popup-content-wrapper {
-	zoom: 1;
+	-ms-zoom: 1;
 	}
 .leaflet-oldie .leaflet-popup-tip {
 	width: 24px;

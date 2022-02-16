@@ -6,28 +6,28 @@
  */
 
 .sp-tournament-bracket .sp-team .sp-team-name:before {
-    border-right-color: #e5e5e5 !important;
-    border-left-color: #e5e5e5 !important;
-    right: -10px !important;
+	border-right-color: #e5e5e5 !important;
+	border-left-color: #e5e5e5 !important;
+	right: -10px !important;
 }
 
 .sp-tournament-bracket .sp-team-flip .sp-team-name:before {
-    right: auto !important;
-    left: -10px !important;
+	right: auto !important;
+	left: -10px !important;
 }
 
 .sp-tournament-bracket .sp-team.sp-first-round .sp-team-name {
-    margin-right: -1px !important;
+	margin-right: -1px !important;
 }
 
 .sp-tournament-bracket .sp-team.sp-last-round .sp-team-name {
-    margin-left: -1px !important;
+	margin-left: -1px !important;
 }
 
 .sp-template-event-performance-icons .sp-performance-icons {
-    text-align: left !important;
+	text-align: left !important;
 }
 
 .sp-data-table .data-name {
-    text-align: right !important;
+	text-align: right !important;
 }

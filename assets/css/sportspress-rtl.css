@@ -37,6 +37,21 @@
 	margin-left: 0.5em;
 }
 
+/* Event Performance (Icons) */
+.sp-event-performance-teams .sp-template-event-performance-icons {
+  float: right;
+  clear: right;
+  padding-right: 0;
+  padding-left: 10px;
+}
+
+.sp-event-performance-teams .sp-template-event-performance-icons:nth-child(2n) {
+  float: left;
+  clear: left;
+  padding-left: 0;
+  padding-right: 10px;
+}
+
 /* Event Calendar */
 .sp-event-calendar #next {
 	text-align: left;

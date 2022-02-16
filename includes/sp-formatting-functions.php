@@ -4,13 +4,15 @@
  *
  * Functions for formatting data.
  *
- * @author 		ThemeBoy
- * @category 	Core
- * @package 	SportsPress/Functions
- * @version   2.4
+ * @author      ThemeBoy
+ * @category    Core
+ * @package     SportsPress/Functions
+ * @version   2.7.3
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 /**
  * Sanitize taxonomy names. Slug format (no spaces, lowercase).
@@ -50,17 +52,17 @@ function sp_clean( $var ) {
  * @return array
  */
 function sp_array_overlay( $a1, $a2 ) {
-    foreach( $a1 as $k => $v ) {
-        if ( ! array_key_exists( $k, $a2 ) ) {
-        	continue;
-        }
-        if ( is_array( $v ) && is_array( $a2[ $k ] ) ) {
-            $a1[ $k ] = sp_array_overlay( $v, $a2[ $k ] );
-        } else {
-            $a1[ $k ] = $a2[ $k ];
-        }
-    }
-    return $a1;
+	foreach ( $a1 as $k => $v ) {
+		if ( ! array_key_exists( $k, $a2 ) ) {
+			continue;
+		}
+		if ( is_array( $v ) && is_array( $a2[ $k ] ) ) {
+			$a1[ $k ] = sp_array_overlay( $v, $a2[ $k ] );
+		} else {
+			$a1[ $k ] = $a2[ $k ];
+		}
+	}
+	return $a1;
 }
 
 /**
@@ -117,21 +119,21 @@ function sp_sort_by_name( $a, $b ) {
  * @return int
  */
 function sp_let_to_num( $size ) {
-    $l 		= substr( $size, -1 );
-    $ret 	= substr( $size, 0, -1 );
-    switch( strtoupper( $l ) ) {
-	    case 'P':
-	        $ret *= 1024;
-	    case 'T':
-	        $ret *= 1024;
-	    case 'G':
-	        $ret *= 1024;
-	    case 'M':
-	        $ret *= 1024;
-	    case 'K':
-	        $ret *= 1024;
-    }
-    return $ret;
+	$l   = substr( $size, -1 );
+	$ret = substr( $size, 0, -1 );
+	switch ( strtoupper( $l ) ) {
+		case 'P':
+			$ret *= 1024;
+		case 'T':
+			$ret *= 1024;
+		case 'G':
+			$ret *= 1024;
+		case 'M':
+			$ret *= 1024;
+		case 'K':
+			$ret *= 1024;
+	}
+	return $ret;
 }
 
 /**
@@ -164,12 +166,13 @@ if ( ! function_exists( 'sp_time_from_int' ) ) {
 	 * @return string
 	 */
 	function sp_time_value( $value = 0 ) {
-		$intval = intval( $value );
+		$intval  = intval( $value );
 		$timeval = gmdate( 'i:s', $intval );
-		$hours = floor( $intval / 3600 );
+		$hours   = floor( $intval / 3600 );
 
-		if ( '00' != $hours )
+		if ( '00' != $hours ) {
 			$timeval = $hours . ':' . $timeval;
+		}
 
 		return preg_replace( '/^0/', '', $timeval );
 	}
@@ -189,9 +192,9 @@ if ( ! function_exists( 'sp_rgb_from_hex' ) ) {
 		// Convert shorthand colors to full format, e.g. "FFF" -> "FFFFFF"
 		$color = preg_replace( '~^(.)(.)(.)$~', '$1$1$2$2$3$3', $color );
 
-		$rgb['R'] = hexdec( $color{0}.$color{1} );
-		$rgb['G'] = hexdec( $color{2}.$color{3} );
-		$rgb['B'] = hexdec( $color{4}.$color{5} );
+		$rgb['R'] = hexdec( $color[0] . $color[1] );
+		$rgb['G'] = hexdec( $color[2] . $color[3] );
+		$rgb['B'] = hexdec( $color[4] . $color[5] );
 		return $rgb;
 	}
 }
@@ -203,27 +206,27 @@ if ( ! function_exists( 'sp_hex_darker' ) ) {
 	 *
 	 * @access public
 	 * @param mixed $color
-	 * @param int $factor (default: 30)
+	 * @param int   $factor (default: 30)
 	 * @return string
 	 */
 	function sp_hex_darker( $color, $factor = 30, $absolute = false ) {
-		$base = sp_rgb_from_hex( $color );
+		$base  = sp_rgb_from_hex( $color );
 		$color = '#';
 
-		foreach ($base as $k => $v) :
-	    	if ( $absolute ) {
-	    		$amount = $factor;
-	    	} else {
-		        $amount = $v / 100;
-		        $amount = round($amount * $factor);
-		    }
-	        $new_decimal = max( $v - $amount, 0 );
+		foreach ( $base as $k => $v ) :
+			if ( $absolute ) {
+				$amount = $factor;
+			} else {
+				$amount = $v / 100;
+				$amount = round( $amount * $factor );
+			}
+			$new_decimal = max( $v - $amount, 0 );
 
-	        $new_hex_component = dechex($new_decimal);
-	        if(strlen($new_hex_component) < 2) :
-	        	$new_hex_component = "0".$new_hex_component;
-	        endif;
-	        $color .= $new_hex_component;
+			$new_hex_component = dechex( $new_decimal );
+			if ( strlen( $new_hex_component ) < 2 ) :
+				$new_hex_component = '0' . $new_hex_component;
+			endif;
+			$color .= $new_hex_component;
 		endforeach;
 
 		return $color;
@@ -237,31 +240,31 @@ if ( ! function_exists( 'sp_hex_lighter' ) ) {
 	 *
 	 * @access public
 	 * @param mixed $color
-	 * @param int $factor (default: 30)
+	 * @param int   $factor (default: 30)
 	 * @return string
 	 */
 	function sp_hex_lighter( $color, $factor = 30, $absolute = false ) {
-		$base = sp_rgb_from_hex( $color );
+		$base  = sp_rgb_from_hex( $color );
 		$color = '#';
 
-	    foreach ($base as $k => $v) :
-	    	if ( $absolute ) {
-	    		$amount = $factor;
-	    	} else {
-		        $amount = 255 - $v;
-		        $amount = $amount / 100;
-		        $amount = round($amount * $factor);
-		    }
-	        $new_decimal = min( $v + $amount, 255 );
+		foreach ( $base as $k => $v ) :
+			if ( $absolute ) {
+				$amount = $factor;
+			} else {
+				$amount = 255 - $v;
+				$amount = $amount / 100;
+				$amount = round( $amount * $factor );
+			}
+			$new_decimal = min( $v + $amount, 255 );
 
-	        $new_hex_component = dechex($new_decimal);
-	        if(strlen($new_hex_component) < 2) :
-	        	$new_hex_component = "0".$new_hex_component;
-	        endif;
-	        $color .= $new_hex_component;
-	   	endforeach;
+			$new_hex_component = dechex( $new_decimal );
+			if ( strlen( $new_hex_component ) < 2 ) :
+				$new_hex_component = '0' . $new_hex_component;
+			endif;
+			$color .= $new_hex_component;
+		endforeach;
 
-	   	return $color;
+		return $color;
 	}
 }
 
@@ -271,18 +274,18 @@ if ( ! function_exists( 'sp_light_or_dark' ) ) {
 	 * Detect if we should use a light or dark colour on a background colour
 	 *
 	 * @access public
-	 * @param mixed $color
+	 * @param mixed  $color
 	 * @param string $dark (default: '#000000')
 	 * @param string $light (default: '#FFFFFF')
 	 * @return string
 	 */
 	function sp_light_or_dark( $color, $dark = '#000000', $light = '#FFFFFF' ) {
-	    //return ( hexdec( $color ) > 0xffffff / 2 ) ? $dark : $light;
-	    $hex = str_replace( '#', '', $color );
+		// return ( hexdec( $color ) > 0xffffff / 2 ) ? $dark : $light;
+		$hex = str_replace( '#', '', $color );
 
-		$c_r = hexdec( substr( $hex, 0, 2 ) );
-		$c_g = hexdec( substr( $hex, 2, 2 ) );
-		$c_b = hexdec( substr( $hex, 4, 2 ) );
+		$c_r        = hexdec( substr( $hex, 0, 2 ) );
+		$c_g        = hexdec( substr( $hex, 2, 2 ) );
+		$c_b        = hexdec( substr( $hex, 4, 2 ) );
 		$brightness = ( ( $c_r * 299 ) + ( $c_g * 587 ) + ( $c_b * 114 ) ) / 1000;
 
 		return $brightness > 155 ? $dark : $light;
@@ -301,14 +304,16 @@ if ( ! function_exists( 'sp_format_hex' ) ) {
 	function sp_format_hex( $hex ) {
 
 		$hex = preg_replace( '/[^A-Fa-f0-9]/', '', $hex );
-	    $hex = trim( str_replace( '#', '', $hex ) );
+		$hex = trim( str_replace( '#', '', $hex ) );
 
-	    if ( strlen( $hex ) == 3 ) {
+		if ( strlen( $hex ) == 3 ) {
 			$hex = $hex[0] . $hex[0] . $hex[1] . $hex[1] . $hex[2] . $hex[2];
-	    }
+		}
 
-	    $hex = substr( $hex, 0, 6 );
+		$hex = substr( $hex, 0, 6 );
 
-	    if ( $hex ) return '#' . $hex;
+		if ( $hex ) {
+			return '#' . $hex;
+		}
 	}
 }

@@ -4,11 +4,11 @@
  *
  * The SportsPress custom post class handles individual post data.
  *
- * @class 		SP_Custom_Post
- * @version		2.6.5
- * @package		SportsPress/Abstracts
- * @category	Abstract Class
- * @author 		ThemeBoy
+ * @class       SP_Custom_Post
+ * @version     2.6.5
+ * @package     SportsPress/Abstracts
+ * @category    Abstract Class
+ * @author      ThemeBoy
  */
 abstract class SP_Custom_Post {
 
@@ -25,11 +25,11 @@ abstract class SP_Custom_Post {
 	 * @param mixed $post
 	 */
 	public function __construct( $post ) {
-		if ( $post instanceof WP_Post || $post instanceof SP_Custom_Post ):
+		if ( $post instanceof WP_Post || $post instanceof SP_Custom_Post ) :
 			$this->ID   = absint( $post->ID );
 			$this->post = $post;
-		else:
-			$this->ID  = absint( $post );
+		else :
+			$this->ID   = absint( $post );
 			$this->post = get_post( $this->ID );
 		endif;
 	}
@@ -53,9 +53,9 @@ abstract class SP_Custom_Post {
 	 * @return bool
 	 */
 	public function __get( $key ) {
-		if ( ! isset( $key ) ):
+		if ( ! isset( $key ) ) :
 			return $this->post;
-		else:
+		else :
 			$value = get_post_meta( $this->ID, 'sp_' . $key, true );
 		endif;
 
@@ -77,7 +77,7 @@ abstract class SP_Custom_Post {
 	 *
 	 * @access public
 	 * @param  string $taxonomy     The taxonomy.
- 	 * @return array|false|WP_Error See `get_the_terms()`
+	 * @return array|false|WP_Error See `get_the_terms()`
 	 */
 	public function get_terms_sorted_by_sp_order( $taxonomy ) {
 		$terms = get_the_terms( $this->ID, $taxonomy );

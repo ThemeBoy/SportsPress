@@ -4,13 +4,15 @@
  *
  * Functions for the templating system.
  *
- * @author 		ThemeBoy
- * @category 	Core
- * @package 	SportsPress/Functions
- * @version   2.5.5
+ * @author      ThemeBoy
+ * @category    Core
+ * @package     SportsPress/Functions
+ * @version     2.7.9
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 /**
  * Output generator tag to aid debugging.
@@ -47,7 +49,7 @@ function sp_body_class( $classes ) {
 	$post_type = get_post_type();
 
 	if ( 'sp_event' == $post_type ) {
-		$id = get_the_ID();
+		$id         = get_the_ID();
 		$show_venue = get_option( 'sportspress_event_show_venue', 'yes' ) == 'yes' ? true : false;
 		if ( $show_venue && get_the_terms( $id, 'sp_venue' ) ) {
 			if ( get_option( 'sportspress_event_show_maps', 'yes' ) == 'yes' ) {
@@ -71,7 +73,7 @@ function sp_body_class( $classes ) {
 	return array_unique( $classes );
 }
 
-/** Template pages ********************************************************/
+/** Template pages */
 
 if ( ! function_exists( 'sportspress_taxonomy_archive_description' ) ) {
 
@@ -79,20 +81,20 @@ if ( ! function_exists( 'sportspress_taxonomy_archive_description' ) ) {
 	 * Show an archive description on taxonomy archives
 	 *
 	 * @access public
-	 * @subpackage	Archives
+	 * @subpackage  Archives
 	 * @return void
 	 */
 	function sportspress_taxonomy_archive_description() {
 		if ( is_tax( array( 'sp_season', 'sp_league', 'sp_venue', 'sp_position' ) ) && get_query_var( 'paged' ) == 0 ) {
 			$description = apply_filters( 'the_content', term_description() );
 			if ( $description ) {
-				echo '<div class="term-description">' . $description . '</div>';
+				echo '<div class="term-description">' . wp_kses_post( $description ) . '</div>';
 			}
 		}
 	}
 }
 
-/** Single Post ********************************************************/
+/** Single Post */
 
 if ( ! function_exists( 'sportspress_output_post_excerpt' ) ) {
 
@@ -100,7 +102,7 @@ if ( ! function_exists( 'sportspress_output_post_excerpt' ) ) {
 	 * Output the post excerpt.
 	 *
 	 * @access public
-	 * @subpackage	Excerpt
+	 * @subpackage  Excerpt
 	 * @return void
 	 */
 	function sportspress_output_post_excerpt() {
@@ -108,7 +110,7 @@ if ( ! function_exists( 'sportspress_output_post_excerpt' ) ) {
 	}
 }
 
-/** Single Event ********************************************************/
+/** Single Event */
 
 if ( ! function_exists( 'sportspress_output_event_logos' ) ) {
 
@@ -116,7 +118,7 @@ if ( ! function_exists( 'sportspress_output_event_logos' ) ) {
 	 * Output the event logos.
 	 *
 	 * @access public
-	 * @subpackage	Event/Logos
+	 * @subpackage  Event/Logos
 	 * @return void
 	 */
 	function sportspress_output_event_logos() {
@@ -130,7 +132,7 @@ if ( ! function_exists( 'sportspress_output_event_video' ) ) {
 	 * Output the event video.
 	 *
 	 * @access public
-	 * @subpackage	Event/Video
+	 * @subpackage  Event/Video
 	 * @return void
 	 */
 	function sportspress_output_event_video() {
@@ -143,7 +145,7 @@ if ( ! function_exists( 'sportspress_output_event_results' ) ) {
 	 * Output the event results.
 	 *
 	 * @access public
-	 * @subpackage	Event/Results
+	 * @subpackage  Event/Results
 	 * @return void
 	 */
 	function sportspress_output_event_results() {
@@ -156,7 +158,7 @@ if ( ! function_exists( 'sportspress_output_event_details' ) ) {
 	 * Output the event details.
 	 *
 	 * @access public
-	 * @subpackage	Event/Details
+	 * @subpackage  Event/Details
 	 * @return void
 	 */
 	function sportspress_output_event_details() {
@@ -169,7 +171,7 @@ if ( ! function_exists( 'sportspress_output_event_overview' ) ) {
 	 * Output the event details, venue, and results.
 	 *
 	 * @access public
-	 * @subpackage	Event/Overview
+	 * @subpackage  Event/Overview
 	 * @return void
 	 */
 	function sportspress_output_event_overview() {
@@ -182,7 +184,7 @@ if ( ! function_exists( 'sportspress_output_event_venue' ) ) {
 	 * Output the event venue.
 	 *
 	 * @access public
-	 * @subpackage	Event/Venue
+	 * @subpackage  Event/Venue
 	 * @return void
 	 */
 	function sportspress_output_event_venue() {
@@ -195,7 +197,7 @@ if ( ! function_exists( 'sportspress_output_event_performance' ) ) {
 	 * Output the event performance.
 	 *
 	 * @access public
-	 * @subpackage	Event/Performance
+	 * @subpackage  Event/Performance
 	 * @return void
 	 */
 	function sportspress_output_event_performance() {
@@ -208,7 +210,7 @@ if ( ! function_exists( 'sportspress_output_event_officials' ) ) {
 	 * Output the event officials.
 	 *
 	 * @access public
-	 * @subpackage	Event/Officials
+	 * @subpackage  Event/Officials
 	 * @return void
 	 */
 	function sportspress_output_event_officials() {
@@ -216,7 +218,7 @@ if ( ! function_exists( 'sportspress_output_event_officials' ) ) {
 	}
 }
 
-/** Single Calendar ********************************************************/
+/** Single Calendar */
 
 if ( ! function_exists( 'sportspress_output_calendar' ) ) {
 
@@ -224,20 +226,21 @@ if ( ! function_exists( 'sportspress_output_calendar' ) ) {
 	 * Output the calendar.
 	 *
 	 * @access public
-	 * @subpackage	Calendar
+	 * @subpackage  Calendar
 	 * @return void
 	 */
 	function sportspress_output_calendar() {
-        $id = get_the_ID();
-        $format = get_post_meta( $id, 'sp_format', true );
-        if ( array_key_exists( $format, SP()->formats->calendar ) )
+		$id     = get_the_ID();
+		$format = get_post_meta( $id, 'sp_format', true );
+		if ( array_key_exists( $format, SP()->formats->calendar ) ) {
 			sp_get_template( 'event-' . $format . '.php', array( 'id' => $id ) );
-        else
+		} else {
 			sp_get_template( 'event-calendar.php', array( 'id' => $id ) );
+		}
 	}
 }
 
-/** Single Team ********************************************************/
+/** Single Team */
 
 if ( ! function_exists( 'sportspress_output_team_link' ) ) {
 
@@ -245,7 +248,7 @@ if ( ! function_exists( 'sportspress_output_team_link' ) ) {
 	 * Output the team link.
 	 *
 	 * @access public
-	 * @subpackage	Team/Link
+	 * @subpackage  Team/Link
 	 * @return void
 	 */
 	function sportspress_output_team_link() {
@@ -258,7 +261,7 @@ if ( ! function_exists( 'sportspress_output_team_logo' ) ) {
 	 * Output the team logo.
 	 *
 	 * @access public
-	 * @subpackage	Team/Logo
+	 * @subpackage  Team/Logo
 	 * @return void
 	 */
 	function sportspress_output_team_logo() {
@@ -271,7 +274,7 @@ if ( ! function_exists( 'sportspress_output_team_details' ) ) {
 	 * Output the team details.
 	 *
 	 * @access public
-	 * @subpackage	Team/Details
+	 * @subpackage  Team/Details
 	 * @return void
 	 */
 	function sportspress_output_team_details() {
@@ -284,7 +287,7 @@ if ( ! function_exists( 'sportspress_output_team_staff' ) ) {
 	 * Output the team staff.
 	 *
 	 * @access public
-	 * @subpackage	Team/Staff
+	 * @subpackage  Team/Staff
 	 * @return void
 	 */
 	function sportspress_output_team_staff() {
@@ -297,7 +300,7 @@ if ( ! function_exists( 'sportspress_output_team_tables' ) ) {
 	 * Output the team tables.
 	 *
 	 * @access public
-	 * @subpackage	Team/Tables
+	 * @subpackage  Team/Tables
 	 * @return void
 	 */
 	function sportspress_output_team_tables() {
@@ -310,7 +313,7 @@ if ( ! function_exists( 'sportspress_output_team_lists' ) ) {
 	 * Output the team lists.
 	 *
 	 * @access public
-	 * @subpackage	Team/Lists
+	 * @subpackage  Team/Lists
 	 * @return void
 	 */
 	function sportspress_output_team_lists() {
@@ -323,7 +326,7 @@ if ( ! function_exists( 'sportspress_output_team_events' ) ) {
 	 * Output the team events.
 	 *
 	 * @access public
-	 * @subpackage	Team/Events
+	 * @subpackage  Team/Events
 	 * @return void
 	 */
 	function sportspress_output_team_events() {
@@ -331,7 +334,7 @@ if ( ! function_exists( 'sportspress_output_team_events' ) ) {
 	}
 }
 
-/** Single League Table ********************************************************/
+/** Single League Table */
 
 if ( ! function_exists( 'sportspress_output_league_table' ) ) {
 
@@ -339,20 +342,21 @@ if ( ! function_exists( 'sportspress_output_league_table' ) ) {
 	 * Output the team columns.
 	 *
 	 * @access public
-	 * @subpackage	Table
+	 * @subpackage  Table
 	 * @return void
 	 */
 	function sportspress_output_league_table() {
-		$id = get_the_ID();
+		$id     = get_the_ID();
 		$format = get_post_meta( $id, 'sp_format', true );
-		if ( array_key_exists( $format, SP()->formats->table ) && 'standings' !== $format )
+		if ( array_key_exists( $format, SP()->formats->table ) && 'standings' !== $format ) {
 			sp_get_template( 'team-' . $format . '.php', array( 'id' => $id ) );
-		else
+		} else {
 			sp_get_template( 'league-table.php', array( 'id' => $id ) );
+		}
 	}
 }
 
-/** Single Player ********************************************************/
+/** Single Player */
 
 if ( ! function_exists( 'sportspress_output_player_selector' ) ) {
 
@@ -360,7 +364,7 @@ if ( ! function_exists( 'sportspress_output_player_selector' ) ) {
 	 * Output the player dropdown.
 	 *
 	 * @access public
-	 * @subpackage	Player/Dropdown
+	 * @subpackage  Player/Dropdown
 	 * @return void
 	 */
 	function sportspress_output_player_selector() {
@@ -373,7 +377,7 @@ if ( ! function_exists( 'sportspress_output_player_photo' ) ) {
 	 * Output the player photo.
 	 *
 	 * @access public
-	 * @subpackage	Player/Photo
+	 * @subpackage  Player/Photo
 	 * @return void
 	 */
 	function sportspress_output_player_photo() {
@@ -386,7 +390,7 @@ if ( ! function_exists( 'sportspress_output_player_details' ) ) {
 	 * Output the player details.
 	 *
 	 * @access public
-	 * @subpackage	Player/Details
+	 * @subpackage  Player/Details
 	 * @return void
 	 */
 	function sportspress_output_player_details() {
@@ -399,7 +403,7 @@ if ( ! function_exists( 'sportspress_output_player_statistics' ) ) {
 	 * Output the player statistics.
 	 *
 	 * @access public
-	 * @subpackage	Player/Statistics
+	 * @subpackage  Player/Statistics
 	 * @return void
 	 */
 	function sportspress_output_player_statistics() {
@@ -412,7 +416,7 @@ if ( ! function_exists( 'sportspress_output_player_events' ) ) {
 	 * Output the player events.
 	 *
 	 * @access public
-	 * @subpackage	Player/Events
+	 * @subpackage  Player/Events
 	 * @return void
 	 */
 	function sportspress_output_player_events() {
@@ -420,7 +424,7 @@ if ( ! function_exists( 'sportspress_output_player_events' ) ) {
 	}
 }
 
-/** Single Player List ********************************************************/
+/** Single Player List */
 
 if ( ! function_exists( 'sportspress_output_player_list' ) ) {
 
@@ -428,20 +432,21 @@ if ( ! function_exists( 'sportspress_output_player_list' ) ) {
 	 * Output the player list.
 	 *
 	 * @access public
-	 * @subpackage	List
+	 * @subpackage  List
 	 * @return void
 	 */
 	function sportspress_output_player_list() {
-        $id = get_the_ID();
-        $format = get_post_meta( $id, 'sp_format', true );
-        if ( array_key_exists( $format, SP()->formats->list ) )
+		$id     = get_the_ID();
+		$format = get_post_meta( $id, 'sp_format', true );
+		if ( array_key_exists( $format, SP()->formats->list ) ) {
 			sp_get_template( 'player-' . $format . '.php', array( 'id' => $id ) );
-        else
+		} else {
 			sp_get_template( 'player-list.php', array( 'id' => $id ) );
+		}
 	}
 }
 
-/** Single Staff ********************************************************/
+/** Single Staff */
 
 if ( ! function_exists( 'sportspress_output_staff_selector' ) ) {
 
@@ -449,7 +454,7 @@ if ( ! function_exists( 'sportspress_output_staff_selector' ) ) {
 	 * Output the staff dropdown.
 	 *
 	 * @access public
-	 * @subpackage	Staff/Dropdown
+	 * @subpackage  Staff/Dropdown
 	 * @return void
 	 */
 	function sportspress_output_staff_selector() {
@@ -462,7 +467,7 @@ if ( ! function_exists( 'sportspress_output_staff_photo' ) ) {
 	 * Output the staff photo.
 	 *
 	 * @access public
-	 * @subpackage	Staff/Photo
+	 * @subpackage  Staff/Photo
 	 * @return void
 	 */
 	function sportspress_output_staff_photo() {
@@ -475,7 +480,7 @@ if ( ! function_exists( 'sportspress_output_staff_details' ) ) {
 	 * Output the staff details.
 	 *
 	 * @access public
-	 * @subpackage	Staff/Details
+	 * @subpackage  Staff/Details
 	 * @return void
 	 */
 	function sportspress_output_staff_details() {
@@ -486,17 +491,19 @@ if ( ! function_exists( 'sportspress_output_staff_details' ) ) {
 /** Venue Archive ********************************************************/
 
 function sportspress_output_venue_map( $query ) {
-    if ( ! is_tax( 'sp_venue' ) )
-        return;
+	if ( ! is_tax( 'sp_venue' ) ) {
+		return;
+	}
 
-    $slug = sp_array_value( $query->query, 'sp_venue', null );
+	$slug = sp_array_value( $query->query, 'sp_venue', null );
 
-    if ( ! $slug )
-        return;
+	if ( ! $slug ) {
+		return;
+	}
 
-    $venue = get_term_by( 'slug', $slug, 'sp_venue' );
-    $t_id = $venue->term_id;
-    $meta = get_option( "taxonomy_$t_id" );
+	$venue = get_term_by( 'slug', $slug, 'sp_venue' );
+	$t_id  = $venue->term_id;
+	$meta  = get_option( "taxonomy_$t_id" );
 	sp_get_template( 'venue-map.php', array( 'meta' => $meta ) );
 }
 
@@ -513,7 +520,7 @@ if ( ! function_exists( 'sportspress_responsive_tables_css' ) ) {
 	 * Output the inlince css code for responsive tables.
 	 *
 	 * @access public
-	 * @subpackage	Responsive
+	 * @subpackage  Responsive
 	 * @return void
 	 */
 	function sportspress_responsive_tables_css( $identity ) {
@@ -526,19 +533,19 @@ if ( ! function_exists( 'sportspress_responsive_tables_css' ) ) {
 		only screen and (max-width: 800px) {
 		
 			/* Force table to not be like tables anymore */
-			table.'.$identity.', table.'.$identity.' thead, table.'.$identity.' tfoot, table.'.$identity.' tbody, table.'.$identity.' th, table.'.$identity.' td, table.'.$identity.' tr { 
+			table.' . $identity . ', table.' . $identity . ' thead, table.' . $identity . ' tfoot, table.' . $identity . ' tbody, table.' . $identity . ' th, table.' . $identity . ' td, table.' . $identity . ' tr { 
 				display: block; 
 			}
 			
 			/* Hide table headers (but not display: none;, for accessibility) */
-			table.'.$identity.' thead tr { 
+			table.' . $identity . ' thead tr { 
 				position: absolute;
 				top: -9999px;
 				left: -9999px;
 			}
 
 			/* Add subtle border to table rows */
-			table.'.$identity.' tbody tr { 
+			table.' . $identity . ' tbody tr { 
 				border-top: 1px solid rgba(0, 0, 0, 0.1);
 			}
 
@@ -551,7 +558,7 @@ if ( ! function_exists( 'sportspress_responsive_tables_css' ) ) {
 				text-align: center !important;
 			}
 			
-			table.'.$identity.' td { 
+			table.' . $identity . ' td { 
 				/* Behave  like a "row" */
 				border: none;
 				position: relative;
@@ -559,7 +566,7 @@ if ( ! function_exists( 'sportspress_responsive_tables_css' ) ) {
 				vertical-align: middle;
 			}
 			
-			table.'.$identity.' td:before { 
+			table.' . $identity . ' td:before { 
 				/* Now like a table header */
 				position: absolute;
 				/* Label the data */
@@ -573,8 +580,8 @@ if ( ! function_exists( 'sportspress_responsive_tables_css' ) ) {
 			}
 		}
 			';
-		
-		$dummystyle = 'sportspress-style-inline-'.$identity;
+
+		$dummystyle = 'sportspress-style-inline-' . $identity;
 		wp_register_style( $dummystyle, false );
 		wp_enqueue_style( $dummystyle );
 		wp_add_inline_style( $dummystyle, $custom_css );

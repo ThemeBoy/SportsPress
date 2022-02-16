@@ -2,13 +2,15 @@
 /**
  * Table Format
  *
- * @author 		ThemeBoy
- * @category 	Admin
- * @package 	SportsPress/Admin/Meta_Boxes
- * @version   2.4
+ * @author      ThemeBoy
+ * @category    Admin
+ * @package     SportsPress/Admin/Meta_Boxes
+ * @version     2.7.9
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 /**
  * SP_Meta_Box_Table_Format
@@ -23,8 +25,8 @@ class SP_Meta_Box_Table_Format {
 		$the_format = get_post_meta( $post->ID, 'sp_format', true );
 		?>
 		<div id="post-formats-select">
-			<?php foreach ( SP()->formats->table as $key => $format ): ?>
-				<input type="radio" name="sp_format" class="post-format" id="post-format-<?php echo $key; ?>" value="<?php echo $key; ?>" <?php checked( true, ( $key == 'standings' && ! $the_format ) || $the_format == $key ); ?>> <label for="post-format-<?php echo $key; ?>" class="post-format-icon post-format-<?php echo $key; ?>"><?php echo $format; ?></label><br>
+			<?php foreach ( SP()->formats->table as $key => $format ) : ?>
+				<input type="radio" name="sp_format" class="post-format" id="post-format-<?php echo esc_attr( $key ); ?>" value="<?php echo esc_attr( $key ); ?>" <?php checked( true, ( $key == 'standings' && ! $the_format ) || $the_format == $key ); ?>> <label for="post-format-<?php echo esc_attr( $key ); ?>" class="post-format-icon post-format-<?php echo esc_attr( $key ); ?>"><?php echo esc_html( $format ); ?></label><br>
 			<?php endforeach; ?>
 		</div>
 		<?php
@@ -34,6 +36,6 @@ class SP_Meta_Box_Table_Format {
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
-		update_post_meta( $post_id, 'sp_format', sp_array_value( $_POST, 'sp_format', 'standings' ) );
+		update_post_meta( $post_id, 'sp_format', sp_array_value( $_POST, 'sp_format', 'standings', 'key' ) );
 	}
 }
