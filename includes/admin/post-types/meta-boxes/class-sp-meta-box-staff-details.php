@@ -24,6 +24,9 @@ class SP_Meta_Box_Staff_Details {
 		wp_nonce_field( 'sportspress_save_data', 'sportspress_meta_nonce' );
 		$continents = SP()->countries->continents;
 
+		$phone = get_post_meta( $post->ID, 'sp_phone', true );
+		$mail = get_post_meta( $post->ID, 'sp_mail', true );
+
 		$nationalities = get_post_meta( $post->ID, 'sp_nationality', false );
 		foreach ( $nationalities as $index => $nationality ) :
 			if ( 2 == strlen( $nationality ) ) :
@@ -164,6 +167,12 @@ class SP_Meta_Box_Staff_Details {
 		sp_dropdown_taxonomies( $args );
 		?>
 		</p>
+
+        <p><strong><?php esc_attr_e( 'Phone number', 'sportspress' ); ?></strong></p>
+        <p><input type="tel" id="sp_phone" name="sp_phone" value="<?php echo esc_attr( $phone ); ?>"></p>
+
+        <p><strong><?php esc_attr_e( 'Mail address', 'sportspress' ); ?></strong></p>
+        <p><input type="email" id="sp_mail" name="sp_mail" value="<?php echo esc_attr( $mail ); ?>"></p>
 		<?php
 	}
 
@@ -175,5 +184,7 @@ class SP_Meta_Box_Staff_Details {
 		sp_update_post_meta_recursive( $post_id, 'sp_current_team', sp_array_value( $_POST, 'sp_current_team', array(), 'id' ) );
 		sp_update_post_meta_recursive( $post_id, 'sp_past_team', sp_array_value( $_POST, 'sp_past_team', array(), 'id' ) );
 		sp_update_post_meta_recursive( $post_id, 'sp_team', array_merge( array( sp_array_value( $_POST, 'sp_current_team', array(), 'id' ) ), sp_array_value( $_POST, 'sp_past_team', array(), 'id' ) ) );
+		update_post_meta( $post_id, 'sp_phone', sp_array_value( $_POST, 'sp_phone', '', 'text' ) );
+		update_post_meta( $post_id, 'sp_mail', sp_array_value( $_POST, 'sp_mail', '', 'text' ) );
 	}
 }

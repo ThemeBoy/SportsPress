@@ -99,6 +99,23 @@ if ( ! class_exists( 'SP_Settings_Staff' ) ) :
 								'default' => 'yes',
 								'type'    => 'checkbox',
 							),
+
+							array(
+								'title'   => esc_attr__( 'Contact', 'sportspress' ),
+								'desc'    => esc_attr__( 'Display phone number', 'sportspress' ),
+								'id'      => 'sportspress_staff_show_phone_number',
+								'default' => 'yes',
+								'type'    => 'checkbox',
+								'checkboxgroup' => 'start',
+							),
+
+							array(
+								'desc'    => esc_attr__( 'Display mail address', 'sportspress' ),
+								'id'      => 'sportspress_staff_show_mail_address',
+								'default' => 'yes',
+								'type'    => 'checkbox',
+								'checkboxgroup' => 'end',
+							),
 						)
 					),
 					array(

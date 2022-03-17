@@ -23,6 +23,8 @@ $defaults = array(
 	'show_current_teams'     => get_option( 'sportspress_staff_show_current_teams', 'yes' ) == 'yes' ? true : false,
 	'show_past_teams'        => get_option( 'sportspress_staff_show_past_teams', 'yes' ) == 'yes' ? true : false,
 	'show_nationality_flags' => get_option( 'sportspress_staff_show_flags', 'yes' ) == 'yes' ? true : false,
+	'show_phone_number'      => get_option( 'sportspress_staff_show_phone_number', 'yes' ) == 'yes' ? true : false,
+	'show_mail_address'      => get_option( 'sportspress_staff_show_mail_address', 'yes' ) == 'yes' ? true : false,
 	'link_teams'             => get_option( 'sportspress_link_teams', 'no' ) == 'yes' ? true : false,
 );
 
@@ -35,6 +37,8 @@ $staff = new SP_Staff( $id );
 $nationalities = $staff->nationalities();
 $current_teams = $staff->current_teams();
 $past_teams    = $staff->past_teams();
+$phone_number  = $staff->phone_number();
+$mail_address  = $staff->mail_address();
 
 $data = array();
 if ( $show_nationality && $nationalities && is_array( $nationalities ) ) :
@@ -73,6 +77,14 @@ if ( $show_past_teams && $past_teams ) :
 		$teams[] = $team_name;
 	endforeach;
 	$data[ esc_attr__( 'Past Teams', 'sportspress' ) ] = implode( ', ', $teams );
+endif;
+
+if ( $show_phone_number && $phone_number ) :
+	$data[ esc_attr__( 'Phone number', 'sportspress' ) ] = '<a href="tel:'.$phone_number.'">'.$phone_number.'</a>';
+endif;
+
+if ( $show_mail_address && $mail_address ) :
+	$data[ esc_attr__( 'Mail address', 'sportspress' ) ] = '<a href="mailto:'.$mail_address.'">'.$mail_address.'</a>';;
 endif;
 
 $data = apply_filters( 'sportspress_staff_details', $data, $id );
