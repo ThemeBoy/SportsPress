@@ -26,6 +26,7 @@ class SP_Meta_Box_Staff_Details {
 
 		$phone = get_post_meta( $post->ID, 'sp_phone', true );
 		$mail = get_post_meta( $post->ID, 'sp_mail', true );
+		$website = get_post_meta( $post->ID, 'sp_website', true );
 
 		$nationalities = get_post_meta( $post->ID, 'sp_nationality', false );
 		foreach ( $nationalities as $index => $nationality ) :
@@ -173,6 +174,9 @@ class SP_Meta_Box_Staff_Details {
 
         <p><strong><?php esc_attr_e( 'Mail address', 'sportspress' ); ?></strong></p>
         <p><input type="email" id="sp_mail" name="sp_mail" value="<?php echo esc_attr( $mail ); ?>"></p>
+
+        <p><strong><?php esc_attr_e( 'Website', 'sportspress' ); ?></strong></p>
+        <p><input type="url" id="sp_website" name="sp_website" value="<?php echo esc_attr( $website ); ?>"></p>
 		<?php
 	}
 
@@ -186,5 +190,6 @@ class SP_Meta_Box_Staff_Details {
 		sp_update_post_meta_recursive( $post_id, 'sp_team', array_merge( array( sp_array_value( $_POST, 'sp_current_team', array(), 'id' ) ), sp_array_value( $_POST, 'sp_past_team', array(), 'id' ) ) );
 		update_post_meta( $post_id, 'sp_phone', sp_array_value( $_POST, 'sp_phone', '', 'text' ) );
 		update_post_meta( $post_id, 'sp_mail', sp_array_value( $_POST, 'sp_mail', '', 'text' ) );
+		update_post_meta( $post_id, 'sp_website', sp_array_value( $_POST, 'sp_website', '', 'text' ) );
 	}
 }

@@ -74,6 +74,7 @@ if ( ! class_exists( 'SP_Admin_CPT_Staff' ) ) :
 					'sp_season' => esc_attr__( 'Seasons', 'sportspress' ),
 					'sp_phone' => esc_attr__( 'Phone number', 'sportspress' ),
 					'sp_mail' => esc_attr__( 'Mail address', 'sportspress' ),
+					'sp_website' => esc_attr__( 'Website', 'sportspress' ),
 				),
 				$existing_columns,
 				array(

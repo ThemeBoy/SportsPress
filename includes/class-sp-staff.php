@@ -63,6 +63,16 @@ class SP_Staff extends SP_Custom_Post {
 	}
 
 	/**
+	 * Returns website
+	 *
+	 * @access public
+	 * @return string
+	 */
+	public function website() {
+		return get_post_meta( $this->ID, 'sp_website', true );
+	}
+
+	/**
 	 * Returns role
 	 *
 	 * @access public

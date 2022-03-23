@@ -114,6 +114,13 @@ if ( ! class_exists( 'SP_Settings_Staff' ) ) :
 								'id'      => 'sportspress_staff_show_mail_address',
 								'default' => 'yes',
 								'type'    => 'checkbox',
+							),
+
+							array(
+								'desc'    => esc_attr__( 'Display website', 'sportspress' ),
+								'id'      => 'sportspress_staff_show_website',
+								'default' => 'yes',
+								'type'    => 'checkbox',
 								'checkboxgroup' => 'end',
 							),
 						)
