@@ -49,7 +49,7 @@ class SP_Staff extends SP_Custom_Post {
 	 * @return string
 	 */
 	public function phone_number() {
-		return get_post_meta( $this->ID, 'sp_phone_number', true );
+		return get_post_meta( $this->ID, 'sp_phone', true );
 	}
 
 	/**
@@ -59,7 +59,7 @@ class SP_Staff extends SP_Custom_Post {
 	 * @return string
 	 */
 	public function mail_address() {
-		return get_post_meta( $this->ID, 'sp_mail_address', true );
+		return get_post_meta( $this->ID, 'sp_mail', true );
 	}
 
 	/**
