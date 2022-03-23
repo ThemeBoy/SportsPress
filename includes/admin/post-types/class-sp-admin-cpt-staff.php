@@ -128,6 +128,9 @@ if ( ! class_exists( 'SP_Admin_CPT_Staff' ) ) :
 				case 'sp_mail':
 					echo esc_html( get_post_meta( $post_id, 'sp_mail', true ) );
 					break;
+				case 'sp_website':
+					echo esc_html( get_post_meta( $post_id, 'sp_website', true ) );
+					break;
 			endswitch;
 		}
 
