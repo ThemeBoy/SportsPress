@@ -139,6 +139,13 @@ class SP_Admin_Meta_Boxes {
 					'context'  => 'side',
 					'priority' => 'default',
 				),
+				'ticketshop'     => array(
+					'title'    => esc_attr__( 'Ticketshop', 'sportspress' ),
+					'save'     => 'SP_Meta_Box_Event_Ticketshop::save',
+					'output'   => 'SP_Meta_Box_Event_Ticketshop::output',
+					'context'  => 'side',
+					'priority' => 'default',
+				),
 				'team'        => array(
 					'title'    => esc_attr__( 'Teams', 'sportspress' ),
 					'save'     => 'SP_Meta_Box_Event_Teams::save',

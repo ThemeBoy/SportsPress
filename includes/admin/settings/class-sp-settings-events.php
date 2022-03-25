@@ -180,6 +180,41 @@ if ( ! class_exists( 'SP_Settings_Events' ) ) :
 				),
 				array(
 					array(
+						'title' => esc_attr__( 'Ticketshop', 'sportspress' ),
+						'type'  => 'title',
+						'desc'  => '',
+						'id'    => 'ticketshop_options',
+					),
+				),
+				apply_filters(
+					'sportspress_ticketshop_options',
+					array(
+						array(
+							'title'    => esc_attr__( 'Ticketshop label', 'sportspress' ),
+							'id'       => 'sportspress_ticketshop_label',
+							'default'  => 'Get your ticket',
+							'type'     => 'text',
+						),
+
+						array(
+							'title'   => esc_attr__( 'Past events', 'sportspress' ),
+							'desc'    => esc_attr__( 'Hide ticketshop for past events', 'sportspress' ),
+							'id'      => 'sportspress_ticketshop_hide_past_events',
+							'default' => 'yes',
+							'type'    => 'checkbox',
+						),
+
+
+					)
+				),
+				array(
+					array(
+						'type' => 'sectionend',
+						'id'   => 'event_options',
+					),
+				),
+				array(
+					array(
 						'title' => esc_attr__( 'Venues', 'sportspress' ),
 						'type'  => 'title',
 						'desc'  => '',
@@ -543,22 +578,22 @@ if ( ! class_exists( 'SP_Settings_Events' ) ) :
 			}
 			$example = rtrim( $example, ' %1$s ' );
 			?>
-		<tr valign="top">
-			<th scope="row" class="titledesc">
-				<?php esc_html_e( 'Delimiter', 'sportspress' ); ?>
-			</th>
-			<td class="forminp">
-				<fieldset class="sp-custom-input-wrapper">
-					<legend class="screen-reader-text"><span><?php esc_html_e( 'Delimiter', 'sportspress' ); ?></span></legend>
-					<?php $delimiters = array( 'vs', 'v', '&mdash;', '/' ); ?>
-					<?php foreach ( $delimiters as $delimiter ) : ?>
-						<label title="<?php echo esc_attr( $delimiter ); ?>"><input type="radio" class="preset" name="sportspress_event_teams_delimiter_preset" value="<?php echo esc_attr( $delimiter ); ?>" data-example="<?php printf( esc_attr( $example ), esc_attr( $delimiter ) ); ?>" <?php checked( $delimiter, $selection ); ?>> <span><?php printf( esc_attr( $example ), esc_attr( $delimiter ) ); ?></span></label><br>
-					<?php endforeach; ?>
-					<label><input type="radio" class="preset" name="sportspress_event_teams_delimiter_preset" value="\c\u\s\t\o\m" <?php checked( false, in_array( $selection, $delimiters ) ); ?>> <?php esc_html_e( 'Custom:', 'sportspress' ); ?> </label><input type="text" class="small-text value" name="sportspress_event_teams_delimiter" value="<?php echo esc_attr( $selection ); ?>" data-example-format="<?php printf( esc_attr( $example ), '__val__' ); ?>">
-					<span class="example"><?php printf( esc_html( $example ), esc_html( $selection ) ); ?></span>
-				</fieldset>
-			</td>
-		</tr>
+            <tr valign="top">
+                <th scope="row" class="titledesc">
+					<?php esc_html_e( 'Delimiter', 'sportspress' ); ?>
+                </th>
+                <td class="forminp">
+                    <fieldset class="sp-custom-input-wrapper">
+                        <legend class="screen-reader-text"><span><?php esc_html_e( 'Delimiter', 'sportspress' ); ?></span></legend>
+						<?php $delimiters = array( 'vs', 'v', '&mdash;', '/' ); ?>
+						<?php foreach ( $delimiters as $delimiter ) : ?>
+                            <label title="<?php echo esc_attr( $delimiter ); ?>"><input type="radio" class="preset" name="sportspress_event_teams_delimiter_preset" value="<?php echo esc_attr( $delimiter ); ?>" data-example="<?php printf( esc_attr( $example ), esc_attr( $delimiter ) ); ?>" <?php checked( $delimiter, $selection ); ?>> <span><?php printf( esc_attr( $example ), esc_attr( $delimiter ) ); ?></span></label><br>
+						<?php endforeach; ?>
+                        <label><input type="radio" class="preset" name="sportspress_event_teams_delimiter_preset" value="\c\u\s\t\o\m" <?php checked( false, in_array( $selection, $delimiters ) ); ?>> <?php esc_html_e( 'Custom:', 'sportspress' ); ?> </label><input type="text" class="small-text value" name="sportspress_event_teams_delimiter" value="<?php echo esc_attr( $selection ); ?>" data-example-format="<?php printf( esc_attr( $example ), '__val__' ); ?>">
+                        <span class="example"><?php printf( esc_html( $example ), esc_html( $selection ) ); ?></span>
+                    </fieldset>
+                </td>
+            </tr>
 			<?php
 		}
 	}
