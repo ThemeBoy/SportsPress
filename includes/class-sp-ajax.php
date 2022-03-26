@@ -629,6 +629,7 @@ class SP_AJAX {
 					'league'      => esc_attr__( 'League', 'sportspress' ),
 					'season'      => esc_attr__( 'Season', 'sportspress' ),
 					'venue'       => esc_attr__( 'Venue', 'sportspress' ),
+					'ticketshop'  => esc_attr__( 'Ticketshop Link', 'sportspress' ),
 					'article'     => esc_attr__( 'Article', 'sportspress' ),
 					'event_specs' => esc_attr__( 'Specs', 'sportspress' ),
 				);
