@@ -539,7 +539,7 @@ $identifier = uniqid( 'eventlist_' );
                             echo '<td class="data-ticketshop" data-label="' . esc_attr__( 'Ticketshop', 'sportspress' ) . '">';
 
                             if ($ticketshop_hide_past && $event->post_status != 'future' ) {
-                                return;
+                                echo '';
                             } else {
                                 $ticketshop_link = get_post_meta( $event->ID, 'sp_ticketshop_link', true );
                                 if(isset($ticketshop_link) && $ticketshop_link != '') {
