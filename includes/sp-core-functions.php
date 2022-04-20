@@ -367,7 +367,11 @@ if ( ! function_exists( 'sp_array_value' ) ) {
 		  else :
 			  switch ( $sanitize ) :
 				  case 'int':
-					  $value = intval( $value );
+					  if ( empty( $value ) ) {
+						  $value = $value;
+					  }else{
+						$value = intval( $value );
+					  }
 					  break;
 				  case 'title':
 					  $value = sanitize_title( $value );
