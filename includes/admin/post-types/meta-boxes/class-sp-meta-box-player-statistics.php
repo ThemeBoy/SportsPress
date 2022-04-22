@@ -124,7 +124,7 @@ class SP_Meta_Box_Player_Statistics {
 							if ( $key == 'team' ) {
 								continue;}
 							?>
-							<th><?php echo esc_html( $label ); ?></th>
+							<th><?php echo wp_kses_post( $label ); ?></th>
 						<?php endforeach; ?>
 						<?php do_action( 'sportspress_meta_box_player_statistics_table_header_row', $id, $league_id ); ?>
 					</tr>
