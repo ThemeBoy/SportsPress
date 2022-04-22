@@ -70,7 +70,7 @@ class SP_Meta_Box_List_Data {
 								continue;}
 							?>
 							<th><label for="sp_columns_<?php echo esc_attr( $key ); ?>">
-								<?php echo esc_html( $label ); ?>
+								<?php echo wp_kses_post( $label ); ?>
 							</label></th>
 						<?php endforeach; ?>
 					</tr>
