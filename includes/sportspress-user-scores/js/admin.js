@@ -42,7 +42,16 @@ jQuery(document).ready(function($){
 				value = $(this).data("sp-value");
 				if ("" === value) return true;
 				key = $(this).data("sp-key");
-				$(".sp-performance-table").find("[data-player="+player_id+"] .sp-player-"+key+"-input").val(value);
+				$el = $(".sp-performance-table").find("[data-player="+player_id+"] .sp-player-"+key+"-input");
+				if ($el.is('[type=checkbox]')) {
+					if (value == 0) {
+						$el.prop( 'checked', false );
+					} else {
+						$el.prop( 'checked', true );
+					}
+				} else {
+					$el.val(value);
+				}
 			});
 			$target = $(".sp-performance-table").find("[data-player="+player_id+"]");
 			bg = $target.css("background-color");
