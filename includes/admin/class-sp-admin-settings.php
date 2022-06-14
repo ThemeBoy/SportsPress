@@ -722,7 +722,7 @@ if ( ! class_exists( 'SP_Admin_Settings' ) ) :
 
 					case 'textarea':
 						if ( isset( $_POST[ $value['id'] ] ) ) {
-							$option_value = wp_kses_post( trim( stripslashes( sanitize_text_field( wp_unslash( $_POST[ $value['id'] ] ) ) ) ) );
+							$option_value = wp_kses_post( trim( stripslashes( sanitize_textarea_field( wp_unslash( $_POST[ $value['id'] ] ) ) ) ) );
 						} else {
 							$option_value = '';
 						}
