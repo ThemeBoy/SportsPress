@@ -233,10 +233,7 @@ class SP_Admin_Taxonomies {
 						'sportspress_performance_sections',
 						array(
 							0 => esc_attr__( 'Offense', 'sportspress' ),
-							1 => esc_attr__(
-								'Defense',
-								'sportspress'
-							),
+							1 => esc_attr__( 'Defense', 'sportspress' ),
 						)
 					);
 					foreach ( $options as $key => $value ) :
