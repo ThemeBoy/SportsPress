@@ -267,7 +267,7 @@ class SP_Admin_Taxonomies {
 			$cat_keys  = array_keys( wp_unslash( $_POST['term_meta'] ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 			foreach ( $cat_keys as $key ) {
 				if ( isset( $_POST['term_meta'][ $key ] ) ) {
-					$term_meta[ $key ] = sanitize_text_field( wp_unslash( $_POST['term_meta'][ $key ] ) );
+					$term_meta[ $key ] = wp_unslash( $_POST['term_meta'][ $key ] ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 				}
 			}
 			update_option( "taxonomy_$t_id", $term_meta );
