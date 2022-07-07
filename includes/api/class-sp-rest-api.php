@@ -844,7 +844,8 @@ if ( ! class_exists( 'SP_REST_API' ) ) :
 		 * @return mixed
 		 */
 		public static function get_post_data( $object, $field_name, $request ) {
-			$type = $object['type'];
+			//$type = $object['type'];
+			$type = get_post_type( $object['id'] );
 
 			$post = new $type( $object['id'] );
 
