@@ -73,12 +73,12 @@ if ( ! class_exists( 'SportsPress_OpenStreetMap' ) ) :
 			  $screen = get_current_screen();
 
 			if ( in_array( $screen->id, sp_get_screen_ids() ) ) {
-				wp_enqueue_style( 'leaflet_stylesheet', SP()->plugin_url() . '/assets/css/leaflet.css', array(), '1.7.1' );
+				wp_enqueue_style( 'leaflet_stylesheet', SP()->plugin_url() . '/assets/css/leaflet.css', array(), '1.8.0' );
 				wp_enqueue_style( 'control-geocoder', SP()->plugin_url() . '/assets/css/Control.Geocoder.css', array(), '1.13.0' );
 			}
 
 			if ( in_array( $screen->id, sp_get_screen_ids() ) ) {
-				wp_register_script( 'leaflet_js', SP()->plugin_url() . '/assets/js/leaflet.js', array(), '1.7.1' );
+				wp_register_script( 'leaflet_js', SP()->plugin_url() . '/assets/js/leaflet.js', array(), '1.8.0' );
 				wp_register_script( 'control-geocoder', SP()->plugin_url() . '/assets/js/Control.Geocoder.min.js', array( 'leaflet_js' ), '1.13.0' );
 				wp_register_script( 'sportspress-admin-geocoder', SP()->plugin_url() . '/assets/js/admin/sp-geocoder.js', array( 'leaflet_js', 'control-geocoder' ), SP_VERSION, true );
 			}
