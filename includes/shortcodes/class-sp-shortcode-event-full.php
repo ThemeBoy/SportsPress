@@ -148,7 +148,21 @@ class SP_Shortcode_Event_Full {
 			$ob .= '</div>';
 		}
 
-		echo wp_kses_post( $ob );
+		// Add all the native allowed html tags
+		$allowed_html = wp_kses_allowed_html( 'post' );
+		// Include script as allowed tag
+		$allowed_html['script'] = array();
+		// Include iframe as allowed tag
+		$allowed_html['iframe'] = array(
+									'src'             => array(),
+									'height'          => array(),
+									'width'           => array(),
+									'allow'           => array(),
+									'title'           => array(),
+									'frameborder'     => array(),
+									'allowfullscreen' => array(),
+								);
+		echo wp_kses( $ob, $allowed_html );
 
 	}
 }
