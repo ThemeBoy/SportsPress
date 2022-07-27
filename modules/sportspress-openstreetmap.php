@@ -103,8 +103,8 @@ if ( ! class_exists( 'SportsPress_OpenStreetMap' ) ) :
 		public function frontend_venue_scripts() {
 			  global $post;
 			if ( is_tax( 'sp_venue' ) || is_singular( 'sp_event' ) || ( isset( $post->post_content ) && sp_has_shortcodes( $post->post_content, array( 'event_full', 'event_venue' ) ) ) ) {
-				wp_enqueue_style( 'leaflet_stylesheet', SP()->plugin_url() . '/assets/css/leaflet.css', array(), '1.7.1' );
-				wp_enqueue_script( 'leaflet_js', SP()->plugin_url() . '/assets/js/leaflet.js', array(), '1.7.1' );
+				wp_enqueue_style( 'leaflet_stylesheet', SP()->plugin_url() . '/assets/css/leaflet.css', array(), '1.8.0' );
+				wp_enqueue_script( 'leaflet_js', SP()->plugin_url() . '/assets/js/leaflet.js', array(), '1.8.0' );
 			}
 		}
 
@@ -168,11 +168,11 @@ if ( ! class_exists( 'SportsPress_OpenStreetMap' ) ) :
 		 * Print geocoder script in setup
 		 */
 		public function setup_geocoder_scripts() {
-			  wp_register_script( 'leaflet_js', SP()->plugin_url() . '/assets/js/leaflet.js', array(), '1.7.1' );
+			  wp_register_script( 'leaflet_js', SP()->plugin_url() . '/assets/js/leaflet.js', array(), '1.8.0' );
 			  wp_register_script( 'control-geocoder', SP()->plugin_url() . '/assets/js/Control.Geocoder.min.js', array( 'leaflet_js' ), '1.13.0' );
 			  wp_register_script( 'sportspress-admin-setup-geocoder', SP()->plugin_url() . '/assets/js/admin/sp-setup-geocoder.js', array( 'leaflet_js', 'control-geocoder' ), SP_VERSION, true );
 			  wp_enqueue_style( 'control-geocoder', SP()->plugin_url() . '/assets/css/Control.Geocoder.css', array(), '1.13.0' );
-			  wp_enqueue_style( 'leaflet_stylesheet', SP()->plugin_url() . '/assets/css/leaflet.css', array(), '1.7.1' );
+			  wp_enqueue_style( 'leaflet_stylesheet', SP()->plugin_url() . '/assets/css/leaflet.css', array(), '1.8.0' );
 		}
 
 		/**
