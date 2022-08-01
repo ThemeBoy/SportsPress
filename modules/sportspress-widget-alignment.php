@@ -147,7 +147,7 @@ if ( ! class_exists( 'SportsPress_Widget_Alignment' ) ) :
 				<select id="align" name="align">
 					<?php
 					foreach ( $this->options as $value => $label ) {
-						printf( wp_kses_post( '<option value="%s">%s</option>', $value, $label ) );
+						printf( '<option value="%s">%s</option>', esc_attr( $value ), esc_html( $label ) );
 					}
 					?>
 				</select>
