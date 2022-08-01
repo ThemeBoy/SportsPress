@@ -173,9 +173,9 @@ class SP_Widget_Event_Calendar extends WP_Widget {
 				if ( $date_relative ) :
 					?>
 					 hidden<?php endif; ?>">
-					<input type="text" name="<?php echo esc_attr( $this->get_field_name( 'date_from' ) ); ?>" value="<?php echo esc_attr( $date_from ); ?>" placeholder="yyyy-mm-dd" size="10">
+					<input type="text" name="<?php echo esc_attr( $this->get_field_name( 'date_from' ) ); ?>" value="<?php echo esc_attr( $date_from ); ?>" class="sp-datepicker-from" placeholder="yyyy-mm-dd" size="10">
 					:
-					<input type="text" name="<?php echo esc_attr( $this->get_field_name( 'date_to' ) ); ?>" value="<?php echo esc_attr( $date_to ); ?>" placeholder="yyyy-mm-dd" size="10">
+					<input type="text" name="<?php echo esc_attr( $this->get_field_name( 'date_to' ) ); ?>" value="<?php echo esc_attr( $date_to ); ?>" class="sp-datepicker-to" placeholder="yyyy-mm-dd" size="10">
 				</p>
 
 				<p class="sp-date-range-relative
