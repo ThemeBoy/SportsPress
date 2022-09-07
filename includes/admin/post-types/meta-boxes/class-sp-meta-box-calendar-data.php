@@ -149,7 +149,7 @@ class SP_Meta_Box_Calendar_Data {
 									echo ' alternate';}
 								?>
 								">
-									<td><?php echo esc_attr( get_post_time( get_option( 'date_format' ) ), false, $event, true ); ?></td>
+									<td><?php echo esc_attr( get_post_time( get_option( 'date_format' ), false, $event, true ) ); ?></td>
 									<?php if ( is_array( $usecolumns ) && in_array( 'event', $usecolumns ) ) { ?>
 										<td>
 											<div class="sp-title-format sp-title-format-title
