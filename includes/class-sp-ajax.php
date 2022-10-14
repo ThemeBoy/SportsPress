@@ -794,7 +794,7 @@ class SP_AJAX {
 						<?php esc_html_e( 'Next', 'sportspress' ); ?>
 						<input type="number" min="0" step="1" class="tiny-text" name="date_future" value="default">
 						<?php esc_attr_e( 'days', 'sportspress' ); ?>
-					</p>esc_html
+					</p>
 
 					<p class="sp-date-relative">
 						<label>
