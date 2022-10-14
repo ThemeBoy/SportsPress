@@ -46,7 +46,7 @@ jQuery( document ).ready(
 				$relative = $( this ).closest( ".sp-date-relative" ).siblings( ".sp-date-range-relative" ).toggle( 0, $( this ).attr( "checked" ) );
 				$absolute = $( this ).closest( ".sp-date-relative" ).siblings( ".sp-date-range-absolute" ).toggle( 0, $( this ).attr( "checked" ) );
 
-				if ($( this ).attr( "checked" )) {
+				if ( $( this ).is( ":checked" ) ) {
 					$relative.show();
 					$absolute.hide();
 				} else {

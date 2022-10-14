@@ -1437,10 +1437,10 @@ class SP_AJAX {
 
 				// Toggle date range selectors
 				$(".sp-date-relative input").change(function() {
-					$relative = $(this).closest(".sp-date-relative").siblings(".sp-date-range-relative").toggle(0, $(this).attr("checked"));
-					$absolute = $(this).closest(".sp-date-relative").siblings(".sp-date-range-absolute").toggle(0, $(this).attr("checked"));
-
-					if ($(this).attr("checked")) {
+					$relative = $( this ).closest( ".sp-date-relative" ).siblings( ".sp-date-range-relative" ).toggle( 0, $( this ).attr( "checked" ) );
+					$absolute = $( this ).closest( ".sp-date-relative" ).siblings( ".sp-date-range-absolute" ).toggle( 0, $( this ).attr( "checked" ) );
+					
+					if ( $( this ).is( ":checked" ) ) {
 						$relative.show();
 						$absolute.hide();
 					} else {
