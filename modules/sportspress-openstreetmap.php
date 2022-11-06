@@ -36,7 +36,7 @@ if ( ! class_exists( 'SportsPress_OpenStreetMap' ) ) :
 			add_action( 'sp_admin_venue_scripts', array( $this, 'admin_venue_scripts' ) );
 			add_action( 'sp_frontend_venue_scripts', array( $this, 'frontend_venue_scripts' ) );
 			add_action( 'wp_enqueue_scripts', array( $this, 'frontend_scripts' ) );
-			add_action( 'sp_venue_show_map', array( $this, 'show_venue_map' ), 10, 5 );
+			add_action( 'sp_venue_show_map', array( $this, 'show_venue_map' ), 10, 7 );
 			add_action( 'sp_admin_geocoder_scripts', array( $this, 'admin_geocoder_scripts' ), 10 );
 			add_action( 'sp_setup_geocoder_scripts', array( $this, 'setup_geocoder_scripts' ), 10 );
 			add_action( 'sp_setup_venue_geocoder_scripts', array( $this, 'setup_venue_geocoder_scripts' ), 10 );
@@ -113,7 +113,7 @@ if ( ! class_exists( 'SportsPress_OpenStreetMap' ) ) :
 		 *
 		 * @return mix
 		 */
-		public function show_venue_map( $latitude, $longitude, $address, $zoom, $maptype ) {
+		public function show_venue_map( $latitude, $longitude, $address, $zoom, $maptype, $osm_tile, $osm_attribution ) {
 			  $lat     = abs( $latitude );
 			  $lat_deg = floor( $lat );
 			  $lat_sec = ( $lat - $lat_deg ) * 3600;
@@ -142,8 +142,8 @@ if ( ! class_exists( 'SportsPress_OpenStreetMap' ) ) :
 		  maxZoom: 18,
 		}).addTo(map);
 	<?php } else { ?>
-		L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-		  attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+  L.tileLayer('<?php echo htmlspecialchars($osm_tile); ?>', {
+  attribution: '<?php echo $osm_attribution ?>',
 		  maxZoom: 18,
 		}).addTo(map);
 	<?php } ?>
