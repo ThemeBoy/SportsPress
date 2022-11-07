@@ -70,7 +70,25 @@ if ( ! class_exists( 'SportsPress_OpenStreetMap' ) ) :
 		 * Enqueue admin venue scripts
 		 */
 		public function admin_venue_scripts() {
-			  $screen = get_current_screen();
+			$screen = get_current_screen();
+
+			$maptype   = get_option( 'sportspress_map_type', 'roadmap' );
+			$maptype   = strtolower( $maptype );
+			$osm_tile  = get_option( 'sportspress_osm_tile_server', '' );
+			$osm_tile  = strtolower( $osm_tile );
+			$osm_tile  = empty( $osm_tile ) ? 'https://tile.openstreetmap.org/{z}/{x}/{y}.png' : $osm_tile;
+			$osm_attribution  = get_option( 'sportspress_osm_attribution', '' );
+			$osm_attribution  = empty( $osm_attribution ) ? 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors' : $osm_attribution;
+			if ( 'satellite' === $maptype ) {
+				$osm_tile = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}';
+				$osm_attribution = 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community';
+			}
+			$osm_config = [
+				'tile_server' => $osm_tile,
+				'attribution' => $osm_attribution,
+			];
+
+
 
 			if ( in_array( $screen->id, sp_get_screen_ids() ) ) {
 				wp_enqueue_style( 'leaflet_stylesheet', SP()->plugin_url() . '/assets/css/leaflet.css', array(), '1.8.0' );
@@ -81,6 +99,7 @@ if ( ! class_exists( 'SportsPress_OpenStreetMap' ) ) :
 				wp_register_script( 'leaflet_js', SP()->plugin_url() . '/assets/js/leaflet.js', array(), '1.8.0' );
 				wp_register_script( 'control-geocoder', SP()->plugin_url() . '/assets/js/Control.Geocoder.min.js', array( 'leaflet_js' ), '1.13.0' );
 				wp_register_script( 'sportspress-admin-geocoder', SP()->plugin_url() . '/assets/js/admin/sp-geocoder.js', array( 'leaflet_js', 'control-geocoder' ), SP_VERSION, true );
+				wp_localize_script( 'sportspress-admin-geocoder', 'sp_osm_settings', $osm_config );
 			}
 
 			if ( in_array( $screen->id, array( 'edit-sp_venue' ) ) ) {
