@@ -36,7 +36,7 @@ if ( ! class_exists( 'SportsPress_OpenStreetMap' ) ) :
 			add_action( 'sp_admin_venue_scripts', array( $this, 'admin_venue_scripts' ) );
 			add_action( 'sp_frontend_venue_scripts', array( $this, 'frontend_venue_scripts' ) );
 			add_action( 'wp_enqueue_scripts', array( $this, 'frontend_scripts' ) );
-			add_action( 'sp_venue_show_map', array( $this, 'show_venue_map' ), 10, 7 );
+			add_action( 'sp_venue_show_map', array( $this, 'show_venue_map' ), 10, 6 );
 			add_action( 'sp_admin_geocoder_scripts', array( $this, 'admin_geocoder_scripts' ), 10 );
 			add_action( 'sp_setup_geocoder_scripts', array( $this, 'setup_geocoder_scripts' ), 10 );
 			add_action( 'sp_setup_venue_geocoder_scripts', array( $this, 'setup_venue_geocoder_scripts' ), 10 );
@@ -113,7 +113,7 @@ if ( ! class_exists( 'SportsPress_OpenStreetMap' ) ) :
 		 *
 		 * @return mix
 		 */
-		public function show_venue_map( $latitude, $longitude, $address, $zoom, $maptype, $osm_tile, $osm_attribution ) {
+		public function show_venue_map( $latitude, $longitude, $address, $zoom, $osm_tile, $osm_attribution ) {
 			  $lat     = abs( $latitude );
 			  $lat_deg = floor( $lat );
 			  $lat_sec = ( $lat - $lat_deg ) * 3600;
@@ -136,17 +136,10 @@ if ( ! class_exists( 'SportsPress_OpenStreetMap' ) ) :
 	// initialize map
 	map = L.map('sp_openstreetmaps_container', { zoomControl:false }).setView([lat, lon], <?php echo esc_attr( $zoom ); ?>);
 	// set map tiles source
-			  <?php if ( 'satellite' === $maptype ) { ?>
-		L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-		  attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community',
-		  maxZoom: 18,
-		}).addTo(map);
-	<?php } else { ?>
   L.tileLayer('<?php echo htmlspecialchars($osm_tile); ?>', {
   attribution: '<?php echo $osm_attribution ?>',
 		  maxZoom: 18,
 		}).addTo(map);
-	<?php } ?>
 	// add marker to the map
 	marker = L.marker([lat, lon]).addTo(map);
 	map.dragging.disable();
