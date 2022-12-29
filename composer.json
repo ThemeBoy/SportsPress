@@ -1,0 +1,16 @@
+{
+    "require-dev": {
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.7.2",
+        "object-calisthenics/phpcs-calisthenics-rules": "^3.9",
+        "phpcompatibility/php-compatibility": "^9.3",
+        "wp-coding-standards/wpcs": "^2.3"
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    },
+    "scripts": {
+        "phpcs": "./vendor/bin/phpcs"
+    }
+}

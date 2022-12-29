@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<ruleset name="PHP Compatibility">
+	<description>PHP compatibility ruleset.</description>
+
+	<file>.</file>
+
+	<!-- Exclude paths -->
+	<exclude-pattern>*/node_modules/*</exclude-pattern>
+	<exclude-pattern>*/vendor/*</exclude-pattern>
+	<exclude-pattern>lib/</exclude-pattern>
+
+	<!-- Show progress, show the error codes for each message (source). -->
+	<arg value="ps" />
+
+	<!-- PHP files only. -->
+	<arg name="extensions" value="php" />
+
+	<!-- Use colored output. -->
+	<arg name="colors"/>
+
+	<!-- Strip the filepaths in reports down to the relevant bit. -->
+	<arg name="basepath" value="./" />
+
+	<!-- Check up to 8 files simultaneously. -->
+	<arg name="parallel" value="800" />
+
+	<!-- Configs -->
+	<config name="minimum_supported_wp_version" value="8.0" />
+	<config name="testVersion" value="7.4-" />
+
+	<!-- Rules -->
+	<rule ref="PHPCompatibility">
+		<exclude-pattern>tests/</exclude-pattern>
+	</rule>
+	
+</ruleset>
