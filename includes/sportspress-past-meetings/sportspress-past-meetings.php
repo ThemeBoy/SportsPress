@@ -84,7 +84,7 @@ class SportsPress_Past_Meetings {
 				'date_before' => get_post_time('Y-m-d', true),
 				'title_format' => 'homeaway',
 				'time_format' => 'separate',
-				'columns' => array( 'event', 'time', 'results' ),
+				'columns' => apply_filters( 'sp_past_meetings_columns', array( 'event', 'time', 'results' ) ),
 				'order' => 'DESC',
 				'hide_if_empty' => true,
 			) );
