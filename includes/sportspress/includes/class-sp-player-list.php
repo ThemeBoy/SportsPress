@@ -63,6 +63,8 @@ class SP_Player_List extends SP_Secondary_Post {
 		$order         = get_post_meta( $this->ID, 'sp_order', true );
 		$select        = get_post_meta( $this->ID, 'sp_select', true );
 		$nationalities = get_post_meta( $this->ID, 'sp_nationality', false );
+		$showdob          = get_option( 'sportspress_player_show_birthday', 'no' );
+		$showage          = get_option( 'sportspress_player_show_age', 'no' );
 
 		$this->date = $this->__get( 'date' );
 
@@ -541,8 +543,6 @@ class SP_Player_List extends SP_Secondary_Post {
 			$team_performance = get_post_meta( $event->ID, 'sp_players', true );
 			$timeline         = (array) get_post_meta( $event->ID, 'sp_timeline', true );
 			$minutes          = get_post_meta( $event->ID, 'sp_minutes', true );
-			$showdob          = get_option( 'sportspress_player_show_birthday', 'no' );
-			$showage          = get_option( 'sportspress_player_show_age', 'no' );
 			if ( $minutes === '' ) {
 				$minutes = get_option( 'sportspress_event_minutes', 90 );
 			}

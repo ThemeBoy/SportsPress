@@ -794,7 +794,7 @@ class SP_AJAX {
 						<?php esc_html_e( 'Next', 'sportspress' ); ?>
 						<input type="number" min="0" step="1" class="tiny-text" name="date_future" value="default">
 						<?php esc_attr_e( 'days', 'sportspress' ); ?>
-					</p>esc_html
+					</p>
 
 					<p class="sp-date-relative">
 						<label>
@@ -1437,10 +1437,10 @@ class SP_AJAX {
 
 				// Toggle date range selectors
 				$(".sp-date-relative input").change(function() {
-					$relative = $(this).closest(".sp-date-relative").siblings(".sp-date-range-relative").toggle(0, $(this).attr("checked"));
-					$absolute = $(this).closest(".sp-date-relative").siblings(".sp-date-range-absolute").toggle(0, $(this).attr("checked"));
-
-					if ($(this).attr("checked")) {
+					$relative = $( this ).closest( ".sp-date-relative" ).siblings( ".sp-date-range-relative" ).toggle( 0, $( this ).attr( "checked" ) );
+					$absolute = $( this ).closest( ".sp-date-relative" ).siblings( ".sp-date-range-absolute" ).toggle( 0, $( this ).attr( "checked" ) );
+					
+					if ( $( this ).is( ":checked" ) ) {
 						$relative.show();
 						$absolute.hide();
 					} else {

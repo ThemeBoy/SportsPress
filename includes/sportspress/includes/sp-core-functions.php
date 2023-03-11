@@ -367,7 +367,11 @@ if ( ! function_exists( 'sp_array_value' ) ) {
 		  else :
 			  switch ( $sanitize ) :
 				  case 'int':
-					  $value = intval( $value );
+					  if ( empty( $value ) ) {
+						  $value = $value;
+					  }else{
+						$value = intval( $value );
+					  }
 					  break;
 				  case 'title':
 					  $value = sanitize_title( $value );
@@ -540,7 +544,7 @@ if ( ! function_exists( 'sp_get_post_condition' ) ) {
 				'='    => sprintf( esc_attr__( 'Equal %s', 'sportspress' ), $label ),
 				'else' => sprintf( esc_attr__( 'Default', 'sportspress' ), $label ),
 			);
-			return sp_array_value( $conditions, $condition, '&mdash;' );
+			return sp_array_value( $conditions, wp_specialchars_decode( $condition ), '&mdash;' );
 		else :
 			return '&mdash;';
 		endif;

@@ -43,7 +43,7 @@ class SP_Meta_Box_Outcome_Details extends SP_Meta_Box_Config {
 			$color = '#888888';
 		}
 		?>
-		<p><strong><?php esc_attr_e( 'Variable', 'sportspress' ); ?></strong></p>
+		<p><strong><?php esc_html_e( 'Variable', 'sportspress' ); ?></strong></p>
 		<p>
 			<input name="sp_default_key" type="hidden" id="sp_default_key" value="<?php echo esc_attr( $post->post_name ); ?>">
 			<input name="sp_key" type="text" id="sp_key" value="<?php echo esc_attr( $post->post_name ); ?>"
@@ -52,7 +52,7 @@ class SP_Meta_Box_Outcome_Details extends SP_Meta_Box_Config {
 																				?>
 				 readonly="readonly"<?php } ?>>
 		</p>
-		<p><strong><?php esc_attr_e( 'Abbreviation', 'sportspress' ); ?></strong></p>
+		<p><strong><?php esc_html_e( 'Abbreviation', 'sportspress' ); ?></strong></p>
 		<p>
 			<input name="sp_abbreviation" type="text" id="sp_abbreviation" value="<?php echo esc_attr( $abbreviation ); ?>" placeholder="<?php echo esc_attr( sp_substr( $post->post_title, 0, 1 ) ); ?>">
 		</p>
@@ -63,7 +63,7 @@ class SP_Meta_Box_Outcome_Details extends SP_Meta_Box_Config {
 				<div id="sp_color" class="colorpickdiv"></div>
 			</div>
 		</p>
-		<p><strong><?php esc_attr_e( 'Condition', 'sportspress' ); ?></strong></p>
+		<p><strong><?php esc_html_e( 'Condition', 'sportspress' ); ?></strong></p>
 		<p>
 			<select name="sp_condition">
 				<?php
@@ -76,7 +76,7 @@ class SP_Meta_Box_Outcome_Details extends SP_Meta_Box_Config {
 				);
 
 				foreach ( $options as $key => $value ) :
-					printf( '<option value="%s" %s>%s</option>', esc_attr( $key ), selected( true, $key == $condition, false ), esc_attr( $value ) );
+					printf( '<option value="%s" %s>%s</option>', esc_attr( $key ), selected( true, $key == wp_specialchars_decode( $condition ), false ), esc_attr( $value ) );
 				endforeach;
 				?>
 			</select>

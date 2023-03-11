@@ -57,13 +57,13 @@ class SP_Meta_Box_List_Details {
 					?>
 				</p>
 				<div class="sp-date-range">
-					<p class="sp-date-range-absolute">
+					<p class="sp-date-range-absolute" <?php echo '1' == $date_relative ? ' style="display:none;"' : ''; ?>>
 						<input type="text" class="sp-datepicker-from" name="sp_date_from" value="<?php echo esc_attr( $date_from ? $date_from : date_i18n( 'Y-m-d' ) ); ?>" size="10">
 						:
 						<input type="text" class="sp-datepicker-to" name="sp_date_to" value="<?php echo esc_attr( $date_to ? $date_to : date_i18n( 'Y-m-d' ) ); ?>" size="10">
 					</p>
 
-					<p class="sp-date-range-relative">
+					<p class="sp-date-range-relative" <?php echo '1' !== $date_relative ? ' style="display:none;"' : ''; ?>>
 						<?php esc_attr_e( 'Past', 'sportspress' ); ?>
 						<input type="number" min="0" step="1" class="tiny-text" name="sp_date_past" value="<?php echo '' !== $date_past ? esc_attr( $date_past ) : 7; ?>">
 						<?php esc_attr_e( 'days', 'sportspress' ); ?>

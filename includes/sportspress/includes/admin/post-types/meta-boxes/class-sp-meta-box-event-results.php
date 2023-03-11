@@ -187,8 +187,17 @@ class SP_Meta_Box_Event_Results {
 					'post_type'      => 'sp_outcome',
 					'numberposts'    => -1,
 					'posts_per_page' => -1,
-					'meta_key'       => 'sp_condition',
-					'meta_value'     => '>',
+					'meta_query' => array(
+						'relation' => 'OR',
+						array(
+							'key'     => 'sp_condition',
+							'value'   => '&gt;',
+						),
+						array(
+							'key'     => 'sp_condition',
+							'value'   => '>',
+						),
+					),
 				);
 				$gt_outcomes = get_posts( $args );
 				if ( empty( $gt_outcomes ) ) {
@@ -200,8 +209,17 @@ class SP_Meta_Box_Event_Results {
 					'post_type'      => 'sp_outcome',
 					'numberposts'    => -1,
 					'posts_per_page' => -1,
-					'meta_key'       => 'sp_condition',
-					'meta_value'     => '<',
+					'meta_query' => array(
+						'relation' => 'OR',
+						array(
+							'key'     => 'sp_condition',
+							'value'   => '&lt;',
+						),
+						array(
+							'key'     => 'sp_condition',
+							'value'   => '<',
+						),
+					),
 				);
 				$lt_outcomes = get_posts( $args );
 				if ( empty( $lt_outcomes ) ) {

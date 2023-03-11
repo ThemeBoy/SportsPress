@@ -134,7 +134,7 @@ endforeach; else :
 									<td class="radio"><input type="radio" class="sp-primary-result-option" id="sportspress_primary_result_<?php echo esc_attr( $row->post_name ); ?>" name="sportspress_primary_result" value="<?php echo esc_attr( $row->post_name ); ?>" <?php checked( $selection, $row->post_name ); ?>></td>
 									<td class="row-title"><label for="sportspress_primary_result_<?php echo esc_attr( $row->post_name ); ?>"><?php echo esc_html( $row->post_title ); ?></label></td>
 									<td><code><?php echo esc_html( $row->post_name ); ?>for</code>, <code><?php echo esc_html( $row->post_name ); ?>against</code></td>
-									<td><?php echo esc_html( sp_get_post_equation( $row->ID ) ); ?></td>
+									<td><?php echo wp_kses_post( sp_get_post_equation( $row->ID ) ); ?></td>
 									<td><?php echo esc_html( sp_get_post_precision( $row->ID ) ); ?></td>
 									<td><p class="description"><?php echo wp_kses_post( $row->post_excerpt ); ?></p></td>
 									<td class="edit"><a class="button" href="<?php echo esc_url( get_edit_post_link( $row->ID ) ); ?>"><?php esc_html_e( 'Edit', 'sportspress' ); ?></s></td>
