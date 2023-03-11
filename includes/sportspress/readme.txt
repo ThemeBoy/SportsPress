@@ -4,7 +4,7 @@ Tags: calendars, club, club management, esports, events, fixtures, leagues, leag
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
 Tested up to: 6.1
-Stable tag: 2.7.15
+Stable tag: 2.7.16
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -239,6 +239,19 @@ There are [3 different licenses](http://tboy.co/pro) that you can choose from: C
 When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
 
 == Changelog ==
+
+= 2.7.16 =
+* Update - WP version tested up to 6.1.
+* Update - Leaflet version to 1.8.0.
+* Tweak - Datepicker support for event blocks, list, and calendar widgets.
+* Fix - Toggle between absolute and resltive dates in shortcodes.
+* Fix - Undefined variables showdob and showage.
+* Fix - Date range error in player lists.
+* Fix - Loss condition not applied on event results.
+* Fix - Can't set statistic variable for player positions.
+* Fix - API error when using _fields.
+* Fix - Event map and video not being displayed.
+* Fix - Escape functions in admin.
 
 = 2.7.15 =
 * Feature - Sports news widget in dashboard.

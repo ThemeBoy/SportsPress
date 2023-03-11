@@ -3,7 +3,7 @@ Contributors: ThemeBoy, brianmiyaji, aylaview, savvasha, kadimi, rochesterj
 Tags: calendars, club, club management, esports, events, fixtures, leagues, league management, sports, sports club, sports data, team rosters
 Requires at least: 3.8
 Tested up to: 5.8.1
-Stable tag: 2.7.15
+Stable tag: 2.7.16
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -114,6 +114,19 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 If on the off-chance you do encounter issues with the event/team/player/staff/sponsor pages after an update you simply need to flush the permalinks by going to WordPress > Settings > Permalinks and hitting 'save'. That should return things to normal.
 
 == Changelog ==
+
+= 2.7.16 =
+* Update - WP version tested up to 6.1.
+* Update - Leaflet version to 1.8.0.
+* Tweak - Datepicker support for event blocks, list, and calendar widgets.
+* Fix - Toggle between absolute and resltive dates in shortcodes.
+* Fix - Undefined variables showdob and showage.
+* Fix - Date range error in player lists.
+* Fix - Loss condition not applied on event results.
+* Fix - Can't set statistic variable for player positions.
+* Fix - API error when using _fields.
+* Fix - Event map and video not being displayed.
+* Fix - Escape functions in admin.
 
 = 2.7.15 =
 * Feature - Sports news widget in dashboard.

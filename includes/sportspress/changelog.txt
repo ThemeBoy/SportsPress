@@ -1,5 +1,18 @@
 == SportsPress Changelog ==
 
+= 2.7.16 =
+* Update - WP version tested up to 6.1.
+* Update - Leaflet version to 1.8.0.
+* Tweak - Datepicker support for event blocks, list, and calendar widgets.
+* Fix - Toggle between absolute and resltive dates in shortcodes.
+* Fix - Undefined variables showdob and showage.
+* Fix - Date range error in player lists.
+* Fix - Loss condition not applied on event results.
+* Fix - Can't set statistic variable for player positions.
+* Fix - API error when using _fields.
+* Fix - Event map and video not being displayed.
+* Fix - Escape functions in admin.
+
 = 2.7.15 =
 * Feature - Sports news widget in dashboard.
 * Fix - Fixture importer bug with extended characters in league and season name.
