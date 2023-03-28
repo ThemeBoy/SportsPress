@@ -358,7 +358,7 @@ if ( ! function_exists( 'sp_array_value' ) ) {
 						$value = sp_array_map_recursive( 'sanitize_title', $value );
 						break;
 					case 'text':
-						$value = sp_array_map_recursive( 'sanitize_text_field', $value );
+						$value = sp_array_map_recursive( 'wp_kses_post', $value );
 						break;
 					case 'key':
 						$value = sp_array_map_recursive( 'sanitize_key', $value );
