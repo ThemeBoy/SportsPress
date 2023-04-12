@@ -104,7 +104,7 @@ if ( ! class_exists( 'SportsPress_Next_Team_Preset' ) ) :
 				);
 
 				if ( get_option( 'sportspress_table_next_team_filter_league', 'no' ) === 'yes' ) {
-					$leagues = get_the_terms( get_the_ID(), 'sp_league' );
+					$leagues = get_the_terms( $post_id, 'sp_league' );
 					if ( ! isset( $league_ids ) ) {
 						$league_ids = array();
 					}
@@ -113,7 +113,7 @@ if ( ! class_exists( 'SportsPress_Next_Team_Preset' ) ) :
 							  $league_ids[] = $league->term_id;
 					endforeach;
 						  endif;
-					$league_ids = sp_add_auto_term( $league_ids, get_the_ID(), 'sp_league' );
+					$league_ids = sp_add_auto_term( $league_ids, $post_id, 'sp_league' );
 
 					if ( isset( $league_ids ) ) {
 						$args['tax_query'][] = array(
