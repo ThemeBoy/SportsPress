@@ -23,6 +23,9 @@ if ( ! class_exists( 'SP_Install' ) ) :
 		 * Hook in tabs.
 		 */
 		public function __construct() {
+			if ( ! defined( 'SP_PLUGIN_FILE' ) ) {
+				define( 'SP_PLUGIN_FILE', __FILE__ );
+			}
 			register_activation_hook( SP_PLUGIN_FILE, array( $this, 'install' ) );
 
 			if ( defined( 'SP_PRO_PLUGIN_FILE' ) ) {
