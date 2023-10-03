@@ -27,6 +27,7 @@ class SP_League_Table extends SP_Secondary_Post {
 	// ** @var strings
 	public $orderby;
 	public $orderbyorder;
+	public $compare;
 
 	/** @var int Show Published events. */
 	public $show_published_events;

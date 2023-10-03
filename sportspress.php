@@ -60,6 +60,11 @@ if ( ! class_exists( 'SportsPress' ) ) :
 		 * @var SP_Templates $templates
 		 */
 		public $templates = null;
+		
+		/**
+		 * @var SP_Feeds $feeds
+		 */
+		public $feeds = null;
 
 		/**
 		 * @var array

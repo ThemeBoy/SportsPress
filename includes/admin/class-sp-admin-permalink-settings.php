@@ -20,6 +20,11 @@ if ( ! class_exists( 'SP_Admin_Permalink_Settings' ) ) :
 	class SP_Admin_Permalink_Settings {
 
 		/**
+		 * @var array
+		 */
+		public $slugs = array();
+		
+		/**
 		 * Hook in tabs.
 		 */
 		public function __construct() {

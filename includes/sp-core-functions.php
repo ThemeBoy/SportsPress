@@ -885,7 +885,7 @@ if ( ! function_exists( 'sp_dropdown_taxonomies' ) ) {
 		if ( $terms ) :
 			printf( '<select name="%s" class="postform %s" %s>', esc_attr( $name ), esc_attr( $class ) . ( $chosen ? ' chosen-select' . ( is_rtl() ? ' chosen-rtl' : '' ) : '' ), ( $placeholder != null ? 'data-placeholder="' . esc_attr( $placeholder ) . '" ' : '' ) . esc_attr( $property ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
-			if ( strpos( $property, 'multiple' ) === false ) :
+			if ( $property && strpos( $property, 'multiple' ) === false ) :
 				if ( $args['show_option_blank'] ) :
 					echo '<option value="">' . ( is_bool( $args['show_option_blank'] ) ? '' : esc_attr( $args['show_option_blank'] ) ) . '</option>';
 				endif;
@@ -898,7 +898,7 @@ if ( ! function_exists( 'sp_dropdown_taxonomies' ) ) {
 			endif;
 
 			if ( $args['show_option_auto'] ) :
-				if ( strpos( $property, 'multiple' ) !== false ) :
+				if ( $property && strpos( $property, 'multiple' ) !== false ) :
 					$selected_prop = in_array( 'auto', $selected ) ? 'selected' : '';
 				else :
 					$selected_prop = selected( 'auto', $selected, false );
@@ -914,7 +914,7 @@ if ( ! function_exists( 'sp_dropdown_taxonomies' ) ) {
 					$this_value = $term->slug;
 				endif;
 
-				if ( strpos( $property, 'multiple' ) !== false ) :
+				if ( $property && strpos( $property, 'multiple' ) !== false ) :
 					$selected_prop = in_array( $this_value, $selected ) ? 'selected' : '';
 				else :
 					$selected_prop = selected( $this_value, $selected, false );
@@ -934,7 +934,7 @@ if ( ! function_exists( 'sp_dropdown_taxonomies' ) ) {
 							$this_value = $term_child->slug;
 						endif;
 
-						if ( strpos( $property, 'multiple' ) !== false ) :
+						if ( $property && strpos( $property, 'multiple' ) !== false ) :
 							$selected_prop = in_array( $this_value, $selected ) ? 'selected' : '';
 						else :
 							$selected_prop = selected( $this_value, $selected, false );
@@ -1020,7 +1020,7 @@ if ( ! function_exists( 'sp_dropdown_pages' ) ) {
 		if ( $posts || $args['prepend_options'] || $args['append_options'] ) :
 			printf( '<select name="%s" id="%s" class="postform %s" %s>', esc_attr( $name ), esc_attr( $id ), esc_attr( $class ) . ( $chosen ? ' chosen-select' . ( is_rtl() ? ' chosen-rtl' : '' ) : '' ), ( $placeholder != null ? 'data-placeholder="' . esc_attr( $placeholder ) . '" ' : '' ) . esc_attr( $property ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
-			if ( strpos( $property, 'multiple' ) === false ) :
+			if ( $property && strpos( $property, 'multiple' ) === false ) :
 				if ( $args['show_option_blank'] ) :
 					printf( '<option value=""></option>' );
 				endif;
@@ -1046,7 +1046,7 @@ if ( ! function_exists( 'sp_dropdown_pages' ) ) {
 					$this_value = $post->post_name;
 				endif;
 
-				if ( strpos( $property, 'multiple' ) !== false ) :
+				if ( $property && strpos( $property, 'multiple' ) !== false ) :
 					$selected_prop = in_array( $this_value, $selected ) ? 'selected' : '';
 				else :
 					$selected_prop = selected( $this_value, $selected, false );
@@ -1066,7 +1066,7 @@ if ( ! function_exists( 'sp_dropdown_pages' ) ) {
 			endforeach;
 			wp_reset_postdata();
 
-			if ( strpos( $property, 'multiple' ) === false ) :
+			if ( $property && strpos( $property, 'multiple' ) === false ) :
 				if ( $args['append_options'] && is_array( $args['append_options'] ) ) :
 					foreach ( $args['append_options'] as $slug => $label ) :
 						printf( '<option value="%s" %s>%s</option>', esc_attr( $slug ), selected( $selected, $slug, false ), esc_attr( $label ) );
