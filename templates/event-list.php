@@ -124,6 +124,9 @@ endif;
 $labels = array();
 // Create a unique identifier based on the current time in microseconds
 $identifier = uniqid( 'eventlist_' );
+
+$reverse_teams = get_option( 'sportspress_event_reverse_teams', 'no' ) === 'yes';
+
 ?>
 <div class="sp-template sp-template-event-list">
 	<?php if ( $title ) { ?>
@@ -152,7 +155,11 @@ $identifier = uniqid( 'eventlist_' );
 					switch ( $title_format ) {
 						case 'homeaway':
 							if ( sp_column_active( $usecolumns, 'event' ) ) {
-								echo '<th class="data-home">' . esc_attr__( 'Home', 'sportspress' ) . '</th>';
+								$label = $reverse_teams
+									? esc_attr__( 'Away', 'sportspress' )
+									: esc_attr__( 'Home', 'sportspress' )
+								;
+								echo '<th class="data-home">' . $label . '</th>';
 							}
 
 							if ( 'combined' == $time_format && sp_column_active( $usecolumns, 'time' ) ) {
@@ -163,7 +170,11 @@ $identifier = uniqid( 'eventlist_' );
 							}
 
 							if ( sp_column_active( $usecolumns, 'event' ) ) {
-								echo '<th class="data-away">' . esc_attr__( 'Away', 'sportspress' ) . '</th>';
+								$label = $reverse_teams
+									? esc_attr__( 'Home', 'sportspress' )
+									: esc_attr__( 'Away', 'sportspress' )
+								;
+								echo '<th class="data-away">' . $label . '</th>';
 							}
 
 							if ( in_array( $time_format, array( 'separate', 'time' ) ) && sp_column_active( $usecolumns, 'time' ) ) {
@@ -250,7 +261,6 @@ $identifier = uniqid( 'eventlist_' );
 
 					$main_results = apply_filters( 'sportspress_event_list_main_results', sp_get_main_results( $event ), $event->ID );
 
-					$reverse_teams = get_option( 'sportspress_event_reverse_teams', 'no' ) === 'yes' ? true : false;
 					if ( $reverse_teams ) {
 						$main_results = array_reverse( $main_results, true );
 					}
@@ -323,7 +333,11 @@ $identifier = uniqid( 'eventlist_' );
 						case 'homeaway':
 							if ( sp_column_active( $usecolumns, 'event' ) ) {
 								$team = array_shift( $teams_array );
-								echo '<td class="data-home' . esc_attr( $team_class ) . '" itemprop="competitor" itemscope itemtype="http://schema.org/SportsTeam" data-label="' . esc_attr__( 'Home', 'sportspress' ) . '">' . wp_kses_post( $team ) . '</td>';
+								$label = $reverse_teams
+									? esc_attr__( 'Away', 'sportspress' )
+									: esc_attr__( 'Home', 'sportspress' )
+								;
+								echo '<td class="data-home' . esc_attr( $team_class ) . '" itemprop="competitor" itemscope itemtype="http://schema.org/SportsTeam" data-label="' . $label . '">' . wp_kses_post( $team ) . '</td>';
 							}
 
 							if ( 'combined' == $time_format && sp_column_active( $usecolumns, 'time' ) ) {
@@ -358,7 +372,11 @@ $identifier = uniqid( 'eventlist_' );
 
 							if ( sp_column_active( $usecolumns, 'event' ) ) {
 								$team = array_shift( $teams_array );
-								echo '<td class="data-away' . esc_attr( $team_class ) . '" itemprop="competitor" itemscope itemtype="http://schema.org/SportsTeam" data-label="' . esc_attr__( 'Away', 'sportspress' ) . '">' . wp_kses_post( $team ) . '</td>';
+								$label = $reverse_teams
+									? esc_attr__( 'Home', 'sportspress' )
+									: esc_attr__( 'Away', 'sportspress' )
+								;
+								echo '<td class="data-away' . esc_attr( $team_class ) . '" itemprop="competitor" itemscope itemtype="http://schema.org/SportsTeam" data-label="' . $label . '">' . wp_kses_post( $team ) . '</td>';
 							}
 
 							if ( in_array( $time_format, array( 'separate', 'time' ) ) && sp_column_active( $usecolumns, 'time' ) ) {
