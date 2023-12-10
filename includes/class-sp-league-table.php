@@ -393,24 +393,24 @@ class SP_League_Table extends SP_Secondary_Post {
 								// Increment events played and outcome count
 								if ( array_key_exists( $team_id, $totals ) && is_array( $totals[ $team_id ] ) && array_key_exists( $outcome, $totals[ $team_id ] ) ) :
 									$totals[ $team_id ]['eventsplayed'] ++;
-									$totals[ $team_id ]['eventminutes'] += $minutes;
+									$totals[ $team_id ]['eventminutes'] = (int) $totals[ $team_id ]['eventminutes'] + $minutes;
 									$totals[ $team_id ][ $outcome ] ++;
 
 									// Add to home or away stats
 									if ( 0 === $i ) :
 										$totals[ $team_id ]['eventsplayed_home'] ++;
-										$totals[ $team_id ]['eventminutes_home'] += $minutes;
+										$totals[ $team_id ]['eventminutes_home'] = (int) $totals[ $team_id ]['eventminutes_home'] + $minutes;
 										$totals[ $team_id ][ $outcome . '_home' ] ++;
 									else :
 										$totals[ $team_id ]['eventsplayed_away'] ++;
-										$totals[ $team_id ]['eventminutes_away'] += $minutes;
+										$totals[ $team_id ]['eventminutes_away'] = (int) $totals[ $team_id ]['eventminutes_away'] + $minutes;
 										$totals[ $team_id ][ $outcome . '_away' ] ++;
 									endif;
 
 									// Add to venue stats
 									if ( sp_is_home_venue( $team_id, $event->ID ) ) :
 										$totals[ $team_id ]['eventsplayed_venue'] ++;
-										$totals[ $team_id ]['eventminutes_venue'] += $minutes;
+										$totals[ $team_id ]['eventminutes_venue'] = (int) $totals[ $team_id ]['eventminutes_venue'] + $minutes;
 										$totals[ $team_id ][ $outcome . '_venue' ] ++;
 									endif;
 								endif;
