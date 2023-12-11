@@ -1,5 +1,11 @@
 == SportsPress Changelog ==
 
+= 2.7.17 =
+* Fix - PHP 8.2.x deprecated code warnings.
+* Fix - Next team not working in shortcodes.
+* Fix - Links rendering in event specs.
+* Localization - Update translatable strings.
+
 = 2.7.16 =
 * Update - WP version tested up to 6.1.
 * Update - Leaflet version to 1.8.0.

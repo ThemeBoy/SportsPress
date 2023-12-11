@@ -5,7 +5,7 @@
  * @author    ThemeBoy
  * @category  Modules
  * @package   SportsPress/Modules
- * @version   2.7.9
+ * @version   2.7.17
  */
 
 // Exit if accessed directly
@@ -19,7 +19,7 @@ if ( ! class_exists( 'SportsPress_Next_Team_Preset' ) ) :
 	 * Main SportsPress Next Team Preset Class
 	 *
 	 * @class SportsPress_Next_Team_Preset
-	 * @version 2.6.3
+	 * @version 2.7.17
 	 */
 
 	class SportsPress_Next_Team_Preset {
@@ -49,7 +49,7 @@ if ( ! class_exists( 'SportsPress_Next_Team_Preset' ) ) :
 		 */
 		private function define_constants() {
 			if ( ! defined( 'SP_NEXT_TEAM_PRESET_VERSION' ) ) {
-				define( 'SP_NEXT_TEAM_PRESET_VERSION', '2.6.3' );
+				define( 'SP_NEXT_TEAM_PRESET_VERSION', '2.7.17' );
 			}
 
 			if ( ! defined( 'SP_NEXT_TEAM_PRESET_URL' ) ) {
