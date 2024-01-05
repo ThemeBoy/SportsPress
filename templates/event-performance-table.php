@@ -322,7 +322,7 @@ $i = 0;
 			<?php endif; ?>
 		</table>
 		<?php
-		if ( isset( $show_staff ) ) {
+		if ( isset( $show_staff ) && $show_staff ) {
 			echo wp_kses_post( sp_get_template(
 				'event-staff.php',
 				array(
