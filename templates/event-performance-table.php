@@ -329,13 +329,16 @@ $i = 0;
 		</table>
 		<?php
 		if ( isset( $show_staff ) && $show_staff ) {
-			echo wp_kses_post( sp_get_template(
-				'event-staff.php',
-				array(
-					'id'    => $id,
-					'index' => $index,
-				)
-			) );
+			$event-staff-template_content = sp_get_template(
+						'event-staff.php',
+						array(
+							'id'    => $id,
+							'index' => $index,
+						)
+					);
+			if ( $template_content !== null ) {
+				echo wp_kses_post( $template_content );
+			}
 		}
 		?>
 	</div>
