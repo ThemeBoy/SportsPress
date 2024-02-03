@@ -20,7 +20,9 @@ if ( is_tax( 'sp_venue' ) ) {
 }
 
 $address   = sp_array_value( $meta, 'sp_address', null );
-$address   = urlencode( $address );
+if ( !is_null( $address ) ) {
+	$address = urlencode( $address );
+}
 $latitude  = sp_array_value( $meta, 'sp_latitude', null );
 $longitude = sp_array_value( $meta, 'sp_longitude', null );
 $zoom      = get_option( 'sportspress_map_zoom', 15 );

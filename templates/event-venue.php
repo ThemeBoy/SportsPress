@@ -37,7 +37,9 @@ foreach ( $venues as $venue ) :
 	}
 
 	$address = sp_array_value( $meta, 'sp_address', null );
-	$address = urlencode( $address );
+	if ( !is_null( $address ) ) {
+		$address = urlencode( $address );
+	}
 	?>
 	<div class="sp-template sp-template-event-venue">
 		<h4 class="sp-table-caption"><?php esc_attr_e( 'Venue', 'sportspress' ); ?></h4>
