@@ -220,8 +220,14 @@ $i = 0;
 								$performance_id = sp_array_value( $performance_ids, $key, null );
 								$icons          = '';
 								if ( $performance_id && has_post_thumbnail( $performance_id ) ) :
-									$icons = str_repeat( get_the_post_thumbnail( $performance_id, 'sportspress-fit-mini', array( 'title' => sp_get_singular_name( $performance_id ) ) ) . ' ', intval( $value ) );
+									preg_match( '#\((.*?)\)#', $value, $match );
+									if ( ! empty( $match ) && isset( $match[1] ) ) {
+										$icons = str_repeat( get_the_post_thumbnail( $performance_id, 'sportspress-fit-mini', array( 'title' => sp_get_singular_name( $performance_id ) ) ) . ' ' . $match[1] . ' ', intval( $value ) );
+									} else {
+										$icons = str_repeat( get_the_post_thumbnail( $performance_id, 'sportspress-fit-mini', array( 'title' => sp_get_singular_name( $performance_id ) ) ) . ' ', intval( $value ) );
+									}
 								endif;
+								
 								$content .= apply_filters( 'sportspress_event_performance_icons', $icons, $performance_id, $value );
 							endif;
 						endforeach;
