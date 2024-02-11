@@ -329,7 +329,7 @@ $i = 0;
 		</table>
 		<?php
 		if ( isset( $show_staff ) && $show_staff ) {
-			$event-staff-template_content = sp_get_template(
+			$template_content = sp_get_template(
 						'event-staff.php',
 						array(
 							'id'    => $id,
