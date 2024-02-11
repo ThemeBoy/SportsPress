@@ -266,7 +266,7 @@ class SP_Meta_Box_Event_Results {
 				array(
 					'key'     => 'sp_equation',
 					'compare' => 'NOT IN',
-					'value'   => null,
+					'value'   => '',
 				),
 			),
 		);
