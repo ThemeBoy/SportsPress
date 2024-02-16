@@ -42,9 +42,6 @@ class SP_Meta_Box_Statistic_Details extends SP_Meta_Box_Config {
 		if ( '' === $format ) {
 			$format = 'number';
 		}
-		if ( '' === $visible ) {
-			$visible = 1;
-		}
 		?>
 		<p><strong><?php esc_attr_e( 'Key', 'sportspress' ); ?></strong></p>
 		<p>
@@ -116,25 +113,35 @@ class SP_Meta_Box_Statistic_Details extends SP_Meta_Box_Config {
 				?>
 			</select>
 		</p>
-		<p>
-			<strong><?php esc_attr_e( 'Visible', 'sportspress' ); ?></strong>
-			<i class="dashicons dashicons-editor-help sp-desc-tip" title="<?php esc_attr_e( 'Display in player profile?', 'sportspress' ); ?>"></i>
-		</p>
-		<ul class="sp-visible-selector">
-			<li>
-				<label class="selectit">
-					<input name="sp_visible" id="sp_visible_yes" type="radio" value="1" <?php checked( $visible ); ?>>
-					<?php esc_attr_e( 'Yes', 'sportspress' ); ?>
-				</label>
-			</li>
-			<li>
-				<label class="selectit">
-					<input name="sp_visible" id="sp_visible_no" type="radio" value="0" <?php checked( ! $visible ); ?>>
-					<?php esc_attr_e( 'No', 'sportspress' ); ?>
-				</label>
-			</li>
-		</ul>
 		<?php
+		if ( 'auto' === get_option( 'sportspress_player_columns', 'auto' ) ) {
+			$visible = get_post_meta( $post->ID, 'sp_visible', true );
+			if ( '' === $visible ) {
+				$visible = 1;
+			}
+			?>
+			<p>
+				<strong><?php esc_attr_e( 'Visible', 'sportspress' ); ?></strong>
+				<i class="dashicons dashicons-editor-help sp-desc-tip" title="<?php esc_attr_e( 'Display in player profile?', 'sportspress' ); ?>"></i>
+			</p>
+			<ul class="sp-visible-selector">
+				<li>
+					<label class="selectit">
+						<input name="sp_visible" id="sp_visible_yes" type="radio" value="1" <?php checked( $visible ); ?>>
+						<?php esc_attr_e( 'Yes', 'sportspress' ); ?>
+					</label>
+				</li>
+				<li>
+					<label class="selectit">
+						<input name="sp_visible" id="sp_visible_no" type="radio" value="0" <?php checked( ! $visible ); ?>>
+						<?php esc_attr_e( 'No', 'sportspress' ); ?>
+					</label>
+				</li>
+			</ul>
+		<?php
+		}
+
+		do_action( 'sportspress_meta_box_statistic_details', $post );
 	}
 
 	/**
