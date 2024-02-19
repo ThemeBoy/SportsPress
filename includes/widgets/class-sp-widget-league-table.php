@@ -83,7 +83,7 @@ class SP_Widget_League_Table extends WP_Widget {
 				'caption'              => '',
 				'number'               => 5,
 				'columns'              => null,
-				'show_team_logo'       => true,
+				'show_team_logo'       => false,
 				'show_full_table_link' => true,
 			)
 		);
