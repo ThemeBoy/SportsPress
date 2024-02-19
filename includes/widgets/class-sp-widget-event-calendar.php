@@ -75,9 +75,9 @@ class SP_Widget_Event_Calendar extends WP_Widget {
 		$instance['date_to']              = $new_instance['date_to'];
 		$instance['date_past']            = $new_instance['date_past'];
 		$instance['date_future']          = $new_instance['date_future'];
-		$instance['date_relative']        = $new_instance['date_relative'];
+		$instance['date_relative']   	  = isset( $new_instance['date_relative'] ) ? $new_instance['date_relative'] : false;
 		$instance['day']                  = $new_instance['day'];
-		$instance['show_all_events_link'] = $new_instance['show_all_events_link'];
+		$instance['show_all_events_link'] = isset( $new_instance['show_all_events_link'] ) ? $new_instance['show_all_events_link'] : false;
 
 		// Filter to hook into
 		$instance = apply_filters( 'sportspress_widget_update', $instance, $new_instance, $old_instance, 'event-calendar' );

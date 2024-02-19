@@ -65,13 +65,13 @@ class SP_Widget_Countdown extends WP_Widget {
 		$instance['team']          = intval( $new_instance['team'] );
 		$instance['caption']       = strip_tags( $new_instance['caption'] );
 		$instance['id']            = intval( $new_instance['id'] );
-		$instance['show_venue']    = intval( $new_instance['show_venue'] );
-		$instance['show_league']   = intval( $new_instance['show_league'] );
-		$instance['show_date']     = intval( $new_instance['show_date'] );
-		$instance['show_excluded'] = intval( $new_instance['show_excluded'] );
+		$instance['show_venue']    = isset( $new_instance['show_venue'] ) ? $new_instance['show_venue'] : false;
+		$instance['show_league']   = isset( $new_instance['show_league'] ) ? $new_instance['show_league'] : false;
+		$instance['show_date']     = isset( $new_instance['show_date'] ) ? $new_instance['show_date'] : false;
+		$instance['show_excluded'] = isset( $new_instance['show_excluded'] ) ? $new_instance['show_excluded'] : false;
 		$instance['order']         = strip_tags( $new_instance['order'] );
 		$instance['orderby']       = strip_tags( $new_instance['orderby'] );
-		$instance['show_status']   = strip_tags( $new_instance['show_status'] );
+		$instance['show_status']   = isset( $new_instance['show_status'] ) ? $new_instance['show_status'] : false;
 
 		// Filter to hook into
 		$instance = apply_filters( 'sportspress_widget_update', $instance, $new_instance, $old_instance, 'countdown' );

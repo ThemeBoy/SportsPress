@@ -65,8 +65,8 @@ class SP_Widget_League_Table extends WP_Widget {
 		$instance['caption']              = strip_tags( $new_instance['caption'] );
 		$instance['number']               = intval( $new_instance['number'] );
 		$instance['columns']              = (array) $new_instance['columns'];
-		$instance['show_team_logo']       = $new_instance['show_team_logo'];
-		$instance['show_full_table_link'] = $new_instance['show_full_table_link'];
+		$instance['show_team_logo']   	  = isset( $new_instance['show_team_logo'] ) ? $new_instance['show_team_logo'] : false;
+		$instance['show_full_table_link'] = isset( $new_instance['show_full_table_link'] ) ? $new_instance['show_full_table_link'] : false;
 
 		// Filter to hook into
 		$instance = apply_filters( 'sportspress_widget_update', $instance, $new_instance, $old_instance, 'league-table' );
