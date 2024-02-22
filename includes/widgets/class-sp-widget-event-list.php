@@ -86,7 +86,7 @@ class SP_Widget_Event_List extends WP_Widget {
 		$instance['date_relative']   	  = isset( $new_instance['date_relative'] ) ? $new_instance['date_relative'] : false;
 		$instance['day']                  = $new_instance['day'];
 		$instance['number']               = intval( $new_instance['number'] );
-		$instance['columns']              = (array) $new_instance['columns'];
+		$instance['columns']              = isset( $new_instance['columns'] ) ? (array) $new_instance['columns'] : array();
 		$instance['order']                = strip_tags( $new_instance['order'] );
 		$instance['show_all_events_link'] = isset( $new_instance['show_all_events_link'] ) ? $new_instance['show_all_events_link'] : false;
 

@@ -70,7 +70,7 @@ class SP_Widget_Team_Gallery extends WP_Widget {
 		$instance['number']              = intval( $new_instance['number'] );
 		$instance['columns']             = intval( $new_instance['columns'] );
 		$instance['orderby']             = strip_tags( $new_instance['orderby'] );
-		$instance['show_all_teams_link'] = $new_instance['show_all_teams_link'];
+		$instance['show_all_teams_link'] = isset( $new_instance['show_all_teams_link'] ) ? $new_instance['show_all_teams_link'] : false;
 
 		// Filter to hook into
 		$instance = apply_filters( 'sportspress_widget_update', $instance, $new_instance, $old_instance, 'team-gallery' );

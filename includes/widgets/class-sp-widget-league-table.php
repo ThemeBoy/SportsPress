@@ -64,7 +64,7 @@ class SP_Widget_League_Table extends WP_Widget {
 		$instance['id']                   = intval( $new_instance['id'] );
 		$instance['caption']              = strip_tags( $new_instance['caption'] );
 		$instance['number']               = intval( $new_instance['number'] );
-		$instance['columns']              = (array) $new_instance['columns'];
+		$instance['columns']              = isset( $new_instance['columns'] ) ? (array) $new_instance['columns'] : array();
 		$instance['show_team_logo']   	  = isset( $new_instance['show_team_logo'] ) ? $new_instance['show_team_logo'] : false;
 		$instance['show_full_table_link'] = isset( $new_instance['show_full_table_link'] ) ? $new_instance['show_full_table_link'] : false;
 

@@ -72,8 +72,8 @@ class SP_Widget_Player_Gallery extends WP_Widget {
 		$instance['number']                = intval( $new_instance['number'] );
 		$instance['columns']               = intval( $new_instance['columns'] );
 		$instance['orderby']               = strip_tags( $new_instance['orderby'] );
-		$instance['order']                 = strip_tags( $new_instance['order'] );
-		$instance['show_all_players_link'] = $new_instance['show_all_players_link'];
+		$instance['order']                 = isset( $new_instance['order'] ) ? strip_tags( $new_instance['order'] ) : 'ASC';
+		$instance['show_all_players_link'] = isset( $new_instance['show_all_players_link'] ) ? $new_instance['show_all_players_link'] : false;
 
 		// Filter to hook into
 		$instance = apply_filters( 'sportspress_widget_update', $instance, $new_instance, $old_instance, 'player-gallery' );
