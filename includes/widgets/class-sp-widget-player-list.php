@@ -70,8 +70,8 @@ class SP_Widget_Player_list extends WP_Widget {
 		$instance['id']                    = intval( $new_instance['id'] );
 		$instance['caption']               = strip_tags( $new_instance['caption'] );
 		$instance['number']                = intval( $new_instance['number'] );
-		$instance['columns']               = (array) $new_instance['columns'];
-		$instance['orderby']               = strip_tags( $new_instance['orderby'] );
+		$instance['columns']               = isset( $new_instance['columns'] ) ? (array) $new_instance['columns'] : array();
+		$instance['orderby']               = isset( $new_instance['orderby'] ) ? strip_tags( $new_instance['orderby'] ) : 'default';
 		$instance['order']                 = isset( $new_instance['order'] ) ? strip_tags( $new_instance['order'] ) : 'ASC';
 		$instance['show_all_players_link'] = isset( $new_instance['show_all_players_link'] ) ? $new_instance['show_all_players_link'] : false;
 
