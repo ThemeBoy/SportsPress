@@ -1,5 +1,15 @@
 == SportsPress Changelog ==
 
+= 2.7.18 =
+* Tweak - Only get staff template if enabled.
+* Tweak - Show visible option only when "Auto" mode is selected.
+* Fix - "None" option disappeared from dropdowns.
+* Fix - Minutes not shown when image used as icon.
+* Fix - Deprecated urlencode() notice.
+* Fix - Null parameter notice.
+* Fix - Undefined array key warnings.
+* Fix - Add user capability check and nonce check when updating permalinks.
+
 = 2.7.17 =
 * Fix - PHP 8.2.x deprecated code warnings.
 * Fix - Next team not working in shortcodes.
