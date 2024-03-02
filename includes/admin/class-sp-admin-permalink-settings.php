@@ -5,7 +5,7 @@
  * @author      ThemeBoy
  * @category    Admin
  * @package     SportsPress/Admin
- * @version     2.7.17
+ * @version     2.7.18
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -84,17 +84,30 @@ if ( ! class_exists( 'SP_Admin_Permalink_Settings' ) ) :
 		 */
 		public function settings() {
 			echo wp_kses_post( wpautop( __( 'These settings control the permalinks used for SportsPress. These settings only apply when <strong>not using "default" permalinks above</strong>.', 'sportspress' ) ) );
+        wp_nonce_field( plugin_basename( __FILE__ ), 'sp_permalink_nonce' );
 		}
 
 		/**
 		 * Save the settings
 		 */
 		public function settings_save() {
-			if ( ! is_admin() ) {
-				return;
-			}
+      if ( ! is_admin() ) :
+        wp_die();
+      endif;
+
+      if ( ! is_user_logged_in() ) :
+        wp_die();
+      endif;
+
+      if ( ! current_user_can( 'manage_sportspress' ) ) :
+        wp_die();
+      endif;
 
 			if ( isset( $_POST['permalink_structure'] ) || isset( $_POST['sportspress_event_slug'] ) ) :
+        if ( ! isset( $_POST['sp_permalink_nonce'] ) || ! wp_verify_nonce( sanitize_key( $_POST['sp_permalink_nonce'] ), plugin_basename( __FILE__ ) ) ) :
+          return;
+        endif;
+
 				foreach ( $this->slugs as $slug ) :
 					$key   = 'sportspress_' . $slug[0] . '_slug';
 					$value = null;
