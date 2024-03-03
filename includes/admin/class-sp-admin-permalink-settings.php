@@ -91,17 +91,17 @@ if ( ! class_exists( 'SP_Admin_Permalink_Settings' ) ) :
 		 * Save the settings
 		 */
 		public function settings_save() {
-      if ( ! is_admin() ) :
-        wp_die();
-      endif;
+			if ( ! is_admin() ) :
+				return;
+			endif;
 
-      if ( ! is_user_logged_in() ) :
-        wp_die();
-      endif;
+			if ( ! is_user_logged_in() ) :
+				return;
+			endif;
 
-      if ( ! current_user_can( 'manage_sportspress' ) ) :
-        wp_die();
-      endif;
+			if ( ! current_user_can( 'manage_sportspress' ) ) :
+				return;
+			endif;
 
 			if ( isset( $_POST['permalink_structure'] ) || isset( $_POST['sportspress_event_slug'] ) ) :
         if ( ! isset( $_POST['sp_permalink_nonce'] ) || ! wp_verify_nonce( sanitize_key( $_POST['sp_permalink_nonce'] ), plugin_basename( __FILE__ ) ) ) :
