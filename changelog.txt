@@ -1,5 +1,9 @@
 == SportsPress Changelog ==
 
+= 2.7.19 =
+* Fix - Permalink access for non-admins.
+* Fix - Games back showing as zero.
+
 = 2.7.18 =
 * Tweak - Only get staff template if enabled.
 * Tweak - Show visible option only when "Auto" mode is selected.
