@@ -1,7 +1,9 @@
 == SportsPress Changelog ==
 
-= 2.7.19 =
+= 2.7.20 =
 * Fix - Permalink access for non-admins.
+
+= 2.7.19 =
 * Fix - Games back showing as zero.
 
 = 2.7.18 =

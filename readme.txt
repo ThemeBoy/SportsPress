@@ -4,7 +4,7 @@ Tags: calendars, club, club management, esports, events, fixtures, leagues, leag
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
 Tested up to: 6.4.3
-Stable tag: 2.7.19
+Stable tag: 2.7.20
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -240,8 +240,10 @@ When you upgrade to one of the SportsPress Pro licenses, you can simply activate
 
 == Changelog ==
 
-= 2.7.19 =
+= 2.7.20 =
 * Fix - Permalink access for non-admins.
+
+= 2.7.19 =
 * Fix - Games back showing as zero.
 
 = 2.7.18 =
