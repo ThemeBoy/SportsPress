@@ -156,7 +156,7 @@ function sp_time_format() {
 	return apply_filters( 'sportspress_time_format', get_option( 'time_format' ) );
 }
 
-if ( ! function_exists( 'sp_time_from_int' ) ) {
+if ( ! function_exists( 'sp_time_value' ) ) {
 
 	/**
 	 * Convert number of seconds to formatted time
