@@ -106,7 +106,14 @@ if ( class_exists( 'WP_Importer' ) ) {
 					if ( 'sp_player' === $key ) {
 						continue;
 					}
-					$player[ $key ] = sp_array_value( $row, $i, '' );
+					// Get performance object.
+					$perf_column = get_page_by_path( $key, OBJECT, 'sp_performance' );
+					// Check if it has time format and convert it to seconds.
+					if ( is_object( $perf_column ) && 'time' == get_post_meta( $perf_column->ID, 'sp_format', true ) ) {
+						$player[ $key ] = sp_value_time( sp_array_value( $row, $i, '' ) );
+					}else{
+						$player[ $key ] = sp_array_value( $row, $i, '' );
+					}
 				endforeach;
 
 				$team_performance[ $player_id ] = $player;
