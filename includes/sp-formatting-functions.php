@@ -178,6 +178,46 @@ if ( ! function_exists( 'sp_time_from_int' ) ) {
 	}
 }
 
+if ( ! function_exists( 'sp_value_time' ) ) {
+
+	/**
+	 * Convert a time string to the equivalent number of seconds.
+	 *
+	 * @param string $time_string The time string in the format 'hh:mm:ss'.
+	 * @return int The total time in seconds.
+	 */
+	function sp_value_time( $time_string ) {
+	    // Initialize variables for hours, minutes, and seconds
+	    $hours   = 0;
+	    $minutes = 0;
+	    $seconds = 0;
+
+	    // Split the time string into hours, minutes, and seconds
+	    $time_parts = explode( ':', $time_string );
+
+	    // Determine the number of components in the time string
+	    $component_count = count( $time_parts );
+
+	    // Set values based on the number of components
+	    if ( 1 === $component_count ) {
+	        $seconds = isset( $time_parts[0] ) ? $time_parts[0] : 0;
+	    } elseif ( 2 === $component_count ) {
+	        $minutes = isset( $time_parts[0] ) ? $time_parts[0] : 0;
+	        $seconds = isset( $time_parts[1] ) ? $time_parts[1] : 0;
+	    } elseif ( 2 < $component_count ) {
+	        $hours = isset( $time_parts[0] ) ? $time_parts[0] : 0;
+	        $minutes = isset( $time_parts[1] ) ? $time_parts[1] : 0;
+	        $seconds = isset( $time_parts[2] ) ? $time_parts[2] : 0;
+	    }
+
+	    // Convert each part to seconds and calculate the total time in seconds
+	    $total_seconds = ( $hours * 3600 ) + ( $minutes * 60 ) + $seconds;
+
+	    return $total_seconds;
+	}
+
+}
+
 if ( ! function_exists( 'sp_rgb_from_hex' ) ) {
 
 	/**
