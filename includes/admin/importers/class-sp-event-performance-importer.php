@@ -110,7 +110,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 					$perf_column = get_page_by_path( $key, OBJECT, 'sp_performance' );
 					// Check if it has time format and convert it to seconds.
 					if ( is_object( $perf_column ) && 'time' == get_post_meta( $perf_column->ID, 'sp_format', true ) ) {
-						$player[ $key ] = sp_value_time( sp_array_value( $row, $i, '' ) );
+						$player[ $key ] = sp_value_time( sp_array_value( $row, $i, '0' ) );
 					}else{
 						$player[ $key ] = sp_array_value( $row, $i, '' );
 					}
