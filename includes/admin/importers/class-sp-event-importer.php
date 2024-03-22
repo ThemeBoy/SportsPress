@@ -112,7 +112,14 @@ if ( class_exists( 'WP_Importer' ) ) {
 				);
 				unset( $meta['sp_player'] );
 				foreach ( $performance_labels as $key => $label ) :
-					$player[] = sp_array_value( $meta, $key, '' );
+					// Get performance object.
+					$perf_column = get_page_by_path( $key, OBJECT, 'sp_performance' );
+					// Check if it has time format and convert it to seconds.
+					if ( is_object( $perf_column ) && 'time' == get_post_meta( $perf_column->ID, 'sp_format', true ) ) {
+						$player[] = sp_value_time( sp_array_value( $meta, $key, '0' ) );
+					}else{
+						$player[] = sp_array_value( $meta, $key, '' );
+					}
 				endforeach;
 
 				// Add new event if date is given
