@@ -140,6 +140,7 @@ if ( ! class_exists( 'SportsPress_Officials' ) ) :
 						'labels'                => array(
 							'name'                  => esc_attr__( 'Officials', 'sportspress' ),
 							'singular_name'         => esc_attr__( 'Official', 'sportspress' ),
+							'add_new'          		=> esc_attr__( 'Add New Official', 'sportspress' ),
 							'add_new_item'          => esc_attr__( 'Add New Official', 'sportspress' ),
 							'edit_item'             => esc_attr__( 'Edit Official', 'sportspress' ),
 							'new_item'              => esc_attr__( 'New', 'sportspress' ),

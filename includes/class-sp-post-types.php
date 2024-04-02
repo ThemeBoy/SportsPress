@@ -444,6 +444,7 @@ class SP_Post_types {
 			'labels'                => array(
 				'name'               => esc_attr__( 'Events', 'sportspress' ),
 				'singular_name'      => esc_attr__( 'Event', 'sportspress' ),
+				'add_new'      	     => esc_attr__( 'Add New Event', 'sportspress' ),
 				'add_new_item'       => esc_attr__( 'Add New Event', 'sportspress' ),
 				'edit_item'          => esc_attr__( 'Edit Event', 'sportspress' ),
 				'new_item'           => esc_attr__( 'New', 'sportspress' ),
@@ -479,6 +480,7 @@ class SP_Post_types {
 			'labels'                => array(
 				'name'                  => esc_attr__( 'Teams', 'sportspress' ),
 				'singular_name'         => esc_attr__( 'Team', 'sportspress' ),
+				'add_new'          		=> esc_attr__( 'Add New Team', 'sportspress' ),
 				'add_new_item'          => esc_attr__( 'Add New Team', 'sportspress' ),
 				'edit_item'             => esc_attr__( 'Edit Team', 'sportspress' ),
 				'new_item'              => esc_attr__( 'New', 'sportspress' ),
@@ -522,6 +524,7 @@ class SP_Post_types {
 					'labels'                => array(
 						'name'                  => esc_attr__( 'Players', 'sportspress' ),
 						'singular_name'         => esc_attr__( 'Player', 'sportspress' ),
+						'add_new'	            => esc_attr__( 'Add New Player', 'sportspress' ),
 						'add_new_item'          => esc_attr__( 'Add New Player', 'sportspress' ),
 						'edit_item'             => esc_attr__( 'Edit Player', 'sportspress' ),
 						'new_item'              => esc_attr__( 'New', 'sportspress' ),
@@ -561,6 +564,7 @@ class SP_Post_types {
 					'labels'                => array(
 						'name'                  => esc_attr__( 'Staff', 'sportspress' ),
 						'singular_name'         => esc_attr__( 'Staff', 'sportspress' ),
+						'add_new'	            => esc_attr__( 'Add New Staff', 'sportspress' ),
 						'add_new_item'          => esc_attr__( 'Add New Staff', 'sportspress' ),
 						'edit_item'             => esc_attr__( 'Edit Staff', 'sportspress' ),
 						'new_item'              => esc_attr__( 'New', 'sportspress' ),
