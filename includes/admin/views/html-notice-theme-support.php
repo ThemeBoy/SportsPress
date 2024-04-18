@@ -9,6 +9,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<p class="submit">
 		<a class="button-primary" href="<?php echo esc_url( add_query_arg( array( 'theme' => 'rookie' ), network_admin_url( 'theme-install.php' ) ) ); ?>"><?php esc_attr_e( 'Install Now', 'sportspress' ); ?></a>
 		<a class="button-secondary" href="http://tboy.co/integration"><?php esc_attr_e( 'Theme Integration Guide', 'sportspress' ); ?></a>
-		<a class="button" href="<?php echo esc_url( add_query_arg( 'hide_theme_support_notice', 'true' ) ); ?>"><?php esc_attr_e( 'Hide this notice', 'sportspress' ); ?></a>
+		<a class="button" href="<?php echo wp_nonce_url( esc_url( add_query_arg( 'hide_theme_support_notice', 'true' ) ) ); ?>"><?php esc_attr_e( 'Hide this notice', 'sportspress' ); ?></a>
 	</p>
 </div>

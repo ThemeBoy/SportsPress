@@ -58,12 +58,12 @@ if ( ! class_exists( 'SP_Admin_Notices' ) ) :
 				}
 			}
 
-			if ( ! empty( $_GET['hide_theme_support_notice'] ) ) {
+			if ( ! empty( $_GET['hide_theme_support_notice'] ) && ! empty( $_REQUEST['_wpnonce'] ) && wp_verify_nonce( sanitize_key( $_REQUEST['_wpnonce'] ) ) ) {
 				$notices = array_diff( $notices, array( 'theme_support' ) );
 				update_option( 'sportspress_admin_notices', $notices );
 			}
 
-			if ( ! empty( $_GET['hide_template_files_notice'] ) ) {
+			if ( ! empty( $_GET['hide_template_files_notice'] ) && ! empty( $_REQUEST['_wpnonce'] ) && wp_verify_nonce( sanitize_key( $_REQUEST['_wpnonce'] ) ) ) {
 				$notices = array_diff( $notices, array( 'template_files' ) );
 				update_option( 'sportspress_admin_notices', $notices );
 			}

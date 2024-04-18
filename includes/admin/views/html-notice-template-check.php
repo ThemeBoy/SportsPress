@@ -17,5 +17,5 @@ if ( ! defined( 'ABSPATH' ) ) {
 		)
 	);
 	?>
-	"><?php esc_html_e( 'System Status', 'sportspress' ); ?></a> <a class="skip button" href="<?php echo esc_url( add_query_arg( 'hide_template_files_notice', 'true' ) ); ?>"><?php esc_html_e( 'Hide this notice', 'sportspress' ); ?></a></p>
+	"><?php esc_html_e( 'System Status', 'sportspress' ); ?></a> <a class="skip button" href="<?php echo wp_nonce_url( esc_url( add_query_arg( 'hide_template_files_notice', 'true' ) ) ); ?>"><?php esc_html_e( 'Hide this notice', 'sportspress' ); ?></a></p>
 </div>
