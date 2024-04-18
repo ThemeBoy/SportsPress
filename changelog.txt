@@ -1,5 +1,8 @@
 == SportsPress Changelog ==
 
+= 2.7.21 =
+* Fix - Add nonce checks to hide notice links.
+
 = 2.7.20 =
 * Fix - Permalink access for non-admins.
 
