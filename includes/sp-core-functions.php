@@ -923,25 +923,7 @@ if ( ! function_exists( 'sp_dropdown_taxonomies' ) ) {
 				printf( '<option value="%s" %s>%s</option>', esc_attr( $this_value ), esc_attr( $selected_prop ), esc_attr( $term->name ) );
 
 				if ( $args['include_children'] ) :
-					$term_children = get_term_children( $term->term_id, $args['taxonomy'] );
-
-					foreach ( $term_children as $term_child_id ) :
-						$term_child = get_term_by( 'id', $term_child_id, $args['taxonomy'] );
-
-						if ( $args['values'] == 'term_id' ) :
-							$this_value = $term_child->term_id;
-						else :
-							$this_value = $term_child->slug;
-						endif;
-
-						if ( $property && strpos( $property, 'multiple' ) !== false ) :
-							$selected_prop = in_array( $this_value, $selected ) ? 'selected' : '';
-						else :
-							$selected_prop = selected( $this_value, $selected, false );
-						endif;
-
-						printf( '<option value="%s" %s>%s</option>', esc_attr( $this_value ), esc_attr( $selected_prop ), '— ' . esc_attr( $term_child->name ) );
-					endforeach;
+					sp_dropdown_hierarchical_taxonomies( $args, $property, $selected, $term->term_id );
 				endif;
 			endforeach;
 			print( '</select>' );
@@ -949,6 +931,36 @@ if ( ! function_exists( 'sp_dropdown_taxonomies' ) ) {
 		else :
 			return false;
 		endif;
+	}
+}
+
+function sp_dropdown_hierarchical_taxonomies( $args, $property, $selected, $current_term_id = 0, $depth = 1 ) {
+    $term_children = get_terms([
+        'taxonomy'   => $args['taxonomy'],
+        'hide_empty' => false,
+        'parent'     => $current_term_id,
+    ]);
+
+    if ( $term_children ) {
+		$indent = str_repeat('-', $depth);
+
+		foreach ( $term_children as $term_child ) {
+			if ( $args['values'] == 'term_id' ) :
+				$this_value = $term_child->term_id;
+			else :
+				$this_value = $term_child->slug;
+			endif;
+
+			if ( $property && strpos( $property, 'multiple' ) !== false ) :
+				$selected_prop = in_array( $this_value, $selected ) ? 'selected' : '';
+			else :
+				$selected_prop = selected( $this_value, $selected, false );
+			endif;
+
+			printf( '<option value="%s" %s>%s</option>', esc_attr( $this_value ), esc_attr( $selected_prop ), $indent . ' ' . esc_attr( $term_child->name ) );
+
+			sp_dropdown_hierarchical_taxonomies( $args, $property, $selected, $term_child->term_id, $depth + 1 );
+		}
 	}
 }
 
