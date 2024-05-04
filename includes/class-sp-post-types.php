@@ -23,7 +23,7 @@ class SP_Post_types {
 		add_action( 'init', array( __CLASS__, 'register_post_types' ), 5 );
 		add_action( 'init', array( __CLASS__, 'register_taxonomies' ), 10 );
 		add_action( 'trashed_post', array( $this, 'delete_config_post' ) );
-		add_filter( 'the_posts', array( $this, 'display_scheduled_events' ) );
+		add_filter( 'get_post_status', array( $this, 'display_scheduled_events' ), 10, 2 );
 	}
 
 	/**
@@ -606,13 +606,13 @@ class SP_Post_types {
 		}
 	}
 
-	public function display_scheduled_events( $posts ) {
-		global $wp_query, $wpdb;
-		if ( is_single() && $wp_query->post_count == 0 && isset( $wp_query->query_vars['sp_event'] ) ) {
-			$posts = $wpdb->get_results( $wp_query->request );
+	public function display_scheduled_events( $post_status, $post ) {
+		if ($post->post_type == 'sp_event' && $post_status == 'future') {
+			return "publish";
 		}
-		return $posts;
+		return $post_status;
 	}
+	
 }
 
 new SP_Post_types();
