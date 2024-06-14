@@ -270,7 +270,11 @@ class SP_Calendar extends SP_Secondary_Post {
 		endif;
 
 		if ( $this->league ) :
-			$league_ids = array( $this->league );
+			if (is_array( $this->league )) {
+				$league_ids = $this->league;
+			} else {
+				$league_ids = array( $this->league );
+			}
 		endif;
 
 		if ( $this->season ) :
