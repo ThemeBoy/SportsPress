@@ -33,7 +33,6 @@ if ( ! class_exists( 'SP_Admin_Dashboard' ) ) :
 		 * Init dashboard widgets
 		 */
 		public function init() {
-			wp_add_dashboard_widget( 'sportspress_dashboard_news', esc_attr__( 'Sports News', 'sportspress' ), array( $this, 'news_widget' ), null, null, 'side' );
 			wp_add_dashboard_widget( 'sportspress_dashboard_status', esc_attr__( 'SportsPress', 'sportspress' ), array( $this, 'status_widget' ) );
 			add_filter( 'dashboard_glance_items', array( $this, 'glance_items' ), 10, 1 );
 		}
@@ -99,30 +98,6 @@ if ( ! class_exists( 'SP_Admin_Dashboard' ) ) :
 		  </li>
 	  </ul>
 			<?php
-		}
-
-		/**
-		 * Show news widget
-		 */
-		public function news_widget() {
-			$rss = fetch_feed( 'https://tboy.co/sportsnews/' );
-			if ( ! is_wp_error( $rss ) ) { // Checks that the object is created correctly
-				// Figure out how many total items there are, but limit it to 2.
-				$maxitems = $rss->get_item_quantity( 5 );
-				// Build an array of all the items, starting with element 0 (first element).
-				$rss_items = $rss->get_items( 0, $maxitems );
-			}
-			if ( ! empty( $maxitems ) ) {
-				?>
-	  <div class="rss-widget">
-		<ul>
-				<?php foreach ( $rss_items as $item ) { ?>
-		  <li><a class="rsswidget" href="<?php echo esc_url( $item->get_permalink() ); ?>" target="_blank"><?php echo esc_attr( $item->get_title() ); ?></a> <span class="rss-date"><?php echo esc_html( $item->get_date( 'j F Y' ) ); ?></span></li>
-		  <?php } ?>
-		</ul>
-	  </div>
-				<?php
-			}
 		}
 	}
 
