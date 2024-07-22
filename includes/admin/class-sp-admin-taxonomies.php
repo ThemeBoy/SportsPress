@@ -96,22 +96,22 @@ class SP_Admin_Taxonomies {
 			'hide_empty' => false,
 			'number'     => 1,
 		);
-
+		
 		// Get latitude and longitude from the last added venue
 		$terms = get_terms( 'sp_venue', $args );
-		if ( $terms && array_key_exists( 0, $terms ) && is_object( reset( $terms ) ) ) :
+		if ( $terms && array_key_exists( 0, $terms ) && is_object( reset( $terms ) ) ) {
 			$term      = reset( $terms );
 			$t_id      = $term->term_id;
 			$term_meta = get_option( "taxonomy_$t_id" );
 			$latitude  = sp_array_value( $term_meta, 'sp_latitude', '-37.8165647' );
 			$longitude = sp_array_value( $term_meta, 'sp_longitude', '144.9475055' );
 			$address   = sp_array_value( $term_meta, 'sp_address', '' );
-		endif;
-		// Sanitize latitude and longitude, fallback to default.
-		if ( ! is_numeric( $latitude ) || ! is_numeric( $longitude ) ) :
+		}else{
+			// Sanitize latitude and longitude, fallback to default.
 			$latitude  = '-37.8165647';
 			$longitude = '144.9475055';
-		endif;
+			$address   = '';
+		}
 		?>
 		<div class="form-field">
 			<div id="sp-location-picker" class="sp-location-picker" style="width: 95%; height: 320px"></div>
