@@ -5,7 +5,7 @@
  * @author    ThemeBoy
  * @category  Modules
  * @package   SportsPress/Modules
- * @version   2.7.13
+ * @version   2.7.22
  */
 
 // Exit if accessed directly
@@ -19,7 +19,7 @@ if ( ! class_exists( 'SportsPress_Officials' ) ) :
 	 * Main SportsPress Officials Class
 	 *
 	 * @class SportsPress_Officials
-	 * @version 2.7.9
+	 * @version 2.7.22
 	 */
 	class SportsPress_Officials {
 
