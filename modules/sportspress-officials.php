@@ -540,7 +540,7 @@ if ( ! class_exists( 'SportsPress_Officials' ) ) :
 
 				$term_meta = get_option( "taxonomy_$id" );
 
-				$address = ( isset( $term_meta['sp_address'] ) ? $term_meta['sp_address'] : '&mdash;' );
+				$address = ( isset( $term_meta['sp_address'] ) ? esc_attr($term_meta['sp_address']) : '&mdash;' );
 
 				$columns .= $address;
 
