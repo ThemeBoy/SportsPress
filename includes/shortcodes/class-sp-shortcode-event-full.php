@@ -26,7 +26,6 @@ class SP_Shortcode_Event_Full {
 
 		// Get layout setting
 		$layout = (array) get_option( 'sportspress_' . $type . '_template_order', array() );
-		//var_dump($layout);
 
 		// Get templates
 		$templates = SP()->templates->$type;
@@ -35,7 +34,6 @@ class SP_Shortcode_Event_Full {
 		$templates = array_merge( array_flip( $layout ), $templates );
 
 		$templates = apply_filters( 'sportspress_' . $type . '_templates', $templates );
-		var_dump($templates);
 
 		// Split templates into sections and tabs
 		$slice = array_search( 'tabs', array_keys( $templates ) );
@@ -46,8 +44,6 @@ class SP_Shortcode_Event_Full {
 			$section_templates = $templates;
 			$tab_templates     = array();
 		}
-		var_dump($section_templates);
-		var_dump($tab_templates);
 
 		ob_start();
 
