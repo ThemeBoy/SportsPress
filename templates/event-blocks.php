@@ -4,7 +4,7 @@
  *
  * @author      ThemeBoy
  * @package     SportsPress/Templates
- * @version   2.7.9
+ * @version   2.7.23
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -206,7 +206,7 @@ if ( $title ) {
 						<td>
 							<?php do_action( 'sportspress_event_blocks_before', $event, $usecolumns ); ?>
 							<?php echo wp_kses_post( implode( ' ', $logos ) ); ?>
-							<time class="sp-event-date" datetime="<?php echo esc_attr( $event->post_date ); ?>" itemprop="startDate" content="<?php echo esc_attr( mysql2date( 'Y-m-d\TH:iP', $event->post_date ) ); ?>">
+							<time class="sp-event-date" datetime="<?php echo esc_attr( $event->post_date ); ?>" itemprop="startDate" content="<?php echo esc_attr( mysql2date( 'Y-m-d\TH:i:sP', $event->post_date ) ); ?>">
 								<?php echo wp_kses_post( sp_add_link( get_the_time( get_option( 'date_format' ), $event ), $permalink, $link_events ) ); ?>
 							</time>
 							<?php
