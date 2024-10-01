@@ -359,7 +359,7 @@ if ( ! class_exists( 'SP_Admin_Settings' ) ) :
 								value="<?php echo esc_attr( $option_value ); ?>"
 								placeholder="<?php echo esc_attr( $value['placeholder'] ); ?>"
 								class="<?php echo esc_attr( $value['class'] ); ?>"
-								<?php echo esc_html( implode( ' ', $custom_attributes ) ); ?>
+								<?php echo wp_kses_data( implode( ' ', $custom_attributes ) ); ?>
 								/> <?php echo wp_kses_post( $description ); ?>
 						</td>
 					</tr>
