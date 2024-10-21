@@ -300,13 +300,25 @@ class eqEOS {
 			else {
 				switch ( $pf[ $i ] ) {
 					case '+':
-						$temp[ $hold - 2 ] = $temp[ $hold - 2 ] + $temp[ $hold - 1 ];
+						if ( isset( $temp[ $hold - 2 ] ) && isset( $temp[ $hold - 1 ] ) ) {
+							$temp[ $hold - 2 ] = $temp[ $hold - 2 ] + $temp[ $hold - 1 ];
+						} else {
+							return 0;
+						}
 						break;
 					case '-':
-						$temp[ $hold - 2 ] = $temp[ $hold - 2 ] - $temp[ $hold - 1 ];
+						if ( isset( $temp[ $hold - 2 ] ) && isset( $temp[ $hold - 1 ] ) ) {
+							$temp[ $hold - 2 ] = $temp[ $hold - 2 ] - $temp[ $hold - 1 ];
+						} else {
+							return 0;
+						}
 						break;
 					case '*':
-						$temp[ $hold - 2 ] = $temp[ $hold - 2 ] * $temp[ $hold - 1 ];
+						if ( isset( $temp[ $hold - 2 ] ) && isset( $temp[ $hold - 1 ] ) ) {
+							$temp[ $hold - 2 ] = $temp[ $hold - 2 ] * $temp[ $hold - 1 ];
+						} else {
+							return 0;
+						}
 						break;
 					case '/':
 						if ( $temp[ $hold - 1 ] == 0 ) {
