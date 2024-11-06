@@ -28,6 +28,8 @@ $defaults = array(
 	'show_thumbnail' => get_option( 'sportspress_countdown_show_thumbnail', 'no' ) == 'yes' ? true : false,
 );
 
+extract( $defaults, EXTR_SKIP );
+
 if ( isset( $show_excluded ) && $show_excluded ) {
 	$excluded_statuses = array();
 } else {
@@ -113,8 +115,6 @@ else :
 
 	$post = sp_get_next_event( $args );
 endif;
-
-extract( $defaults, EXTR_SKIP );
 
 if ( ! isset( $post ) || ! $post ) {
 	return;
