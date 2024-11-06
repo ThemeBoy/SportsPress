@@ -99,9 +99,16 @@ else :
 	 * Exclude postponed or cancelled events.
 	 */
 	$args['meta_query'][] = array(
-		'key'     => 'sp_status',
-		'compare' => 'NOT IN',
-		'value'   => $excluded_statuses,
+		'relation' => 'OR',
+		array(
+			'key'     => 'sp_status',
+			'compare' => 'NOT IN',
+			'value'   => $excluded_statuses,
+		),
+		array(
+			'key'     => 'sp_status',
+			'compare' => 'NOT EXISTS',
+		),
 	);
 
 	$post = sp_get_next_event( $args );
