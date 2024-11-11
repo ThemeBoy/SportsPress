@@ -119,7 +119,7 @@ class SP_Admin_Sports {
 				continue;
 			}
 			$t_id                     = $term['term_id'];
-			$term_meta                = get_option( "taxonomy_$t_id" );
+			$term_meta                = (array) get_option( "taxonomy_$t_id" );
 			$term_meta['sp_sections'] = $sections;
 			update_option( "taxonomy_$t_id", $term_meta );
 			update_term_meta( $t_id, 'sp_order', $i + 1 );
