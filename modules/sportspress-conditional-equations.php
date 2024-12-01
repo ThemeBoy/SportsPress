@@ -5,7 +5,7 @@
  * @author    ThemeBoy
  * @category  Modules
  * @package   SportsPress/Modules
- * @version   2.7.9
+ * @version   2.8
  */
 
 // Exit if accessed directly
@@ -98,7 +98,7 @@ if ( ! class_exists( 'SportsPress_Conditional_Equations' ) ) :
 					preg_match( '/(?<=' . $conop . ').*/', $match, $rightvar );
 
 					// Check if it is a variable or a number
-					if ( strpos( $leftvar[0], '$' ) !== false ) {
+					if ( is_array( $leftvar ) && isset( $leftvar[0] ) && strpos( $leftvar[0], '$' ) !== false ) {
 						$leftvar = str_replace( '$', '', $leftvar[0] );
 						$leftvar = $vars[ $leftvar ];
 					} else {
@@ -106,7 +106,7 @@ if ( ! class_exists( 'SportsPress_Conditional_Equations' ) ) :
 					}
 
 					// Check if it is a variable or a number
-					if ( strpos( $rightvar[0], '$' ) !== false ) {
+					if ( is_array( $rightvar ) && isset( $rightvar[0] ) && strpos( $rightvar[0], '$' ) !== false ) {
 						$rightvar = str_replace( '$', '', $rightvar[0] );
 						$rightvar = $vars[ $rightvar ];
 					} else {
