@@ -5,7 +5,7 @@
  * @author    ThemeBoy
  * @category  Modules
  * @package   SportsPress/Modules
- * @version   2.8
+ * @version   2.7.23
  */
 
 // Exit if accessed directly
@@ -19,7 +19,7 @@ if ( ! class_exists( 'SportsPress_Conditional_Equations' ) ) :
 	 * Main SportsPress Conditional Equations Class
 	 *
 	 * @class SportsPress_Conditional_Equations
-	 * @version 2.6
+	 * @version 2.7.23
 	 */
 
 	class SportsPress_Conditional_Equations {
@@ -41,7 +41,7 @@ if ( ! class_exists( 'SportsPress_Conditional_Equations' ) ) :
 		 */
 		private function define_constants() {
 			if ( ! defined( 'SP_CONDITIONAL_EQUATIONS_VERSION' ) ) {
-				define( 'SP_CONDITIONAL_EQUATIONS_VERSION', '2.6' );
+				define( 'SP_CONDITIONAL_EQUATIONS_VERSION', '2.7.23' );
 			}
 
 			if ( ! defined( 'SP_CONDITIONAL_EQUATIONS_URL' ) ) {

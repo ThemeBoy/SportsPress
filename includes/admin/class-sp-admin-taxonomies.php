@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Handles taxonomies in admin
  *
  * @class       SP_Admin_Taxonomies
- * @version     2.7.22
+ * @version     2.7.23
  * @package     SportsPress/Admin
  * @category    Class
  * @author      ThemeBoy

@@ -5,7 +5,7 @@
  * @author      ThemeBoy
  * @category    Shortcodes
  * @package     SportsPress/Shortcodes/Staff
- * @version   2.8
+ * @version     2.7.23
  */
 class SP_Shortcode_Staff_Profile {
 
