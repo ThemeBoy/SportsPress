@@ -1,6 +1,6 @@
 === SportsPress - Sports Club & League Manager ===
 Contributors: ThemeBoy, brianmiyaji, aylaview, savvasha, nabil_kadimi
-Tags: calendars, club, club management, esports, events, fixtures, leagues, league management, sports, sports club, sports data, team rosters
+Tags: club, event, fixtures, league, sports
 Donate link: http://tboy.co/donate
 Requires at least: 3.8
 Tested up to: 6.4.3
