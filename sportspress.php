@@ -7,7 +7,7 @@
  * Author: ThemeBoy
  * Author URI: http://themeboy.com
  * Requires at least: 3.8
- * Tested up to: 6.4.3
+ * Tested up to: 6.7
  *
  * Text Domain: sportspress
  * Domain Path: /languages/
