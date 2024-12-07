@@ -5,7 +5,7 @@
  * @author      ThemeBoy
  * @category    Shortcodes
  * @package     SportsPress/Shortcodes/Staff
- * @version   2.5.5
+ * @version   2.8
  */
 class SP_Shortcode_Staff_Profile {
 
@@ -25,5 +25,12 @@ class SP_Shortcode_Staff_Profile {
 		sp_get_template( 'staff-details.php', $atts );
 		sp_get_template( 'staff-excerpt.php', $atts );
 		sp_get_template( 'staff-content.php', $atts );
+
+		/**
+		 * Action hook to allow loading additional templates or content.
+		 *
+		 * @param array $atts Shortcode attributes.
+		 */
+		do_action( 'sp_staff_profile_after_templates', $atts );
 	}
 }

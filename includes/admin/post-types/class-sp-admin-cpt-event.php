@@ -295,6 +295,15 @@ if ( ! class_exists( 'SP_Admin_CPT_Event' ) ) :
 				'values'           => 'ID',
 			);
 			wp_dropdown_pages( $args ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			
+			$selected = isset( $_REQUEST['sp_venue'] ) ? sanitize_key( $_REQUEST['sp_venue'] ) : null;
+			$args     = array(
+				'show_option_all' => esc_attr__( 'Show all grounds', 'sportspress' ),
+				'taxonomy'        => 'sp_venue',
+				'name'            => 'sp_venue',
+				'selected'        => $selected,
+			);
+			sp_dropdown_taxonomies( $args );
 
 			$selected = isset( $_REQUEST['sp_league'] ) ? sanitize_key( $_REQUEST['sp_league'] ) : null;
 			$args     = array(

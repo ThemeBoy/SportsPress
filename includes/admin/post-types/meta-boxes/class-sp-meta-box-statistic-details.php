@@ -151,7 +151,7 @@ class SP_Meta_Box_Statistic_Details extends SP_Meta_Box_Config {
 		self::delete_duplicate( $_POST );
 		update_post_meta( $post_id, 'sp_section', (int) sp_array_value( $_POST, 'sp_section', -1, 'int' ) );
 		update_post_meta( $post_id, 'sp_type', sp_array_value( $_POST, 'sp_type', 'total', 'key' ) );
-		update_post_meta( $post_id, 'sp_format', sp_array_value( $_POST, 'sp_format', 'number', 'int' ) );
+		update_post_meta( $post_id, 'sp_format', sp_array_value( $_POST, 'sp_format', 'number', 'key' ) );
 		update_post_meta( $post_id, 'sp_precision', (int) sp_array_value( $_POST, 'sp_precision', 1, 'int' ) );
 		update_post_meta( $post_id, 'sp_visible', sp_array_value( $_POST, 'sp_visible', 1, 'int' ) );
 	}

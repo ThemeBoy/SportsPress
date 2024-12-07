@@ -5,7 +5,7 @@
  * @author    ThemeBoy
  * @category  Modules
  * @package   SportsPress/Modules
- * @version   2.7.9
+ * @version   2.8
  */
 
 // Exit if accessed directly
@@ -31,12 +31,9 @@ if ( ! class_exists( 'SportsPress_Conditional_Equations' ) ) :
 			// Define constants
 			$this->define_constants();
 
-			// Actions
-
-			// Filters
+			// Add hooks for filters
 			add_filter( 'sportspress_equation_options', array( $this, 'add_options' ) );
 			add_filter( 'sportspress_equation_alter', array( $this, 'alter_equation' ), 10, 2 );
-
 		}
 
 		/**
@@ -62,86 +59,123 @@ if ( ! class_exists( 'SportsPress_Conditional_Equations' ) ) :
 		 * @return array
 		 */
 		public function add_options( $options ) {
-			  $options['Operators']['>']  = '&gt;';
-			  $options['Operators']['<']  = '&lt;';
-			  $options['Operators']['=='] = '&equiv;';
-			  $options['Operators']['!='] = '&ne;';
-			  $options['Operators']['>='] = '&ge;';
-			  $options['Operators']['<='] = '&le;';
-			  return $options;
+			$options['Operators']['>']  = '&gt;';
+			$options['Operators']['<']  = '&lt;';
+			$options['Operators']['=='] = '&equiv;';
+			$options['Operators']['!='] = '&ne;';
+			$options['Operators']['>='] = '&ge;';
+			$options['Operators']['<='] = '&le;';
+			return $options;
 		}
 
 		/**
-		 * Alter.
+		 * Alter the equation.
 		 *
-		 * @return array
+		 * @param string $equation The equation to alter.
+		 * @param array  $vars     Variables to use in the equation.
+		 * @return string
 		 */
 		public function alter_equation( $equation, $vars ) {
-
-			  // Remove space between equation parts
-			  $equation = str_replace( ' ', '', $equation );
-
-			  // Find all parentheses with conditional operators
-			  $re = '/([^[\(|\)]*[<=>][^[\(|\)]*)/';
-			if ( preg_match_all( $re, $equation, $matches ) ) {
-
-				foreach ( $matches[1] as $match ) {
-
-					// Find which Conditional Operator is used
-					preg_match( '/[\!\>\=\<]+/', $match, $conop );
-					$conop = $conop[0];
-
-					// preg_match ( '/.+?(?=[\>\=\<])/' ,$match, $leftvar );
-					preg_match( '/.+?(?=' . $conop . ')/', $match, $leftvar );
-
-					// preg_match ( '/(?<=[\>\=\<]).*/' ,$match, $rightvar );
-					preg_match( '/(?<=' . $conop . ').*/', $match, $rightvar );
-
-					// Check if it is a variable or a number
-					if ( strpos( $leftvar[0], '$' ) !== false ) {
-						$leftvar = str_replace( '$', '', $leftvar[0] );
-						$leftvar = $vars[ $leftvar ];
-					} else {
-						$leftvar = $leftvar[0];
-					}
-
-					// Check if it is a variable or a number
-					if ( strpos( $rightvar[0], '$' ) !== false ) {
-						$rightvar = str_replace( '$', '', $rightvar[0] );
-						$rightvar = $vars[ $rightvar ];
-					} else {
-						$rightvar = $rightvar[0];
-					}
-
-					// Select the correct conditional operator
-					switch ( $conop ) {
-						case '>':
-							$solution = (int) ( $leftvar > $rightvar );
-							break;
-						case '<':
-							$solution = (int) ( $leftvar < $rightvar );
-							break;
-						case '==':
-							$solution = (int) ( $leftvar == $rightvar );
-							break;
-						case '!=':
-							$solution = (int) ( $leftvar != $rightvar );
-							break;
-						case '>=':
-							$solution = (int) ( $leftvar >= $rightvar );
-							break;
-						case '<=':
-							$solution = (int) ( $leftvar <= $rightvar );
-							break;
-					}
-
-					// Replace the result of the conditional sub-equation to the equation
-					$equation = str_replace( $match, $solution, $equation );
-				}
+			// Check if the equation contains any conditional operators
+			if ( ! preg_match( '/[><=!]/', $equation ) ) {
+				// If no conditional operators, return the equation as-is
+				return $equation;
 			}
-			return $equation;
+			// Replace all variables in the equation with their values
+			foreach ( $vars as $var_name => $var_value ) {
+				if ( is_null( $var_value ) || $var_value === '' ) {
+					continue;
+				}
+		
+				if ( is_array( $var_value ) ) {
+					continue;
+				}
+		
+				$var_value = (string) $var_value;
+				$equation = str_replace( '$' . $var_name, $var_value, $equation );
+			}
+		
+			// Remove spaces from the equation
+			$equation = str_replace( ' ', '', $equation );
+		
+			// Evaluate sub-expressions in parentheses first
+			while ( preg_match( '/\(([^()]+)\)/', $equation, $matches ) ) {
+				$sub_expr = $matches[1]; // Extract the innermost sub-expression
+		
+				// Check for conditional operators in the sub-expression
+				if ( preg_match( '/[><=!]/', $sub_expr ) ) {
+					$evaluated = $this->evaluate_condition( $sub_expr ); // Evaluate the condition
+				} else {
+					$evaluated = $this->evaluate_expression( $sub_expr ); // Evaluate as a mathematical expression
+				}
+		
+				// Replace the sub-expression with its evaluated value
+				$equation = str_replace( '(' . $sub_expr . ')', $evaluated, $equation );
+			}
+		
+			// Evaluate the fully reduced equation as a mathematical expression
+			return $this->evaluate_expression( $equation );
 		}
-
+		
+		/**
+		 * Evaluate a conditional expression (e.g., "20 > 10").
+		 *
+		 * @param string $expression The conditional expression to evaluate.
+		 * @return int 1 for true, 0 for false.
+		 */
+		private function evaluate_condition( $expression ) {
+			try {
+				// Parse the condition into left operand, operator, and right operand
+				preg_match( '/(.+?)([><=!]+)(.+)/', $expression, $matches );
+				$left_operand  = $this->evaluate_expression( trim( $matches[1] ) );
+				$operator      = $matches[2];
+				$right_operand = $this->evaluate_expression( trim( $matches[3] ) );
+		
+				// Evaluate the condition
+				switch ( $operator ) {
+					case '>':
+						return (int) ( $left_operand > $right_operand );
+					case '<':
+						return (int) ( $left_operand < $right_operand );
+					case '>=':
+						return (int) ( $left_operand >= $right_operand );
+					case '<=':
+						return (int) ( $left_operand <= $right_operand );
+					case '==':
+						return (int) ( $left_operand == $right_operand );
+					case '!=':
+						return (int) ( $left_operand != $right_operand );
+					default:
+						return 0;
+				}
+			} catch ( Exception $e ) {
+				return 0;
+			}
+		}
+		
+		/**
+		 * Evaluate a mathematical expression safely.
+		 *
+		 * @param string $expression The expression to evaluate.
+		 * @return float The result of the evaluation.
+		 */
+		private function evaluate_expression( $expression ) {
+			try {
+				// Include libraries if necessary (e.g., eqEOS)
+				if ( ! class_exists( 'phpStack' ) ) {
+					include_once SP()->plugin_path() . '/includes/libraries/class-phpstack.php';
+				}
+				if ( ! class_exists( 'eqEOS' ) ) {
+					include_once SP()->plugin_path() . '/includes/libraries/class-eqeos.php';
+				}
+		
+				// Use eqEOS to safely evaluate the expression
+				$eos = new eqEOS();
+				return $eos->solveIF( $expression );
+			} catch ( Exception $e ) {
+				return 0;
+			}
+		}
 	}
 
 endif;

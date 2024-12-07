@@ -28,6 +28,8 @@ $defaults = array(
 	'show_thumbnail' => get_option( 'sportspress_countdown_show_thumbnail', 'no' ) == 'yes' ? true : false,
 );
 
+extract( $defaults, EXTR_SKIP );
+
 if ( isset( $show_excluded ) && $show_excluded ) {
 	$excluded_statuses = array();
 } else {
@@ -99,15 +101,20 @@ else :
 	 * Exclude postponed or cancelled events.
 	 */
 	$args['meta_query'][] = array(
-		'key'     => 'sp_status',
-		'compare' => 'NOT IN',
-		'value'   => $excluded_statuses,
+		'relation' => 'OR',
+		array(
+			'key'     => 'sp_status',
+			'compare' => 'NOT IN',
+			'value'   => $excluded_statuses,
+		),
+		array(
+			'key'     => 'sp_status',
+			'compare' => 'NOT EXISTS',
+		),
 	);
 
 	$post = sp_get_next_event( $args );
 endif;
-
-extract( $defaults, EXTR_SKIP );
 
 if ( ! isset( $post ) || ! $post ) {
 	return;

@@ -267,7 +267,13 @@ class SP_Admin_Taxonomies {
 			$cat_keys  = array_keys( wp_unslash( $_POST['term_meta'] ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 			foreach ( $cat_keys as $key ) {
 				if ( isset( $_POST['term_meta'][ $key ] ) ) {
-					$term_meta[ $key ] = sanitize_text_field( wp_unslash( $_POST['term_meta'][ $key ] ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
+					if ( is_array( $_POST['term_meta'][ $key ] ) ) {
+						// If it's an array, loop through each element and sanitize
+						$term_meta[ $key ] = array_map( 'sanitize_text_field', wp_unslash( $_POST['term_meta'][ $key ] ) );
+					} else {
+						// If it's not an array, just sanitize the single value
+						$term_meta[ $key ] = sanitize_text_field( wp_unslash( $_POST['term_meta'][ $key ] ) );
+					}
 				}
 			}
 			update_option( "taxonomy_$t_id", $term_meta );
