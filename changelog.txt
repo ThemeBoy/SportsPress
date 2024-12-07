@@ -1,6 +1,6 @@
 == SportsPress Changelog ==
 
-= 2.7.23 =
+= 2.7.24 =
 * Update - Leaflet version to 1.9.4.
 * Tweak - Refactor equation builder to support nested conditional equations.
 * Tweak - Add option to filter events by venue in admin.
@@ -11,6 +11,9 @@
 * Fix - Google error: Date/time not in ISO 8601 format.
 * Fix - Minutes in league table.
 * Fix = Fatal error due to wrong type.
+
+= 2.7.23 =
+* Update - Version bump for SportsPress Pro.
 
 = 2.7.22 =
 * Fix - Security issues.

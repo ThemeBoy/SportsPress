@@ -4,7 +4,7 @@ Tags: club, event, fixtures, league, sports
 Donate link: http://tboy.co/donate
 Requires at least: 5.0
 Tested up to: 6.7
-Stable tag: 2.7.22
+Stable tag: 2.7.24
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -239,6 +239,21 @@ There are [3 different licenses](http://tboy.co/pro) that you can choose from: C
 When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
 
 == Changelog ==
+
+= 2.7.24 =
+* Update - Leaflet version to 1.9.4.
+* Tweak - Refactor equation builder to support nested conditional equations.
+* Tweak - Add option to filter events by venue in admin.
+* Tweak - Include events with no status in countdown widget.
+* Fix - Errors related to PHP version 8.
+* Fix - Statistic format not saving.
+* Fix - Position stats in offense and defense not saving.
+* Fix - Google error: Date/time not in ISO 8601 format.
+* Fix - Minutes in league table.
+* Fix = Fatal error due to wrong type.
+
+= 2.7.23 =
+* Update - Version bump for SportsPress Pro.
 
 = 2.7.22 =
 * Fix - Security issues.
