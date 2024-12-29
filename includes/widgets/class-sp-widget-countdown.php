@@ -11,7 +11,7 @@ class SP_Widget_Countdown extends WP_Widget {
 
 	function widget( $args, $instance ) {
 		extract( $args );
-		$title         = apply_filters( 'widget_title', empty( $instance['title'] ) ? null : $instance['title'], $instance, $this->id_base );
+		$title         = apply_filters( 'widget_title', empty( $instance['title'] ) ? '' : $instance['title'], $instance, $this->id_base );
 		$caption       = empty( $instance['caption'] ) ? null : $instance['caption'];
 		$calendar      = empty( $instance['calendar'] ) ? null : $instance['calendar'];
 		$team          = empty( $instance['team'] ) ? null : $instance['team'];
