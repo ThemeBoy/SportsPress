@@ -149,6 +149,20 @@ if ( ! class_exists( 'SportsPress_Icons' ) ) :
 				} else {
 					$icons = str_repeat( '<i class="sp-icon-' . $icon . '" title="' . $title . '" style="color:' . $color . ' !important"></i> ', intval( $value ) );
 				}
+			}else{
+				// Check if the performance has a thumbnail ID
+				$thumbnail_id = get_post_meta( $id, '_thumbnail_id', true );
+				if ( ! empty( $thumbnail_id ) ) {
+					$title = sp_get_singular_name( $id );
+					preg_match( '#\((.*?)\)#', $value, $match );
+					// Get the URL of the thumbnail image
+					$custom_image = wp_get_attachment_image( $thumbnail_id, 'sportspress-fit-mini', "", array( "title" => $title ) );
+					if ( ! empty( $custom_image ) && ! empty( $match ) && isset( $match[1] ) ) {
+						$icons = $custom_image . $match[1] . '<br>';			
+					}else{
+						$icons = str_repeat( $custom_image . ' ', intval( $value ) );
+					}
+				}
 			}
 			return $icons;
 		}
