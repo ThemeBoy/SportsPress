@@ -375,7 +375,10 @@ class SP_Player extends SP_Custom_Post {
 				);
 			endif;
 
-			$args = apply_filters( 'sportspress_player_data_event_args', $args, $data, $div_id );
+			// Check if there is a selected team and return the team id or return a -1 value.
+			$selected_team = sp_array_value( $leagues, $div_id, '-1' );
+
+			$args = apply_filters( 'sportspress_player_data_event_args', $args, $data, $div_id, $selected_team );
 
 			$events = get_posts( $args );
 
