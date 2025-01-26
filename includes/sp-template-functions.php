@@ -61,6 +61,10 @@ function sp_body_class( $classes ) {
 				$classes[] = 'sp-has-results';
 			}
 		}
+		$show_ticketshop_link = get_option( 'sportspress_event_show_ticketshop_link', 'yes' ) == 'yes' ? true : false;
+		if ( $show_ticketshop_link && get_post_meta( $id, 'ticketshop_link', true ) ) {
+			$classes[] = 'sp-has-ticketshop-link';
+		}
 		$classes[] = 'sp-performance-sections-' . get_option( 'sportspress_event_performance_sections', -1 );
 	} elseif ( 'sp_team' == $post_type && 'yes' == get_option( 'sportspress_team_show_logo', 'yes' ) ) {
 		$classes[] = 'sp-show-image';
@@ -202,6 +206,19 @@ if ( ! function_exists( 'sportspress_output_event_performance' ) ) {
 	 */
 	function sportspress_output_event_performance() {
 		sp_get_template( 'event-performance.php' );
+	}
+}
+if ( ! function_exists( 'sportspress_output_event_show_ticketshop_link' ) ) {
+
+	/**
+	 * Output the event Ticketshop link.
+	 *
+	 * @access public
+	 * @subpackage  Event/Ticketshop
+	 * @return void
+	 */
+	function sportspress_output_event_show_ticketshop_link() {
+		sp_get_template( 'event-ticketshop-link.php' );
 	}
 }
 if ( ! function_exists( 'sportspress_output_event_officials' ) ) {
