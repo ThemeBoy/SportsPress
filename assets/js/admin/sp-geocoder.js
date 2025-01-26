@@ -16,9 +16,9 @@ var map      = L.map( 'sp-location-picker' ).setView( [latitude, longitude], 15 
 	marker = L.marker( [latitude, longitude],{draggable: true, autoPan: true} ).addTo( map );
 
 L.tileLayer(
-	'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
+	sp_osm_settings["tile_server"],
 	{
-		attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+		attribution: sp_osm_settings["attribution"]
 	}
 ).addTo( map );
 
