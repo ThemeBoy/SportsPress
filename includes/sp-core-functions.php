@@ -1711,7 +1711,7 @@ if ( ! function_exists( 'sp_get_next_event' ) ) {
 if ( ! function_exists( 'sp_taxonomy_field' ) ) {
 	function sp_taxonomy_field( $taxonomy = 'category', $post = null, $multiple = false, $trigger = false, $placeholder = null ) {
 		$obj = get_taxonomy( $taxonomy );
-		if ( $obj ) {
+		if ( $obj && $obj->public ) {
 			$post_type = get_post_type( $post );
 			?>
 			<div class="<?php echo esc_attr( $post_type ); ?>-<?php echo esc_attr( $taxonomy ); ?>-field">
