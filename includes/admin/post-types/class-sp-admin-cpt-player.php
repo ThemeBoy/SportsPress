@@ -102,7 +102,8 @@ if ( ! class_exists( 'SP_Admin_CPT_Player' ) ) :
 					echo esc_html( get_post_meta( $post_id, 'sp_number', true ) );
 					break;
 				case 'sp_position':
-					echo get_the_terms( $post_id, 'sp_position' ) ? wp_kses_post( the_terms( $post_id, 'sp_position' ) ) : '&mdash;';
+					$terms = get_the_terms( $post_id, 'sp_position' );
+					echo ( $terms && ! is_wp_error( $terms ) ) ? wp_kses_post( implode( ', ', wp_list_pluck( $terms, 'name' ) ) ) : '&mdash;';
 					break;
 				case 'sp_team':
 					$current_teams = get_post_meta( $post_id, 'sp_current_team', false );
