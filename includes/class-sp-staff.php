@@ -43,6 +43,36 @@ class SP_Staff extends SP_Custom_Post {
 	}
 
 	/**
+	 * Returns phone number
+	 *
+	 * @access public
+	 * @return string
+	 */
+	public function phone_number() {
+		return get_post_meta( $this->ID, 'sp_phone', true );
+	}
+
+	/**
+	 * Returns mail address
+	 *
+	 * @access public
+	 * @return string
+	 */
+	public function mail_address() {
+		return get_post_meta( $this->ID, 'sp_mail', true );
+	}
+
+	/**
+	 * Returns website
+	 *
+	 * @access public
+	 * @return string
+	 */
+	public function website() {
+		return get_post_meta( $this->ID, 'sp_website', true );
+	}
+
+	/**
 	 * Returns role
 	 *
 	 * @access public
