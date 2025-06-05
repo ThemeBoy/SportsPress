@@ -149,7 +149,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 					// Update venue
 					if ( $venue == '' ) {
 						$team        = reset( $teams );
-						$team_object = get_page_by_title( stripslashes( $team ), OBJECT, 'sp_team' );
+						$team_object = sp_get_post_by_title( stripslashes( $team ), 'sp_team' );
 						$venue       = sp_get_the_term_id( $team_object->ID, 'sp_venue' );
 					}
 					wp_set_object_terms( $id, $venue, 'sp_venue', false );
@@ -172,7 +172,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 						if ( '' !== $team_name ) :
 
 							// Find out if team exists
-							$team_object = get_page_by_title( stripslashes( $team_name ), OBJECT, 'sp_team' );
+							$team_object = sp_get_post_by_title( stripslashes( $team_name ), 'sp_team' );
 
 							// Get or insert team
 							if ( $team_object ) :

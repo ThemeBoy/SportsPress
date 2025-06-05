@@ -76,7 +76,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 					continue;
 				endif;
 
-				$player_object = get_page_by_title( stripslashes( $player_name ), OBJECT, 'sp_player' );
+				$player_object = sp_get_post_by_title( stripslashes( $player_name ), 'sp_player' );
 
 				if ( $player_object ) :
 

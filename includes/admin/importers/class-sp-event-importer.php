@@ -205,7 +205,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 					list( $team_name, $result, $outcome ) = $team;
 
 					// Find out if team exists
-					$team_object = get_page_by_title( stripslashes( $team_name ), OBJECT, 'sp_team' );
+					$team_object = sp_get_post_by_title( stripslashes( $team_name ), 'sp_team' );
 
 					// Get or insert team
 					if ( $team_object ) :
@@ -285,7 +285,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 							$outcome = trim( $outcome );
 
 							// Get or insert outcome
-							$outcome_object = get_page_by_title( stripslashes( $outcome ), OBJECT, 'sp_outcome' );
+							$outcome_object = sp_get_post_by_title( stripslashes( $outcome ), 'sp_outcome' );
 
 							if ( $outcome_object ) :
 
@@ -374,7 +374,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 					unset( $player[0] );
 
 					// Find out if player exists
-					$player_object = get_page_by_title( stripslashes( $player_name ), OBJECT, 'sp_player' );
+					$player_object = sp_get_post_by_title( stripslashes( $player_name ), 'sp_player' );
 
 					// Get or insert player
 					if ( $player_object ) :
