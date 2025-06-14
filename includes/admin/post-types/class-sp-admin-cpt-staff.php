@@ -72,6 +72,9 @@ if ( ! class_exists( 'SP_Admin_CPT_Staff' ) ) :
 					'sp_team'   => esc_attr__( 'Teams', 'sportspress' ),
 					'sp_league' => esc_attr__( 'Leagues', 'sportspress' ),
 					'sp_season' => esc_attr__( 'Seasons', 'sportspress' ),
+					'sp_phone' => esc_attr__( 'Phone number', 'sportspress' ),
+					'sp_mail' => esc_attr__( 'Mail address', 'sportspress' ),
+					'sp_website' => esc_attr__( 'Website', 'sportspress' ),
 				),
 				$existing_columns,
 				array(
@@ -121,6 +124,15 @@ if ( ! class_exists( 'SP_Admin_CPT_Staff' ) ) :
 				case 'sp_season':
 					$terms = get_the_terms( $post_id, 'sp_season' );
 					echo ( $terms && ! is_wp_error( $terms ) ) ? wp_kses_post( implode( ', ', wp_list_pluck( $terms, 'name' ) ) ) : '&mdash;';
+					break;
+				case 'sp_phone':
+					echo esc_html( get_post_meta( $post_id, 'sp_phone', true ) );
+					break;
+				case 'sp_mail':
+					echo esc_html( get_post_meta( $post_id, 'sp_mail', true ) );
+					break;
+				case 'sp_website':
+					echo esc_html( get_post_meta( $post_id, 'sp_website', true ) );
 					break;
 			endswitch;
 		}
