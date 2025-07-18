@@ -15,10 +15,10 @@ class SP_League_Table extends SP_Secondary_Post {
 	/** @var array The sort priorities array. */
 	public $priorities;
 
-	/** @var array Positions of teams in the table. */
+	/** @var int Position of team in the table. */
 	public $pos;
 
-	/** @var array Inremental value for team position. */
+	/** @var int Incremental value for team position. */
 	public $counter;
 
 	/** @var array Teams to check for tiebreakers. */
