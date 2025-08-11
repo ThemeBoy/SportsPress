@@ -7,7 +7,7 @@
  * @author      ThemeBoy
  * @category    Core
  * @package     SportsPress/Functions
- * @version   2.7.18
+ * @version   2.7.26
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -1468,13 +1468,57 @@ if ( ! function_exists( 'sp_update_post_meta_recursive' ) ) {
 	}
 }
 
+if ( ! function_exists( 'sp_get_user_meta_backward_compatible' ) ) {
+	function sp_get_user_meta_backward_compatible( $user_id, $meta_key ) {
+		// First try to get data from new format (user options).
+		$new_data = get_user_option( $meta_key, $user_id );
+		
+		// If new data exists and is not empty, return it.
+		if ( ! empty( $new_data ) ) {
+			return is_array( $new_data ) ? $new_data : array( $new_data );
+		}
+		
+		// If no new data, try old format (user meta).
+		$old_data = get_user_meta( $user_id, $meta_key, false );
+		
+		// If old data exists, migrate it to new format.
+		if ( ! empty( $old_data ) ) {
+			// Store in new format.
+			update_user_option( $user_id, $meta_key, $old_data );
+			
+			// Clean up old data.
+			delete_user_meta( $user_id, $meta_key );
+			
+			return $old_data;
+		}
+		
+		// Return empty array if no data found.
+		return array();
+	}
+}
+
 if ( ! function_exists( 'sp_update_user_meta_recursive' ) ) {
 	function sp_update_user_meta_recursive( $user_id, $meta_key, $meta_value ) {
-		delete_user_meta( $user_id, $meta_key );
+		// Delete existing data.
+		delete_user_option( $user_id, $meta_key );
+		
+		// Get existing values for this site.
+		$existing_values = get_user_option( $meta_key, $user_id );
+		if ( ! is_array( $existing_values ) ) {
+			$existing_values = array();
+		}
+		
+		// Add new values to existing array
 		$values = new RecursiveIteratorIterator( new RecursiveArrayIterator( $meta_value ) );
 		foreach ( $values as $value ) :
-			add_user_meta( $user_id, $meta_key, $value, false );
+			$existing_values[] = $value;
 		endforeach;
+
+		// Remove duplicates.
+		$existing_values = array_unique( $existing_values );
+		
+		// Store all values as array in user option (site-specific).
+		update_user_option( $user_id, $meta_key, $existing_values );
 	}
 }
 
@@ -1711,7 +1755,7 @@ if ( ! function_exists( 'sp_get_next_event' ) ) {
 if ( ! function_exists( 'sp_taxonomy_field' ) ) {
 	function sp_taxonomy_field( $taxonomy = 'category', $post = null, $multiple = false, $trigger = false, $placeholder = null ) {
 		$obj = get_taxonomy( $taxonomy );
-		if ( $obj && $obj->public ) {
+		if ( $obj ) {
 			$post_type = get_post_type( $post );
 			?>
 			<div class="<?php echo esc_attr( $post_type ); ?>-<?php echo esc_attr( $taxonomy ); ?>-field">
