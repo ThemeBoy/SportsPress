@@ -1,5 +1,12 @@
 == SportsPress Changelog ==
 
+= 2.7.26 =
+* Tweak - Make SportsPress compatible with the Polylang plugin.
+* Fix - Non-numeric value error in player list.
+* Fix - Countdown widget null parameter deprecation.
+* Fix - Deprecated functiong get_page_by_title().
+* Fix - Output when image is used as a performance icon.
+
 = 2.7.24 =
 * Update - Leaflet version to 1.9.4.
 * Tweak - Refactor equation builder to support nested conditional equations.

@@ -5,7 +5,7 @@
  * @author    ThemeBoy
  * @category  Modules
  * @package   SportsPress/Modules
- * @version   2.7.9
+ * @version   2.7.26
  */
 
 // Exit if accessed directly
@@ -19,7 +19,7 @@ if ( ! class_exists( 'SportsPress_Icons' ) ) :
 	 * Main SportsPress Icons Class
 	 *
 	 * @class SportsPress_Icons
-	 * @version 2.7
+	 * @version 2.7.26
 	 */
 	class SportsPress_Icons {
 
@@ -51,7 +51,7 @@ if ( ! class_exists( 'SportsPress_Icons' ) ) :
 		 */
 		private function define_constants() {
 			if ( ! defined( 'SP_ICONS_VERSION' ) ) {
-				define( 'SP_ICONS_VERSION', '2.7' );
+				define( 'SP_ICONS_VERSION', '2.7.26' );
 			}
 
 			if ( ! defined( 'SP_ICONS_URL' ) ) {
