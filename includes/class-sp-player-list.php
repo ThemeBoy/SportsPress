@@ -269,7 +269,7 @@ class SP_Player_List extends SP_Secondary_Post {
 				endif;
 
 				// Add precision to object
-				$stat->precision = sp_array_value( sp_array_value( $meta, 'sp_precision', array() ), 0, 0 ) + 0;
+				$stat->precision = (int) sp_array_value( sp_array_value( $meta, 'sp_precision', array() ), 0, 0 ) + 0;
 
 				// Add column icons to columns were is available
 				if ( get_option( 'sportspress_player_statistics_mode', 'values' ) == 'icons' && ( $stat->post_type == 'sp_performance' || $stat->post_type == 'sp_statistic' ) ) {
