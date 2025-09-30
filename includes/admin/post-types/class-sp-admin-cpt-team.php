@@ -5,7 +5,7 @@
  * @author      ThemeBoy
  * @category    Admin
  * @package     SportsPress/Admin/Post_Types
- * @version     2.6
+ * @version     2.7.27
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -89,7 +89,12 @@ if ( ! class_exists( 'SP_Admin_CPT_Team' ) ) :
 		public function custom_columns( $column, $post_id ) {
 			switch ( $column ) :
 				case 'sp_icon':
-					echo has_post_thumbnail( $post_id ) ? wp_kses_post( edit_post_link( get_the_post_thumbnail( $post_id, 'sportspress-fit-mini' ), '', '', $post_id ) ) : '';
+					if ( has_post_thumbnail( $post_id ) ) {
+						$edit_link = edit_post_link( get_the_post_thumbnail( $post_id, 'sportspress-fit-mini' ), '', '', $post_id );
+						echo $edit_link ? wp_kses_post( $edit_link ) : '';
+					} else {
+						echo '';
+					}
 					break;
 				case 'sp_short_name':
 					$short_name = get_post_meta( $post_id, 'sp_short_name', true );
