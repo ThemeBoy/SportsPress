@@ -5,7 +5,7 @@
  * @author      ThemeBoy
  * @category    Admin
  * @package     SportsPress/Admin/Importers
- * @version     2.7.9
+ * @version     2.7.28
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -125,14 +125,17 @@ if ( class_exists( 'WP_Importer' ) ) {
 
 			$this->imported = $this->skipped = 0;
 
-			if ( ! is_file( $file ) ) :
-				$this->footer();
-				die();
-			endif;
+		if ( ! is_file( $file ) ) :
+			$this->footer();
+			die();
+		endif;
 
+		// Only set auto_detect_line_endings on PHP versions that support it (< 8.1).
+		if ( version_compare( PHP_VERSION, '8.1', '<' ) ) {
 			ini_set( 'auto_detect_line_endings', '1' );
+		}
 
-			if ( ( $handle = fopen( $file, 'r' ) ) !== false ) :
+		if ( ( $handle = fopen( $file, 'r' ) ) !== false ) :
 
 				$header = fgetcsv( $handle, 0, $this->delimiter );
 
