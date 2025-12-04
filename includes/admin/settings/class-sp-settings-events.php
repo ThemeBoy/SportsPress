@@ -533,6 +533,9 @@ if ( ! class_exists( 'SP_Settings_Events' ) ) :
 		public function delimiter_setting() {
 			$selection = get_option( 'sportspress_event_teams_delimiter', 'vs' );
 			$limit     = get_option( 'sportspress_event_teams', 2 );
+			
+			// Cast to integer and ensure it's a valid positive number.
+			$limit = absint( $limit );
 			if ( 0 == $limit ) {
 				$limit = 2;
 			}
