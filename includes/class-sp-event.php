@@ -41,6 +41,11 @@ class SP_Event extends SP_Custom_Post {
 		return $mode;
 	}
 
+	public function ticketshop_link() {
+		$ticketshop_link = get_post_meta( $this->ID, 'sp_ticketshop_link', true );
+		return $ticketshop_link;
+	}
+
 	public function minutes() {
 		$minutes = get_post_meta( $this->ID, 'sp_minutes', true );
 		if ( '' === $minutes ) {

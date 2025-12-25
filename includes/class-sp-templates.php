@@ -82,6 +82,12 @@ class SP_Templates {
 							'action'  => 'sportspress_output_event_performance',
 							'default' => 'yes',
 						),
+						'ticketshop_link' => array(
+							'title'   => esc_attr__( 'Ticketshop link', 'sportspress' ),
+							'option'  => 'sportspress_event_show_ticketshop_link',
+							'action'  => 'sportspress_output_event_show_ticketshop_link',
+							'default' => 'no',
+						),
 					)
 				)
 			),

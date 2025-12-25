@@ -40,6 +40,9 @@ $defaults = array(
 	'scrollable'           => get_option( 'sportspress_enable_scrollable_tables', 'yes' ) == 'yes' ? true : false,
 	'paginated'            => get_option( 'sportspress_event_list_paginated', 'yes' ) == 'yes' ? true : false,
 	'rows'                 => get_option( 'sportspress_event_list_rows', 10 ),
+	'ticketshop_link'      => null,
+	'ticketshop_label'     => get_option( 'sportspress_ticketshop_label'),
+	'ticketshop_hide_past' => get_option( 'sportspress_ticketshop_hide_past_events', 'yes' ) == 'yes' ? true : false,
 	'order'                => 'default',
 	'columns'              => null,
 	'show_all_events_link' => false,
@@ -221,6 +224,10 @@ $identifier = uniqid( 'eventlist_' );
 
 					if ( sp_column_active( $usecolumns, 'article' ) ) {
 						echo '<th class="data-article">' . esc_attr__( 'Article', 'sportspress' ) . '</th>';
+					}
+
+					if ( sp_column_active( $usecolumns, 'ticketshop' ) ) {
+						echo '<th class="data-ticketshop">' . esc_attr__( 'Ticketshop', 'sportspress' ) . '</th>';
 					}
 
 					if ( sp_column_active( $usecolumns, 'day' ) ) {
@@ -527,6 +534,21 @@ $identifier = uniqid( 'eventlist_' );
 								}
 								echo '</td>';
 						endif;
+
+                        if ( sp_column_active( $usecolumns, 'ticketshop' ) ) :
+                            echo '<td class="data-ticketshop" data-label="' . esc_attr__( 'Ticketshop', 'sportspress' ) . '">';
+
+                            if ($ticketshop_hide_past && $event->post_status != 'future' ) {
+                                echo '';
+                            } else {
+                                $ticketshop_link = get_post_meta( $event->ID, 'sp_ticketshop_link', true );
+                                if(isset($ticketshop_link) && $ticketshop_link != '') {
+                                    echo '<a class="sp-ticketshop-link" target="_blank" href="'.$ticketshop_link.'" itemprop="url">'.$ticketshop_label.'</a>';
+                                }
+                            }
+
+                            echo '</td>';
+                        endif;
 
 						if ( sp_column_active( $usecolumns, 'day' ) ) :
 							echo '<td class="data-day" data-label="' . esc_attr__( 'Match Day', 'sportspress' ) . '">';
