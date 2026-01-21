@@ -221,6 +221,15 @@ if ( ! class_exists( 'SP_Settings_General' ) ) :
 						'checkboxgroup' => 'end',
 					),
 
+					array(						
+            'title'     => __( 'Selection', 'sportspress' ),
+						'desc' 		=> __( 'Show leagues', 'sportspress' ),
+						'id' 		=> 'sportspress_selection_show_leagues',
+						'default'	=> 'no',
+						'type' 		=> 'checkbox',
+						'desc_tip' 	=> __( 'Show league names during post selection.', 'sportspress' ),
+					),
+
 					array(
 						'title'    => esc_attr__( 'Widgets', 'sportspress' ),
 						'desc'     => esc_attr__( 'Unique', 'sportspress' ),
