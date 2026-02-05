@@ -1,5 +1,8 @@
 == SportsPress Changelog ==
 
+= 2.7.27 =
+* Fix - Security issues.
+
 = 2.7.26 =
 * Tweak - Make SportsPress compatible with the Polylang plugin.
 * Fix - Non-numeric value error in player list.

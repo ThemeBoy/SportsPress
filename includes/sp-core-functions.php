@@ -7,7 +7,7 @@
  * @author      ThemeBoy
  * @category    Core
  * @package     SportsPress/Functions
- * @version   2.7.26
+ * @version   2.7.27
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -66,11 +66,20 @@ function sp_get_template_part( $slug, $name = '' ) {
  * @return void
  */
 function sp_get_template( $template_name, $args = array(), $template_path = '', $default_path = '' ) {
+	// Store the original parameters before extract() to prevent override attacks
+	$original_template_name = $template_name;
+	$original_template_path = $template_path;
+	$original_default_path  = $default_path;
+
 	if ( $args && is_array( $args ) ) {
+		// Remove security-sensitive parameters from args before extraction
+		// to prevent Local File Inclusion attacks via shortcode attributes
+		unset( $args['template_name'], $args['template_path'], $args['default_path'] );
 		extract( $args );
 	}
 
-	$located = sp_locate_template( $template_name, $template_path, $default_path );
+	// Use original parameters for template location
+	$located = sp_locate_template( $original_template_name, $original_template_path, $original_default_path );
 
 	if ( ! file_exists( $located ) ) {
 		_doing_it_wrong( __FUNCTION__, sprintf( '<code>%s</code> does not exist.', esc_html( $located ) ), '0.7' );
@@ -100,6 +109,30 @@ function sp_get_template( $template_name, $args = array(), $template_path = '', 
  * @return string
  */
 function sp_locate_template( $template_name, $template_path = '', $default_path = '' ) {
+	// Sanitize template name to prevent directory traversal attacks
+	// First extract just the filename component, removing any directory paths
+	$template_name = basename( $template_name );
+
+	// Sanitize the filename to remove special characters and traversal attempts
+	$template_name = sanitize_file_name( $template_name );
+
+	// Additional security: ensure no path separators remain after sanitization
+	$template_name = str_replace( array( '/', '\\' ), '', $template_name );
+
+	// Prevent access to hidden files
+	$template_name = ltrim( $template_name, '.' );
+
+	// Sanitize path parameters if provided by user input (defense-in-depth)
+	if ( ! empty( $template_path ) ) {
+		// Validate that template_path doesn't contain directory traversal
+		$template_path = str_replace( array( '../', '..\\' ), '', $template_path );
+	}
+
+	if ( ! empty( $default_path ) ) {
+		// Validate that default_path doesn't contain directory traversal
+		$default_path = str_replace( array( '../', '..\\' ), '', $default_path );
+	}
+
 	if ( ! $template_path ) {
 		$template_path = SP()->template_path();
 	}
