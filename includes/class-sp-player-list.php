@@ -764,15 +764,24 @@ endif;
 			
 			// Get all unique keys from both arrays
 			$all_keys = array_unique( array_merge( array_keys( $auto_stats ), array_keys( $manual_stats ) ) );
-			
-			foreach ( $all_keys as $key ) {
-				$auto_value   = isset( $auto_stats[ $key ] ) ? floatval( $auto_stats[ $key ] ) : 0;
-				$manual_value = isset( $manual_stats[ $key ] ) ? floatval( $manual_stats[ $key ] ) : 0;
 				
-				// Sum both values
-				$combined[ $key ] = $auto_value + $manual_value;
+			foreach ( $all_keys as $key ) {
+
+				// Check if this key refers to an sp_metric.
+				$post      = get_page_by_path( $key, OBJECT, 'sp_metric' );
+				$is_metric = $post && $post->post_type === 'sp_metric';
+				if ( $is_metric ) {
+					$manual_value = $manual_stats[ $key ];
+					
+					$combined[ $key ] = $manual_value;
+				} else {
+					$auto_value   = isset( $auto_stats[ $key ] ) ? floatval( $auto_stats[ $key ] ) : 0;
+					$manual_value = isset( $manual_stats[ $key ] ) ? floatval( $manual_stats[ $key ] ) : 0;
+					
+					// Sum both values
+					$combined[ $key ] = $auto_value + $manual_value;
+				}
 			}
-			
 			$placeholders[ $player_id ] = $combined;
 
 			// Player adjustments
