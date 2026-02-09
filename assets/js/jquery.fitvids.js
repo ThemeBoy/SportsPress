@@ -1,4 +1,3 @@
-/*global jQuery */
 /*jshint browser:true */
 /*!
 * FitVids 1.1
@@ -9,7 +8,7 @@
 *
 */
 
-(function( $ ){
+;(function( $ ){
 
   'use strict';
 
@@ -70,14 +69,19 @@
         var height = ( this.tagName.toLowerCase() === 'object' || ($this.attr('height') && !isNaN(parseInt($this.attr('height'), 10))) ) ? parseInt($this.attr('height'), 10) : $this.height(),
             width = !isNaN(parseInt($this.attr('width'), 10)) ? parseInt($this.attr('width'), 10) : $this.width(),
             aspectRatio = height / width;
-        if(!$this.attr('id')){
-          var videoID = 'fitvid' + Math.floor(Math.random()*999999);
-          $this.attr('id', videoID);
+        if(!$this.attr('name')){
+          var videoName = 'fitvid' + $.fn.fitVids._count;
+          $this.attr('name', videoName);
+          $.fn.fitVids._count++;
         }
         $this.wrap('<div class="fluid-width-video-wrapper"></div>').parent('.fluid-width-video-wrapper').css('padding-top', (aspectRatio * 100)+'%');
         $this.removeAttr('height').removeAttr('width');
       });
     });
   };
+  
+  // Internal counter for unique video names.
+  $.fn.fitVids._count = 0;
+  
 // Works with either jQuery or Zepto
 })( window.jQuery || window.Zepto );
