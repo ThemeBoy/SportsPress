@@ -240,7 +240,7 @@ When you upgrade to one of the SportsPress Pro licenses, you can simply activate
 
 == Changelog ==
 
-= 2.7.28 =
+= 2.7.29 =
 * Fix - Error when extensions add null values.
 * Fix - Non-numeric metrics being converted to numeric values.
 
