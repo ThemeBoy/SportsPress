@@ -4,7 +4,7 @@ Tags: club, event, fixtures, league, sports
 Donate link: http://tboy.co/donate
 Requires at least: 5.0
 Tested up to: 6.9
-Stable tag: 2.7.27
+Stable tag: 2.7.28
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -239,6 +239,10 @@ There are [3 different licenses](http://tboy.co/pro) that you can choose from: C
 When you upgrade to one of the SportsPress Pro licenses, you can simply activate the Pro version without losing any of your data. Please note that we recommend that you do a complete backup whenever you make big changes to your website.
 
 == Changelog ==
+
+= 2.7.28 =
+* Fix - Error when extensions add null values.
+* Fix - Non-numeric metrics being converted to numeric values.
 
 = 2.7.27 =
 * Fix - Security issues.

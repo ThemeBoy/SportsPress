@@ -1,5 +1,9 @@
 == SportsPress Changelog ==
 
+= 2.7.28 =
+* Fix - Error when extensions add null values.
+* Fix - Non-numeric metrics being converted to numeric values.
+
 = 2.7.27 =
 * Fix - Security issues.
 
