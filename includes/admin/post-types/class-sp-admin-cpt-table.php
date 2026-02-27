@@ -5,7 +5,7 @@
  * @author      ThemeBoy
  * @category    Admin
  * @package     SportsPress/Admin/Post_Types
- * @version     2.5
+ * @version     2.7.29
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -67,10 +67,12 @@ if ( ! class_exists( 'SP_Admin_CPT_Table' ) ) :
 		public function custom_columns( $column, $post_id ) {
 			switch ( $column ) :
 				case 'sp_league':
-					echo get_the_terms( $post_id, 'sp_league' ) ? wp_kses_post( the_terms( $post_id, 'sp_league' ) ) : '&mdash;';
+					$terms = get_the_terms( $post_id, 'sp_league' );
+					echo ( $terms && ! is_wp_error( $terms ) ) ? wp_kses_post( implode( ', ', wp_list_pluck( $terms, 'name' ) ) ) : '&mdash;';
 					break;
 				case 'sp_season':
-					echo get_the_terms( $post_id, 'sp_season' ) ? wp_kses_post( the_terms( $post_id, 'sp_season' ) ) : '&mdash;';
+					$terms = get_the_terms( $post_id, 'sp_season' );
+					echo ( $terms && ! is_wp_error( $terms ) ) ? wp_kses_post( implode( ', ', wp_list_pluck( $terms, 'name' ) ) ) : '&mdash;';
 					break;
 				case 'sp_team':
 					$select = get_post_meta( $post_id, 'sp_select', true );
