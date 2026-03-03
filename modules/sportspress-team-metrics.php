@@ -153,6 +153,7 @@ if ( ! class_exists( 'SportsPress_Team_Metrics' ) ) :
                                 <tr>
                                     <th scope="col"><?php esc_attr_e( 'Label', 'sportspress' ); ?></th>
                                     <th scope="col"><?php esc_attr_e( 'Variable', 'sportspress' ); ?></th>
+                                    <th scope="col"><?php esc_attr_e( 'Visible', 'sportspress' ); ?></th>
                                     <th scope="col"><?php esc_attr_e( 'Description', 'sportspress' ); ?></th>
                                     <th scope="col" class="edit"></th>
                                 </tr>
@@ -169,6 +170,15 @@ if ( ! class_exists( 'SportsPress_Team_Metrics' ) ) :
                                 >
                                     <td class="row-title"><?php echo wp_kses_post( $row->post_title ); ?></td>
                                     <td><code><?php echo wp_kses_post( $row->post_name ); ?></code></td>
+                                    <td>
+                                        <?php
+                                        if ( get_post_meta( $row->ID, 'sp_visible', true ) ) {
+                                            echo '<i class="dashicons dashicons-yes"></i>';
+                                        } else {
+                                            echo '&nbsp;';
+                                        }
+                                        ?>
+                                    </td>
                                     <td><p class="description"><?php echo wp_kses_post( $row->post_excerpt ); ?></p></td>
                                     <td class="edit"><a class="button" href="<?php echo esc_url( get_edit_post_link( $row->ID ) ); ?>"><?php esc_attr_e( 'Edit', 'sportspress' ); ?></s></td>
                                 </tr>
