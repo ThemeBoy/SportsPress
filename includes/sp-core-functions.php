@@ -66,20 +66,13 @@ function sp_get_template_part( $slug, $name = '' ) {
  * @return void
  */
 function sp_get_template( $template_name, $args = array(), $template_path = '', $default_path = '' ) {
-	// Store the original parameters before extract() to prevent override attacks
-	$original_template_name = $template_name;
-	$original_template_path = $template_path;
-	$original_default_path  = $default_path;
 
 	if ( $args && is_array( $args ) ) {
-		// Remove security-sensitive parameters from args before extraction
-		// to prevent Local File Inclusion attacks via shortcode attributes
-		unset( $args['template_name'], $args['template_path'], $args['default_path'] );
-		extract( $args );
+		// Prevent user-supplied arguments from overwriting existing variables.
+		extract( $args, EXTR_SKIP );
 	}
 
-	// Use original parameters for template location
-	$located = sp_locate_template( $original_template_name, $original_template_path, $original_default_path );
+	$located = sp_locate_template( $template_name, $template_path, $default_path );
 
 	if ( ! file_exists( $located ) ) {
 		_doing_it_wrong( __FUNCTION__, sprintf( '<code>%s</code> does not exist.', esc_html( $located ) ), '0.7' );
