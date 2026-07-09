@@ -5,7 +5,7 @@
  * @author      ThemeBoy
  * @category    Admin
  * @package     SportsPress/Admin/Post_Types
- * @version     2.7.29
+ * @version     2.7.30
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

@@ -1,5 +1,9 @@
 == SportsPress Changelog ==
 
+= 2.7.30 =
+* Fix - Security issues.
+* Fix - Deprecated preg_replace() null parameter warning in league table admin columns.
+
 = 2.7.29 =
 * Fix - Error when extensions add null values.
 * Fix - Non-numeric metrics being converted to numeric values.
