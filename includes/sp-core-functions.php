@@ -372,7 +372,7 @@ if ( ! function_exists( 'sp_array_map_recursive' ) ) {
 
 if ( ! function_exists( 'sp_array_value' ) ) {
 	function sp_array_value( $arr = array(), $key = 0, $default = null, $sanitize = false ) {
-		$value = ( isset( $arr[ $key ] ) ? $arr[ $key ] : $default );
+		$value = ( is_array( $arr ) && is_scalar( $key ) && isset( $arr[ $key ] ) ? $arr[ $key ] : $default );
 
 		if ( $sanitize ) :
 			if ( is_array( $value ) ) :

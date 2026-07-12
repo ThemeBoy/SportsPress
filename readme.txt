@@ -3,7 +3,7 @@ Contributors: ThemeBoy, brianmiyaji, aylaview, savvasha, nabil_kadimi
 Tags: club, event, fixtures, league, sports
 Donate link: http://tboy.co/donate
 Requires at least: 5.0
-Tested up to: 6.9
+Tested up to: 7.0
 Stable tag: 2.7.30
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html

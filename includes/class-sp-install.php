@@ -80,7 +80,7 @@ if ( ! class_exists( 'SP_Install' ) ) :
 			$this->create_options();
 
 			// Queue upgrades
-			$current_version = get_option( 'sportspress_version', null );
+			$current_version = get_option( 'sportspress_version', '' );
 
 			// Do upgrades
 			$this->upgrades( $current_version );
