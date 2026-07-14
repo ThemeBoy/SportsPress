@@ -227,7 +227,7 @@ endwhile;
 		 * @return string
 		 */
 		function format_data_from_csv( $data, $enc ) {
-			return ( $enc == 'UTF-8' ) ? $data : utf8_encode( $data );
+			return ( $enc == 'UTF-8' ) ? $data : mb_convert_encoding( $data, 'UTF-8', 'ISO-8859-1' );
 		}
 
 		/**
