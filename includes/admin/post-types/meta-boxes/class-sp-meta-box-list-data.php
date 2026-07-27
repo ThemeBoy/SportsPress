@@ -127,12 +127,22 @@ class SP_Meta_Box_List_Data {
 								<?php if ( array_key_exists( 'team', $columns ) ) { ?>
 									<td>
 										<?php
-										$selected = sp_array_value( $player_stats, 'team', get_post_meta( get_the_ID(), 'sp_team', true ) );
-										if ( ! $selected ) {
-											$selected = get_post_meta( $player_id, 'sp_team', true );
+										$current_team = get_post_meta( $player_id, 'sp_team', true );
+										$include      = get_post_meta( $player_id, 'sp_team' );
+
+										// Use the saved team if the player still belongs to it.
+										$selected = sp_array_value( $player_stats, 'team', $current_team );
+										if ( empty( $include ) ) {
+											// The player is not assigned to any team. An empty 'include'
+											// would show every team, so use 0 to return no results.
+											$include  = array( 0 );
+											$selected = '';
+										} elseif ( ! in_array( $selected, $include ) ) {
+											// The saved team is no longer assigned to this player.
+											$selected = $current_team;
 										}
-										$include = get_post_meta( $player_id, 'sp_team' );
-										$args    = array(
+
+										$args = array(
 											'post_type' => 'sp_team',
 											'name'      => 'sp_players[' . esc_attr( $player_id ) . '][team]',
 											'include'   => $include,
