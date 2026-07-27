@@ -2029,9 +2029,9 @@ function sp_flags( $nationality ) {
 	}
 	if ( $custom_flag_post_id ) {
 		$flag_src = wp_get_attachment_image_url( $custom_flag_post_id, array( 23, 15 ), false );
-		$flag     = '<img src="' . $flag_src . '" alt="' . $nationality . '">';
+		$flag     = '<img src="' . $flag_src . '" alt="">';
 	} else {
-		$flag = '<img src="' . plugin_dir_url( SP_PLUGIN_FILE ) . 'assets/images/flags/' . $nationality . '.png" alt="' . $nationality . '">';
+		$flag = '<img src="' . plugin_dir_url( SP_PLUGIN_FILE ) . 'assets/images/flags/' . $nationality . '.png" alt="">';
 	}
 
 	return $flag;
