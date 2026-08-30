@@ -94,8 +94,14 @@ class SP_Meta_Box_Team_Lists {
 										</a>
 									</td>
 									<td><?php echo esc_attr( sizeof( $players ) ); ?></td>
-									<td><?php echo get_the_terms( $list->ID, 'sp_league' ) ? wp_kses_post( the_terms( $list->ID, 'sp_league' ) ) : '&mdash;'; ?></td>
-									<td><?php echo get_the_terms( $list->ID, 'sp_season' ) ? wp_kses_post( the_terms( $list->ID, 'sp_season' ) ) : '&mdash;'; ?></td>
+									<td><?php
+										$term_list = get_the_term_list( $list->ID, 'sp_league', '', ', ', '' );
+										echo ! is_wp_error( $term_list ) && $term_list ? wp_kses_post( $term_list ) : '&mdash;';
+									?></td>
+									<td><?php
+										$term_list = get_the_term_list( $list->ID, 'sp_season', '', ', ', '' );
+										echo ! is_wp_error( $term_list ) && $term_list ? wp_kses_post( $term_list ) : '&mdash;';
+									?></td>
 									<td><?php echo esc_html( sp_array_value( SP()->formats->list, $format, '&mdash;' ) ); ?></td>
 								</tr>
 								<?php
