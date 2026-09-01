@@ -908,13 +908,13 @@ endif;
 			if ( $this->orderby == 'name' ) {
 				return strcmp( sp_array_value( $b, 'name', '' ), sp_array_value( $a, 'name', '' ) );
 			} else {
-				return (float) $b[ $this->orderby ] - (float) $a[ $this->orderby ];
+				return ( (float) $b[ $this->orderby ] - (float) $a[ $this->orderby ] ) > 0 ? 1 : -1;
 			}
 		} else {
 			if ( $this->orderby == 'name' ) {
 				return strcmp( sp_array_value( $a, 'name', '' ), sp_array_value( $b, 'name', '' ) );
 			} else {
-				return (float) $a[ $this->orderby ] - (float) $b[ $this->orderby ];
+				return ( (float) $a[ $this->orderby ] - (float) $b[ $this->orderby ] ) > 0 ? 1 : -1;
 			}
 		}
 	}
