@@ -1,0 +1,83 @@
+{
+	"name":				"Baskin",
+	"positions": [
+						"Ruolo 1",
+						"Ruolo 2",
+						"Ruolo 3",
+						"Ruolo 4",
+						"Ruolo 5"
+	],
+	"outcomes": [
+						{ "name" : "Vittoria", "condition" : ">" },
+						{ "name" : "Sconfitta", "condition" : "<" }
+	],
+	"results": [
+						{ "name" : "1", "description" : "Punti 1.o Quarto" },
+						{ "name" : "2", "description" : "Punti 2.o Quarto" },
+						{ "name" : "3", "description" : "Punti 3.o Quarto" },
+						{ "name" : "4", "description" : "Punti 4.o Quarto" },
+						{ "name" : "OT", "id" : "ot", "description" : "Punti Tempi Supplementari" },
+						{ "name" : "T", "id" : "points", "description" : "Punti Totali", "primary" : 1 }
+	],
+	"performance": [
+						{ "name" : "PunG", "description" : "Punti Giocatore" },
+						{ "name" : "Min", "description" : "Minuti Giocati" },
+						{ "name" : "FaC", "description" : "Falli Contro" },
+						{ "name" : "FaS", "description" : "Falli Subiti" },
+						{ "name" : "T2R", "description" : "Tiri da 2 Punti Realizzati" },
+						{ "name" : "T2T", "description" : "Tiri da 2 Punti Tentati" },
+						{ "name" : "T2%", "format" : "equation", "precision" : 1, "equation" : "( $ttwor / $ttwot ) * 100", "description" : "Percentuale Tiri da 2 Punti" },
+						{ "name" : "ScG", "description" : "Sc Giocatore" },
+						{ "name" : "T3R", "description" : "Tiri da 3 Punti Realizzati" },
+						{ "name" : "T3T", "description" : "Tiri da 3 Punti Tentati" },
+						{ "name" : "T3%", "format" : "equation", "precision" : 1, "equation" : "( $tthreer / $tthreet ) * 100", "description" : "Percentuale Tiri da 3 Punti" },
+						{ "name" : "TLR", "description" : "Tiri Liberi Realizzati" },
+						{ "name" : "TLT", "description" : "Titi Liberi Tentati" },
+						{ "name" : "TL%", "format" : "equation", "precision" : 1, "equation" : "( $tlr / $tlt ) * 100", "description" : "Percentuale Tiri Liberi" },
+						{ "name" : "RiO", "description" : "Rimbalzi Offensivi" },
+						{ "name" : "RiD", "description" : "Rimbalzi Difensivi" },
+						{ "name" : "RiT", "format" : "equation", "equation" : "$rio + $rid", "description" : "Rimbalzi Totali" },
+						{ "name" : "StD", "description" : "Stoppate Date" },
+						{ "name" : "StS", "description" : "Stoppate Subite" },
+						{ "name" : "PalP", "description" : "Palle Perse" },
+						{ "name" : "PalR", "description" : "Palle Recuperate" },
+						{ "name" : "Ass", "description" : "Assist" }
+	],
+	"columns": [
+						{ "name" : "PunCl", "equation" : "( 3 * $vittoria ) + $sconfitta", "priority" : 1, "order" : "DESC", "description" : "Punti Squadra" },
+						{ "name" : "PaGS", "equation" : "$vittoria + $sconfitta", "description" : "Partite Giocate Squadra" },
+						{ "name" : "PaV", "equation" : "$vittoria", "description" : "Partite Vinte" },
+						{ "name" : "PaP", "equation" : "$sconfitta", "description" : "Partite Perse" },
+						{ "name" : "PunFat", "equation" : "$pointsfor", "description" : "Punti Fatti" },
+						{ "name" : "PunSub", "equation" : "$pointsagainst", "description" : "Punti Subiti" },
+						{ "name" : "PunDif", "equation" : "$pointsfor - $pointsagainst", "priority" : 3, "order" : "DESC", "description" : "Differenza Punti" },
+						{ "name" : "MedFat", "equation" : "$pointsfor / $eventsplayed","description" : "Media Punti Fatti" },
+						{ "name" : "MedSub", "equation" : "$pointsagainst / $eventsplayed", "description" : "Media Punti Subiti" },
+						{ "name" : "MedDif", "equation" : "( $pointsfor - $pointsagainst ) / $eventsplayed", "description" : "Media Differenza Punti" },
+						{ "name" : "PosS", "priority" : 2, "order": "ASC" , "description" : "Posizione" },								
+						{ "name" : "Casa", "equation" : "$homerecord", "description" : "Record in Casa" },
+						{ "name" : "Trasferta", "equation" : "$awayrecord", "description" : "Record in Trasferta" },
+						{ "name" : "U10", "equation" : "$last10", "description" : "Ultime 10 Partite" },
+						{ "name" : "Str", "equation" : "$streak", "description" : "Striscia" }
+	],
+	"metrics": [
+						"Altezza",
+						"Peso",
+						"Deroghe"
+	],
+	"statistics": [
+						{ "name" : "PaGG", "equation" : "$eventsattended", "description" : "Partite Giocate Giocatore" },
+						{ "name" : "Pa5", "equation" : "$eventsstarted", "description" : "Partite in Quintetto" },
+						{ "name" : "T2%", "format" : "equation", "precision" : 1, "equation" : "( $ttwor / $ttwot ) * 100", "type" : "average", "description" : "Percentuale Tiri da 2 Punti" },
+						{ "name" : "T3%", "format" : "equation", "precision" : 1, "equation" : "( $tthreer / $tthreet ) * 100", "type" : "average", "description" : "Percentuale Tiri da 3 Punti" },
+						{ "name" : "TL%", "format" : "equation", "precision" : 1, "equation" : "( $tlr / $tlt ) * 100", "type" : "average", "description" : "Percentuale Tiri Liberi" },
+						{ "name" : "RaP", "equation" : "( $rio + $rid ) / $eventsplayed", "precision" : 1, "type" : "average", "description" : "Rimbalzi a Partita" },
+						{ "name" : "AaP", "equation" : "$ass / $eventsplayed", "precision" : 1, "type" : "average", "description" : "Assist a Partita" },
+						{ "name" : "PRaP", "equation" : "$palr / $eventsplayed", "precision" : 1, "type" : "average", "description" : "Palle Recuperate a Partita" },
+						{ "name" : "StaP", "equation" : "$std / $eventsplayed", "precision" : 1, "type" : "average", "description" : "Stoppate a Partita" },
+						{ "name" : "PaP", "equation" : "$pung / $eventsplayed", "precision" : 1, "type" : "average", "description" : "Punti a Partita" }
+	],
+	"options": {
+						"mode" : "team"
+	}
+}
