@@ -20,6 +20,32 @@ if ( 'sp_calendar' !== get_post_type( $post ) ) {
 $calendar = new SP_Calendar( $post );
 $events   = $calendar->data();
 
+// Optionally filter events by team and/or season via URL query parameters,
+// e.g. ?feed=sp-ical&sp_team=123&season=456 (comma-separated values allowed)
+if ( ! empty( $_GET['sp_team'] ) ) {
+	$team_ids = array_filter( array_map( 'absint', explode( ',', wp_unslash( $_GET['sp_team'] ) ) ) );
+
+	$events = array_filter(
+		$events,
+		function( $event ) use ( $team_ids ) {
+			$event_teams = array_filter( array_map( 'absint', (array) get_post_meta( $event->ID, 'sp_team', false ) ) );
+			return (bool) array_intersect( $team_ids, $event_teams );
+		}
+	);
+}
+
+if ( ! empty( $_GET['season'] ) ) {
+	$season_ids = array_filter( array_map( 'absint', explode( ',', wp_unslash( $_GET['season'] ) ) ) );
+
+	$events = array_filter(
+		$events,
+		function( $event ) use ( $season_ids ) {
+			$event_seasons = wp_get_post_terms( $event->ID, 'sp_season', array( 'fields' => 'ids' ) );
+			return (bool) array_intersect( $season_ids, $event_seasons );
+		}
+	);
+}
+
 // Get blog locale
 $locale = substr( get_locale(), 0, 2 );
 
