@@ -247,6 +247,42 @@ if ( ! class_exists( 'SP_Settings_General' ) ) :
 				);
 			}
 
+			$options = array_merge(
+				$options,
+				array(
+					array(
+						'type' => 'sectionend',
+						'id'   => 'general_options',
+					),
+					array(
+						'title' => esc_attr__( 'OpenStreetMap', 'sportspress' ),
+						'type'  => 'title',
+						'desc'  => '',
+						'id'    => 'osm_options',
+					),
+					array(
+						'title' => esc_attr__( 'Tile server', 'sportspress' ),
+						'id'    => 'sportspress_osm_tile_server',
+						'placeholder' => 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+						'css'   => 'width:100%;',
+						'type'  => 'text',
+						'desc' => esc_attr__('Leave empty to use the default', 'sportspress'),
+					),
+					array(
+						'title' => esc_attr__( 'Attributions', 'sportspress' ),
+						'id'    => 'sportspress_osm_attribution',
+						'placeholder' => 'Map data &amp;copy; &lt;a href=&quot;https://www.openstreetmap.org/&quot;&gt;OpenStreetMap&lt;/a&gt; contributors',
+						'css'   => 'width:100%;',
+						'type'  => 'text',
+						'desc' => esc_attr__('Leave empty to use the default', 'sportspress'),
+					),
+					array(
+						'type' => 'sectionend',
+						'id'   => 'general_options',
+					),
+				)
+			  );
+
 			$settings = array_merge(
 				$settings,
 				apply_filters( 'sportspress_script_styling_options', $options ),
