@@ -1,0 +1,55 @@
+<?php
+/**
+ * Team Metrics
+ *
+ * @author      ThemeBoy
+ * @category    Admin
+ * @package     SportsPress/Admin/Meta_Boxes
+ * @version     2.7.30
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
+
+/**
+ * SP_Meta_Box_Team_Metrics
+ */
+class SP_Meta_Box_Team_Metrics {
+
+	/**
+	 * Output the metabox
+	 */
+	public static function output( $post ) {
+
+		$metrics = get_post_meta( $post->ID, 'sp_team_metrics', true );
+
+		$args = array(
+			'post_type'      => 'sp_team_metric',
+			'numberposts'    => -1,
+			'posts_per_page' => -1,
+			'orderby'        => 'menu_order',
+			'order'          => 'ASC',
+		);
+
+		$vars = get_posts( $args );
+
+		if ( $vars ) :
+			foreach ( $vars as $var ) :
+				?>
+			<p><strong><?php echo esc_html( $var->post_title ); ?></strong></p>
+			<p><input type="text" name="sp_team_metrics[<?php echo esc_attr( $var->post_name ); ?>]" value="<?php echo esc_attr( sp_array_value( $metrics, $var->post_name, '' ) ); ?>" /></p>
+				<?php
+			endforeach;
+		else :
+			sp_post_adder( 'sp_team_metric', esc_attr__( 'Add New', 'sportspress' ) );
+		endif;
+	}
+
+	/**
+	 * Save meta box data
+	 */
+	public static function save( $post_id, $post ) {
+		update_post_meta( $post_id, 'sp_team_metrics', sp_array_value( $_POST, 'sp_team_metrics', array(), 'text' ) );
+	}
+}

@@ -4,7 +4,7 @@
  *
  * @author      ThemeBoy
  * @package     SportsPress/Templates
- * @version   2.7.1
+ * @version   2.7.30
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -50,6 +50,9 @@ if ( $terms ) :
 		$data[ esc_attr__( 'Home', 'sportspress' ) ] = implode( ', ', $venues );
 	endif;
 endif;
+
+// Give the option to add more details to the team details.
+$data = apply_filters( 'sportspress_team_details', $data, $id );
 
 $output = '<div class="sp-list-wrapper">' .
 	'<dl class="sp-team-details">';
