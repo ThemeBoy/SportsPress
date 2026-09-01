@@ -34,6 +34,9 @@ if ( class_exists( 'WP_Importer' ) ) {
 				'sp_nationality' => esc_attr__( 'Nationality', 'sportspress' ),
 				'post_date'      => esc_attr__( 'Date of Birth', 'sportspress' ),
 			);
+			// add filter to add/remove import columns
+			$this->columns = apply_filters('sportspress_sp_player_import_columns',$this->columns);
+			
 			parent::__construct();
 		}
 
@@ -210,6 +213,8 @@ if ( class_exists( 'WP_Importer' ) ) {
 				}
 				update_post_meta( $id, 'sp_nationality', $nationality );
 
+				do_action('sportspress_sp_player_import_after_row',$id,$meta);
+				
 				$this->imported++;
 
 			endforeach;
