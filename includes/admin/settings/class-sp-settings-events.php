@@ -180,6 +180,41 @@ if ( ! class_exists( 'SP_Settings_Events' ) ) :
 				),
 				array(
 					array(
+						'title' => esc_attr__( 'Ticketshop', 'sportspress' ),
+						'type'  => 'title',
+						'desc'  => '',
+						'id'    => 'ticketshop_options',
+					),
+				),
+				apply_filters(
+					'sportspress_ticketshop_options',
+					array(
+						array(
+							'title'    => esc_attr__( 'Ticketshop label', 'sportspress' ),
+							'id'       => 'sportspress_ticketshop_label',
+							'default'  => 'Get your ticket',
+							'type'     => 'text',
+						),
+
+						array(
+							'title'   => esc_attr__( 'Past events', 'sportspress' ),
+							'desc'    => esc_attr__( 'Hide ticketshop for past events', 'sportspress' ),
+							'id'      => 'sportspress_ticketshop_hide_past_events',
+							'default' => 'yes',
+							'type'    => 'checkbox',
+						),
+
+
+					)
+				),
+				array(
+					array(
+						'type' => 'sectionend',
+						'id'   => 'event_options',
+					),
+				),
+				array(
+					array(
 						'title' => esc_attr__( 'Venues', 'sportspress' ),
 						'type'  => 'title',
 						'desc'  => '',
