@@ -27,10 +27,36 @@ if ( class_exists( 'WP_Importer' ) ) {
 			$this->columns      = array(
 				'sp_player' => esc_attr__( 'Player', 'sportspress' ),
 			);
-			$performance_labels = sp_get_var_labels( 'sp_performance' );
-			if ( $performance_labels && is_array( $performance_labels ) && sizeof( $performance_labels ) ) {
-				$this->columns = array_merge( $this->columns, $performance_labels );
-			}
+			
+			// Get performance labels, omitting equations since those will be calculated on the fly
+			$args = array(
+				'post_type'      => array( 'sp_performance' ),
+				'numberposts'    => -1,
+				'posts_per_page' => -1,
+				'orderby'        => 'menu_order',
+				'order'          => 'ASC',
+				'meta_query'     => array(
+					'relation' => 'OR',
+					array(
+						'key'     => 'sp_format',
+						'value'   => 'number',
+						'compare' => 'NOT EXISTS',
+					),
+					array(
+						'key'     => 'sp_format',
+						'value'   => array( 'equation' ),
+						'compare' => 'NOT IN',
+					),
+				),
+			);
+
+			$vars = get_posts( $args );
+			$performance_labels = array();
+			foreach ( $vars as $var ) :
+				if ( $neg === null || ( $neg && $var->menu_order < 0 ) || ( ! $neg && $var->menu_order >= 0 ) ) {
+					$this->columns[ $var->post_name ] = $var->post_title;
+				}
+			endforeach;
 		}
 
 		/**
